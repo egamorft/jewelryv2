@@ -1,0 +1,206 @@
+.img-banner-big {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+.mySwiperBanner {
+    margin: 5px 0;
+}
+.box-content-banner {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    right: 30px;
+}
+.title-slide-banner {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.content-slide-banner {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0;
+}
+.swiper-scrollbar {
+    width: 120px !important;
+    height: 2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background-color: #dddddd;
+    bottom: 20px !important;
+}
+.swiper-scrollbar-drag {
+    background-color: black;
+}
+.box-brand {
+    width: 100%;
+    background-color: #f9f7f2;
+    padding: 70px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.content-brand {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.link-brand {
+    font-size: 16px;
+    color: black;
+}
+
+.main-nav-with-img-banner {
+    padding: 140px 0;
+    text-align: center;
+}
+.main-nav-with-img-banner > div {
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+}
+.main-nav-with-img-banner a {
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 30px;
+}
+.main-nav-with-img-banner > div > div:last-child a {
+    margin-bottom: 0;
+}
+.main-nav-with-img-banner a:hover .nav-list {
+    border-bottom: 2px solid #000000;
+}
+.main-nav-with-img-banner a .nav-img {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 100px;
+    max-width: 420px;
+    width: 100%;
+    padding-top: 114%;
+    transition: all 0.3s ease-in-out;
+}
+#main .lazy {
+    transition: 0.2s all linear;
+}
+.main-nav-with-img-banner a .left .nav-img {
+    left: auto;
+    right: 100%;
+}
+.main-nav-with-img-banner a .nav-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top left;
+}
+
+.main-nav-with-img-banner a .nav-list:hover .nav-img {
+    opacity: 1;
+    visibility: visible;
+}
+.box-collection {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.item-collection {
+    width: 45%;
+}
+.img-collection {
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid #7a7a7a;
+}
+.title-collection {
+    color: #000000;
+    font-size: 32px;
+    font-family: 600;
+    padding: 30px 0 20px 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.content-collection {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+.link-collection {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+}
+.box-outstanding {
+    padding: 100px 50px;
+}
+.title-outstanding,
+.title-official {
+    font-size: 32px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.title-official {
+    padding: 0 50px;
+}
+.swiper-slide-thumb-active p {
+    font-weight: bold;
+}
+.box-swiper-sp {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+.outstanding {
+    display: flex;
+    justify-content: space-between;
+}
+.link-view-all {
+    font-size: 16px;
+    text-decoration: underline;
+    color: #000000;
+    width: 100px;
+    text-align: right;
+}
+.title-styling {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #000000;
+}
+.content-styling {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 0;
+}
+.box-banner-home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.item-img-banner-home {
+    width: 50%;
+    object-fit: cover;
+}
+.box-official {
+    margin: 100px 0;
+    width: 100%;
+}
