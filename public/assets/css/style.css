@@ -1,0 +1,239 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+a {
+    text-decoration: none;
+    color: #000000;
+}
+a:hover {
+    color: #000000;
+}
+.box-header {
+    width: 100%;
+    background: white;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
+.img-logo {
+    width: 175px;
+    margin-right: 200px;
+}
+.icon-header {
+    width: 24px;
+    height: 24px;
+    margin-left: 30px;
+}
+.point-cart {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background-color: #c4bcb0;
+    border: 1px solid #c4bcb0;
+    color: black;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-text-header {
+    margin-right: 30px;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+.item-text-header:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+.box-footer {
+    width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-top: 1px solid #c4bcb0;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+.item-footer-col {
+    display: flex;
+    flex-direction: column;
+}
+.title-footer {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.content-footer {
+    font-size: 14px;
+    color: #909090;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link-footer {
+    color: #000000;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.offcanvas-search-top,
+.offcanvas-menu-top {
+    width: 100%;
+    top: 76px;
+    height: fit-content;
+    bottom: unset;
+    z-index: 2;
+    border-top: 1px solid #c4bcb0;
+}
+.offcanvas-backdrop {
+    z-index: 1;
+}
+.content-search {
+    width: 30%;
+    margin: 0 auto;
+}
+.box-search-header {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #909090;
+    display: flex;
+}
+.input-search-header {
+    width: 100%;
+    border: none;
+    outline: unset;
+    color: #000000;
+    padding: 0 10px;
+}
+.content-header-search {
+    width: 100%;
+    margin-top: 30px;
+}
+.title-popular {
+    font-size: 16px;
+    color: #252525;
+    margin-bottom: 20px;
+}
+.box-popular {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.item-popular {
+    font-weight: bold;
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.btn-close-search {
+    position: absolute;
+    right: 50px;
+    top: 15px;
+}
+.offcanvas-body-header-search {
+    padding: 30px 50px;
+}
+.box-menu-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 2fr;
+    padding: 0;
+}
+.col-item-menu {
+    padding: 30px 50px;
+    border-right: 1px solid #c4bcb0;
+}
+.text-item-menu {
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    display: block;
+}
+.text-item-menu:hover,
+.content-item-menu:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+.content-item-menu {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    display: block;
+}
+.col-item-menu-right {
+    padding: 30px 50px;
+}
+.item-product {
+    width: 100%;
+    position: relative;
+}
+.icon-cart-product {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 70px;
+}
+.icon-heart-product {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+.title-product {
+    margin-top: 15px;
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.price {
+    color: #909090;
+    text-decoration: line-through;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.price-sale {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 5px;
+}
+.percent-sale {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #ed6944;
+    margin-left: 10px;
+}
+.icon-clock {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+}
+.title-time {
+    margin-bottom: 0;
+    font-size: 13px;
+    color: #000000;
+}

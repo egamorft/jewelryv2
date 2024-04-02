@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Web\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['user.active'])->group(function () {
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('login', [AuthController::class, 'index'])->name('auth.member.login');
-    });
-});
+Route::get('/', [HomeController::class, 'home'])->name('home');
