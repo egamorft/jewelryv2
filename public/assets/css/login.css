@@ -1,0 +1,1125 @@
+@charset "utf-8";@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");.kg_css {
+    display: block
+}
+
+body {
+    opacity: 1!important
+}
+
+body.KG_active {
+    position: fixed;
+    height: 100%;
+    overflow-y: hidden
+}
+
+#keepgrowLogin,#keepgrowLogin *,#syncServicePopup,#syncServicePopup * {
+    margin: 0;
+    padding: 0;
+    font-family: Noto Sans KR,sans-serif!important
+}
+
+#keepgrowLogin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow-y: scroll;
+    z-index: 9999;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+#keepgrowLogin::-webkit-scrollbar {
+    display: none
+}
+
+#keepgrowLogin .syncWrap {
+    margin: 0 auto;
+    max-width: 420px
+}
+
+#keepgrowLogin .btn {
+    margin-top: 10px;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    height: 54px;
+    max-height: unset;
+    line-height: 54px;
+    border: 1px;
+    border-radius: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer
+}
+
+#keepgrowLogin a:hover {
+    text-decoration: none
+}
+
+#keepgrowLogin #KG_header {
+    border: none
+}
+
+#keepgrowLogin #KG_header:after,#keepgrowLogin #KG_header:before {
+    display: none
+}
+
+#keepgrowLogin #KG_header .backBtn {
+    background: url(//storage.keepgrow.com/admin/20230625233259293.png) no-repeat 0;
+    background-size: auto 16px
+}
+
+#keepgrowLogin #KG_header .topNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 20px
+}
+
+#keepgrowLogin #KG_header .topNav>div {
+    width: 16px;
+    height: 16px
+}
+
+#keepgrowLogin #KG_header .homeBtn {
+    background: url(//storage.keepgrow.com/admin/20230625234558976.png) no-repeat 0;
+    background-size: auto 16px
+}
+
+#keepgrowLogin #KG_header .homeBtn a {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+#keepgrowLogin #KG_header .shopName {
+    overflow: hidden;
+    margin: auto!important;
+    padding: 5px 20px 0!important;
+    line-height: normal!important;
+    text-align: center
+}
+
+#keepgrowLogin #KG_header .shopName,#keepgrowLogin #KG_header .shopName a {
+    font-size: 19px;
+    font-weight: 500;
+    color: #222
+}
+
+#keepgrowLogin #KG_header .shopName img {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    max-width: 50%!important;
+    max-height: 60px!important;
+    vertical-align: baseline;
+    image-rendering: auto
+}
+
+body #keepgrowLogin #KG_header .shopName img {
+    height: auto!important
+}
+
+#keepgrowLogin #KG_section {
+    padding: 0 20px
+}
+
+#keepgrowLogin #KG_section .contents {
+    position: relative;
+    width: 100%;
+    padding: 34px 0;
+    border-top: 1px solid #f5f5f5
+}
+
+#keepgrowLogin #KG_section .contents:after {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    content: "또는";
+    margin: 0 auto;
+    padding: 0 10px;
+    background: #fff;
+    font-size: 12px;
+    color: #b2b2b2;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+#keepgrowLogin #KG_section .contents:first-child {
+    border-top: none
+}
+
+#keepgrowLogin #KG_section .contents:first-child:after {
+    display: none
+}
+
+#keepgrowLogin .contents .title {
+    margin: 0 0 5px;
+    color: #222;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: normal
+}
+
+#keepgrowLogin .contents .text {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal;
+    color: #222
+}
+
+#keepgrowLogin .contents .sec {
+    font-size: 20px;
+    text-align: center;
+    color: #666
+}
+
+#keepgrowLogin .contents .sec .num {
+    font-size: 80px;
+    font-weight: 700
+}
+
+#keepgrowLogin .contents .btnKakaoSubmit {
+    background: #31363d;
+    font-size: 15px;
+    color: #fff
+}
+
+#keepgrowLogin .contents .basicBtn a {
+    margin-top: 0
+}
+
+#keepgrowLogin .contents .basicBtn a:not(:first-child) {
+    margin-top: 10px
+}
+
+#keepgrowLogin .contents .btnKakao,#keepgrowLogin .contents .btnNoKakao {
+    margin-top: 0;
+    line-height: 54px!important;
+    background-color: #fee500;
+    font-size: 17px;
+    color: #111;
+    background-image: url(//storage.keepgrow.com/admin/campaign/20200611043456590.svg)!important
+}
+
+#keepgrowLogin .contents .btnKakao,#keepgrowLogin .contents .btnNaver,#keepgrowLogin .contents .btnNoKakao {
+    padding: 0 0 0 20px;
+    background-repeat: no-repeat;
+    background-size: 22px!important;
+    background-position: 20px!important
+}
+
+#keepgrowLogin .contents .btnNaver {
+    background-color: #02c659;
+    font-size: 16px;
+    color: #fff;
+    background-image: url(//storage.keepgrow.com/admin/20230627004811200.svg)!important
+}
+
+#keepgrowLogin #bannerSec {
+    margin-top: -10px;
+    padding-bottom: 30px;
+    width: 100%;
+    height: auto
+}
+
+#keepgrowLogin #bannerSec img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    image-rendering: -webkit-optimize-contrast
+}
+
+#keepgrowLogin #tabMenu {
+    margin-bottom: 15px;
+    padding: 3px;
+    font-size: 0;
+    letter-spacing: 0;
+    border-radius: 20px;
+    background: #f6f7f9
+}
+
+#keepgrowLogin #tabMenu li {
+    display: inline-block;
+    width: 50%
+}
+
+#keepgrowLogin #tabMenu li a {
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    line-height: 32px;
+    background: #f6f7f9;
+    border: unset;
+    border-radius: 17px;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    color: #888;
+    box-sizing: border-box
+}
+
+#keepgrowLogin #tabMenu li.active a {
+    position: relative;
+    background: #222;
+    border: unset;
+    color: #fff
+}
+
+#keepgrowLogin #formWrap>form {
+    width: 100%;
+    padding: 0;
+    margin: 0
+}
+
+#keepgrowLogin #formWrap .text {
+    margin-bottom: 15px
+}
+
+#keepgrowLogin #formWrap .inputBox label.input_title {
+    position: absolute;
+    height: 16px;
+    min-height: unset;
+    line-height: 16px;
+    color: #888;
+    font-size: 11px;
+    font-weight: 400;
+    z-index: 1
+}
+
+#keepgrowLogin #formWrap .inputBox input {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: none!important;
+    border-bottom: 1px solid #e5e5e5!important;
+    border-radius: unset;
+    font-size: 15px;
+    color: #000;
+    box-sizing: border-box;
+    outline: none
+}
+
+#keepgrowLogin #formWrap .inputBox input.onfocus {
+    padding-top: 16px;
+    border-bottom: 1px solid #222!important
+}
+
+#keepgrowLogin #formWrap .inputBox input::placeholder {
+    color: #888;
+    font-size: 14px
+}
+
+#keepgrowLogin #formWrap .inputBox input#member_passwd {
+    padding-right: 38px
+}
+
+#keepgrowLogin #formWrap .inputBox>div {
+    position: relative;
+    margin-top: 10px
+}
+
+#keepgrowLogin #formWrap .inputBox .inputBox_passwd .chk_passwd {
+    display: none;
+    content: "";
+    position: absolute;
+    padding: 18px 10px 19px;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 13px;
+    background: url(//storage.keepgrow.com/admin/20230627044452575.png) no-repeat 10px;
+    background-size: 18px!important;
+    z-index: 1;
+    box-sizing: unset!important;
+    -webkit-box-sizing: unset!important
+}
+
+#keepgrowLogin #formWrap .inputBox .inputBox_passwd .chk_passwd.active {
+    background: url(//storage.keepgrow.com/admin/20230629004733880.png) no-repeat 10px
+}
+
+#keepgrowLogin #formWrap .loginCheckBox {
+    margin: 15px 0
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li {
+    display: inline-block!important
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li input[type=checkbox] {
+    background-size: cover!important;
+    background-image: unset!important
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li {
+    padding-right: 24px;
+    display: inline-block
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li input[type=checkbox] {
+    position: relative;
+    top: 0;
+    margin: 0 5px 0 0;
+    width: 24px!important;
+    height: 24px!important;
+    border: 1px solid #c5c5c5;
+    background-color: #fff!important;
+    border-radius: 100%!important;
+    -webkit-appearance: none!important;
+    background: unset
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li input[type=checkbox]:checked {
+    border: unset;
+    background-color: #222!important;
+    background-image: url(//storage.keepgrow.com/admin/20230626000555378.png)!important;
+    background-size: 9.5px!important;
+    background-position: 50%!important;
+    background-repeat: no-repeat!important
+}
+
+#keepgrowLogin #formWrap .loginCheckBox li label {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal!important;
+    vertical-align: top
+}
+
+#keepgrowLogin #formWrap .loginBtn,#keepgrowLogin #formWrap .nomemberLoginBtn,#keepgrowLogin #memberJoin .joinBtn,#keepgrowLogin #memberLogin .redirectBtn {
+    padding: 0;
+    background: #f6f7f9;
+    font-size: 17px;
+    color: #222;
+    font-weight: 500
+}
+
+#keepgrowLogin #formWrap .loginBtn {
+    margin-top: 0
+}
+
+#keepgrowLogin #memberLogin .redirectBtn {
+    margin-bottom: 30px
+}
+
+#keepgrowLogin #formWrap .nomemberBuyBtn {
+    display: none;
+    border: 1px solid #e1e1e1;
+    color: #222
+}
+
+#keepgrowLogin #formWrap .utilMenu {
+    float: inherit;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 0;
+    border: none
+}
+
+#keepgrowLogin #formWrap .utilMenu a {
+    display: inline-block;
+    margin-left: 10.5px;
+    padding-left: 10.5px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #888
+}
+
+#keepgrowLogin #formWrap .utilMenu a:nth-child(2) {
+    position: relative
+}
+
+#keepgrowLogin #formWrap .utilMenu a:nth-child(2):before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -7px;
+    width: 1px;
+    height: 14px;
+    background: #e1e1e1
+}
+
+#keepgrowLogin #formWrap .utilMenu a.right {
+    float: right;
+    border-left: none;
+    color: #222
+}
+
+#keepgrowLogin #formWrap .utilMenu a:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none
+}
+
+#keepgrowLogin #memberJoin .joinBtn {
+    margin-top: 0
+}
+
+#keepgrowLogin #snsLogin {
+    display: flex;
+    justify-content: center;
+    line-height: normal
+}
+
+#keepgrowLogin .snsLoginBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 280px;
+    font-size: 0
+}
+
+#keepgrowLogin .snsLoginBox li {
+    padding: 0;
+    width: auto!important;
+    cursor: pointer
+}
+
+#keepgrowLogin .snsLoginBox li:not(:nth-child(5n+1)) {
+    margin-left: 10px!important
+}
+
+#keepgrowLogin .snsLoginBox li:nth-child(n+6) {
+    margin-top: 15px!important
+}
+
+#keepgrowLogin .snsLoginBox li,#keepgrowLogin .snsLoginBox li a {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+#keepgrowLogin .snsLoginBox li a {
+    width: 48px;
+    height: 48px!important;
+    background-size: 45%!important;
+    border-radius: 50%
+}
+
+#keepgrowLogin .snsLoginBox li.btn_kakao a {
+    background: url(//storage.keepgrow.com/admin/campaign/20200611043456590.svg) no-repeat 50%!important;
+    background-color: #fee500!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_naver a {
+    background: url(//storage.keepgrow.com/admin/20230627004811200.svg) no-repeat 50%!important;
+    background-color: #02c659!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_facebook a {
+    background: url(//storage.keepgrow.com/admin/20230627004750864.svg) no-repeat 50%!important;
+    background-color: #1877f2!important;
+    background-size: 24px!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_google a,#keepgrowLogin .snsLoginBox li.btn_googleplus a {
+    border: 1px solid #e5e5e7;
+    background: url(//storage.keepgrow.com/admin/campaign/20200619043043517.svg) no-repeat 50%!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_line a {
+    background: url(//storage.keepgrow.com/admin/20230627004335907.svg) no-repeat 50%!important;
+    background-color: #1dcc64!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_apple a {
+    background: url(//storage.keepgrow.com/admin/20230627004729776.svg) no-repeat 50%!important;
+    background-color: #000!important;
+    background-size: 18px!important
+}
+
+#keepgrowLogin .snsLoginBox li.btn_yahoojp a {
+    background: url(//storage.keepgrow.com/admin/20230705071255237.svg) no-repeat 50%!important;
+    background-color: #f03!important
+}
+
+#keepgrowLogin #KG_footer {
+    margin: 0 0 20px;
+    padding: 0 20px;
+    width: 100%;
+    border: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+#keepgrowLogin #KG_footer:before {
+    display: none
+}
+
+#keepgrowLogin #KG_footer .ment {
+    display: block;
+    padding: 26px 0 15px;
+    line-height: normal;
+    font-size: 13px;
+    color: #222
+}
+
+#keepgrowLogin #KG_footer .ment>div {
+    line-height: 19px
+}
+
+#keepgrowLogin #KG_footer .ment>div.icon {
+    display: inline-block;
+    position: relative;
+    padding-right: 15px
+}
+
+#keepgrowLogin #KG_footer .ment>div.icon:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 3.5px;
+    width: 10px;
+    height: 10px;
+    background: url(//storage.keepgrow.com/admin/20230203104013439.png) no-repeat 50%/cover
+}
+
+#keepgrowLogin #KG_footer .copyright {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    text-align: left!important
+}
+
+#syncServicePopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1.2em;
+    color: #222;
+    background: rgba(0,0,0,.7);
+    z-index: 99999999;
+    -webkit-font-smoothing: initial
+}
+
+#syncServicePopup a:hover {
+    text-decoration: none!important;
+    color: none!important
+}
+
+#syncServicePopup .popupWrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 20px;
+    max-width: 380px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    margin: 0 auto;
+    border-radius: 15px
+}
+
+#syncServicePopup .popupWrap .header {
+    display: none;
+    padding: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: #4e25e6
+}
+
+#syncServicePopup .popupWrap .header .icon {
+    width: 71px;
+    height: 13.77px;
+    background: url(//storage.keepgrow.com/admin/20230713115655677.png) no-repeat 50%/cover
+}
+
+#syncServicePopup .popupWrap .header .text {
+    padding: 15px 0 20px;
+    line-height: 1.2;
+    color: #fff
+}
+
+#syncServicePopup .popupWrap .header .text p {
+    line-height: 1.2;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400
+}
+
+#syncServicePopup .popupWrap .header .text p:first-child {
+    margin-bottom: 3px
+}
+
+#syncServicePopup .popupWrap .header .text p:last-child {
+    margin-top: 10px;
+    font-size: 11px
+}
+
+#syncServicePopup .popupWrap .header .text p b {
+    font-weight: 700!important
+}
+
+#syncServicePopup .popupWrap .section {
+    flex: 1;
+    overflow-y: scroll;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px
+}
+
+#syncServicePopup .popupWrap .footer {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: -15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 -4px 8px rgba(0,0,0,.1)
+}
+
+#syncServicePopup .popupWrap .footer div.textBox>div:not(:last-child) {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 17px
+}
+
+#syncServicePopup .popupWrap .footer div.textBox>div b {
+    font-weight: 700!important
+}
+
+#syncServicePopup .popupWrap .footer div.textBox>div.ment {
+    font-size: 15px;
+    line-height: 22px
+}
+
+#syncServicePopup .popupWrap .footer div.textBox>div.ment b {
+    font-weight: 700!important
+}
+
+#syncServicePopup .popupWrap .footer div.textBox div .highlight {
+    font-size: 15px;
+    display: inline;
+    box-shadow: inset 0 -10px 0 #daf244
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox {
+    display: flex;
+    margin-top: 10px;
+    align-items: center
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox .closed {
+    position: absolute;
+    top: -30px;
+    right: 10.5px;
+    padding: 0 21px 0 8px;
+    line-height: 22px;
+    border-radius: 13px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 12px
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox .closed:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: url(//storage.keepgrow.com/admin/20240131140629706.png) no-repeat 50%/cover
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox .goCheck {
+    position: relative;
+    flex: 1;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 10px;
+    background-color: #113aca;
+    text-align: center
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox .goCheck a {
+    display: block;
+    padding-right: 2px;
+    line-height: unset;
+    font-size: 16px;
+    color: #fff
+}
+
+#syncServicePopup .popupWrap .footer div.btnBox .goCheck:after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    background: url(//storage.keepgrow.com/admin/20240131134236673.png) no-repeat 50%/cover
+}
+
+#mappingLogin {
+    border: none;
+    text-align: left
+}
+
+#mappingLogin .xans-layout-login {
+    display: none!important
+}
+
+#mappingLogin .text {
+    display: block;
+    margin-bottom: 15px;
+    padding: 0;
+    color: #222;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal
+}
+
+#mappingLogin .contents {
+    margin-bottom: 0;
+    border-top: none!important
+}
+
+#mappingLogin .contents:after {
+    content: none!important
+}
+
+#mappingLogin>div.contents:first-child {
+    padding-bottom: 0!important
+}
+
+#mappingLogin>div.contents:not(:first-child) {
+    margin-top: 10px;
+    padding-top: 0!important
+}
+
+#mappingLogin .memberEmail {
+    box-shadow: inset 0 -10px 0 #daf244
+}
+
+#mappingLogin #normalLogin_id .inputBox .inputBox_passwd {
+    display: block
+}
+
+#mappingLogin #normalLogin_id .utilMenu {
+    margin-bottom: 15px;
+    text-align: right
+}
+
+#mappingLogin #accountConnect .radioBox {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-height: 152px;
+    font-size: 0;
+    border: none
+}
+
+#mappingLogin #accountConnect .radioBox li {
+    margin-bottom: 10px;
+    padding: 0;
+    display: block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+#mappingLogin #accountConnect .radioBox li label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 10px;
+    width: 100%;
+    height: 44px;
+    line-height: 42px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    color: #e5e5e5
+}
+
+#mappingLogin #accountConnect .radioBox li label input {
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #c5c5c5;
+    background: unset;
+    border-radius: 50%;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none
+}
+
+#mappingLogin #accountConnect .radioBox li label input:checked {
+    border: none;
+    background-color: #222;
+    background-image: url(//storage.keepgrow.com/admin/20230626000555378.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 14px
+}
+
+#mappingLogin #accountConnect .radioBox li label input:checked:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    border: 1px solid #222;
+    color: #222
+}
+
+#mappingLogin #accountConnect .radioBox li label input:checked~span {
+    color: #222
+}
+
+#mappingLogin #accountConnect .radioBox li label input:focus {
+    outline: none
+}
+
+#mappingLogin #accountConnect .guide {
+    padding: 15px 0;
+    font-size: 13px;
+    color: #888;
+    background: none;
+    border: none
+}
+
+#mappingLogin #accountConnect .guide b {
+    display: flex;
+    align-items: center;
+    color: #222
+}
+
+#mappingLogin #accountConnect .guide .icon {
+    display: inline-block;
+    margin-right: 5px;
+    width: 12px;
+    height: 12px;
+    background: url(//storage.keepgrow.com/admin/20230630091441153.png) no-repeat 0;
+    background-size: auto 12px
+}
+
+#mappingLogin #accountConnect .guide .text {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #888
+}
+
+#mappingLogin #accountConnect .btn,#mappingLogin .contents .btnNoKakao {
+    padding: 0;
+    height: 54px;
+    line-height: 54px;
+    color: #222;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-image: none
+}
+
+#mappingLogin #accountConnect .btn:first-child {
+    margin-top: 0
+}
+
+#mappingLogin #accountConnect .btn.btnAccountSubmit,#mappingLogin #accountConnect .btn.btnKakaoSubmit {
+    background-color: #f6f7f9
+}
+
+#mappingLogin #accountConnect .btn.btnNoAccount,#mappingLogin #accountConnect .btn.btnNoKakao,#mappingLogin .contents .btnNoKakao {
+    background-color: #daf244
+}
+
+#keepgrowLogin.smartLoginSection #KG_footer,#keepgrowLogin.smartLoginSection #KG_section #bannerSec,#keepgrowLogin.smartLoginSection #KG_section #kakaoLogin,#keepgrowLogin.smartLoginSection #KG_section #normalLogin_id .loginCheckBox,#keepgrowLogin.smartLoginSection #KG_section #snsLogin,#keepgrowLogin.smartLoginSection #KG_section #tabMenu,#keepgrowLogin.smartLoginSection #KG_section .contents:after {
+    display: none
+}
+
+#keepgrowLogin.smartLoginSection #KG_section .contents {
+    border-top: none
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader {
+    text-align: center
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader img {
+    display: block
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader .smartLoginImg {
+    width: 120px;
+    margin: 0 auto
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader .smartLoginTitle {
+    width: 130px;
+    margin: 0 auto 25px
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader .title {
+    margin-bottom: 25px;
+    font-family: Sandoll Nemony;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader .member {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginHeader .text {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400
+}
+
+#keepgrowLogin.smartLoginSection #KG_section #normalLogin_id {
+    margin-top: 20px
+}
+
+#keepgrowLogin.smartLoginSection #normalLogin_id .btn.loginBtn {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background: #daf244;
+    font-size: 16px
+}
+
+#keepgrowLogin.smartLoginSection #KG_section #normalLogin_id.savedId input#member_id {
+    display: none
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu {
+    text-align: right
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu a {
+    margin-left: 0
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu a:first-child {
+    position: relative;
+    padding-right: 10.5px
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu a:first-child:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -7px;
+    width: 1px;
+    height: 14px;
+    background: #e1e1e1
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu a:nth-child(2) {
+    margin-right: 0
+}
+
+#keepgrowLogin.smartLoginSection #formWrap .utilMenu a:nth-child(2):before {
+    display: none
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .info b {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .info b .icon {
+    display: inline-block;
+    margin-right: 5px;
+    width: 12px;
+    height: 12px;
+    background-image: url(https://storage.keepgrow.com/admin/20230629131048241.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 90%
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .info .text {
+    color: #888;
+    font-size: 12px;
+    font-weight: 400
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .info .text strong {
+    color: #222;
+    font-weight: 500
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .btn {
+    background: #f6f7f9
+}
+
+#keepgrowLogin.smartLoginSection #smartLoginFooter .btn.memberTypeLogin {
+    margin-top: 15px;
+    background: #daf244
+}
+
+#keepgrowLogin #memberLogin.onlySnsLogin #smartLoginFooter #changeLoginBtn,#keepgrowLogin.smartLoginSection #smartLoginFooter #changeLoginBtn {
+    display: block;
+    width: 100%;
+    margin-top: 58px;
+    color: #113aca;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center
+}
+
+#keepgrowLogin #memberLogin.onlySnsLogin {
+    padding-top: 0;
+    border: none
+}
+
+#keepgrowLogin #memberLogin.onlySnsLogin:after {
+    display: none
+}
+
+@media screen and (max-width: 720px) {
+    #keepgrowLogin .title {
+        font-size:22px!important
+    }
+
+    #keepgrowLogin .btn {
+        font-size: 16px!important
+    }
+
+    #keepgrowLogin #formWrap .inputBox input,#keepgrowLogin #formWrap .loginCheckBox li label,#keepgrowLogin #formWrap .utilMenu a,#keepgrowLogin #tabMenu li a,#keepgrowLogin .text,#keepgrowLogin .text span {
+        font-size: 14px!important
+    }
+
+    #keepgrowLogin #KG_footer .copyright,#keepgrowLogin #KG_footer .ment,#mappingLogin #accountConnect .guide .text {
+        font-size: 12px!important
+    }
+
+    #mappingLogin #accountConnect .radioBox li label {
+        font-size: 13px!important
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #syncServicePopup .popupWrap {
+        margin:0 20px
+    }
+}

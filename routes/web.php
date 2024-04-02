@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['user.active'])->group(function () {
+Route::middleware(['guest'])->group(function () {
     Route::group(['prefix' => 'member'], function () {
         Route::get('login', [AuthController::class, 'index'])->name('auth.member.login');
     });
