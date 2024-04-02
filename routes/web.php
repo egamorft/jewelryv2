@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Web\HomeController;
 
@@ -15,3 +16,9 @@ use \App\Http\Controllers\Web\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+Route::middleware(['guest'])->group(function () {
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('login', [AuthController::class, 'index'])->name('auth.member.login');
+    });
+});
