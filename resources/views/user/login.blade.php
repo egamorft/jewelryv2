@@ -57,24 +57,24 @@
                                 member?</a></li>
                     </ul>
                     <div id="formWrap">
-                        <form class="" id="signInForm" action="#" method="POST"
+                        <form class="" id="signInForm" action="{{ route('auth.member.login') }}" method="POST"
                             enctype="multipart/form-data">
+                            @csrf
                             <div id="normalLogin_id">
-                                <div class="inputBox"><input id="member_email" name="member_email" fw-label="email"
-                                        class="inputTypeText" placeholder="Enter your email" value=""
-                                        type="text">
+                                <div class="inputBox">
+                                    <input autofocus id="member_email" name="member_email" fw-label="email" class="inputTypeText"
+                                        placeholder="Enter your email" value="{{ old('member_email') }}" type="text">
                                     <div class="inputBox_orderno"></div>
                                     <div class="inputBox_passwd" style="display: block;">
                                         <div class="chk_passwd" style="display: block;"></div>
-                                        <input class="pwdField" id="member_password" name="member_password" fw-label="password"
-                                            autocomplete="off" value="" type="password"
+                                        <input class="pwdField" id="member_password" name="member_password"
+                                            fw-label="password" autocomplete="off" type="password"
                                             placeholder="Enter your password">
                                     </div>
                                 </div>
                                 <div class="loginCheckBox"></div>
-                                <button type="button" class="btn loginBtn">Login</button>
-                                <a href="/order/orderform.html?basket_type=A0000&amp;delvtype=B"
-                                    class="btn nomemberBuyBtn" style="display:none">비회원 구매</a>
+                                <button type="submit" class="btn loginBtn">Login</button>
+                                <a href="#" class="btn nomemberBuyBtn" style="display:none">비회원 구매</a>
                                 <div class="utilMenu" style="display:block">
                                     {{-- <a href="#">Find your email</a> --}}
                                     <a href="#">Forgot your password?</a>
@@ -82,28 +82,31 @@
                                 </div>
                             </div>
                         </form>
-                        <form class="d-none" id="signUpForm" action="#" method="POST"
-                            enctype="multipart/form-data">
+                        <form class="d-none" id="signUpForm" action="{{ route('auth.member.register') }}"
+                            method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div id="normalLogin_id">
-                                <div class="inputBox"><input id="order_name" name="name" fw-label="name"
-                                        class="inputTypeText" placeholder="Enter your name" value=""
-                                        type="text">
+                                <div class="inputBox">
+                                    <input id="order_name" name="name" fw-label="name" class="inputTypeText"
+                                        placeholder="Enter your name" value="{{ old('name') }}" type="text">
                                     <div class="inputBox_orderno"><input id="order_id" name="email"
-                                            maxlength="30" fw-label="Email" value="" type="text"
-                                            placeholder="Enter your email" title="Email"></div>
+                                            maxlength="30" fw-label="Email" value="{{ old('email') }}"
+                                            type="text" placeholder="Enter your email" title="Email"></div>
                                     <div class="inputBox_passwd">
                                         <div class="chk_passwd" style="display: block;"></div>
-                                        <input class="pwdField" id="order_password" name="password" fw-label="password"
-                                            value="" type="password" placeholder="Enter your password">
+                                        <input class="pwdField" id="order_password" name="password"
+                                            fw-label="password" value="" type="password"
+                                            placeholder="Enter your password">
                                     </div>
                                     <div class="inputBox_passwd">
                                         <div class="chk_passwd" style="display: block;"></div>
-                                        <input class="pwdField" id="order_confirm_password" name="confirm-password" fw-label="password"
-                                            value="" type="password" placeholder="Confirm your password">
+                                        <input class="pwdField" id="order_confirm_password" name="confirm_password"
+                                            fw-label="password" value="" type="password"
+                                            placeholder="Confirm your password">
                                     </div>
                                 </div>
                                 <div class="loginCheckBox"></div>
-                                <button class="btn nomemberLoginBtn" type="button">Sign up</button>
+                                <button class="btn nomemberLoginBtn" type="submit">Sign up</button>
                                 <a href="#" class="btn nomemberBuyBtn" style="display:none">Purchase</a>
                                 <div class="utilMenu" style="display:none">
                                     {{-- <a href="#">Find your email</a> --}}
@@ -149,6 +152,7 @@
 
                 $("#signInForm").removeClass("d-none");
                 $("#signUpForm").addClass("d-none");
+                $("#member_email").focus();
             });
 
             $("#guestBtn").click(function() {
@@ -157,6 +161,7 @@
 
                 $("#signUpForm").removeClass("d-none");
                 $("#signInForm").addClass("d-none");
+                $("#order_name").focus();
             });
         });
     </script>
