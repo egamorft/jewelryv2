@@ -1,0 +1,22 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - INDEX 
+--------------------------------------------------------------*/
+#drmvsn-basic-container .xans-myshop-orderstate {
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  padding: 30px;
+}
+#drmvsn-basic-container .xans-myshop-orderstate .state-item {
+  width: 25%;
+  text-align: center;
+}
+#drmvsn-basic-container .xans-myshop-orderstate .state-item * {
+  font-size: calc(16 / var(--font-1rem-size-no-only) * 1rem);
+}
+#drmvsn-basic-container .xans-myshop-orderstate .state-item .data {
+  margin-top: 20px;
+}
+#drmvsn-basic-container .myshop-index-top {
+  background-color: var(--cs-aside-bg-color);
+  margin: 2em 0 3em;
+}

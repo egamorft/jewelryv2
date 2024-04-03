@@ -1,0 +1,16 @@
+/*--------------------------------------------------------------
+#6 plp
+--------------------------------------------------------------*/
+
+#searchSidebar .searchQ-btn-wrap {
+    bottom:66px;
+}
+
+.prd-card .prd-card-icon {
+    top:10px;
+    right:10px;
+}
+
+.prd-card .prd-card-icon .cart-icon.mr-20 {
+    margin-right:7px;
+}

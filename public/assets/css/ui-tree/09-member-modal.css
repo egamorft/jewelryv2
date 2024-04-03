@@ -1,0 +1,28 @@
+/*--------------------------------------------------------------
+#9 member - ## modal (_23.07.27)
+--------------------------------------------------------------*/
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  max-width: 528px;
+  background: #fff;
+  position: relative;
+  width: 100%;
+}
+
+.modal-container .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

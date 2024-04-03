@@ -1,0 +1,424 @@
+/*--------------------------------------------------------------
+#12 myshop-order
+  ##LIST
+  ##DETAIL
+--------------------------------------------------------------*/
+/* from original */
+
+/* ë°°ì†¡ë¹„ ì¶”ê°€ê²°ì œ*/
+
+.xans-myshop-orderhistorydetailrefundnew .ec-base-table.total {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--table-border-color);
+}
+
+.xans-myshop-orderhistorydetailrefundnew .ec-base-table.total table {
+  margin: 0;
+  border: 0;
+}
+
+/* ë³µìˆ˜ ë°°ì†¡ì§€ */
+
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody tr:first-child,
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody tr:first-child th,
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody tr:first-child td {
+  border-top: 0;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody th {
+  vertical-align: middle;
+  padding-left: 0;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody td {
+  border-left: 1px solid var(--myshop-border-color);
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody td.left {
+  border-left: 0;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.multiDelivery tbody+tbody {
+  border-top: 1px solid var(--myshop-border-color);
+}
+
+/* Domestic delivery */
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_phone1, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_mobile1, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_phone1,
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_mobile1 {
+  margin-right: 5px;
+}
+
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_phone2, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_mobile2, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_phone2,
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_mobile2 {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_phone3, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #r_mobile3, 
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_phone3,
+.xans-myshop-orderreceiverupdate.ec-base-layer #f_mobile3 {
+  margin-left: 5px;
+}
+
+
+/* from original */
+/* ##LIST */
+#drmvsn-basic-container .drmvsn-base-tab {
+  border-bottom: 1px solid var(--myshop-border-color);
+}
+
+#drmvsn-basic-container .drmvsn-base-tab li {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+#drmvsn-basic-container .drmvsn-base-tab li a {
+  padding-bottom: 20px;
+  display: inline-flex;
+  position: relative;
+}
+
+#drmvsn-basic-container .drmvsn-base-tab li.selected a {
+  color: var(--anchor-color);
+}
+
+#drmvsn-basic-container .drmvsn-base-tab li.selected a:after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  content: '';
+}
+
+#drmvsn-basic-container .period-side #history_start_date,
+#drmvsn-basic-container .period-side #history_end_date {
+  min-width: 120px;
+}
+
+#drmvsn-basic-container .period-side #history_end_date {
+  margin-right: 10px;
+}
+
+#drmvsn-basic-container .period-side .order-search-btn .btn {
+  min-width: 100px;
+}
+
+#drmvsn-basic-container .order-state-box .select select {
+  width: 100%;
+}
+
+#drmvsn-basic-container .new-order-list .order-id a {
+  color: var(--myshop-secondary-font-color);
+}
+
+
+
+.new-order-list .order-block {
+  padding: 20px 0;
+  border-top: 1px solid var(--misc-border-color);
+}
+
+.new-order-list .order-block.bundle-displaynone {
+  border-top: 0;
+  margin-top: 0;
+}
+
+.new-order-list .order-block:first-child {
+  margin-top: 0;
+}
+
+.new-order-list .order-block:last-child {
+  border-bottom: 1px solid var(--misc-border-color);
+}
+
+.new-order-list .order-block .number {
+  font-size: calc(12 / var(--font-1rem-size-no-only) * 1rem)
+}
+
+.new-order-list .order-block .product-text-information-and-thumbnail {
+  position: relative;
+}
+
+.new-order-list .order-block .product-text-information-and-thumbnail .option {
+  color: var(--myshop-secondary-font-color);
+}
+.xans-myshop-orderhistoryhead .ui-datepicker-trigger{
+  display: none;
+}
+
+/* ##DETAIL */
+.xans-myshop-orderhistorydetail .title {
+  margin: 0;
+  padding: 30px 0 10px;
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+.xans-myshop-orderhistorydetail .order-area:first-child .title {
+  padding-top: 0;
+}
+
+.xans-myshop-orderhistorydetail .title h3 {
+  font-size: 1rem;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table table tbody th,
+.xans-myshop-orderhistorydetail .ec-base-table table tbody td {
+  padding: 5px;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table table tbody th {
+  color: var(--secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table tbody+tbody tr:first-child th,
+.xans-myshop-orderhistorydetail .ec-base-table tbody+tbody tr:first-child td {
+  border-top: none;
+  padding-top: 5px;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.total.responsive-table-block table,
+.xans-myshop-orderhistorydetail .table-child-bb table {
+  border-top: none;
+}
+
+.xans-myshop-orderhistorydetail .table-child-bb td,
+.xans-myshop-orderhistorydetail .table-child-bb th {
+  border-bottom: none;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-help.guidebox {
+  margin-top: 60px;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-help.guidebox h3 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--myshop-border-color);
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table .thumb img {
+  width: 80px;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table div.option,
+.xans-myshop-orderhistorydetail .ec-base-table ul.option>li {
+  color: var(--secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .new-order-detail-list .order-message-block .order-info {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+.xans-myshop-orderhistorydetail .new-order-detail-list .product-text-information-and-thumbnail {
+  position: relative;
+}
+
+.xans-myshop-orderhistorydetail .new-order-detail-list .product-text-information-and-thumbnail .option {
+  color: var(--myshop-secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail table th {
+  font-weight: 400;
+}
+
+.xans-myshop-orderhistorydetail .productList>ul>li:first-child {
+  border-top: 0;
+}
+
+.xans-myshop-orderhistorydetail .productList span.option {
+  display: block;
+  color: var(--myshop-secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table.total p span {
+  color: var(--secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table ul.option>li>strong {
+  display: block;
+  color: var(--body-default-color);
+  font-weight: 400;
+}
+
+/* ì‚¬ì€í’ˆ ê´€ë ¨ */
+.xans-myshop-orderhistorydetail .new-order-detail-gift-list .order-message-block .order-gift-info {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--table-border-color);
+  ;
+}
+
+.xans-myshop-orderhistorydetail .new-order-detail-gift-list .order-gift-information-and-thumbnail {
+  position: relative;
+}
+
+.xans-myshop-orderhistorydetail .new-order-detail-gift-list .order-gift-information-and-thumbnail .option {
+  color: var(--myshop-secondary-font-color);
+}
+
+#giftLayer{
+  z-index: 9999 !important;
+}
+/* //ì‚¬ì€í’ˆ ê´€ë ¨ */
+
+/* ìˆ˜ë ¹ì§€ ê´€ë ¨ */
+.xans-myshop-orderhistorydetail .ec-base-table .list {
+  padding: 10px 0;
+  line-height: 1.5;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table .map {
+  margin: 0 10px 0 0;
+  max-width: 100%;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table .map img {
+  margin-top: 5px;
+  max-width: 250px;
+  vertical-align: middle;
+}
+
+/* //ìˆ˜ë ¹ì§€ ê´€ë ¨ */
+
+/* ìƒì„¸ë‚´ì—­ë³´ê¸° ë ˆì´ì–´ */
+.xans-myshop-orderhistorydetail .ec-base-layer {
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+}
+
+.xans-myshop-orderhistorydetail .totalDetail#order_layer_detail .ec-base-desc li .term,
+.xans-myshop-orderhistorydetail .totalDetail#order_layer_addsale .ec-base-desc li .term {
+  font-weight: 400;
+  color: var(--secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .totalDetail#order_layer_detail .ec-base-desc li .desc,
+.xans-myshop-orderhistorydetail .totalDetail#order_layer_addsale .ec-base-desc li .desc {
+  color: var(--body-default-color);
+}
+
+.xans-myshop-orderhistorydetail .totalDetail {
+  display: none;
+  width: 300px;
+  color: var(--secondary-font-color);
+}
+
+.xans-myshop-orderhistorydetail .totalDetail .content p {
+  color: var(--body-default-color);
+  font-size: 1rem;
+  font-weight: var(--font-bold);
+  text-align: right;
+}
+
+.xans-myshop-orderhistorydetail .totalDetail .content .ec-base-desc {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--misc-border-color);
+}
+/* //ìƒì„¸ë‚´ì—­ë³´ê¸° ë ˆì´ì–´ */
+/* //##DETAIL */
+
+
+/* original-old */
+.xans-myshop-orderhistorydetail .ec-base-table .name .ec-set-product-name {
+  display: block;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table div.option span.file a,
+.xans-myshop-orderhistorydetail .ec-base-table ul.option>li>span.file a {
+  margin: 0 0 0 4px;
+  padding: 0 0 0 11px;
+  color: #757575;
+  text-decoration: underline;
+  background: url("//img.echosting.cafe24.com/skin/base/common/ico_file.gif") no-repeat 0 2px;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table td.state [class^="btn"] {
+  margin: 1px 0;
+}
+
+.xans-myshop-orderhistorydetail .ec-base-table thead+tbody tr:first-child th,
+.xans-myshop-orderhistorydetail .ec-base-table thead+tbody tr:first-child td {
+  border-top: 0;
+}
+
+/* ê²°ì œì •ë³´, ìµœì¢…ê²°ì œì •ë³´ */
+.xans-myshop-orderhistorydetail .ec-base-table.total table:before {
+  display: none;
+}
+
+/* ì¶”ê°€ê²°ì œ */
+.xans-myshop-orderhistorydetailpaymentadd .ec-base-table.total {
+  position: relative;
+  z-index: 1;
+  border: 1px solid #777;
+}
+
+.xans-myshop-orderhistorydetailpaymentadd .ec-base-table.total table {
+  margin: 0;
+  border: 0;
+}
+
+/* ê³ ê°ì•Œë¦¼ */
+.xans-myshop-orderhistorydetail .customer {
+  padding: 10px 19px;
+  border: 1px solid #d7d5d5;
+  line-height: 20px;
+}
+
+/* í˜„ê¸ˆì˜ìˆ˜ì¦ issue */
+.cash-receipt-number #mobile1 {
+  margin-right: 5px;
+}
+
+.cash-receipt-number #mobile2 {
+  margin: 0 5px
+}
+
+.cash-receipt-number #mobile3 {
+  margin-left: 5px;
+}
+
+/* ì„¸ê¸ˆê³„ì‚°ì„œ issue */
+.tax-receipt-number #phone1 {
+  margin-right: 5px;
+}
+
+.tax-receipt-number #phone2 {
+  margin: 0 5px
+}
+
+.tax-receipt-number #phone3 {
+  margin-left: 5px;
+}
+
+.xans-myshop-orderissuetax #mall_addr_btn {
+  margin-left: 10px
+}
+
+.tax-receipt-email #email1 {
+  margin-right: 5px;
+}
+
+.tax-receipt-email #email2 {
+  margin: 0 5px
+}
+
+.tax-receipt-email #email3 {
+  margin-left: 5px;
+  min-width:20vw;
+}
+
+.btn.prior-2.selected {
+  border: 1px solid #000;
+}

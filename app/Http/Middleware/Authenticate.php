@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Closure;
 use Illuminate\Http\Request;
 
 class Authenticate
@@ -19,7 +19,7 @@ class Authenticate
         if (auth()->guard($guards)->check()) {
             return $next($request);
         }
-
+        toastr()->error("You have not logged in");
         return redirect()->guest('/member/login');
     }
 }

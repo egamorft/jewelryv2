@@ -1,0 +1,383 @@
+/*--------------------------------------------------------------
+#9 member - ## join & modify
+--------------------------------------------------------------*/
+
+
+.drmvsn-login-join .title-area,
+.drmvsn-login-join {
+  max-width: var(--narrow-container);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+.drmvsn-login-join input[type=text],
+.drmvsn-login-join input[type=number],
+.drmvsn-login-join input[type=email],
+.drmvsn-login-join input[type=password],
+.drmvsn-login-join select,
+.drmvsn-login-join .dv-control select {
+  width: 100%;
+}
+
+.drmvsn-login-join #postcode1 {
+  max-width: 120px;
+  margin-right: 10px;
+}
+
+.drmvsn-login-join #btn_action_verify_mobile {
+  margin-left: 5px;
+}
+
+
+.xans-member-edit .required,
+.xans-member-join .required {
+  color: var(--required-color);
+  font-weight: var(--font-bold);
+}
+
+/* signup */
+.xans-member-join .agreeArea h3 {
+  font-size: 1rem;
+}
+
+.xans-member-join #phone1,
+.xans-member-join #mobile1 {
+  margin-right: 5px;
+}
+
+.xans-member-join #phone2,
+.xans-member-join #phone3,
+.xans-member-join #mobile2,
+.xans-member-join #mobile3 {
+  margin: 0 5px;
+}
+
+.xans-member-join #email1 {
+  margin-right: 5px;
+}
+
+.xans-member-join #email2 {
+  margin: 0 5px;
+}
+
+.xans-member-join .agreement-pseudo-label>label {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.xans-member-join .dv-field label {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.xans-member-join .agreeArea .content {
+  overflow: auto;
+  height: 110px;
+  padding: 20px;
+  border: 1px solid var(--misc-border-color);
+  background: #fff;
+}
+
+.xans-member-join .eTooltip {
+  position: relative;
+}
+
+.xans-member-join .ec-base-tooltip {
+  top: calc(var(--form-element-height) + 3px);
+}
+
+.xans-member-join .expiration-time {
+  color: var(--expiration-time-color)
+}
+.agreement-pseudo-label {
+  line-height:0;
+}
+/* //signup */
+
+
+/* edit */
+
+.xans-member-edit h3 {
+  font-size: 1rem;
+}
+
+.xans-member-edit #phone1,
+.xans-member-edit #mobile1 {
+  margin-right: 5px;
+}
+
+.xans-member-edit #phone2,
+.xans-member-edit #phone3,
+.xans-member-edit #mobile2,
+.xans-member-edit #mobile3 {
+  margin: 0 5px;
+}
+
+.xans-member-edit #email1 {
+  margin-right: 5px;
+}
+
+.xans-member-edit #email2 {
+  margin: 0 5px;
+}
+
+.xans-member-edit .agreement-pseudo-label>label {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.xans-member-edit .dv-field label {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.xans-member-edit .agreeArea .content {
+  overflow: auto;
+  height: 110px;
+  padding: 20px;
+  border: 1px solid var(--misc-border-color);
+  background: #fff;
+}
+
+.xans-member-edit .expiration-time {
+  color: var(--expiration-time-color)
+}
+
+
+.xans-member-edit .layerLeave h3 {
+  color: var(--layer-popup-header-color)
+}
+
+.xans-member-edit .layerLeave {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 375px;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+
+.xans-member-edit .layerLeave h4 {
+  margin: 20px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--misc-border-color);
+}
+
+.xans-member-edit .layerLeave #eLeaveLayerEtcTextarea textarea {
+  width: 100%;
+}
+
+.xans-member-edit .ec-base-tooltip {
+  top: calc(var(--form-element-height) + 3px);
+}
+
+.xans-member-edit .ec-base-table [id*="Msg"].error {
+  color: var(--error-text-color);
+}
+
+/* //edit */
+
+
+/* mapping join */
+.xans-layout-login {
+  display: none;
+}
+
+.xans-layout-login .layer-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .3);
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.xans-layout-login .layer-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+}
+
+.xans-layout-login .login fieldset {
+  position: relative;
+  width: 370px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* //mapping join */
+
+/* mapping login -kakao only */
+
+#mappingLogin .contents .text {
+  margin-bottom: 15px;
+}
+
+#mappingLogin .contents .btn {
+  display: inline-block;
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  border: 1px;
+  text-align: center;
+}
+
+
+#mappingLogin .contents .btnNoKakao {
+  margin-top: 0;
+  height: 60px;
+  line-height: 60px;
+  background-color: #fee500;
+  font-size: 15px;
+  color: #111;
+  background-image: url(//storage.keepgrow.com/admin/campaign/20200611043456590.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: 15px;
+}
+
+#mappingLogin .mappingLogin #formWrap .text {
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: normal;
+  color: #222;
+}
+
+#mappingLogin .mappingLogin #formWrap .text b,
+#keepgrowLogin .mappingLogin #formWrap .text span {
+  font-size: 16px;
+  vertical-align: text-top;
+}
+
+#mappingLogin #accountConnect .radioBox {
+  margin: 0 -3px;
+  margin-bottom: 20px;
+  font-size: 0;
+}
+
+#mappingLogin #accountConnect .radioBox li {
+  padding: 3px;
+  display: inline-block;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#mappingLogin #accountConnect .radioBox li label {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+  width: 100%;
+  height: 45px;
+  line-height: 43px;
+  border: 1px solid #efefef;
+  border-radius: 45px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: #888;
+}
+
+#mappingLogin #accountConnect .radioBox li label input {
+  margin-right: 5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: #efefef;
+  border-radius: 20px;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  vertical-align: middle;
+}
+
+#mappingLogin #accountConnect .radioBox li label input:checked {
+  background-color: #fee500;
+  background-image: url("//storage.keepgrow.com/admin/campaign/20200623015637587.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px;
+}
+
+#mappingLogin #accountConnect .radioBox li label input:checked::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 1px solid #aaa;
+}
+
+#mappingLogin #accountConnect .radioBox li label input:focus {
+  outline: none;
+}
+
+#mappingLogin #accountConnect .radioBox li label span {
+  display: inline-block;
+  width: calc(95% - 25px);
+  height: 100%;
+  line-height: 43px;
+  vertical-align: middle;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* //mapping login -kakao only */
+
+/* íšŒì›ì •ë³´ ë³€ê²½ ì´ë²¤íŠ¸ ë ˆì´ì–´ & ë³¸ì¸ì¸ì¦*/
+.xans-member-certification,
+.xans-member-updateeventpopup { position:fixed; top:50%; left:50%; z-index:1000; width:375px; max-width:100%; transform:translate(-50%,-50%) }
+
+/* //íšŒì›ì •ë³´ ë³€ê²½ ì´ë²¤íŠ¸ ë ˆì´ì–´ */
+
+/* old - ê²€ì¦ í•„ìš” */
+
+#realNameAuth p span {
+  display: inline-block;
+  width: 80px;
+}
+
+/* .xans-member-join #bank_code {
+  width: 240px;
+}
+
+.xans-member-join #c_bank_account_no {
+  width: 230px;
+} */
+
+
+/* 
+.xans-member-edit #bank_code {
+  width: 240px;
+}
+
+.xans-member-edit #c_bank_account_no {
+  width: 230px;
+  } */

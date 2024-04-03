@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Web\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,17 @@ use \App\Http\Controllers\Web\HomeController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::middleware(['guest'])->group(function () {
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('login', [AuthController::class, 'index'])->name('auth.member.login');
+Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
+    Route::get('login', [AuthController::class, 'index'])->name('auth.member.index');
+    Route::post('login', [AuthController::class, 'login'])->name('auth.member.login');
+    Route::post('register', [AuthController::class, 'store'])->name('auth.member.register');
+});
+Route::middleware('auth')->group(function () {
+    Route::group(['prefix' => 'myshop'], function () {
+        Route::get('', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('order', [ProfileController::class, 'order'])->name('profile.order');
+        Route::get('member', [ProfileController::class, 'member'])->name('profile.member');
     });
+
+    Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');
 });

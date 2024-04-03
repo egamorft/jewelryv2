@@ -1,0 +1,32 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - ## deposits
+--------------------------------------------------------------*/ 
+.deposits-setup .xans-myshop-depositsummary {
+  background-color: #F7F7F7;
+  padding:30px 0;
+}
+.deposits-setup .xans-myshop-depositsummary .title{
+  font-size:calc(12 / var(--font-1rem-size-no-only) * 1rem);
+  margin-bottom: 15px;
+}
+.deposits-setup .deposits-list .deposits-item {
+  border-top: 1px solid var(--myshop-border-color);
+}
+.deposits-setup .deposits-list .deposits-item:last-child {
+  border-bottom: 1px solid var(--myshop-border-color);
+}
+.deposits-setup .deposits-list .deposits-item .date-and-order{
+  font-size:calc(12 / var(--font-1rem-size-no-only) * 1rem);
+}
+.deposits-setup .deposits-list .deposits-item .date-and-order .order-id a{
+  color: var(--myshop-secondary-font-color);
+}
+.deposits-setup .deposits-list .deposits-item .deposits-info .title{
+  color: var(--myshop-secondary-font-color);
+}
+.deposits-setup .deposits-list .deposits-item .deposits-info .money{
+  font-size:calc(24 / var(--font-1rem-size-no-only) * 1rem);
+}
+.xans-myshop-depositrefundlist th {
+  text-align: center;
+}

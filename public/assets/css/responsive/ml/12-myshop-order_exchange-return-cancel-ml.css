@@ -1,0 +1,9 @@
+/*--------------------------------------------------------------
+#12 MYSHOP
+    ## exchange
+    ## return
+    ## cancel
+--------------------------------------------------------------*/
+.drmvsn-myshop-cancel-exchange-return .ec-base-table.table-indent th, .drmvsn-myshop-cancel-exchange-return .ec-base-table.table-indent td {
+    padding:6px 10px;
+}

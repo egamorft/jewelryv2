@@ -1,0 +1,29 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - ## mileage
+--------------------------------------------------------------*/ 
+.mileage-setup .xans-myshop-summary{
+    background-color: #F7F7F7;
+    padding:30px 0;
+}
+.mileage-setup .xans-myshop-summary .title{
+    font-size:calc(12 / var(--font-1rem-size-no-only) * 1rem);
+    margin-bottom: 15px;
+}
+.mileage-setup .mileage-list .mileage-item{
+    border-top: 1px solid var(--myshop-border-color);
+}
+.mileage-setup .mileage-list .mileage-item:last-child{
+    border-bottom: 1px solid var(--myshop-border-color);
+}
+.mileage-setup .mileage-list .mileage-item .date-and-order{
+    font-size:calc(12 / var(--font-1rem-size-no-only) * 1rem);
+}
+.mileage-setup .mileage-list .mileage-item .date-and-order .order-id a{
+    color: var(--myshop-secondary-font-color);
+}
+.mileage-setup .mileage-list .mileage-item .mileage-info .title{
+    color: #000
+}
+.mileage-setup .mileage-list .mileage-item .mileage-info .money{
+    font-size:calc(21 / var(--font-1rem-size-no-only) * 1rem);
+}

@@ -1,0 +1,54 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - INDEX 
+--------------------------------------------------------------*/
+.myshop-index .mobile-bottom-sidebar{
+    margin-top:20px;
+}
+.myshop-index .mobile-bottom-sidebar .xans-myshop-asyncbenefit{
+    display: none;
+}
+#drmvsn-basic-wrap.myshop-index > .flex{
+    display: flex;
+}
+.myshop-index #drmvsn-basic-sidebar{ 
+    display: block;
+    order:2;
+    flex-basis: 100%;
+    margin-top:20px;
+}
+.myshop-index #drmvsn-basic-sidebar .information{
+    display: none;
+}
+.myshop-index #drmvsn-basic-container{
+    order:1;
+}
+.myshop-index #drmvsn-basic-container .customer-name{
+    font-size:calc(20 / var(--font-1rem-size-no-only) * 1rem)
+}
+.myshop-index .mobile-title {
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+.myshop-index .mobile-title h2{
+    font-size:calc(14 / var(--font-1rem-size-no-only) * 1rem);
+    font-weight: 500;
+}
+#drmvsn-basic-container .xans-myshop-orderstate .state-item *{
+    font-size:calc(12 / var(--font-1rem-size-no-only) * 1rem)
+} 
+#drmvsn-basic-container .myshop-index-top {
+    margin-top:20px;
+    margin-bottom:30px;
+    /* display: none; */
+}
+#drmvsn-basic-container .xans-myshop-orderstate {
+    padding:20px 10px;
+}
+
+
+.myshop-index #myshop-sidebar .cs-list {
+    font-size: 16px;
+}
+.myshop-index #myshop-sidebar .cs-list .sidebar-link {
+    margin-top: 25px;
+}
