@@ -1,0 +1,153 @@
+/*--------------------------------------------------------------
+#11 board
+--------------------------------------------------------------*/
+
+.xans-board-movement li strong {
+    width: 100%;
+}
+
+.xans-board-writepackage .ec-base-table tr,
+.xans-board-modifypackage .ec-base-table tr,
+.xans-board-replypackage .ec-base-table tr {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.xans-board-writepackage .ec-base-table .dv-field,
+.xans-board-modifypackage .ec-base-table .dv-field,
+.xans-board-replypackage .ec-base-table .dv-field {
+    flex-wrap: wrap;
+}
+
+.xans-board-writepackage .ec-base-table .dv-field .label,
+.xans-board-writepackage .ec-base-table th,
+.xans-board-writepackage .ec-base-table td,
+.xans-board-modifypackage .ec-base-table .dv-field .label,
+.xans-board-modifypackage .ec-base-table th,
+.xans-board-modifypackage .ec-base-table td,
+.xans-board-replypackage .ec-base-table .dv-field .label,
+.xans-board-replypackage .ec-base-table th,
+.xans-board-replypackage .ec-base-table td {
+    width: 100%;
+}
+
+.xans-board-writepackage .ec-base-table td,
+.xans-board-modifypackage .ec-base-table td,
+.xans-board-replypackage .ec-base-table td {
+    margin-bottom: 10px;
+}
+
+.xans-board-writepackage .information .btns,
+.xans-board-modifypackage .information .btns,
+.xans-board-replypackage .information .btns {
+    margin-top: 10px;
+}
+
+.xans-board-writepackage tr.captcha .flex,
+.xans-board-modifypackage tr.captcha .flex,
+.xans-board-replypackage tr.captcha .flex {
+    flex-wrap: wrap;
+}
+
+.xans-board-writepackage tr.captcha .flex .ec-base-help,
+.xans-board-modifypackage tr.captcha .flex .ec-base-help,
+.xans-board-replypackage tr.captcha .flex .ec-base-help {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.xans-board-write .ec-base-table tr.agree td textarea,
+.xans-board-reply .ec-base-table tr.agree td textarea,
+.xans-board-reply .ec-base-table tr.agree td textarea {
+    max-width: calc(100vw - 40px);
+}
+
+.xans-board-writepackage .ec-base-table table,
+.xans-board-writepackage .ec-base-table tbody,
+.xans-board-writepackage .ec-base-table tfoot,
+.xans-board-modifypackage .ec-base-table table,
+.xans-board-modifypackage .ec-base-table tbody,
+.xans-board-modifypackage .ec-base-table tfoot,
+.xans-board-replypackage .ec-base-table table,
+.xans-board-replypackage .ec-base-table tbody,
+.xans-board-replypackage .ec-base-table tfoot {
+    display: block;
+}
+
+.xans-board-writepackage .dv-control,
+.xans-board-modifypackage .dv-control,
+.xans-board-replypackage .dv-control {
+    max-width: 100%;
+}
+
+.xans-board-listpackage-8 {
+    padding-left: 0;
+    padding-right: 0;
+}
+.xans-board-listpackage-8 .title-area h2 {
+    font-size: calc(14 / var(--font-1rem-size-no-only) * 1rem);
+}
+.xans-board-listpackage-8 .xans-board-8 {
+    margin-top: 30px;
+}
+.xans-board-listpackage-8 .xans-board-list-8 li span {
+    font-size: calc(12 / var(--font-1rem-size-no-only) * 1rem);
+}
+
+/*added by yeonsu*/
+/*list*/
+.board-search > .flex {
+    flex-wrap:wrap;
+  }
+.xans-board-search .board-search .select.child-mr-10 > select#search_key,
+.xans-board-read .ec-base-button .btns.child-mr-10 > a.btn:last-child {
+    margin-right:0;
+}
+/*read*/
+.xans-board-read .ec-base-button .btns.child-ml-10 > a.btn:first-child {
+    margin-left:0;
+}
+
+/*write*/
+    #drmvsn-basic-wrap > .flex {
+    display:block;
+}
+
+/*modify*/
+.xans-board-modify > .ec-base-button .btns:first-child {
+    margin-bottom:10px;
+}
+.xans-board-modify > .ec-base-button .btns:first-child .btn {
+    justify-content: center;
+}
+.xans-board-modify > .ec-base-button .btns:last-child {
+    width:100%;
+    justify-content: space-between;   
+}
+.xans-board-modify label[for] {
+    white-space: nowrap;
+}
+
+/*secret*/
+.board-secret-wrap {
+    max-width:100%;
+}
+
+/*gallery*/
+#drmvsn-card-type-board .flex.grid-2 {
+    display:block;
+}
+#drmvsn-card-type-board .flex.grid-2>li,
+#drmvsn-card-type-board .xans-board-notice,
+#drmvsn-card-type-board .xans-board-fixed,
+#drmvsn-card-type-board .xans-board-list {
+    margin-bottom:30px;
+}
+
+.read-only #drmvsn-basic-container {
+    margin-top: 0;
+}
+.flex.board-list>li {
+    flex-basis: 100%;
+}

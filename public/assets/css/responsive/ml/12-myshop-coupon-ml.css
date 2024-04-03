@@ -1,0 +1,7 @@
+/*--------------------------------------------------------------
+#12 myshop-coupon
+--------------------------------------------------------------*/
+.xans-myshop-couponlist .coupon-list .coupon-item,
+.couponzone-list .coupon-item{
+    flex-basis: 100%;
+}

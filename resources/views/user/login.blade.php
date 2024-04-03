@@ -62,8 +62,9 @@
                             @csrf
                             <div id="normalLogin_id">
                                 <div class="inputBox">
-                                    <input autofocus id="member_email" name="member_email" fw-label="email" class="inputTypeText"
-                                        placeholder="Enter your email" value="{{ old('member_email') }}" type="text">
+                                    <input autofocus id="member_email" name="member_email" fw-label="email"
+                                        class="inputTypeText" placeholder="Enter your email"
+                                        value="{{ old('member_email') }}" type="text">
                                     <div class="inputBox_orderno"></div>
                                     <div class="inputBox_passwd" style="display: block;">
                                         <div class="chk_passwd" style="display: block;"></div>

@@ -1,0 +1,23 @@
+/*--------------------------------------------------------------
+#9 member - ## join & modify
+--------------------------------------------------------------*/
+.drmvsn-login-join .title-area {
+  width: calc(100% + var(--container-px) * 2);
+  max-width: unset;
+}
+.xans-member-join .dv-field label {
+  white-space: normal;
+}
+.drmvsn-login-join {
+  max-width: 100%;
+  padding-top: 30px;
+}
+.drmvsn-login-join .ec-base-button a {
+  font-size: 16px;
+}
+.drmvsn-login-join .ec-base-button.justify-center a {
+  font-size: 14px;
+}
+.xans-member-changepasswd .form-row.mt-30 {
+  margin-top: 0;
+}

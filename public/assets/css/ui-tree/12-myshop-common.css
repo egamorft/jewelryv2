@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------
+#9 MYSHOP - COMMON
+    ##SIDEBAR
+    ##CONTENT
+--------------------------------------------------------------*/
+#drmvsn-basic-wrap{ 
+    min-height: calc(100vh - var(--header-height));
+    width: 100%;
+    max-width: 1500px;
+    margin: 40px auto 0;
+} 
+#drmvsn-basic-wrap .breadcrumbs{
+    flex-basis: 100%;
+}
+
+/* ##SIDEBAR */ 
+#drmvsn-basic-sidebar{
+    flex-basis: 225px;
+    position:sticky;
+    align-self:flex-start;
+    top:calc(var(--header-height) + var(--container-pt));
+}
+#drmvsn-basic-sidebar .sidebar-title{
+    margin:2em 0 3em;
+}
+#drmvsn-basic-sidebar .xans-myshop-asyncbenefit .customer-name{
+    font-size:calc(24 / var(--font-1rem-size-no-only) * 1rem)
+}
+/* //##SIDEBAR */
+
+/* ##CONTENT */ 
+#drmvsn-basic-container{
+    flex-basis: calc(100% - 225px);
+    padding-left: 100px;
+} 
+#drmvsn-basic-container .container-title{
+    margin:2em 0 3em;
+}
+#drmvsn-basic-container .sub-title,
+.sub-title.with-bottom-border{
+    border-bottom: 1px solid var(--myshop-border-color);
+}
+#drmvsn-basic-container .title-area {
+    text-align: left;
+}
+
+/* //##CONTENT */ 
+
+.mobile-level-info {
+    word-break:keep-all;
+}

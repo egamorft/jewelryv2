@@ -1,0 +1,376 @@
+/*--------------------------------------------------------------
+#QTY
+    ##PDP QTY ì˜µì…˜ìžˆëŠ” ìƒí’ˆ & ìˆ˜ëŸ‰ë§Œ í•„ìš”í•œ ìƒí’ˆ & ì¶”ê°€êµ¬ì„±ìƒí’ˆ & basket_option(PLP ì¹´íŠ¸ í´ë¦­ì‹œ) & ëª¨ë°”ì¼ user agentë¡œ ë Œë” ì‹œ
+    ##dv-qty - CART, /myshop/order/R.C.E
+
+--------------------------------------------------------------*/
+/* original ec-base-qty */
+
+.ec-base-qty {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    margin: 0 1px 0 0;
+    text-align: left;
+}
+
+.ec-base-qty input[type="text"] {
+    width: 22px;
+    height: 23px;
+    padding: 0 0 0 5px;
+    line-height: 25px;
+}
+
+.ec-base-qty .up {
+    position: absolute;
+    left: 27px;
+    top: 0;
+}
+
+.ec-base-qty .down {
+    position: absolute;
+    left: 27px;
+    bottom: 0;
+}
+
+.ec-base-qty .qtyUp {
+    position: absolute;
+    left: 27px;
+    top: 0;
+}
+
+.ec-base-qty .qtyDown {
+    position: absolute;
+    left: 27px;
+    bottom: 0;
+}
+
+.ec-base-qty .qtyUp .up {
+    position: static;
+    left: auto;
+    top: auto;
+}
+
+.ec-base-qty .qtyDown .down {
+    position: static;
+    left: auto;
+    top: auto;
+}
+
+/* ìˆ˜ëŸ‰ from pdp */
+
+.ec-base-desc.quantity {
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--primary-border-color);
+  }
+  
+  .ec-base-desc.quantity dt {
+    width: 125px;
+    padding: 0 0 0 8px;
+  }
+  
+
+/* original ec-base-qty */
+/* PDP QTY */
+#totalProducts tbody.option-default-body td .quantity,
+#totalProducts tbody.add_products td .quantity,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product),
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product)
+
+/*ëª¨ë°”ì¼ useragent*/
+    {
+    min-width: 90px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 1px solid var(--input-border-color);
+    height: 30px;
+    position: relative;
+    z-index: 1;
+    margin: 20px 0;
+    background:#fff;
+    /* border-radius:4px; */
+}
+#totalProducts tbody.option-default-body td .quantity {
+    margin-bottom:0;
+}
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product),
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product) {
+    width: 90px;
+}
+
+#totalProducts tbody.option-default-body td .quantity>a>img,
+#totalProducts tbody.option-default-body td .quantity>a>svg,
+#totalProducts tbody.add_products td .quantity>a>img,
+#totalProducts tbody.add_products td .quantity>a>svg,
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product)>a>img,
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product)>a>svg,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product)>a>img,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product)>a>svg {
+    opacity: 0;
+}
+
+#totalProducts tbody.option-default-body td .quantity .up,
+#totalProducts tbody.add_products td .quantity .up,
+#totalProducts tbody.add_products td .up,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product) .eAddProductQuantityUpClass,
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product) .up {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cline x2='10' transform='translate(0 5)' fill='none' stroke='%23000' stroke-width='1'/%3E%3Cline y2='10' transform='translate(5)' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: center;
+}
+
+#totalProducts tbody.option-default-body td .quantity .down,
+#totalProducts tbody.add_products td .quantity .down,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product) .eAddProductQuantityDownClass,
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product) .down {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='1' viewBox='0 0 10 1'%3E%3Cline x2='10' transform='translate(0 0.5)' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 10px 1px;
+    background-position: center;
+}
+
+#totalProducts tbody.option-default-body td .quantity input,
+#totalProducts tbody.add_products td .quantity input,
+#totalProducts tbody.add_products td:first-child p:last-child:not(.product) input,
+#totalProducts tbody.option-default-body td:first-child p:last-child:not(.product) input {
+    width: 32px;
+    text-align: center;
+    border: 0;
+}
+
+
+#totalProducts tbody td .delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 21px;
+    height: 21px;
+}
+
+#totalProducts tbody td .delete img {
+    display: none;
+}
+
+#totalProducts tbody td .delete:before {
+    content: '';
+    width:16px;
+    height:16px;
+    background-size:11px 11px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.707' height='10.707' viewBox='0 0 10.707 10.707'%3E%3Cg transform='translate(0.354 0.354)'%3E%3Cline x2='10' y2='10' fill='none' stroke='%23909090' stroke-width='1'/%3E%3Cline x1='10' y2='10' fill='none' stroke='%23909090' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+#totalProducts tbody td p.product span.soldOut {
+    color: #202020;
+}
+
+#totalProducts {
+    overflow: hidden;
+    margin: 0;
+}
+
+#totalProducts table,
+#totalProducts table tbody.option_products,
+#totalProducts table tbody.option_products tr.option_product,
+#totalProducts table tbody.add_products {
+    width: 100%;
+}
+
+#totalProducts table tbody.option_products tr.option_product,
+#totalProducts table tbody.option-default-body > tr:not(#totalProductsOption),
+#totalProducts table tbody.add_products tr {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: none;
+    border-radius: 0;
+    border:1px solid #DDDDDD;
+    padding:20px;
+}
+#totalProducts table tbody.option-default-body:not(.qty-only) tr:not(#totalProductsOption),
+#totalProducts table tbody.add_products tr {
+    margin-top:10px;
+}
+#totalProducts table tbody.option-default-body.qty-only tr:not(#totalProductsOption) {
+    align-items: flex-start;
+}
+#totalProducts table tbody.option-default-body.qty-only tr:not(#totalProductsOption):first-child {
+    margin-top:0;
+}
+
+#totalProducts table tr.option_product>td,
+#totalProducts table tbody.option-default-body tr>td,
+#totalProducts table tbody.add_products tr>td {
+    display: block;
+}
+
+#totalProducts table,
+#totalProducts table tbody,
+#totalProducts table tbody tr {
+    display: block;
+}
+
+#totalProducts table tbody.option_products tr.option_product > .right,
+#totalProducts table tbody.add_products tr.add_product .right {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width:auto;
+}
+
+#totalProducts table tbody.option_products tr.option_product > td > tr.option input[type="text"] {
+    height: var(--form-element-height);
+    appearance: none;
+    font-size: 1rem;
+}
+
+#totalProducts table tbody.option_products tr.option_product td,
+#totalProducts table tbody.add_products tr td {
+    width: 100%;
+}
+
+#totalProducts table tbody.option_products tr.option_product td:first-child
+
+/* #totalProducts table tbody.option-default-body tr td:first-child,ìˆ˜ëŸ‰ë§Œ ìžˆëŠ” ìƒí’ˆ 
+#totalProducts table tbody.add_products tr td:first-child,ì¶”ê°€êµ¬ì„±ìƒí’ˆ */
+    {
+    width: 100%;
+    padding-right: 34px;
+}
+
+/* //PDP QTY */
+
+/* dv-qty */
+.dv-qty {
+    border: 1px solid var(--input-border-color);
+    display: flex;
+    width: 90px;
+    min-width: 90px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    justify-content: center;
+    border-radius: 0;
+    height: 30px;
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+.dv-qty input[type="text"],
+.dv-qty input[type="tel"],
+.dv-qty input[type="number"] {
+    border: 0;
+    text-align: center;
+    min-width: 40px;
+    height: 30px;
+    line-height: 1;
+    background: transparent;
+}
+
+.drmvsn-myshop-cancel-exchange-return .ec-base-table .dv-qty .dv-control,
+.dv-qty .dv-control {
+    width: auto;
+}
+
+/* //dv-qty */
+
+/* pdp-option-and-qty */
+#totalProducts table tbody.option-default-body tr>th {
+    display:block;
+    width:100%;
+}
+#totalProducts table tbody.add_products tr thead {
+    display:none;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr {
+    margin-top:0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr,
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr {
+    background:none;
+    padding:0;
+    border:0;
+    border-radius:0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr.xans-product-addoption input[type=text] {
+    margin-top:10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    height: var(--form-element-height);
+    justify-content: flex-start;
+    line-height: 1.5;
+    position: relative;
+    vertical-align: top;
+    background-color: #fff;
+    border-color: var(--input-border-color);
+    color: var(--body-default-color);
+    max-width: 100%;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr.xans-product-addoption input[type=text]:hover {
+    border-color: var(--input-hover-color);
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr.xans-product-addoption input[type=text]:focus {
+    border-color: var(--input-focus-color);
+    outline: 0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr.xans-product-addoption input[type=text]:focus {
+    border-color: var(--input-active-color);
+    outline: 0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr.xans-product-addoption input[type=text][disabled] {
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    box-shadow: none;
+    color: #7a7a7a;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr .delete {
+    right:0;
+    top:0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr .right {
+    right:0;
+    bottom:0;
+}
+#totalProducts table tbody.add_products tr.add_product > td > table > tbody > tr tr {
+    margin-top:0;
+}
+/* //pdp-option-and-qty */

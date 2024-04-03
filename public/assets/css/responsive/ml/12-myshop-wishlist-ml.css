@@ -1,0 +1,15 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - WISHLIST
+--------------------------------------------------------------*/
+.xans-myshop-wishlist .wish-list .wish-item {
+    flex-basis: calc(50% - 5px);
+}
+#drmvsn-basic-container .xans-myshop-wishlist .sub-title {
+    font-weight: 500;
+    width: calc(100% + var(--container-px) * 2);
+    margin-left: -20px;
+    padding-bottom: 20px;
+}
+#drmvsn-basic-container .xans-myshop-wishlist .sub-title .title {
+    margin-left: 20px;
+}

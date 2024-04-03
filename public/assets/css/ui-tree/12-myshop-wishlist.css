@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - WISHLIST
+--------------------------------------------------------------*/
+.xans-myshop-wishlist .wish-title {
+  border-bottom: 1px solid var(--myshop-border-color);
+}
+.xans-myshop-wishlist .wish-list .wish-item {
+  flex-basis: calc(25% - 7.5px);
+}
+.xans-myshop-wishlist .wish-list .wish-item .thumbnail {
+  position: relative;
+}
+.xans-myshop-wishlist .wish-list .wish-item .thumbnail .wish-del {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.xans-myshop-wishlist .wish-list .wish-item .strike,
+.xans-myshop-wishlist .wish-list .wish-item .option-text {
+  color: var(--myshop-secondary-font-color);
+}
+.xans-myshop-wishlist .is-no-data .text {
+  margin-top: 20px;
+}
+#capp-shop-new-product-optionselect-backlayer {
+  display: none !important;
+}
+.xans-myshop-wishlist .description {
+  margin-top: 10px;
+}
+
+.xans-myshop-wishlist .description .btns .btn {
+  width: 100%;
+  justify-content: center;
+}
+.xans-myshop-wishlist .wish-list .wish-item .option-text {
+  margin-top: 10px;
+}

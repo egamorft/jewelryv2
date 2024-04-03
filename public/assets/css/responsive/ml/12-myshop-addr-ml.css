@@ -1,0 +1,19 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - ADDR
+    ##LIST
+    ##REGISTER
+    ##MODIFY
+--------------------------------------------------------------*/
+
+/* LIST */
+.xans-myshop-addrlist .list-title h3 {
+    font-size: 14px;
+    font-weight: 500;
+}
+/* //LIST */
+
+/* REGISTER */
+.addr-register-modify {
+    max-width: 100%;
+}
+/* //REGISTER */
