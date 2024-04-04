@@ -27,7 +27,7 @@
                     </div>
                     <div class="description ">
                         <div class="user-info mb-20">
-                            <span class="font-bold">{{ strtoupper(Auth::user()->name) }}</span> is a
+                            <span class="font-bold">{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</span> is a
                             <span class="font-bold">[Silver]</span> member.
                         </div>
 

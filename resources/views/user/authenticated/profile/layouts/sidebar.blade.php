@@ -7,7 +7,7 @@
                             class="myshop_benefit_group_image_tag"></p>
                     <div class="description flex align-center justify-between flex-wrap sidebar-title">
                         <div class="customer-name font-bold"><span><span class="xans-member-var-name">Sir
-                                </span></span>{{ strtoupper(Auth::user()->name) }}</div>
+                                </span></span>{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</div>
                         <div class="xans-element- xans-order xans-order-dcinfo group-name flex align-center font-bold ">
                             [Silver]
 

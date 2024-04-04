@@ -88,8 +88,12 @@
                             @csrf
                             <div id="normalLogin_id">
                                 <div class="inputBox">
-                                    <input id="order_name" name="name" fw-label="name" class="inputTypeText"
-                                        placeholder="Enter your name" value="{{ old('name') }}" type="text">
+                                    <input id="order_first_name" name="first_name" fw-label="name"
+                                        class="inputTypeText" placeholder="Enter your first name"
+                                        value="{{ old('first_name') }}" type="text">
+                                    <input id="order_last_name" name="last_name" fw-label="name"
+                                        class="inputTypeText" placeholder="Enter your last name"
+                                        value="{{ old('last_name') }}" type="text">
                                     <div class="inputBox_orderno"><input id="order_id" name="email"
                                             maxlength="30" fw-label="Email" value="{{ old('email') }}"
                                             type="text" placeholder="Enter your email" title="Email"></div>
