@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'myshop'], function () {
         Route::get('', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('order', [ProfileController::class, 'order'])->name('profile.order');
+        //MEMBER
         Route::get('member', [ProfileController::class, 'member'])->name('profile.member');
         Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
+        //ADDRESS
+        Route::get('address', [AddressController::class, 'address'])->name('profile.delivery.address');
+        Route::get('register-address', [AddressController::class, 'create'])->name('profile.delivery.register.address');
+        Route::post('register-address', [AddressController::class, 'store'])->name('profile.delivery.store.address');
+        Route::get('update-address/{id}', [AddressController::class, 'show'])->name('profile.delivery.show.address');
+        Route::post('update-address/{id}', [AddressController::class, 'update'])->name('profile.delivery.update.address');
+        Route::delete('destroy-address/{id}', [AddressController::class, 'destroy'])->name('profile.delivery.destroy.address');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');
