@@ -87,7 +87,9 @@
                 </summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a class="text-secondary" href="#">Membership
+                <summary class="accordion-title no-sub-links"><a
+                        class="{{ Route::currentRouteName() == 'profile.benefit' ? '' : 'text-secondary' }}"
+                        href="{{ route('profile.benefit') }}">Membership
                         benefits</a></summary>
             </details>
             <details class="accordion sidebar-link mt-30">
@@ -99,8 +101,8 @@
         </div>
 
 
-        <div class="xans-element- xans-layout xans-layout-statelogon mt-30 "><a href="{{ route('auth.member.logout') }}"
-                class="btn prior-2 width-full justify-center">Logout</a>
+        <div class="xans-element- xans-layout xans-layout-statelogon mt-30 "><a
+                href="{{ route('auth.member.logout') }}" class="btn prior-2 width-full justify-center">Logout</a>
         </div>
 
     </aside>

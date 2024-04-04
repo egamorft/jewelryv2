@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MemberBenefitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Web\HomeController;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
         Route::get('update-address/{id}', [AddressController::class, 'show'])->name('profile.delivery.show.address');
         Route::post('update-address/{id}', [AddressController::class, 'update'])->name('profile.delivery.update.address');
         Route::delete('destroy-address/{id}', [AddressController::class, 'destroy'])->name('profile.delivery.destroy.address');
+        //MEMBERSHIP
+        Route::get('benefit', [MemberBenefitController::class, 'index'])->name('profile.benefit');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');

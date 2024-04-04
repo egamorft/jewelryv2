@@ -2,12 +2,7 @@
 @section('title', 'My shop')
 
 @section('style_page')
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/utility.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/original-style.css') }}">
     @yield('pages_style')
 @endsection
 
