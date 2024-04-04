@@ -22,4 +22,12 @@ class HomeController extends Controller
     public function detailStyling(){
         return view('user.styling.detail');
     }
+
+    public function live(){
+        return view('user.live.index');
+    }
+
+    public function detailProduct(){
+        return view('user.product.index');
+    }
 }

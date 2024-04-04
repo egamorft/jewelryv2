@@ -88,7 +88,7 @@
  </div>
 
 {{-- Filter --}}
-<div class="offcanvas offcanvas-end box-offcanvas" data-bs-backdrop="true" tabindex="-1" id="offcanvasFilter" aria-labelledby="offcanvasScrollingLabel">
+<div class="offcanvas offcanvas-end box-offcanvas" data-bs-backdrop="false" tabindex="-1" id="offcanvasFilter" aria-labelledby="offcanvasScrollingLabel">
    <div class="offcanvas-header d-flex align-items-center" style="padding: 20px">
       <svg xmlns="http://www.w3.org/2000/svg" data-bs-dismiss="offcanvas" aria-label="Close" width="17.413" height="17.413" viewBox="0 0 17.413 17.413"><g transform="translate(1.413 0.707)"><line x1="16" transform="translate(0 8)" fill="none" stroke="#000" stroke-width="2"></line><path d="M13548-64l-8,8,8,8" transform="translate(-13539.995 64.004)" fill="none" stroke="#000" stroke-width="2"></path></g></svg>
      <h5 class="offcanvas-title title-offcanvas" id="offcanvasScrollingLabel">LỌC</h5>
