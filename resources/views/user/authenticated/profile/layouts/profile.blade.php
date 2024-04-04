@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/original-style.css') }}">
-
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @yield('pages_style')
 @endsection
 
 @section('content')
@@ -45,11 +44,5 @@
 @endsection
 
 @section('script_page')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#history_start_date").datepicker();
-            $("#history_end_date").datepicker();
-        });
-    </script>
+    @yield('pages_script')
 @endsection
