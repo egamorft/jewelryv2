@@ -7,7 +7,7 @@
                             class="myshop_benefit_group_image_tag"></p>
                     <div class="description flex align-center justify-between flex-wrap sidebar-title">
                         <div class="customer-name font-bold"><span><span class="xans-member-var-name">Sir
-                                </span></span>{{ strtoupper(Auth::user()->name) }}</div>
+                                </span></span>{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</div>
                         <div class="xans-element- xans-order xans-order-dcinfo group-name flex align-center font-bold ">
                             [Silver]
 
@@ -238,27 +238,27 @@
         </ul>
         <div class="cs-list">
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="{{ route('profile.index') }}">Account
+                <summary class="accordion-title no-sub-links"><a class="{{ Route::currentRouteName() == 'profile.index' ? '' : 'text-secondary' }}" href="{{ route('profile.index') }}">Account
                         information</a></summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="{{ route('profile.order') }}">Order History</a>
+                <summary class="accordion-title no-sub-links"><a class="{{ Route::currentRouteName() == 'profile.order' ? '' : 'text-secondary' }}" href="{{ route('profile.order') }}">Order History</a>
                 </summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="#">Product of
+                <summary class="accordion-title no-sub-links"><a class="text-secondary" href="#">Product of
                         interest</a></summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="{{ route('profile.member') }}">Profile</a>
+                <summary class="accordion-title no-sub-links"><a class="{{ Route::currentRouteName() == 'profile.member' ? '' : 'text-secondary' }}" href="{{ route('profile.member') }}">Profile</a>
                 </summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="#">Membership
+                <summary class="accordion-title no-sub-links"><a class="text-secondary" href="#">Membership
                         benefits</a></summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a href="#">Delivery address
+                <summary class="accordion-title no-sub-links"><a class="text-secondary" href="#">Delivery address
                         management</a></summary>
             </details>
         </div>

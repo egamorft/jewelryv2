@@ -8,14 +8,23 @@
    </div>
    <img src="{{asset('assets/images/jewelry.png')}}" class="img-logo">
    <div class="d-flex align-item-center">
-      <img src="{{asset('assets/images/search-sm.png')}}" class="icon-header" data-bs-toggle="offcanvas"
+      <a href="">
+         <img src="{{asset('assets/images/search-sm.png')}}" class="icon-header" data-bs-toggle="offcanvas"
          data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
-      <img src="{{asset('assets/images/heart.png')}}" class="icon-header">
-      <img src="{{asset('assets/images/user-03.png')}}" class="icon-header">
-      <div class="position-relative">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-header">
-         <div class="point-cart">0</div>
-      </div>
+      </a>
+      <a href="">
+         <img src="{{asset('assets/images/heart.png')}}" class="icon-header">
+      </a>
+      <a href="{{ Auth::check() ? route('profile.index') : route('auth.member.login') }}">
+         <img src="{{asset('assets/images/user-03.png')}}" class="icon-header">
+      </a>
+      
+      <a href="">
+         <div class="position-relative">
+            <img src="{{asset('assets/images/Icon.png')}}" class="icon-header">
+            <div class="point-cart">0</div>
+         </div>
+      </a>
 
    </div>
 </div>

@@ -27,12 +27,12 @@
                     </div>
                     <div class="description ">
                         <div class="user-info mb-20">
-                            <span class="font-bold"></span>{{ strtoupper(Auth::user()->name) }}
+                            <span class="font-bold">{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</span> is a
                             <span class="font-bold">[Silver]</span> member.
                         </div>
 
                         <div class="">
-                            <p class="displaynone myshop_benefit_display_no_benefit"><strong><span
+                            {{-- <p class="displaynone myshop_benefit_display_no_benefit"><strong><span
                                         class="myshop_benefit_dc_pay"></span> <span class="myshop_benefit_dc_min_price">0
                                         won or
                                         more</span></strong>
@@ -50,7 +50,7 @@
                                         class="myshop_benefit_dc_type_mileage"></span></strong>second
                                 <span class="myshop_benefit_use_dc_mileage"></span> You can receive it.
                                 <span class="myshop_benefit_dc_max_mileage_percent"></span>
-                            </p>
+                            </p> --}}
                             <div class=" gBlank5" id="sGradeAutoDisplayArea">
                                 <p class=" sAutoGradeDisplay ">
                                     <strong> [<span class="sNextGroupIconArea"></span><span
@@ -58,102 +58,11 @@
                                     The remaining purchase amount is <strong><span
                                             class="xans-member-var-sGradeIncreasePrice">500,000
                                             won</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
+                                    no see. (recentfor <span class="xans-member-var-sGradePeriod">12 months</span>
                                     Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
                                         won</span>)
                                 </p>
-                                <p class="displaynone sAutoGradeDisplay ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    until Number of remaining purchases <strong><span
-                                            class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Number of purchases : <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p class="displaynone sAutoGradeDisplay ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    The remaining purchase amount is <strong><span
-                                            class="xans-member-var-sGradeIncreasePrice">500,000
-                                            won</span></strong>,
-                                    Number of remaining purchases <strong><span
-                                            class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
-                                        won</span>｜Number of purchases :
-                                    <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p class="displaynone sAutoGradeDisplay ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    The remaining purchase amount is <strong><span
-                                            class="xans-member-var-sGradeIncreasePrice">500,000
-                                            won</span></strong>,
-                                    또는 남은 Number of purchases <strong><span class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
-                                        won</span>｜Number of purchases :
-                                    <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p id="sChangeMaxTypePriceArea" class="displaynone ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    The remaining purchase amount to maintain your level is
-                                    <strong><span class="xans-member-var-sGradeIncreasePrice">500,000
-                                            won</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
-                                        won</span>)
-                                </p>
-                                <p id="sChangeMaxTypeCountArea" class="displaynone ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    To maintain your rating Number of remaining purchases <strong><span
-                                            class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Number of purchases : <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p id="sChangeMaxTypePriceAndCountArea" class="displaynone ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    The remaining purchase amount to maintain your level is
-                                    <strong><span class="xans-member-var-sGradeIncreasePrice">500,000
-                                            won</span></strong>,
-                                    Number of remaining purchases <strong><span
-                                            class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
-                                        won</span>｜Number of purchases :
-                                    <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p id="sChangeMaxTypePriceOrCountArea" class="displaynone ">
-                                    <strong> [<span class="sNextGroupIconArea"></span><span
-                                            class="xans-member-var-sNextGrade">Gold</span>] </strong>
-                                    The remaining purchase amount to maintain your level is
-                                    <strong><span class="xans-member-var-sGradeIncreasePrice">500,000
-                                            won</span></strong>,
-                                    또는 남은 Number of purchases <strong><span class="xans-member-var-sGradeIncreaseCount">0
-                                            cases</span></strong>
-                                    no see. (recent <span class="xans-member-var-sGradePeriod">12month
-                                        during</span>
-                                    Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
-                                        won</span>｜Number of purchases :
-                                    <span class="xans-member-var-sPeriodOrderCount">0 cases</span>)
-                                </p>
-                                <p class="mt-20">This is an estimated amount based on upgrade criteria
-                                    and may differ from the total order amount..</p>
+                                <p class="mt-20">This is an estimate based on upgrade criteria and may differ from the total order amount.</p>
                             </div>
                         </div>
                     </div>

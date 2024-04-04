@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
         Route::get('', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('order', [ProfileController::class, 'order'])->name('profile.order');
         Route::get('member', [ProfileController::class, 'member'])->name('profile.member');
+        Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');
