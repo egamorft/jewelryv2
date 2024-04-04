@@ -686,6 +686,11 @@ th.vertical-middel {
 }
 
 .width-100p,
+.width-50pc {
+  width: 50%;
+}
+
+.width-100p,
 .width-full {
   width: 100%;
 }
