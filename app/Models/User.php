@@ -15,10 +15,19 @@ class User extends Model implements Authenticatable
 
     protected $table = 'users';
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'uuid',
         'password',
         'address',
+        'region',
+        'city',
+        'postcode',
+        'country',
+        'phone',
+        'birthday',
+        'gender',
         'isAdmin',
         'status'
     ];

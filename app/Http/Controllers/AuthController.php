@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -35,7 +36,8 @@ class AuthController extends Controller
         try {
             $validated = Validator::make($request->all(), [
                 'email' => 'required|email|unique:users,email',
-                'name' => 'required|string',
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
                 'password' => ['required', 'min:8', new NoSpacesRule],
                 'confirm_password' => ['required', 'same:password']
             ]);
@@ -48,11 +50,13 @@ class AuthController extends Controller
             $validatedData = $validated->validated();
 
             $user = User::create([
-                'name' => $validatedData['name'],
+                'first_name' => $validatedData['first_name'],
+                'last_name' => $validatedData['last_name'],
                 'email' => $validatedData['email'],
                 'password' => Hash::make($validatedData['password']),
                 'isAdmin' => 0, //Not admin
                 'status' => 1, //Active
+                'uuid' => Str::uuid()->toString()
             ]);
 
             if ($user) {
@@ -126,7 +130,7 @@ class AuthController extends Controller
                 if ($user->status == 1) {
                     Auth::login($user);
 
-                    toastr()->success('Welcome ' . $user->name);
+                    toastr()->success('Welcome ' . $user->first_name . ' ' . $user->last_name);
                     return redirect()->route('home');
                 } else {
                     toastr()->error("Your account not activate yet");
