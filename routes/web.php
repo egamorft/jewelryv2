@@ -16,6 +16,9 @@ use \App\Http\Controllers\Web\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/danh-muc', [HomeController::class, 'category'])->name('category');
+Route::get('/styling', [HomeController::class, 'styling'])->name('styling');
+Route::get('/detail-styling', [HomeController::class, 'detailStyling'])->name('detail-styling');
 
 Route::middleware(['guest'])->group(function () {
     Route::group(['prefix' => 'member'], function () {
