@@ -2,14 +2,14 @@
 <p class="title-outstanding">Highlight</p>
 <div class="swiper outstanding">
    <div class="swiper-wrapper">
-     <div class="swiper-slide">
-       <p># NEW in</p>
+     <div class="swiper-slide content-menu-outstanding" >
+       <p style="width: fit-content;"># NEW in</p>
      </div>
-     <div class="swiper-slide">
-       <p># RapDia</p>
+     <div class="swiper-slide content-menu-outstanding">
+       <p style="width: fit-content;"># RapDia</p>
      </div>
-     <div class="swiper-slide">
-      <p># What’sHOT</p>
+     <div class="swiper-slide content-menu-outstanding">
+      <p style="width: fit-content;"># What’sHOT</p>
     </div>
    </div>
    <a href="" class="link-view-all">View All</a>
@@ -25,12 +25,12 @@
          <div>
             <p class="title-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
             <p class="price">5,400,000 won</p>
-            <div class="d-flex justify-content-between">
-               <div class="w-500">
+            <div class="d-flex justify-content-between flex-wrap">
+               <div class="box-item-price">
                   <p class="price-sale">4,860,00 won</p>
                   <p class="percent-sale">10%</p>
                </div>
-               <div class="w-50 d-flex align-items-center">
+               <div class="box-time-sp">
                   <img src="{{asset('assets/images/clock.png')}}" class="icon-clock">
                   <p class="title-time">Time remaining: 6 days
                      12:24:06</p>

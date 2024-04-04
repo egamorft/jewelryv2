@@ -17,6 +17,7 @@ a:hover {
 .box-header {
     width: 100%;
     background: white;
+    border-bottom: 1px solid #dddddd;
     padding: 25px 50px;
     display: flex;
     justify-content: space-between;
@@ -97,7 +98,7 @@ a:hover {
 .offcanvas-search-top,
 .offcanvas-menu-top {
     width: 100%;
-    top: 76px;
+    top: 75px;
     height: fit-content;
     bottom: unset;
     z-index: 2;
@@ -236,4 +237,118 @@ a:hover {
     margin-bottom: 0;
     font-size: 13px;
     color: #000000;
+}
+.box-header-mobile {
+    display: none;
+}
+.box-item-price {
+    width: 50%;
+}
+.box-time-sp {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.box-footer-mobile {
+    display: none;
+}
+.btn-more-sp {
+    font-size: 14px;
+    color: #000000;
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: var(--bs-accordion-btn-icon);
+}
+.box-header {
+    z-index: 1;
+}
+@media (max-width: 1040px) {
+    .img-logo {
+        margin-right: 40px;
+    }
+}
+@media (max-width: 992px) {
+    .box-header {
+        display: none;
+    }
+    .box-footer {
+        margin-bottom: 60px;
+    }
+    .box-header-mobile {
+        width: 100%;
+        background: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        border-bottom: 1px solid rgb(221, 221, 221);
+    }
+    .box-footer-mobile {
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+    }
+    .link-footer-mobile {
+        margin: 0 35px;
+    }
+    .offcanvas-search-top,
+    .offcanvas-menu-top {
+        top: 65px;
+    }
+    .content-search {
+        width: 55%;
+    }
+    .box-item-price,
+    .box-time-sp {
+        width: 100%;
+    }
+    .box-item-price {
+        display: flex;
+    }
+    .icon-cart-product {
+        width: 18px;
+        height: 18px;
+        right: 60px;
+    }
+    .icon-heart-product {
+        width: 20px;
+        height: 20px;
+        right: 20px;
+    }
+    .price-sale,
+    .percent-sale {
+        font-size: 14px;
+    }
+    .img-logo {
+        margin-right: 0;
+    }
+    .box-footer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 767px) {
+    .box-footer {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 40px 20px;
+    }
+    .icon-header {
+        margin-left: 20px;
+    }
+    .title-footer,
+    .link-footer {
+        font-size: 14px;
+    }
+    .content-footer {
+        font-size: 12px;
+    }
 }

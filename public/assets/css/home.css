@@ -30,6 +30,7 @@
     transform: translateX(-50%) !important;
     background-color: #dddddd;
     bottom: 20px !important;
+    opacity: 1 !important;
 }
 .swiper-scrollbar-drag {
     background-color: black;
@@ -131,7 +132,7 @@
 }
 .title-collection {
     color: #000000;
-    font-size: 32px;
+    font-size: 30px;
     font-family: 600;
     padding: 30px 0 20px 0;
     margin-bottom: 0;
@@ -201,6 +202,290 @@
     object-fit: cover;
 }
 .box-official {
-    margin: 100px 0;
+    margin-bottom: 100px;
     width: 100%;
+}
+.item-video {
+    width: 70%;
+    margin: 0 auto;
+}
+.box-item-video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.no-link {
+    margin-top: 15px;
+}
+.text-video {
+    display: block;
+    text-align: center;
+}
+.video-next {
+    right: 100px;
+    color: #000000;
+    font-weight: bold;
+}
+.video-prev {
+    left: 100px;
+    color: #000000;
+    font-weight: bold;
+}
+.box-advertisement {
+    width: 100%;
+    background-color: #f9f7f2;
+    padding: 70px 0;
+}
+.content-adv {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mySwiperAdver {
+    width: 60%;
+    padding-bottom: 25px;
+}
+.swiperAdv {
+    width: 36%;
+}
+.silde-adv {
+    background-position: center;
+    background-size: cover;
+    width: 540px;
+}
+.slide-content-adv {
+    display: none;
+}
+.silde-adv img {
+    display: block;
+    width: 100%;
+}
+.title-slide-adv {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #000000;
+}
+.link-adv {
+    text-decoration: underline;
+    color: #000000;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+.swiper-scrollbar-adv {
+    width: 200px !important;
+    height: 4px !important;
+    bottom: 0px !important;
+    left: 28% !important;
+    opacity: 1 !important;
+}
+.box-child-adv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.item-child-adv {
+    display: flex;
+    margin-bottom: 15px;
+}
+.img-child-sp {
+    width: 50%;
+}
+.item-content-child-adv {
+    width: 50%;
+    margin-left: 15px;
+}
+.title-child-sp {
+    font-size: 14px;
+    font-weight: 500 !important;
+    margin-bottom: 5px;
+    color: #000000;
+}
+.title-tag {
+    font-size: 12px;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+    font-weight: 500 !important;
+}
+.content-menu-outstanding {
+    width: fit-content !important;
+    margin-right: 20px !important;
+}
+@media (max-width: 1570px) {
+    .content-adv {
+        width: 80%;
+    }
+}
+@media (max-width: 1260px) {
+    .content-adv {
+        width: 93%;
+    }
+    .swiper-scrollbar-adv {
+        left: 25.5% !important;
+    }
+    .main-nav-with-img-banner a .nav-img,
+    .main-nav-with-img-banner > div {
+        max-width: 300px;
+    }
+}
+@media (max-width: 992px) {
+    .box-collection {
+        width: 77%;
+    }
+    .content-adv {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mySwiperAdver {
+        width: 100%;
+    }
+    .swiperAdv {
+        width: 60%;
+        margin-top: 30px;
+    }
+    .swiper-scrollbar-adv {
+        left: 31% !important;
+    }
+    .img-child-sp {
+        width: 45%;
+    }
+    .item-content-child-adv {
+        width: 55%;
+    }
+    .title-outstanding,
+    .title-official {
+        font-size: 30px;
+    }
+    .box-outstanding {
+        padding: 50px;
+    }
+    .video-next {
+        right: 50px;
+    }
+    .video-prev {
+        left: 50px;
+    }
+    .box-footer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .main-nav-with-img-banner {
+        padding: 100px 0;
+    }
+    .main-nav-with-img-banner a {
+        font-size: 24px;
+    }
+    .main-nav-with-img-banner a .nav-img,
+    .main-nav-with-img-banner > div {
+        max-width: 255px;
+    }
+}
+@media (max-width: 767px) {
+    .main-nav-with-img-banner a .nav-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        visibility: hidden;
+        padding: 0;
+        max-width: 420px;
+        width: 100%;
+        padding-top: 114%;
+        transition: all 0.3s ease-in-out;
+        z-index: -1;
+    }
+    .main-nav-with-img-banner a .nav-img,
+    .main-nav-with-img-banner > div {
+        width: 100%;
+    }
+    .title-slide-banner,
+    .main-nav-with-img-banner a,
+    .title-collection,
+    .title-outstanding,
+    .title-official {
+        font-size: 21px;
+    }
+    .content-slide-banner,
+    .content-collection,
+    .link-collection,
+    .swiper-slide p,
+    .link-view-all {
+        font-size: 14px;
+    }
+    .content-brand {
+        width: 100% !important;
+        font-size: 14px;
+    }
+    .box-collection {
+        width: 100%;
+        padding: 0 50px;
+        flex-wrap: wrap;
+    }
+    .item-collection {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .box-outstanding {
+        padding: 40px 20px;
+    }
+    .box-swiper-sp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .box-advertisement {
+        background-color: white;
+        padding: 20px 0;
+    }
+    .content-adv {
+        width: 100%;
+    }
+    .silde-adv {
+        width: 355px;
+    }
+    .slide-content-adv {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+    .title-slide-adv {
+        color: white;
+        margin: 5px 0;
+        font-size: 18px !important;
+        line-height: 1.2;
+    }
+    .link-adv {
+        font-size: 14px;
+        color: white;
+    }
+    .mySwiperAdver {
+        padding-bottom: 0;
+    }
+    .swiper-scrollbar-adv {
+        opacity: 0 !important;
+    }
+    .swiperAdv {
+        width: 90%;
+    }
+    .img-child-sp {
+        width: 35%;
+    }
+    .box-banner-home {
+        flex-wrap: wrap;
+    }
+    .item-img-banner-home,
+    .item-video {
+        width: 100%;
+    }
+    .title-official {
+        padding: 0 20px;
+    }
+    .video-next,
+    .video-prev {
+        display: none;
+    }
 }

@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/danh-muc', [HomeController::class, 'category'])->name('category');
+Route::get('/styling', [HomeController::class, 'styling'])->name('styling');
+Route::get('/detail-styling', [HomeController::class, 'detailStyling'])->name('detail-styling');
 
 Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::get('login', [AuthController::class, 'index'])->name('auth.member.index');

@@ -20,6 +20,20 @@
    </div>
 </div>
 
+<div class="box-header-mobile">
+   <img src="{{asset('assets/images/jewelry.png')}}" class="img-logo">
+   <div class="d-flex align-item-center">
+      <img src="{{asset('assets/images/search-sm.png')}}" class="icon-header" data-bs-toggle="offcanvas"
+         data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
+      <img src="{{asset('assets/images/user-03.png')}}" class="icon-header">
+      <div class="position-relative">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-header">
+         <div class="point-cart">0</div>
+      </div>
+
+   </div>
+</div>
+
 <!-- search -->
 <div class="offcanvas offcanvas-search-top" tabindex="-1" id="offcanvasSearchTop"
    aria-labelledby="offcanvasSearchTopLabel">
