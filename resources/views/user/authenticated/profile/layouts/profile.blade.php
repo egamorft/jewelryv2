@@ -10,8 +10,31 @@
     <div id="wrap">
         <div id="container">
             <div id="contents" class="position-relative">
+                @switch(Route::currentRouteName())
+                    @case('profile.index')
+                        @php
+                            $customClass = 'myshop-index';
+                        @endphp
+                    @break
 
-                <div id="drmvsn-basic-wrap" class="myshop-index">
+                    @case('profile.order')
+                        @php
+                            $customClass = 'myshop-order-list';
+                        @endphp
+                    @break
+
+                    @case('profile.benefit')
+                        @php
+                            $customClass = 'donad-membership';
+                        @endphp
+                    @break
+
+                    @default
+                        @php
+                            $customClass = '';
+                        @endphp
+                @endswitch
+                <div id="drmvsn-basic-wrap" class="{{ $customClass }}">
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="/">Home</a></li>
