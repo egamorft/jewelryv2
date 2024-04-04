@@ -1,0 +1,82 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - ADDR
+    ##LIST
+    ##REGISTER
+    ##MODIFY
+--------------------------------------------------------------*/
+/* ##LIST */
+.xans-myshop-addrlist .addr-list .addr-item {
+  border-top: 1px solid var(--myshop-border-color);
+}
+.xans-myshop-addrlist .addr-list .addr-item:last-child {
+  border-bottom: 1px solid var(--myshop-border-color);
+}
+.xans-myshop-addrlist .addr-list .addr-item .addr {
+  color: var(--myshop-secondary-font-color);
+}
+/* //##LIST */
+
+/* ##REGISTER */
+.myshop-narrow-container {
+  max-width: var(--myshop-narrow-container);
+  margin: 0 auto;
+}
+/* ì½”ë“œ ì ‘ê·¼ ë¶ˆê°€í•˜ì—¬ ì½”ë“œ ìž‘ì„±í•¨ */
+.addr-register-modify .ec-address > li + li {
+  margin-top: 10px;
+}
+.addr-register-modify .ec-address .ec-address-zipcode input[placeholder="ìš°íŽ¸ë²ˆí˜¸"] {
+  flex-basis: 100%;
+}
+#shippingRegist_zipcode_wrap {
+  gap: 10px;
+}
+#shippingRegist_zipcode_wrap > span {
+  display: none;
+}
+#ma_main_flag0 {
+  margin-right: 5px;
+}
+/* //##REGISTER */
+
+/* ##MODIFY */
+#shippingUpdate_zipcode_wrap {
+  gap: 10px;
+}
+#shippingUpdate_zipcode_wrap > span {
+  display: none;
+}
+/* //##MODIFY */
+/* required */
+.xans-myshop-addrregister .required {
+  margin: -25px 0 10px;
+  color: var(--required-color);
+  text-align: right;
+}
+.xans-myshop-addrmodify .required {
+  margin: -25px 0 10px;
+  color: var(--required-color);
+  text-align: right;
+}
+/* //required */
+
+/* ì£¼ë¬¸ìƒì„¸ ë‚´ ë°°ì†¡ì§€ ë³€ê²½ */
+#ec-receiverUpdate-address #zipcode_finder {
+  margin-left:10px;
+}
+.ec-base-layer.xans-myshop-orderreceiverupdate textarea {
+  width:100%;
+  padding:10px;
+}
+.ec-base-layer.xans-myshop-orderreceiverupdate select {
+  width:100%;
+}
+#receiverUpdate_zipcodeNotFoundMsg_wrap {
+  display: block;
+  font-size: calc(12 / var(--font-1rem-size-no-only) * 1rem);
+    color: var(--help-text-color)
+}
+.ec-base-layer.xans-myshop-orderreceiverupdate .ec-address .ec-address-zipcode {
+  flex-wrap:wrap;
+}
+

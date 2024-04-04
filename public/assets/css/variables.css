@@ -1,0 +1,145 @@
+/* don't forget to edit "order-form.css" when you edit below */
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+:root {
+
+  /* font */
+  
+  --primary-font-family: 'Outfit','Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-1rem-size: 14px;
+  --font-1rem-size-no-only: 14;
+  --font-bold: 700;
+
+  /* colors */
+  --body-default-color: #000;
+  --em-font-color: #000;
+  /*tbd*/
+  --secondary-font-color: #909090;
+  /*
+  tbd : í˜„ìž¬ opacity-4ë‚˜ ê¸°ë³¸ í°íŠ¸ì™€ is-help ì‚¬ì´ì˜ ì¤‘ìš”ë„ì˜ í°íŠ¸ì— ì‚¬ìš©í•˜ëŠ” ì¤‘ìž…ë‹ˆë‹¤.
+  ë³´í†µ 1remì˜ íšŒìƒ‰ í°íŠ¸ë“±ì— ì‚¬ìš© ê³„íšìž…ë‹ˆë‹¤.
+  */
+  --anchor-color: #000;
+  --anchor-color-hover: #000;
+
+  --help-text-color: #909090;
+  --error-text-color: red;
+
+
+  /* border */
+  --primary-border-color: #000; 
+  --secondary-border-color: #DDDDDD; 
+  /*
+    - header navigation ê°„ ë³´ë”
+    - table border color 
+    - êµ¬íšì„ ë‚˜ëˆ„ëŠ” ìš©ë„ì˜ ë³´ë” (<hr/>)
+    - ë§ˆì´ìƒµ ë³´ë”
+  */
+
+
+  /* minority color */
+  --misc-border-color: var(--secondary-border-color);
+  --no-data-color: #909090;
+  --sold-out-color: #ffffff;
+
+  /* input - text */
+  --input-border-color: #DDDDDD;
+  --input-focus-color: #000000;
+  --input-hover-color: #DDDDDD;
+  --input-placeholder-color: #909090;
+
+  /* border color */
+  --table-border-color: #DDDDDD;
+  
+
+  /* btns */
+  --form-element-height: 48px;
+  --btn-small-height: calc(var(--form-element-height) * 2 / 3);
+  --btn-big-height: calc(var(--form-element-height) * 5 / 4);
+
+  --btn-prior-1-color: #fff;
+  --btn-bg-prior-1-color: #000;
+  --btn-border-prior-1-color: #000;
+
+  --btn-prior-1-color-hover: #000;
+  --btn-bg-prior-1-color-hover: #fff;
+  --btn-border-prior-1-color-hover: #000;
+
+  --btn-prior-2-color: #000;
+  --btn-bg-prior-2-color: #fff;
+  --btn-border-prior-2-color: #DDDDDD;
+
+  --btn-prior-2-color-hover: #000;
+  --btn-bg-prior-2-color-hover: #fff;
+  --btn-border-prior-2-color-hover: #000;
+
+  --btn-custom-is-em-color: #000;
+  --btn-bg-custom-is-em-color: #fff;
+  --btn-border-custom-is-em-color: #000;
+
+  --btn-custom-is-em-color-hover: #fff;
+  --btn-bg-custom-is-em-color-hover: #000;
+  --btn-border-custom-is-em-color-hover: #000;
+
+  --btn-is-padded: 10px;
+  --btn-px-padding: 20px;
+  --btn-border-is-padded: #DDDDDD;
+
+
+  /* join & member */
+  --required-color: #000;
+  --expiration-time-color: red;
+
+  /* myshop */
+  --myshop-secondary-font-color: #909090;
+  --myshop-narrow-container: 335px;
+  --myshop-border-color: #DDDDDD;
+
+  /* CS aside bg color */
+  --cs-aside-bg-color: #f7f7f7;
+
+  /* restrictions - width, search container & etc */
+  --narrow-container: 500px;
+  --responsive-table-width: 840px;
+
+  --linebanner-height:38px;
+  --header-height: 70px;
+  --header-bg: #fff;
+
+  --container-px: 50px;
+  --container-pt: 40px;
+  --container-pb: 100px;
+  /*margin from footer*/
+
+  --layer-popup-header-bg-color: #fff;
+  --layer-popup-header-color: #000;
+  --layer-popup-header-height: 60px;
+
+
+  /* ordeform */
+  --order-form-logo: url('/web/src/imgs/logo@2x.png');
+  --order-form-header-bg: #fff;
+  --order-form-header-color: #000;
+
+
+  --order-form-max-width: 500px;
+  --order-form-layout-border-color: #DDDDDD;
+  --order-form-container-bg: #eee;
+  --order-form-panel-bg-color:#fff;
+
+  --order-form-remain-bg: #000;
+  --order-form-remain-color: #fff;
+  --order-form-remain-alt-bg: #f0f0f0;
+  --order-form-secondary-font-color: #909090;
+
+
+  /*etc*/
+  --message-bg-color: #ddd;
+  --star-rating-fill-color: #000;
+
+  /* will be deprecated */
+  --shared-heading-bg: #000;
+  --gap-type-1: 10px;
+  --gap-type-6: 60px;
+}

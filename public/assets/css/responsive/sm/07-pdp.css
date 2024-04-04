@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------
+#7 pdp
+--------------------------------------------------------------*/
+/* new type pdp actions */
+.pdp-modal-container,
+.allotment-information-modal {
+  position: fixed;
+  top: auto;
+  bottom:0;
+  right: 0;
+  /* height:auto; */
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  transform: translate(0, 100%);
+  transition: 0.2s all linear;
+  z-index: 9999;
+  border-left: 0;
+  background:#fff;
+  padding-top:var(--header-height);
+  /* overflow:hidden; */
+}
+.pdp-backdrop-active .pdp-modal-container {
+  transform:translate(0,0);
+}
+.pdp-backdrop-active.allotment-modal .pdp-modal-container {
+  transform: translate(0, 100%);
+}
+/* .pdp-backdrop-active.allotment-modal .allotment-information-modal */
+.pdp-modal-options-container {
+  /* padding:var(--mini-cart-px) var(--mini-cart-py); */
+  padding: 0 var(--mini-cart-py);
+  max-height:100%;
+  overflow:auto;
+}
+
+#mini-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-left:1px solid var(--table-border-color);
+    transform: translate(0, 100%);
+    transition: 0.2s all linear;
+    z-index: 9999;
+  }
+  
+  #mini-cart.active {
+    transform: translate(0, 0);
+  }

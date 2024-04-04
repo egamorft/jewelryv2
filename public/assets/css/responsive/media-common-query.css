@@ -1,0 +1,45 @@
+:root {
+    --container-px:20px;
+    --title-area-height:45px;
+}
+/* ALL QUERY common */
+.mobile-only,
+.flex.mobile-only,
+.mobile-phone-only {
+    display: none;
+}
+
+/* Responsive table */
+.responsive-table-scroll {
+    overflow-x: auto;
+    width: 100%;
+    position: relative;
+}
+
+.responsive-table-scroll table {
+    width: 100%;
+    min-width: var(--responsive-table-width)
+}
+
+.responsive-table-scroll.is-mobile:after {
+    content: '좌우로 스와이프하세요';
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    position: absolute;
+    font-weight: 700;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
+    color: #fff;
+    opacity: 1;
+    pointer-events: none;
+    transition: 0.2s all linear;
+}
+
+.responsive-table-scroll.touched:after {
+    opacity: 0;
+}

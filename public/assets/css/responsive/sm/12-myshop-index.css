@@ -1,0 +1,7 @@
+/*--------------------------------------------------------------
+#12 MYSHOP - INDEX 
+--------------------------------------------------------------*/
+#drmvsn-basic-container .myshop-index-top .information {
+    flex-direction: column;
+    align-items: flex-start;
+}

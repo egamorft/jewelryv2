@@ -20,7 +20,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>@yield('title')</title>
+    <title>Member authenticate</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 
@@ -44,80 +44,75 @@
             </div>
             <div id="KG_section">
                 <div id="kakaoLogin" class="contents">
-                    <h2 class="title">로그인</h2>
-                    <p class="text">아이디와 비밀번호 입력하기 귀찮으시죠?<br>1초 회원가입으로 입력없이 간편하게 로그인 하세요.</p>
-                    <div class="basicBtn"><a class="btn btnKakao"
-                            onclick="MemberAction.kakaosyncLogin('e8ab1b614330d3dd8b5fd19ea261bbb2')">카카오 1초
-                            로그인/회원가입</a></div>
+                    <h2 class="title">Login</h2>
+                    <p class="text">Tired of entering your ID and password?<br>Sign up in 1 second and log in easily
+                        without inputting anything.</p>
+                    <div class="basicBtn"><a href="#" class="btn btnKakao">Kakao 1 second login/sign up</a></div>
                 </div>
                 <div id="memberLogin" class="contents">
                     <ul id="tabMenu">
-                        <li class="active"><a type="button" class="text-decoration-none" id="existingMemberBtn">기존 회원이세요?</a></li>
-                        <li class=""><a type="button" class="text-decoration-none" id="guestBtn">비회원
-                                배송조회</a></li>
+                        <li class="active"><a type="button" class="text-decoration-none" id="existingMemberBtn">Are you
+                                a member?</a></li>
+                        <li class=""><a type="button" class="text-decoration-none" id="guestBtn">Not a
+                                member?</a></li>
                     </ul>
                     <div id="formWrap">
-                        <form class="" id="signInForm" action="#" method="POST"
+                        <form class="" id="signInForm" action="{{ route('auth.member.login') }}" method="POST"
                             enctype="multipart/form-data">
-                            <input id="returnUrl" name="returnUrl" value="https://www.dona-d.com/" type="hidden">
-                            <input id="forbidIpUrl" name="forbidIpUrl" value="/index.html" type="hidden">
-                            <input id="certificationUrl" name="certificationUrl" value="/intro/adult_certification.html"
-                                type="hidden">
-                            <input id="sIsSnsCheckid" name="sIsSnsCheckid" value="" type="hidden">
-                            <input id="sProvider" name="sProvider" value="" type="hidden">
+                            @csrf
                             <div id="normalLogin_id">
-                                <div class="inputBox"><input id="member_id" name="member_id" fw-filter="isFill"
-                                        fw-label="아이디" fw-msg="" class="inputTypeText" placeholder="아이디"
-                                        value="" type="text">
+                                <div class="inputBox">
+                                    <input autofocus id="member_email" name="member_email" fw-label="email"
+                                        class="inputTypeText" placeholder="Enter your email"
+                                        value="{{ old('member_email') }}" type="text">
                                     <div class="inputBox_orderno"></div>
                                     <div class="inputBox_passwd" style="display: block;">
-                                        <div class="chk_passwd" style="display: block;"></div><input
-                                            id="member_passwd" name="member_passwd"
-                                            fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="패스워드"
-                                            fw-msg="" autocomplete="off" value="" type="password"
-                                            placeholder="비밀번호">
+                                        <div class="chk_passwd" style="display: block;"></div>
+                                        <input class="pwdField" id="member_password" name="member_password"
+                                            fw-label="password" autocomplete="off" type="password"
+                                            placeholder="Enter your password">
                                     </div>
                                 </div>
                                 <div class="loginCheckBox"></div>
-                                <button class="btn loginBtn"
-                                    onclick="MemberAction.login('member_form_1023404781'); return false;">기존 회원
-                                    로그인</button>
-                                <a href="/order/orderform.html?basket_type=A0000&amp;delvtype=B"
-                                    class="btn nomemberBuyBtn" style="display:none">비회원 구매</a>
+                                <button type="submit" class="btn loginBtn">Login</button>
+                                <a href="#" class="btn nomemberBuyBtn" style="display:none">비회원 구매</a>
                                 <div class="utilMenu" style="display:block">
-                                    <a href="/member/id/find_id.html">아이디 찾기</a>
-                                    <a href="/member/passwd/find_passwd_info.html">비밀번호 찾기</a>
-                                    <a href="/member/join.html" class="right" style="display:">회원가입</a>
+                                    {{-- <a href="#">Find your email</a> --}}
+                                    <a href="#">Forgot your password?</a>
+                                    <a href="#" class="right" style="display:">Join membership</a>
                                 </div>
                             </div>
                         </form>
-                        <form class="d-none" id="signUpForm" action="#" method="POST"
-                            enctype="multipart/form-data">
-                            <input id="order_detail_url" name="order_detail_url" value="/myshop/order/detail.html"
-                                type="hidden">
+                        <form class="d-none" id="signUpForm" action="{{ route('auth.member.register') }}"
+                            method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div id="normalLogin_id">
-                                <div class="inputBox"><input id="order_name" name="order_name" fw-filter="isFill"
-                                        fw-label="주문자명" fw-msg="" class="inputTypeText" placeholder="주문자명"
-                                        value="" type="text">
-                                    <div class="inputBox_orderno"><input id="order_id" name="order_id"
-                                            maxlength="18" fw-filter="isOrderid&amp;isFill" fw-label="주문번호"
-                                            fw-msg="" value="" type="text" placeholder="주문번호"
-                                            title="주문번호"></div>
+                                <div class="inputBox">
+                                    <input id="order_name" name="name" fw-label="name" class="inputTypeText"
+                                        placeholder="Enter your name" value="{{ old('name') }}" type="text">
+                                    <div class="inputBox_orderno"><input id="order_id" name="email"
+                                            maxlength="30" fw-label="Email" value="{{ old('email') }}"
+                                            type="text" placeholder="Enter your email" title="Email"></div>
                                     <div class="inputBox_passwd">
-                                        <div class="chk_passwd"></div><input id="order_password"
-                                            name="order_password" fw-filter="isFill" fw-label="비회원주문 비밀번호"
-                                            fw-msg="" value="" type="password" placeholder="비회원주문 비밀번호">
+                                        <div class="chk_passwd" style="display: block;"></div>
+                                        <input class="pwdField" id="order_password" name="password"
+                                            fw-label="password" value="" type="password"
+                                            placeholder="Enter your password">
+                                    </div>
+                                    <div class="inputBox_passwd">
+                                        <div class="chk_passwd" style="display: block;"></div>
+                                        <input class="pwdField" id="order_confirm_password" name="confirm_password"
+                                            fw-label="password" value="" type="password"
+                                            placeholder="Confirm your password">
                                     </div>
                                 </div>
                                 <div class="loginCheckBox"></div>
-                                <button class="btn nomemberLoginBtn" onclick="$(#historyNoLoginForm).submit();">비회원
-                                    배송조회</button>
-                                <a href="/order/orderform.html?basket_type=A0000&amp;delvtype=B"
-                                    class="btn nomemberBuyBtn" style="display:none">비회원 구매</a>
+                                <button class="btn nomemberLoginBtn" type="submit">Sign up</button>
+                                <a href="#" class="btn nomemberBuyBtn" style="display:none">Purchase</a>
                                 <div class="utilMenu" style="display:none">
-                                    <a href="/member/id/find_id.html">아이디 찾기</a>
-                                    <a href="/member/passwd/find_passwd_info.html">비밀번호 찾기</a>
-                                    <a href="/member/join.html" class="right" style="display:">회원가입</a>
+                                    {{-- <a href="#">Find your email</a> --}}
+                                    <a href="#">Forgot your password?</a>
+                                    <a href="#" class="right" style="display:">Join membership</a>
                                 </div>
                             </div>
                         </form>
@@ -126,20 +121,19 @@
                 <div id="snsLogin" class="contents">
                     <ul class="snsLoginBox">
                         <li class="btn_naver">
-                            <a onclick="MemberAction.snsLogin('naver', '%2Findex.html')"></a>
+                            <a href="#"></a>
                         </li>
                         <li class="btn_apple">
-                            <a onclick="MemberAction.snsLogin('apple', '%2Findex.html')"></a>
+                            <a href="#"></a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div id="KG_footer">
                 <div class="ment">
-                    <div>로그인까지 한 번에,</div>
-                    <div class="icon">구매가 빨라지는 <b>1초회원가입</b> 이란?</div>
+                    <div>Log in at once,</div>
+                    <div class="icon">What is <b>1-second membership registration</b> ?</div>
                 </div>
-                <div class="copyright"> dona-d도 <b>1초회원가입</b> 사용 중</div>
             </div>
         </div>
     </div>
@@ -153,24 +147,39 @@
 
     <script>
         $(document).ready(function() {
-          $("#existingMemberBtn").click(function() {
-            $(this).parent().addClass("active");
-            $("#guestBtn").parent().removeClass("active");
-            
-            $("#signInForm").removeClass("d-none");
-            $("#signUpForm").addClass("d-none");
-          });
-          
-          $("#guestBtn").click(function() {
-            $(this).parent().addClass("active");
-            $("#existingMemberBtn").parent().removeClass("active");
-            
-            $("#signUpForm").removeClass("d-none");
-            $("#signInForm").addClass("d-none");
-          });
+            $("#existingMemberBtn").click(function() {
+                $(this).parent().addClass("active");
+                $("#guestBtn").parent().removeClass("active");
+
+                $("#signInForm").removeClass("d-none");
+                $("#signUpForm").addClass("d-none");
+                $("#member_email").focus();
+            });
+
+            $("#guestBtn").click(function() {
+                $(this).parent().addClass("active");
+                $("#existingMemberBtn").parent().removeClass("active");
+
+                $("#signUpForm").removeClass("d-none");
+                $("#signInForm").addClass("d-none");
+                $("#order_name").focus();
+            });
         });
-      </script>
-    @yield('page-script')
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.chk_passwd').click(function() {
+                $('.chk_passwd').toggleClass('active');
+                var passwordInput = $('.pwdField');
+                if ($(this).hasClass('active')) {
+                    passwordInput.attr('type', 'text');
+                } else {
+                    passwordInput.attr('type', 'password');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

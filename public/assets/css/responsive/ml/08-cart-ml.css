@@ -1,0 +1,53 @@
+/*--------------------------------------------------------------
+#8 cart
+--------------------------------------------------------------*/
+
+:root {
+   /* --cart-px: 20px;
+    --cart-py: 20px;
+    --mini-cart-px: 20px;
+    --mini-cart-py: 20px;
+    --mini-cart-btns-height: calc(var(--form-element-height) + var(--mini-cart-py) * 2);
+    --cart-container-width:1000px; */
+}
+.page-cart-template {
+    width:calc(100% + var(--container-px) * 2);
+    margin-left:calc(var(--container-px) * -1);
+}
+.page-cart-template tfoot th,
+.page-cart-template tfoot td {
+    font-size: calc(12 / var(--font-1rem-size-no-only) * 1rem);
+    text-align: left;
+}
+.page-cart-template tfoot td .flex {
+    flex-wrap:wrap;
+    justify-content: flex-start;
+}
+.page-cart-template tfoot td .flex>strong {
+    margin-bottom:5px;
+}
+.cart-benefit-message-block.message-block {
+    margin-left:var(--cart-px);
+    margin-right:var(--cart-px);
+    display: none;
+}
+
+
+.cart-bottom-fee, .mini-cart-bottom-fee,
+.cart-top-fee, .mini-cart-top-fee,
+.xans-order-totalorder {
+    padding-left:var(--cart-px);
+    padding-right:var(--cart-px);
+}
+
+.domestic-cart-single-cell .cart-thumbnail {
+    max-width:110px;
+}
+
+.basket-page-cart-total.cart-total {
+    margin-top:0;
+    padding-bottom:0;
+}
+#mini-cart {
+    border-left:0;
+}

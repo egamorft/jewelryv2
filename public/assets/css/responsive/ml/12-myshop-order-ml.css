@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------
+#12 myshop-order
+  ##LIST
+  ##DETAIL
+--------------------------------------------------------------*/
+/* ##LIST */
+.order-state-box.period-side {
+  display: block;
+}
+.xans-myshop-orderhistoryhead fieldset .period,
+.xans-myshop-orderhistoryhead .order-s-title,
+.xans-myshop-orderhistoryhead .stateSelect {
+    margin-bottom: 10px;
+}
+.period-wrap{
+  flex-wrap: wrap;
+}
+.period-wrap .period-select-box{
+  flex-basis: 100%;
+}
+.period-btn-wrap{
+  margin-right: 0;
+}
+.period-select-box .month-select-wrap{
+  flex-basis: 100%;
+} 
+#drmvsn-basic-container .period-side #history_start_date, #drmvsn-basic-container .period-side #history_end_date{
+  min-width: 100px;
+}
+.period-btn-wrap .btn{
+  padding-left:0;
+  padding-right: 0;
+}
+/* //##LIST */
+
+/* ##DETAIL */
+.community-only .sidebar-title,
+#drmvsn-basic-sidebar {
+  display: none;
+}
+.community-only #drmvsn-basic-sidebar {
+  display:block;
+}
+#drmvsn-basic-container {
+  flex-basis: 100%;
+  padding-left: 0;
+  padding-top: 30px;
+}
+.xans-myshop-orderhistorydetail .table-child-bb tr {
+  border-bottom: none;
+}
+/* //##DETAIL */

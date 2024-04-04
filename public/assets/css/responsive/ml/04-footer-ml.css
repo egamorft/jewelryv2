@@ -1,0 +1,87 @@
+/*--------------------------------------------------------------
+#4 footer
+--------------------------------------------------------------*/
+footer {
+    padding:0 0 60px 0;
+    border-top:0;
+}
+.xans-layout-footer.flex {
+    flex-direction: column;
+}
+.ft-flex-group,
+.ft-flex-group.first-line {
+    flex-basis:100%;
+    padding:0 20px;
+    border-top:1px solid var(--secondary-border-color);
+}
+.ft-flex-group.first-line {
+    padding:0;
+}
+.ft-flex-group h3 {
+    padding:15px 0;
+    margin:0;
+    font-weight:normal;
+    position:relative;
+}
+.ft-flex-group.first-line .first-divider:first-child h3 {
+    font-weight:var(--font-bold);
+}
+.ft-flex-group h3:before {
+    content:'';
+    width:16px;
+    height:9px;
+    position:absolute;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+    background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNi43MDciIGhlaWdodD0iOS4wNjEiIHZpZXdCb3g9IjAgMCAxNi43MDcgOS4wNjEiPjxwYXRoIGQ9Ik04OTAuNSw4MzMzLjVsOCw4LDgtOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg5MC4xNDggLTgzMzMuMTQ2KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=);
+}
+.ft-flex-group.first-line .first-divider {
+    padding:15px 0;
+}
+.ft-flex-group.first-line .first-divider:first-child {
+    padding: 15px 20px;
+}
+.ft-flex-group.first-line .first-divider.copy {
+    padding: 0 20px;
+}
+.sns-box a {
+    line-height: 0;
+}
+.ft-flex-group.ft-on h3:before {
+    transform:translateY(-50%) rotate(180deg);
+}
+.ft-flex-group li a {
+    margin-bottom:5px;
+}
+.ft-flex-group.first-line li a {
+    margin-bottom:0;
+}
+.ft-flex-group.first-line h3:before,
+.ft-flex-group .utilMenu {
+    display:none;
+}
+.ft-flex-group.first-line {
+    order:5;
+}
+.ft-flex-group.first-line .utilMenu {
+    display:block;
+}
+.ft-flex-group.first-line .utilMenu li {
+    display:inline-flex;
+}
+.first-divider:first-child ul li {
+    margin-right:5px;
+}
+.ft-flex-group .utilMenu {
+    padding:0 0 20px;
+}
+.ft-flex-group .first-divider .utilMenu {
+    padding:0;
+}
+.ft-flex-group.ft-on .utilMenu {
+    display:block;
+}
+.copyright {
+    padding:10px 0 20px;
+}

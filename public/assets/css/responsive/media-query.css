@@ -1,0 +1,52 @@
+/*
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Resonsive portion files
+
+
+base on ##__https://tailwindcss.com/docs/responsive-design__##
+
+
+Breakpoint prefix	Minimum width	CSS
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+
+
+
+ML : 768 ~ 1079
+SM : ~ 767
+
+--------------------------------------------------------------*/
+/* !!!!utility 부분 수정하셔야합니다!!!! */
+/* portions */
+
+@import url("./ml/02-common-ml.css") screen and (max-width: 1079px);
+@import url("./ml/03-header-ml.css") screen and (max-width: 1079px);
+@import url("./ml/04-footer-ml.css") screen and (max-width: 1079px);
+@import url("./ml/05-sidebar-ml.css") screen and (max-width: 1079px);
+@import url("./ml/06-plp-ml.css") screen and (max-width: 1079px);
+@import url("./ml/07-pdp-ml.css") screen and (max-width: 1079px);
+@import url("./ml/08-cart-ml.css") screen and (max-width: 1079px);
+@import url("./ml/09-member-login-ml.css") screen and (max-width: 1079px);
+@import url("./ml/09-member-join-modify-ml.css") screen and (max-width: 1079px);
+@import url("./ml/09-member-find_id-password-ml.css") screen and (max-width: 1079px);
+@import url("./ml/09-member-modal-ml.css") screen and (max-width: 1079px);
+@import url("./ml/10-orderform-order_result-ml.css") screen and (max-width: 1079px);
+@import url("./ml/11-board-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-common-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-index-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-order-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-coupon-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-mileage-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-addr-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-wishlist-ml.css") screen and (max-width: 1079px);
+@import url("./ml/12-myshop-order_exchange-return-cancel-ml.css") screen and (max-width: 1079px);
+@import url("./ml/99-etc-qty-ml.css") screen and (max-width: 1079px);
+
+@import url("./sm/06-plp.css") screen and (max-width: 768px);
+@import url("./sm/07-pdp.css") screen and (max-width: 768px);
+@import url("./sm/12-myshop-index.css") screen and (max-width: 768px);
