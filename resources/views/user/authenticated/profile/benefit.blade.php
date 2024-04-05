@@ -73,68 +73,82 @@
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
                         <span class="donad-mem-lv">5CTDIA</span>
-                        <span class="donad-mem-lv-info">10% regular discount, 6% accumulated <br>10% birthday coupon<br><span>Customers purchasing more than KRW 50 million in actual payment amount</span></span>
+                        <span class="donad-mem-lv-info">10% regular discount, 6% accumulated <br>10% birthday
+                            coupon<br><span>Customers purchasing more than KRW 50 million in actual payment
+                                amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
                         <span class="donad-mem-lv">4CTDIA</span>
-                        <span class="donad-mem-lv-info">Regular discount 8%, accumulated 6% <br>10% birthday coupon<br><span>Customers with an actual payment amount of 25 million won or more</span></span>
+                        <span class="donad-mem-lv-info">Regular discount 8%, accumulated 6% <br>10% birthday
+                            coupon<br><span>Customers with an actual payment amount of 25 million won or more</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
-                        <span class="donad-mem-lv">3CT<br>DIA</span>
-                        <span class="donad-mem-lv-info">상시할인 7%, 적립 6% <br>10% 생일쿠폰<br><span>실 결제금액 1,000만원 이상
-                                구매고객</span></span>
+                        <span class="donad-mem-lv">3CTDIA</span>
+                        <span class="donad-mem-lv-info">Regular discount 7%, accumulated 6% <br>10% birthday
+                            coupon<br><span>Customers purchasing more than 10 million won in actual payment
+                                amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
-                        <span class="donad-mem-lv">2CT<br>DIA</span>
-                        <span class="donad-mem-lv-info">상시할인 5%, 적립 5% <br>5% 생일쿠폰<br><span>실 결제금액 500만원 이상
-                                구매고객</span></span>
+                        <span class="donad-mem-lv">2CTDIA</span>
+                        <span class="donad-mem-lv-info">5% regular discount, 5% accumulated <br>5% birthday
+                            coupon<br><span>Customers who purchase more than 5 million won in actual payment
+                                amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
-                        <span class="donad-mem-lv">1CT<br>DIA</span>
-                        <span class="donad-mem-lv-info">상시할인 3%, 적립 4% <br>5% 생일쿠폰<br><span>실 결제금액 300만원 이상
-                                구매고객</span></span>
+                        <span class="donad-mem-lv">1CTDIA</span>
+                        <span class="donad-mem-lv-info">Regular discount 3%, accumulated 4% <br>5% birthday
+                            coupon<br><span>Customers who purchase more than 3 million won in actual payment
+                                amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
                         <span class="donad-mem-lv">PLATINUM</span>
-                        <span class="donad-mem-lv-info">상시할인 1%, 적립 3% <br>5% 생일쿠폰<br><span>실 결제금액 100만원 이상
-                                구매고객</span></span>
+                        <span class="donad-mem-lv-info">1% regular discount, 3% accumulated <br>5% birthday
+                            coupon<br><span>Customers who purchase more than KRW 1 million in actual payment
+                                amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
                         <span class="donad-mem-lv">GOLD</span>
-                        <span class="donad-mem-lv-info">구매 적립 1% <br>5% 생일쿠폰<br><span>실 결제금액 30만원 이상 구매고객</span></span>
+                        <span class="donad-mem-lv-info">Purchase savings 1% <br>5% birthday coupon<br><span>Customers who
+                                purchase more than 300,000 won in actual payment amount</span></span>
                     </div>
                 </div>
                 <div pandassi-banner="ready" class="membership-info-box mb-30">
                     <div class="flex align-center">
                         <span class="donad-mem-lv">SILVER</span>
-                        <span class="donad-mem-lv-info">구매 적립 1% <br>5% 생일쿠폰<br><span>신규 고객</span></span>
+                        <span class="donad-mem-lv-info">Purchase savings 1% <br>5% birthday coupon<br><span>new
+                                customer</span></span>
                     </div>
                 </div>
             </div>
-            <div class="membership-desc">[회원등급]<br>- 회원 등급은(12개월기준) 실결제금액에 따라 매월 1일, 1개월 단위로변경됩니다. (구매완료 시점 기준)<br>- 등급별 혜택은
-                결제 수단에 상관없이 5만원이상 구매시 적용됩니다.<br><br>[구매적립]<br>- 구매 적립금은 주문시 구매한 상품에 대한 적립금 1%, 주문시 회원등급에 따른 적립금이 추가 적립됩니다.
-                (실 결제금액 기준)<br>- 적립 금액은 카페24 시스템의 자동 계산법을 적용합니다. <br>단순 % 계산과는 차이가 있을 수 있으며, 이에따른 적립 금액 조정 및 증빙에 대한 문의는 본사에서
-                처리가 어려우니 이점 참고해주세요.</div>
+            <div class="membership-desc">[Membership Level]<br>- Membership level (based on 12 months) changes on the 1st of
+                every month, on a monthly basis, depending on the actual payment amount. (Based on the time of purchase
+                completion)<br>- Benefits for each level are applied to purchases of 50,000 won or more regardless of
+                payment method.<br><br>[Purchase points]<br>- Purchase points are 1% for the product purchased when
+                ordering, and additional points are accumulated according to membership level when ordering. (Based on
+                actual payment amount)<br>- The accumulated amount is calculated automatically using the Cafe24 system.
+                <br>Please note that there may be differences from the simple % calculation, and it is difficult for our
+                head office to handle inquiries regarding adjustments to the accumulated amount and proof.
+            </div>
         </div>
 
         <div id="donad-download-coupon">
             <div class="drmvsn-membership-title">
-                <h2>쿠폰 다운로드</h2>
+                <h2>Coupon download</h2>
             </div>
-            <div class="membership-coupon"><a href="/myshop/coupon/coupon.html"
-                    class="btn prior-1 width-full is-custom justify-center">쿠폰 다운로드</a></div>
+            <div class="membership-coupon"><a href="#"
+                    class="btn prior-1 width-full is-custom justify-center">Download coupon</a></div>
         </div>
     </div>
 @endsection

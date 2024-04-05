@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('destroy-address/{id}', [AddressController::class, 'destroy'])->name('profile.delivery.destroy.address');
         //MEMBERSHIP
         Route::get('benefit', [MemberBenefitController::class, 'index'])->name('profile.benefit');
+        //INTEREST
+        Route::get('interest', [InterestProductController::class, 'index'])->name('profile.interest');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');
