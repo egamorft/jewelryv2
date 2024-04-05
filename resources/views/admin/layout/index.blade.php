@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{$titlePage}}</title>
+    <title>
+        @if (isset($titlePage))
+            {{$titlePage}}
+        @else
+            @yield('title')
+        @endif
+    </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,6 +33,7 @@
     <link href="{{asset('assets/admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet">
     @yield('style')
@@ -59,6 +66,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=ZDwUpEfF"></script>
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <!--end::Global Theme Bundle-->
 @yield('script')
 <div class="loading"></div>

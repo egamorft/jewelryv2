@@ -3,7 +3,7 @@
         <div class="item-text-header" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuTop"
             aria-controls="offcanvasMenuTop">SHOP</div>
         <a class="item-text-header">STYLING</a>
-        <a class="item-text-header">LIVE</a>
+        <a href="{{ route('live') }}" class="item-text-header">LIVE</a>
         <a class="item-text-header">HANNAM SHOWROOM</a>
     </div>
     <a href="{{ route('home') }}">
