@@ -2,22 +2,39 @@
 @section('title', 'My shop')
 
 @section('style_page')
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/utility.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/original-style.css') }}">
-
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @yield('pages_style')
 @endsection
 
 @section('content')
     <div id="wrap">
         <div id="container">
             <div id="contents" class="position-relative">
+                @switch(Route::currentRouteName())
+                    @case('profile.index')
+                        @php
+                            $customClass = 'myshop-index';
+                        @endphp
+                    @break
 
-                <div id="drmvsn-basic-wrap" class="myshop-index">
+                    @case('profile.order')
+                        @php
+                            $customClass = 'myshop-order-list';
+                        @endphp
+                    @break
+
+                    @case('profile.benefit')
+                        @php
+                            $customClass = 'donad-membership';
+                        @endphp
+                    @break
+
+                    @default
+                        @php
+                            $customClass = '';
+                        @endphp
+                @endswitch
+                <div id="drmvsn-basic-wrap" class="{{ $customClass }}">
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="/">Home</a></li>
@@ -45,11 +62,5 @@
 @endsection
 
 @section('script_page')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#history_start_date").datepicker();
-            $("#history_end_date").datepicker();
-        });
-    </script>
+    @yield('pages_script')
 @endsection
