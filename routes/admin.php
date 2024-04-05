@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,11 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::get('show-video/{id}', [LiveController::class, 'show'])->name('live.video.show');
    Route::put('update-video/{id}', [LiveController::class, 'update'])->name('live.video.update');
    Route::delete('destroy-video/{id}', [LiveController::class, 'destroy'])->name('live.video.destroy');
+   //CATEGORY
+   Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+   Route::get('store-category', [CategoryController::class, 'create'])->name('category.create');
+   Route::post('store-category', [CategoryController::class, 'store'])->name('category.store');
+   Route::get('update-category', [CategoryController::class, 'edit'])->name('category.edit');
+   Route::put('update-category', [CategoryController::class, 'update'])->name('category.update');
+   Route::delete('destroy-category', [CategoryController::class, 'destroy'])->name('category.destroy');
 });

@@ -30,6 +30,14 @@ return [
             ],
             'number' => 2
         ],
+        [
+            'name' => 'category',
+            'title' => 'Category',
+            'icon' => 'bi bi-view-list',
+            'route' => 'admin.category.index',
+            'submenu' => [],
+            'number' => 3
+        ],
        
     ]
 ];
