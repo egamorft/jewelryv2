@@ -174,7 +174,7 @@ class AddressController extends Controller
                 return response()->json(['error' => -1, 'message' => "Not found address"], 400);
             }
 
-            // $address->delete();
+            $address->delete();
             return response()->json(['error' => 0, 'message' => "Success remove address"]);
         } catch (\Exception $e) {
             return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);
