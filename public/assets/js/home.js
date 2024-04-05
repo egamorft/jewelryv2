@@ -73,6 +73,7 @@ var swiper_styling = new Swiper(".mySwiperStyling", {
     slidesPerView: 4,
     breakpoints: {
         993: {
+            spaceBetween: 20,
             slidesPerView: 4,
         },
         768: {

@@ -30,4 +30,8 @@ class HomeController extends Controller
     public function detailProduct(){
         return view('user.product.index');
     }
+
+    public function order(){
+        return view('user.order.index');
+    }
 }
