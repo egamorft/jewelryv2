@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\LiveController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
@@ -32,6 +33,11 @@ Route::get('/order', [HomeController::class, 'order'])->name('order');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');
+
+//CARTS
+Route::get('getCart', [CartController::class, 'index'])->name('cart.index');
+Route::post('addToCart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::delete('removeProductInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::get('login', [AuthController::class, 'index'])->name('auth.member.index');

@@ -24,7 +24,7 @@ class HomeController extends Controller
         // Retrieve products from the top 3 categories and group them by category
         $productsByCategory = [];
         foreach ($topCategories as $category) {
-            $products = Product::whereHas('categories', function ($query) use ($category) {
+            $products = Product::where('published', 1)->whereHas('categories', function ($query) use ($category) {
                 $query->where('category_id', $category->id);
             })->take(4)->get();
             $productsByCategory[$category->name] = $products;
