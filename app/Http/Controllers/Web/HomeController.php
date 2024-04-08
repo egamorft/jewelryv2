@@ -7,6 +7,8 @@ use App\Models\AdvertisementModel;
 use App\Models\AdvertisementProductModel;
 use App\Models\AlbumModel;
 use App\Models\BannerModel;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\StylingImageModel;
 use App\Models\StylingModel;
 use App\Models\StylingProductModel;
@@ -15,9 +17,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home(){
-        $banner = BannerModel::where('display',1)->orderBy('index','asc')->limit(9)->get();
-        $video = VideoModel::where('display',1)->orderBy('created_at','desc')->get();
+    public function home()
+    {
+        $banner = BannerModel::where('display', 1)->orderBy('index', 'asc')->limit(9)->get();
+        $video = VideoModel::where('display', 1)->orderBy('created_at', 'desc')->get();
         $styling = StylingModel::where('display',1)->orderBy('created_at','desc')->limit(10)->get();
         foreach($styling as $item_styling){
             $item_styling->src = StylingImageModel::where('styling_id',$item_styling->id)->first()->src;
@@ -30,7 +33,22 @@ class HomeController extends Controller
             }
         }
         $album = AlbumModel::orderBy('created_at','desc')->get();
-        return view('user.home.index',compact('banner','video','styling','advertisement','album'));
+        //Top 3 category
+        $topCategories = Category::orderBy('popular', 'desc')->take(3)->get();
+        //Product
+        $products = Product::whereHas('categories', function ($query) use ($topCategories) {
+            $query->whereIn('category_id', $topCategories->pluck('id'));
+        })->get();
+        // Retrieve products from the top 3 categories and group them by category
+        $productsByCategory = [];
+        foreach ($topCategories as $category) {
+            $products = Product::whereHas('categories', function ($query) use ($category) {
+                $query->where('category_id', $category->id);
+            })->take(4)->get();
+            $productsByCategory[$category->name] = $products;
+        }
+
+        return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory','styling','advertisement','album'));
     }
 
     public function category()

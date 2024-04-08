@@ -98,6 +98,14 @@ return [
             'submenu' => [],
             'number' => 5
         ],
+        [
+            'name' => 'product',
+            'title' => 'Product',
+            'icon' => 'bi bi-bag',
+            'route' => 'admin.product.index',
+            'submenu' => [],
+            'number' => 6
+        ],
         
     ]
 ];

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\ProductCollectionController;
 use App\Http\Controllers\Admin\StylingController;
 use App\Http\Controllers\Admin\VideoController;
@@ -73,25 +74,24 @@ Route::middleware('check-admin-auth')->group(function () {
       Route::get('delete/{id}', [AlbumController::class, 'delete'])->name('delete');
   });
 
-  Route::prefix('collection')->name('collection.')->group(function () {
-   Route::get('', [CollectionController::class, 'index'])->name('index');
-   Route::get('create', [CollectionController::class, 'create'])->name('create');
-   Route::post('store', [CollectionController::class, 'store'])->name('store');
-   Route::get('edit/{id}', [CollectionController::class, 'edit'])->name('edit');
-   Route::post('update/{id}', [CollectionController::class, 'update'])->name('update');
-   Route::get('delete/{id}', [CollectionController::class, 'delete'])->name('delete');
-});
+    Route::prefix('collection')->name('collection.')->group(function () {
+     Route::get('', [CollectionController::class, 'index'])->name('index');
+     Route::get('create', [CollectionController::class, 'create'])->name('create');
+     Route::post('store', [CollectionController::class, 'store'])->name('store');
+     Route::get('edit/{id}', [CollectionController::class, 'edit'])->name('edit');
+     Route::post('update/{id}', [CollectionController::class, 'update'])->name('update');
+     Route::get('delete/{id}', [CollectionController::class, 'delete'])->name('delete');
+  });
 
-Route::prefix('product-collection')->name('product-collection.')->group(function () {
-   Route::get('', [ProductCollectionController::class, 'index'])->name('index');
-   Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
-   Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
-   Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');
-   Route::get('item_product/search', [ProductCollectionController::class, 'productSearch']);
-   Route::get('item_product', [ProductCollectionController::class, 'itemProduct']);
-   Route::get('item_product/delete', [ProductCollectionController::class, 'itemDeleteProduct']);
-});
-   
+  Route::prefix('product-collection')->name('product-collection.')->group(function () {
+     Route::get('', [ProductCollectionController::class, 'index'])->name('index');
+     Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
+     Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
+     Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');
+     Route::get('item_product/search', [ProductCollectionController::class, 'productSearch']);
+     Route::get('item_product', [ProductCollectionController::class, 'itemProduct']);
+     Route::get('item_product/delete', [ProductCollectionController::class, 'itemDeleteProduct']);
+  });
    //LIVE
    Route::get('live-content', [LiveController::class, 'content'])->name('live.content');
    Route::post('save-live-content', [LiveController::class, 'saveContent'])->name('live.save.content');
@@ -101,9 +101,18 @@ Route::prefix('product-collection')->name('product-collection.')->group(function
    Route::get('show-video/{id}', [LiveController::class, 'show'])->name('live.video.show');
    Route::put('update-video/{id}', [LiveController::class, 'update'])->name('live.video.update');
    Route::delete('destroy-video/{id}', [LiveController::class, 'destroy'])->name('live.video.destroy');
+
    //CATEGORY
    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
    Route::post('store-category', [CategoryController::class, 'store'])->name('category.store');
    Route::put('update-category/{id}', [CategoryController::class, 'update'])->name('category.update');
    Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+   
+   //PRODUCT
+   Route::get('product', [ProductController::class, 'index'])->name('product.index');
+   Route::get('create-product', [ProductController::class, 'create'])->name('product.create');
+   Route::post('store-product', [ProductController::class, 'store'])->name('product.store');
+   Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('product.edit');
+   Route::put('update-product/{id}', [ProductController::class, 'update'])->name('product.update');
+   Route::delete('destroy-product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 });

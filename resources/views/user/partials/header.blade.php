@@ -97,9 +97,9 @@
         @if (isset($topCategories) && !$topCategories->isEmpty())
             <div class="col-item-menu">
                 @foreach ($topCategories as $cate)
-                    <a href="{{ $cate->slug }}" class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}" class="text-item-menu">{{ strtoupper($cate->name) }}</a>
                 @endforeach
-                <a href="#" class="text-item-menu">VIEW ALL</a>
+                <a href="{{ route('categories.show', ['slug' => 'all']) }}" class="text-item-menu">VIEW ALL</a>
             </div>
         @endif
         @if (isset($secondCategories) && !$secondCategories->isEmpty())
