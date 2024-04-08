@@ -3,7 +3,7 @@
         <td>
             <input type="text" name="related[{{$key}}][product_id]" value="{{$value->id}}" hidden>
             <img class="" style="width: 50px; height: auto"
-                 src="{{$value->infor->image}}">
+                 src="{{$value->thumbnail_img}}">
         </td>
         <td style="padding-top: 20px">{{$value->name}}</td>
         <td style="padding-top: 20px">

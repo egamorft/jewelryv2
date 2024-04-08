@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdvertisementModel;
 use App\Models\AdvertisementProductModel;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -69,7 +70,7 @@ class AdvertisementController extends Controller
                 }
             $related = AdvertisementProductModel::where('advertisement_id', $id)->get();
             foreach ($related as $item) {
-                $item->product = ProductsModel::find($item->product_id);
+                $item->product = Product::find($item->product_id);
             }
             return view('admin.advertisement.edit', compact('titlePage', 'page_menu', 'page_sub', 'advertisement','related'));
         }catch (\Exception $exception){
@@ -119,7 +120,7 @@ class AdvertisementController extends Controller
     {
         try {
             $key_search = $request->get('query');
-            $products = ProductsModel::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
+            $products = Product::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
             $view = view('admin.advertisement.item-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -130,7 +131,7 @@ class AdvertisementController extends Controller
     public function itemProduct(Request $request)
     {
         try {
-            $products = ProductsModel::whereIn('id', $request->data)->get();
+            $products = Product::whereIn('id', $request->data)->get();
             $view = view('admin.advertisement.similar-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -142,7 +143,7 @@ class AdvertisementController extends Controller
     {
         try {
             if (isset($request->data)) {
-                $products = ProductsModel::whereIn('id', $request->data)->get();
+                $products = Product::whereIn('id', $request->data)->get();
                 $view = view('admin.advertisement.similar-product', compact('products'))->render();
                 return response()->json(['status' => true, 'table_data' => $view]);
             } else {

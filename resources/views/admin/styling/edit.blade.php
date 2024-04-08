@@ -88,7 +88,7 @@
                                                 <tr class="text-center" style="border-top: 2px solid #e8e8e8">
                                                     <td>
                                                         <img class="" style="width: 50px; height: auto"
-                                                             src="{{$value->infor->image}}">
+                                                             src="{{$value->product->thumbnail_img}}">
                                                     </td>
                                                     <td style="padding-top: 20px">{{$value->product->name}}</td>
                                                     <td style="padding-top: 20px">
