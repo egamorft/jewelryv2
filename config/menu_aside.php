@@ -90,5 +90,14 @@ return [
             ],
             'number' => 5
         ],
+        [
+            'name' => 'category',
+            'title' => 'Category',
+            'icon' => 'bi bi-view-list',
+            'route' => 'admin.category.index',
+            'submenu' => [],
+            'number' => 5
+        ],
+        
     ]
 ];
