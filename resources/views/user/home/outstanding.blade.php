@@ -19,9 +19,9 @@
      <div class="swiper-slide box-swiper-sp">
       @for ($i = 0; $i < 4; $i++)
       <div class="item-product">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product">
-         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product">
-            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" loading="lazy">
+         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product" loading="lazy">
+            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100" loading="lazy">
          <div>
             <p class="title-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
             <p class="price">5,400,000 won</p>
@@ -44,9 +44,9 @@
      <div class="swiper-slide box-swiper-sp">
       @for ($i = 0; $i < 4; $i++)
       <div class="item-product">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product">
-         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product">
-            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" loading="lazy">
+         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product" loading="lazy">
+            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100" loading="lazy">
          <div>
             <p class="title-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
             <p class="price">5,400,000 won</p>
@@ -69,9 +69,9 @@
      <div class="swiper-slide box-swiper-sp">
       @for ($i = 0; $i < 4; $i++)
       <div class="item-product">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product">
-         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product">
-            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" loading="lazy">
+         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product" loading="lazy">
+            <img src="{{asset('assets/images/image-sp3.png')}}" class="w-100" loading="lazy">
          <div>
             <p class="title-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
             <p class="price">5,400,000 won</p>

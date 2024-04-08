@@ -4,7 +4,7 @@
          <div class="swiper-wrapper">
             @for ($i = 0; $i < 5; $i++)
             <div class="swiper-slide silde-adv">
-               <img src="{{asset('assets/images/slide.jpg')}}" />
+               <img src="{{asset('assets/images/slide.jpg')}}" loading="lazy"/>
                <div class="slide-content-adv" @if ($i == 0) style="display: block"  @endif>
                   <p class="title-slide-adv">Custom & Diamond Inside Coin Pendant</p>
                   <a href="" class="link-adv">Shop Now</a>
@@ -20,7 +20,7 @@
                @for ($i = 0; $i < 5; $i++)
                <div class="swiper-slide box-child-adv">
                   <div class="item-child-adv">
-                     <img src="{{asset('assets/images/sp-child.jpg')}}" class="img-child-sp">
+                     <img src="{{asset('assets/images/sp-child.jpg')}}" class="img-child-sp" loading="lazy">
                      <div class="item-content-child-adv">
                         <p class="title-child-sp">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
                         <p class="price-sale">4,860,00 won</p>
@@ -28,7 +28,7 @@
                      </div>
                   </div>
                   <div class="item-child-adv">
-                     <img src="{{asset('assets/images/sp-child.jpg')}}" class="img-child-sp">
+                     <img src="{{asset('assets/images/sp-child.jpg')}}" class="img-child-sp" loading="lazy">
                      <div class="item-content-child-adv">
                         <p class="title-child-sp">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
                         <p class="price-sale">4,860,00 won</p>
@@ -41,6 +41,4 @@
             </div>
          </div>
       </div>
-   
-      
 </div>

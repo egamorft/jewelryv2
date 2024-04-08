@@ -208,6 +208,7 @@
 .item-video {
     width: 70%;
     margin: 0 auto;
+    position: relative;
 }
 .box-item-video {
     display: flex;
@@ -313,6 +314,13 @@
 .content-menu-outstanding {
     width: fit-content !important;
     margin-right: 20px !important;
+}
+.icon-polygon {
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 @media (max-width: 1570px) {
     .content-adv {
@@ -480,6 +488,9 @@
     .item-img-banner-home,
     .item-video {
         width: 100%;
+    }
+    .icon-polygon {
+        width: 40px;
     }
     .title-official {
         padding: 0 20px;

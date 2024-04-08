@@ -5,6 +5,10 @@ var swiper_banner = new Swiper(".mySwiperBanner", {
         el: ".swiper-scrollbar",
         hide: true,
     },
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+    },
     breakpoints: {
         993: {
             slidesPerView: 3,

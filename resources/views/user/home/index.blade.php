@@ -27,5 +27,15 @@
     $(document).ready(function () {
             $("#lightgallery").lightGallery();
         });
+        function playVideo(index) {
+        var video = document.getElementById('video' + index);
+        video.play();
+    }
+    function hideImage(index) {
+        var image = document.getElementById('image' + index);
+        if (image) {
+            image.style.display = 'none';
+        }
+    }
 </script>
 @stop
