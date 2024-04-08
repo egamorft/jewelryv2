@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
@@ -49,4 +50,9 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::get('show-video/{id}', [LiveController::class, 'show'])->name('live.video.show');
    Route::put('update-video/{id}', [LiveController::class, 'update'])->name('live.video.update');
    Route::delete('destroy-video/{id}', [LiveController::class, 'destroy'])->name('live.video.destroy');
+   //CATEGORY
+   Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+   Route::post('store-category', [CategoryController::class, 'store'])->name('category.store');
+   Route::put('update-category/{id}', [CategoryController::class, 'update'])->name('category.update');
+   Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });

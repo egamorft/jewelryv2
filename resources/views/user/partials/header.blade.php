@@ -94,26 +94,22 @@
 <div class="offcanvas offcanvas-menu-top" tabindex="-1" id="offcanvasMenuTop"
     aria-labelledby="offcanvasMenuTopLabel">
     <div class="offcanvas-body box-menu-header">
-        <div class="col-item-menu">
-            <a href="" class="text-item-menu">HERITAGE LINE</a>
-            <a href="" class="text-item-menu">EVERYDAY LINE</a>
-            <a href="" class="text-item-menu">NEW in</a>
-            <a href="" class="text-item-menu">HOMME</a>
-            <a href="" class="text-item-menu">COLLECTION</a>
-            <a href="" class="text-item-menu">Vintage Watch</a>
-            <a href="" class="text-item-menu">Design things</a>
-            <a href="" class="text-item-menu">VIEW ALL</a>
-        </div>
-        <div class="col-item-menu">
-            <a href="" class="content-item-menu">HERITAGE LINE</a>
-            <a href="" class="content-item-menu">EVERYDAY LINE</a>
-            <a href="" class="content-item-menu">NEW in</a>
-            <a href="" class="content-item-menu">HOMME</a>
-            <a href="" class="content-item-menu">COLLECTION</a>
-            <a href="" class="content-item-menu">Vintage Watch</a>
-            <a href="" class="content-item-menu">Design things</a>
-            <a href="" class="content-item-menu">VIEW ALL</a>
-        </div>
+        @if (isset($topCategories) && !$topCategories->isEmpty())
+            <div class="col-item-menu">
+                @foreach ($topCategories as $cate)
+                    <a href="{{ $cate->slug }}" class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                @endforeach
+                <a href="#" class="text-item-menu">VIEW ALL</a>
+            </div>
+        @endif
+        @if (isset($secondCategories) && !$secondCategories->isEmpty())
+            <div class="col-item-menu">
+                @foreach ($secondCategories as $cate)
+                    <a href="{{ $cate->slug }}" class="content-item-menu">{{ strtoupper($cate->name) }}</a>
+                @endforeach
+                <a href="#" class="content-item-menu">VIEW ALL</a>
+            </div>
+        @endif
         <div class="col-item-menu-right">
             <a href="" class="content-item-menu">HERITAGE LINE</a>
             <a href="" class="content-item-menu">EVERYDAY LINE</a>
