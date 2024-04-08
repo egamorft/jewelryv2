@@ -8,18 +8,18 @@
 @section('content')
 <div class="swiper mySwiperBannerStyling">
    <div class="swiper-wrapper" style="height: unset">
-      @for ($i=0; $i<10;$i++)
+      @foreach ($styling_img as $val_img)
       <div class="swiper-slide">
-         <img src="{{asset('assets/images/image.png')}}" class="w-100">
+         <img src="{{asset($val_img->src)}}" class="w-100">
       </div>
-      @endfor
+      @endforeach
    </div>
    <div class="swiper-scrollbar"></div>
  </div>
 <div class="box-detail-styling">
-   <p class="title-detail-styling">Dona & D. styling</p>
+   <p class="title-detail-styling">{{$styling->title}}</p>
    <div class="content-detail-styling">
-      <span class="contnet-big-tag" >DONA Solitaire Diamond Ring Meet Dona&D’s </span> solitaire ring that will make your dream of a diamond ring come true! You can only experience 1-carat, 5-piece solitaire using top-quality lab-grown diamonds and basic designs with Donna&D's perfect setting and balance and special details . Style it with Donna&D's Stackable Ring and own a ring that's hipper and cooler than anyone else, rather than a diamond ring that's just in a jewelry box! <strong>Labgrown Diamond | Moissanite</strong>
+      {{$styling->content}}
    </div>
    <p class="title-shop-now">Shop now</p>
    <div class="box-shop-product">

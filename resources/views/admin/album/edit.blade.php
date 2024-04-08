@@ -2,7 +2,7 @@
 @section('main')
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Edit video</h1>
+            <h1>Edit Album</h1>
         </div>
         <section class="section dashboard">
             <div class="bg-white p-4">
@@ -12,55 +12,26 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <form action="{{url('admin/video/update',$video->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('admin/album/update',$album->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-3">Title :</div>
-                        <div class="col-8">
-                            <input class="form-control" name="title" value="{{$video->title}}" type="text" maxlength="255">
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                     <div class="col-3">Describe :</div>
-                     <div class="col-8">
-                        <textarea type="text" class="form-control text-sm" name="describe" rows="3" maxlength="255">{{$video->describe}}</textarea>
-                     </div>
-                 </div>
-                    <div class="row mt-3">
-                        <div class="col-3">Link :</div>
-                        <div class="col-8">
-                            <input class="form-control" name="link" value="{{$video->link}}" type="text">
-                        </div>
-                    </div>
                     <div class="row mt-3">
                         <div class="col-3">Image :</div>
                         <div class="col-8">
                             <div class="form-control position-relative div-parent" style="padding-top: 50%">
                                 <div class="position-absolute w-100 h-100 div-file" style="top: 0; left: 0;z-index: 10">
                                     <button type="button" class="position-absolute clear border-0 bg-danger p-0 d-flex justify-content-center align-items-center" style="top: -10px;right: -10px;width: 30px;height: 30px;border-radius: 50%"><i class="bi bi-x-lg text-white"></i></button>
-                                    <video controls class="w-100 h-100">
-                                       <source src="{{asset($video->src)}}" type="video/mp4">
-                                     </video>
+                                        <img src="{{asset($album->src)}}" class="w-100 h-100" style="object-fit: cover">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-3">ON/OFF :</div>
-                        <div class="col-8">
-                            <label class="switch">
-                                <input type="checkbox" @if($video->display == 1) checked @endif name="display">
-                                <span class="slider round">ON</span>
-                            </label>
                         </div>
                     </div>
                     <div class="row mt-5">
                         <div class="col-3"></div>
                         <div class="col-8 ">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{route('admin.video.index')}}" class="btn btn-danger">Cancel</a>
+                            <a href="{{route('admin.album.index')}}" class="btn btn-danger">Cancel</a>
                         </div>
-                        <input type="file" name="file" id="file-video" hidden accept="video/mp4">
+                    <input type="file" name="file" accept="image/x-png,image/gif,image/jpeg" hidden>
                     </div>
                 </form>
             </div>
