@@ -2,7 +2,7 @@
 @section('main')
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Create styling</h1>
+            <h1>Create Product Collection</h1>
         </div>
         <section class="section dashboard">
             <div class="bg-white p-4">
@@ -12,46 +12,19 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <form action="{{route('admin.styling.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.product-collection.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-3">Title :</div>
-                        <div class="col-8">
-                            <input class="form-control" name="title" type="text" maxlength="255" required>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Collection</label>
+                        <div class="col-sm-8">
+                            <select class="form-select" name="collection"
+                                    aria-label="Default select example">
+                                    @foreach ($collection as $item)
+                                        <option class="bg-info" value="{{$item->id}}">{{$item->title}}</option>
+                                    @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                     <div class="col-3">Describe :</div>
-                     <div class="col-8">
-                        <textarea type="text" class="form-control  text-sm" name="describe" rows="3" maxlength="255" class="ckeditor" required></textarea>
-                     </div>
-                 </div>
-                 <div class="row mt-3">
-                  <div class="col-3">Content :</div>
-                  <div class="col-8">
-                     <textarea type="text" class="form-control  text-sm" name="content" rows="6" maxlength="255" class="ckeditor" required></textarea>
-                  </div>
-              </div>
-                    <div class="row mt-3">
-                        <div class="col-3">ON/OFF :</div>
-                        <div class="col-8">
-                            <label class="switch">
-                                <input type="checkbox" checked name="display">
-                                <span class="slider round">ON</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card mt-3">
-                     <div class="card-header bg-info text-white">
-                         Image
-                     </div>
-                     <div class="card-body">
-                         <label class="mt-2 mb-2"><i class="fa fa-upload"></i> Select or drag the photo into the frame below</label>
-                         <div class="input-image-product">
-                         </div>
-                     </div>
-                 </div>
-                 <h5>Related products</h5>
                         <div class="card">
                             <div class="card-content">
                                 <div class="table-responsive table-responsive-lg">
@@ -73,7 +46,7 @@
                         <div class="col-3"></div>
                         <div class="col-8 ">
                             <button type="submit" class="btn btn-primary">Create</button>
-                            <a href="{{route('admin.styling.index')}}" class="btn btn-danger">Cancel</a>
+                            <a href="{{route('admin.product-collection.index')}}" class="btn btn-danger">Cancel</a>
                         </div>
                     <input type="file" name="file" accept="image/x-png,image/gif,image/jpeg" hidden>
                     </div>
@@ -123,7 +96,6 @@
     </main><!-- End #main -->
 @endsection
 @section('script')
-<script src="{{asset('assets/admin/js/input_file.js')}}" type="text/javascript"></script>
 <script>
      $.ajaxSetup({
         headers: {
@@ -134,7 +106,7 @@
 
     function search(query = '') {
         $.ajax({
-            url: window.location.origin + '/admin/styling/item_product/search',
+            url: window.location.origin + '/admin/product-collection/item_product/search',
             method: 'GET',
             data: {query: query},
             dataType: 'json',
@@ -152,7 +124,7 @@
         function idSP(id) {
             arr.push(id);
             $.ajax({
-                url: '{{url('admin/styling/item_product')}}',
+                url: '{{url('admin/product-collection/item_product')}}',
                 method: 'GET',
                 data: {data: arr},
                 dataType: 'json',
@@ -169,7 +141,7 @@
                 }
             }
             $.ajax({
-                url: '{{url('admin/styling/item_product/delete')}}',
+                url: '{{url('admin/product-collection/item_product/delete')}}',
                 method: 'GET',
                 data: {data: arr},
                 dataType: 'json',

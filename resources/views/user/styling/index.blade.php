@@ -9,13 +9,13 @@
 <div class="box-styling">
    <p class="title-styling-header">STYLING</p>
    <div class="box-content-styling">
-      @for ($i = 0; $i < 24; $i++)
-      <div>
-         <img src="{{asset('assets/images/imagesp6.png')}}" class="w-100">
-            <p class="title-styling">DONA Solitaire Diamond Ring styling</p>
-            <p class="content-styling">Solitaire ring with a timeless design that you can keep for a lifetime, 1 carat, 5-quarter size styling.</p>
-      </div>
-      @endfor
+      @foreach ($styling as $val_styling)
+      <a href="{{url('detail-styling',$val_styling->id)}}">
+         <img src="{{asset($val_styling->src)}}" class="w-100">
+            <p class="title-styling">{{$val_styling->title}}</p>
+            <p class="content-styling">{{$val_styling->describe}}</p>
+      </a>
+      @endforeach
 
    </div>
 </div>
