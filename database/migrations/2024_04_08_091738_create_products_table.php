@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('min_qty')->default(1);
             $table->double('discount')->nullable();
             $table->string('discount_type')->nullable();
+            $table->timestamp('discount_end')->nullable();
             $table->double('rating')->default(0.00);
             $table->tinyInteger('installment')->default(0);
             $table->longText('spec_n_details')->nullable();

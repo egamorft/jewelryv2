@@ -19,6 +19,7 @@ class Product extends Model
         'min_qty',
         'discount',
         'discount_type',
+        'discount_end',
         'rating',
         'installment',
         'spec_n_details',

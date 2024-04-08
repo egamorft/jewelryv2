@@ -5,6 +5,9 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 @endsection
 
 @section('main')
@@ -40,12 +43,12 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="product_discount" class="form-label">Discount</label>
                             <input name="discount" id="product_discount" type="number" class="form-control"
                                 placeholder="Enter product discount" value="{{ old('discount', 0) }}">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="product_discount_type" class="form-label">Discount type</label>
                             <select name="discount_type" class="form-select" id="product_discount_type"
                                 aria-label="Default select example">
@@ -53,7 +56,11 @@
                                 <option value="percent">Percent</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <label for="product_discount_end" class="form-label">Discount end</label>
+                            <input id="datetimepicker" class="form-control" name="discount_end" type="text">
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-check form-switch" style="margin-top: 2rem">
                                 <input class="form-check-input" name="installment" type="checkbox" id="installment"
                                     value="1">
@@ -65,7 +72,9 @@
                         <label for="categorySelector" class="form-label">Categories</label>
                         <select class="form-select" id="categorySelector" name="categories[]" multiple>
                             @foreach ($categories as $cate)
-                                <option value="{{ $cate->id }}" {{ in_array($cate->id, old('categories', [])) ? 'selected' : '' }}>{{ $cate->name }}</option>
+                                <option value="{{ $cate->id }}"
+                                    {{ in_array($cate->id, old('categories', [])) ? 'selected' : '' }}>{{ $cate->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -110,6 +119,26 @@
 @endsection
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
+    </script>
+    <script>
+        $(function() {
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            var currentDate = tomorrow.toISOString().split('T')[0];
+            var currentTime = tomorrow.getHours() + ':' + tomorrow.getMinutes();
+
+            $("#datetimepicker").datetimepicker({
+                minDate: tomorrow,
+                defaultDate: tomorrow,
+                format: "Y-m-d H:i",
+                step: 30,
+                value: currentTime
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#categorySelector').select2({

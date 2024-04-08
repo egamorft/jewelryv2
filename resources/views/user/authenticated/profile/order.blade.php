@@ -53,7 +53,7 @@
                                     <div class="dv-field month-select-wrap me-3">
                                         <div class="dv-control flex align-center justify-start">
                                             <input style="min-width: 120px" id="start_date" class="fText"
-                                                value="2024-01-04" type="text">
+                                                value="" type="text">
                                             <button type="button" class="ui-datepicker-trigger"><img
                                                     src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/ico_cal.gif"
                                                     alt="..." title="..."></button>
