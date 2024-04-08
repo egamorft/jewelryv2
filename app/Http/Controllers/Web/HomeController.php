@@ -15,27 +15,28 @@ class HomeController extends Controller
         return view('user.home.index',compact('banner','video'));
     }
 
-    public function category(){
+    public function category()
+    {
         return view('user.category.index');
     }
 
-    public function styling(){
+    public function styling()
+    {
         return view('user.styling.index');
     }
 
-    public function detailStyling(){
+    public function detailStyling()
+    {
         return view('user.styling.detail');
     }
 
-    public function live(){
-        return view('user.live.index');
-    }
-
-    public function detailProduct(){
+    public function detailProduct()
+    {
         return view('user.product.index');
     }
 
-    public function order(){
+    public function order()
+    {
         return view('user.order.index');
     }
 }

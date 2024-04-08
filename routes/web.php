@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\Admin\LiveController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +25,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/styling', [HomeController::class, 'styling'])->name('styling');
 Route::get('/detail-styling', [HomeController::class, 'detailStyling'])->name('detail-styling');
-Route::get('/live', [HomeController::class, 'live'])->name('live');
+Route::get('/live', [LiveController::class, 'index'])->name('live');
 Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('detail-product');
 Route::get('/order', [HomeController::class, 'order'])->name('order');
 
@@ -48,6 +50,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('destroy-address/{id}', [AddressController::class, 'destroy'])->name('profile.delivery.destroy.address');
         //MEMBERSHIP
         Route::get('benefit', [MemberBenefitController::class, 'index'])->name('profile.benefit');
+        //INTEREST
+        Route::get('interest', [InterestProductController::class, 'index'])->name('profile.interest');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');

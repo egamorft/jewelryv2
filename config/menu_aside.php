@@ -33,7 +33,25 @@ return [
             'route' => 'admin.styling.index',
             'submenu' => [],
             'number' => 4
+        ],[
+            'name' => 'live',
+            'title' => 'Live',
+            'icon' => 'bi bi-cast',
+            'submenu' => [
+                [
+                    'name' => 'live content',
+                    'title' => 'Thumbnail content',
+                    'icon' => 'bi bi-person-video3',
+                    'route' => 'admin.live.content'
+                ],
+                [
+                    'name' => 'live video',
+                    'title' => 'Video list',
+                    'icon' => 'bi bi-play-btn',
+                    'route' => 'admin.live.video.list'
+                ],
+            ],
+            'number' => 5
         ],
-       
     ]
 ];

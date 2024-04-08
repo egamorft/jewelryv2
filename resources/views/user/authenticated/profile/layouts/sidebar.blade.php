@@ -77,7 +77,9 @@
                 </summary>
             </details>
             <details class="accordion sidebar-link mt-30">
-                <summary class="accordion-title no-sub-links"><a class="text-secondary" href="#">Product of
+                <summary class="accordion-title no-sub-links"><a
+                        class="{{ Route::currentRouteName() == 'profile.interest' ? '' : 'text-secondary' }}"
+                        href="{{ route('profile.interest') }}">Product of
                         interest</a></summary>
             </details>
             <details class="accordion sidebar-link mt-30">
