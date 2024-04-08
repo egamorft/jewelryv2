@@ -51,6 +51,8 @@ class StylingController extends Controller
             }
             $styling = StylingModel::createStyling($request->all(),$display);
             $this->add_img_styling($request, $styling->id);
+            $related = $request->get('related');
+            $this->add_product_styling($related, $styling->id);
             
             return redirect()->route('admin.styling.index')->with(['success' => 'New data created successfully']);
         }catch (\Exception $exception){
@@ -68,8 +70,12 @@ class StylingController extends Controller
                 if (empty($styling)) {
                     return back()->with(['error' => 'Data does not exist']);
                 }
-                $styling_image = StylingImageModel::where('styling_id',$id)->get();
-                return view('admin.styling.edit', compact('titlePage', 'page_menu', 'page_sub', 'styling','styling_image'));
+            $styling_image = StylingImageModel::where('styling_id',$id)->get();
+            $related = StylingProductModel::where('styling_id', $id)->get();
+            foreach ($related as $item) {
+                $item->product = ProductsModel::find($item->product_id);
+            }
+            return view('admin.styling.edit', compact('titlePage', 'page_menu', 'page_sub', 'styling','styling_image','related'));
         }catch (\Exception $exception){
             return back()->with(['error' => $exception->getMessage()]);
         }
@@ -88,8 +94,10 @@ class StylingController extends Controller
                 $display = 0;
             }
             StylingModel::updateStyling($styling, $request->all(), $display);
+            $related = $request->get('related');
+            $this->add_product_styling($related, $styling->id);
             
-            return redirect()->route('admin.banner.index')->with(['success' => 'Updated data successfully']);
+            return redirect()->route('admin.styling.index')->with(['success' => 'Updated data successfully']);
         }catch (\Exception $e){
             return back()->with(['error' => $e->getMessage()]);
         }
@@ -111,6 +119,70 @@ class StylingController extends Controller
             return back()->with(['success' => 'Deleted data successfully']);
     }
 
+    public function deleteImg(Request $request)
+    {
+        try {
+            $img = StylingImageModel::find($request->get('id'));
+            unlink($img->src);
+            $img->delete();
+            $data['status'] = true;
+            return $data;
+        } catch (\Exception $exception) {
+            $data['status'] = false;
+            $data['msg'] = $exception->getMessage();
+            return $data;
+        }
+    }
+
+    public function productSearch(Request $request)
+    {
+        try {
+            $key_search = $request->get('query');
+            $products = ProductsModel::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
+            $view = view('admin.styling.item-product', compact('products'))->render();
+            return response()->json(['table_data' => $view]);
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
+
+    public function itemProduct(Request $request)
+    {
+        try {
+            $products = ProductsModel::whereIn('id', $request->data)->get();
+            $view = view('admin.styling.similar-product', compact('products'))->render();
+            return response()->json(['table_data' => $view]);
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
+
+    public function itemDeleteProduct(Request $request)
+    {
+        try {
+            if (isset($request->data)) {
+                $products = ProductsModel::whereIn('id', $request->data)->get();
+                $view = view('admin.styling.similar-product', compact('products'))->render();
+                return response()->json(['status' => true, 'table_data' => $view]);
+            } else {
+                return response()->json(['status' => false]);
+            }
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
+
+    public function itemDeleteRelated(Request $request)
+    {
+        try {
+            $product_styling = StylingProductModel::find($request->id);
+            $product_styling->delete();
+            return response()->json(['status' => true]);
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
+
     public function add_img_styling($request, $styling_id)
     {
         try {
@@ -124,16 +196,6 @@ class StylingController extends Controller
                     $value->move($path, $image_full_name);
                     StylingImageModel::createStylingImage($styling_id,$image_full_name);
                 }
-
-                // if (isset($related)) {
-                //     foreach ($related as $item) {
-                //         $prouct_related = new ProductRelatedModel([
-                //             'product_id' => $item['product_id'],
-                //             'product_infor_id' => $product_infor->id,
-                //         ]);
-                //         $prouct_related->save();
-                //     }
-                // }
 
                 return true;
             }

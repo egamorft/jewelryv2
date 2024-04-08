@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/styling', [HomeController::class, 'styling'])->name('styling');
-Route::get('/detail-styling', [HomeController::class, 'detailStyling'])->name('detail-styling');
+Route::get('/detail-styling/{id}', [HomeController::class, 'detailStyling'])->name('detail-styling');
 Route::get('/live', [LiveController::class, 'index'])->name('live');
 Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('detail-product');
 Route::get('/order', [HomeController::class, 'order'])->name('order');

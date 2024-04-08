@@ -60,6 +60,7 @@
 .link-brand {
     font-size: 16px;
     color: black;
+    text-decoration: underline;
 }
 
 .main-nav-with-img-banner {
