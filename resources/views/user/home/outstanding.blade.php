@@ -9,7 +9,7 @@
             @endforeach
 
         </div>
-        <a href="" class="link-view-all">View All</a>
+        <a href="#" class="link-view-all">View All</a>
     </div>
     <div thumbsSlider="" class="swiper contentOutstanding">
         <div class="swiper-wrapper">
@@ -17,8 +17,12 @@
                 <div class="swiper-slide box-swiper-sp">
                     @foreach ($products as $pro)
                         <div class="item-product">
-                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy">
-                            <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" loading="lazy">
+                            <a type="button" onclick="addToCart({{ $pro->id }})">
+                                <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy">
+                            </a>
+                            <a href="#">
+                                <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" loading="lazy">
+                            </a>
                             <img src="{{ $pro->thumbnail_img }}" class="w-100" loading="lazy">
                             <div>
                                 <p class="title-product">{{ $pro->name }}</p>
