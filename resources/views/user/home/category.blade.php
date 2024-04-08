@@ -39,7 +39,7 @@
 
 <div class="box-collection">
    <div class="item-collection">
-      <img src="{{asset('assets/images/image-collection.png')}}" class="img-collection">
+      <img src="{{asset('assets/images/image-collection.png')}}" class="img-collection" loading="lazy">
       <div>
          <p class="title-collection">NICE Collection</p>
          <div class="content-collection">Donna&D's original Nice collection features a modern outline, comfortable fit, and infinite styling possibilities. This is Donna&D's signature collection that allows you to choose from a variety of mix-and-match materials such as diamonds and pearls, as well as gold and platinum materials to suit your taste.</div>
@@ -47,7 +47,7 @@
       </div>
    </div>
    <div class="item-collection">
-      <img src="{{asset('assets/images/image-collection.png')}}" class="img-collection">
+      <img src="{{asset('assets/images/image-collection.png')}}" class="img-collection" loading="lazy">
       <div>
          <p class="title-collection">NICE Collection</p>
          <div class="content-collection">Donna&D's original Nice collection features a modern outline, comfortable fit, and infinite styling possibilities. This is Donna&D's signature collection that allows you to choose from a variety of mix-and-match materials such as diamonds and pearls, as well as gold and platinum materials to suit your taste.</div>

@@ -1,17 +1,21 @@
-<img src="{{asset('assets/images/banner.png')}}" class="img-banner-big">
+@if (count($banner)>0)
+<img src="{{asset($banner[0]->src)}}" class="img-banner-big" loading="lazy">
+@endif
+@if (count($banner)>1)
 <div class="swiper mySwiperBanner">
    <div class="swiper-wrapper">
-      @for ($i=0; $i<10;$i++)
-      <div class="swiper-slide">
-         <img src="{{asset('assets/images/image.png')}}" class="w-100">
-         <div class="box-content-banner">
-            <p class="title-slide-banner">HELLO DONNAS 
-               If this is your first time at 
-               Dona&D,</p>
-            <p class="content-slide-banner">Dona&D introductory item recommendation for new Donath users</p>
-         </div>
-      </div>
-      @endfor
+      @foreach ($banner as $index => $item_banner)
+         @if ($index > 0 && $index < 7)
+            <a class="swiper-slide" @if($item_banner->link != null) href="{{$item_banner->link}}" @endif>
+               <img src="{{asset($item_banner->src)}}" class="w-100" loading="lazy">
+               <div class="box-content-banner">
+                  <p class="title-slide-banner">{{@$item_banner->title}}</p>
+                  <p class="content-slide-banner">{{@$item_banner->describe}}</p>
+               </div>
+            </a>
+         @endif
+      @endforeach
    </div>
    <div class="swiper-scrollbar"></div>
  </div>
+@endif
