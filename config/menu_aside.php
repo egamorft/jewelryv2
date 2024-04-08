@@ -33,7 +33,44 @@ return [
             'route' => 'admin.styling.index',
             'submenu' => [],
             'number' => 4
-        ],[
+        ],
+        [
+            'name' => 'advertisement',
+            'title' => 'Advertisement management',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.advertisement.index',
+            'submenu' => [],
+            'number' => 4
+        ],
+        [
+            'name' => 'album',
+            'title' => 'Album management',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.album.index',
+            'submenu' => [],
+            'number' => 4
+        ],
+        [
+            'name' => 'collection',
+            'title' => 'Collection management',
+            'icon' => 'bi bi-grid',
+            'submenu' => [
+                [
+                    'name' => 'category-collection',
+                    'title' => 'Category collection',
+                    'icon' => null,
+                    'route' => 'admin.collection.index'
+                ],
+                [
+                    'name' => 'product-collection',
+                    'title' => 'Product collection',
+                    'icon' => null,
+                    'route' => 'admin.product-collection.index'
+                ],
+            ],
+            'number' => 4
+        ],
+        [
             'name' => 'live',
             'title' => 'Live',
             'icon' => 'bi bi-cast',

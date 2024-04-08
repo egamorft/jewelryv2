@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\AdvertisementController;
+use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CollectionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductCollectionController;
 use App\Http\Controllers\Admin\StylingController;
 use App\Http\Controllers\Admin\VideoController;
 
@@ -40,7 +44,54 @@ Route::middleware('check-admin-auth')->group(function () {
       Route::get('edit/{id}', [StylingController::class, 'edit'])->name('edit');
       Route::post('update/{id}', [StylingController::class, 'update'])->name('update');
       Route::get('delete/{id}', [StylingController::class, 'delete'])->name('delete');
+      Route::post('delete-img', [StylingController::class, 'deleteImg'])->name('delete-img');
+      Route::get('item_product/search', [StylingController::class, 'productSearch']);
+      Route::get('item_product', [StylingController::class, 'itemProduct']);
+      Route::get('item_product/delete', [StylingController::class, 'itemDeleteProduct']);
+      Route::get('item_product/delete_related', [StylingController::class, 'itemDeleteRelated']);
    });
+
+   Route::prefix('advertisement')->name('advertisement.')->group(function () {
+      Route::get('', [AdvertisementController::class, 'index'])->name('index');
+      Route::get('create', [AdvertisementController::class, 'create'])->name('create');
+      Route::post('store', [AdvertisementController::class, 'store'])->name('store');
+      Route::get('edit/{id}', [AdvertisementController::class, 'edit'])->name('edit');
+      Route::post('update/{id}', [AdvertisementController::class, 'update'])->name('update');
+      Route::get('delete/{id}', [AdvertisementController::class, 'delete'])->name('delete');
+      Route::get('item_product/search', [AdvertisementController::class, 'productSearch']);
+      Route::get('item_product', [AdvertisementController::class, 'itemProduct']);
+      Route::get('item_product/delete', [AdvertisementController::class, 'itemDeleteProduct']);
+      Route::get('item_product/delete_related', [AdvertisementController::class, 'itemDeleteRelated']);
+   });
+
+   Route::prefix('album')->name('album.')->group(function () {
+      Route::get('', [AlbumController::class, 'index'])->name('index');
+      Route::get('create', [AlbumController::class, 'create'])->name('create');
+      Route::post('store', [AlbumController::class, 'store'])->name('store');
+      Route::get('edit/{id}', [AlbumController::class, 'edit'])->name('edit');
+      Route::post('update/{id}', [AlbumController::class, 'update'])->name('update');
+      Route::get('delete/{id}', [AlbumController::class, 'delete'])->name('delete');
+  });
+
+  Route::prefix('collection')->name('collection.')->group(function () {
+   Route::get('', [CollectionController::class, 'index'])->name('index');
+   Route::get('create', [CollectionController::class, 'create'])->name('create');
+   Route::post('store', [CollectionController::class, 'store'])->name('store');
+   Route::get('edit/{id}', [CollectionController::class, 'edit'])->name('edit');
+   Route::post('update/{id}', [CollectionController::class, 'update'])->name('update');
+   Route::get('delete/{id}', [CollectionController::class, 'delete'])->name('delete');
+});
+
+Route::prefix('product-collection')->name('product-collection.')->group(function () {
+   Route::get('', [ProductCollectionController::class, 'index'])->name('index');
+   Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
+   Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
+   Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');
+   Route::get('item_product/search', [ProductCollectionController::class, 'productSearch']);
+   Route::get('item_product', [ProductCollectionController::class, 'itemProduct']);
+   Route::get('item_product/delete', [ProductCollectionController::class, 'itemDeleteProduct']);
+});
+   
    //LIVE
    Route::get('live-content', [LiveController::class, 'content'])->name('live.content');
    Route::post('save-live-content', [LiveController::class, 'saveContent'])->name('live.save.content');
