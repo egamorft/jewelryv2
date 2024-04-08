@@ -26,4 +26,10 @@ class Product extends Model
         'exchange',
         'published'
     ];
+
+    // Relationship with ProductCategory model
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_category', 'product_id', 'category_id');
+    }
 }

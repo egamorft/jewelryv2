@@ -2,6 +2,9 @@
 @section('title', 'Create product')
 
 @section('style')
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('main')
@@ -59,6 +62,14 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="categorySelector" class="form-label">Categories</label>
+                        <select class="form-select" id="categorySelector" name="categories[]" multiple>
+                            @foreach ($categories as $cate)
+                                <option value="{{ $cate->id }}" {{ in_array($cate->id, old('categories', [])) ? 'selected' : '' }}>{{ $cate->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="delivery_n_notice" class="form-label">Delivery & Notice</label>
                         <textarea name="delivery_n_notice" class="form-control" id="delivery_n_notice" rows="3"
                             placeholder="Enter delivery & notice">{{ old('delivery_n_notice') }}</textarea>
@@ -98,6 +109,14 @@
     </main>
 @endsection
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#categorySelector').select2({
+                theme: 'bootstrap-5',
+            });
+        });
+    </script>
     <script>
         $('#thumbnail').on('change', function(e) {
             var file = e.target.files[0];

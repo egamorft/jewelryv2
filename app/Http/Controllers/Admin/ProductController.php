@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $categories = Category::all();
+
+        return view('admin.product.create')->with(compact('categories'));
     }
 
     /**
@@ -82,7 +86,13 @@ class ProductController extends Controller
             }
             $validatedData['photos'] = json_encode($storedPhotos);
 
-            Product::create($validatedData);
+            $product = Product::create($validatedData);
+
+            //Categories handle
+            $categories = $request->categories;
+            if ($categories) {
+                $product->categories()->sync($categories);
+            }
 
             toastr()->success("Add product successfully");
             return redirect()->route('admin.product.index');
@@ -105,9 +115,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('categories')->findOrFail($id);
+        $categories = Category::all();
+        $selectedCategories = $product->categories->pluck('id')->toArray();
 
-        return view('admin.product.edit')->with(compact('product'));
+        return view('admin.product.edit')->with(compact('product', 'categories', 'selectedCategories'));
     }
 
     /**
@@ -187,6 +199,13 @@ class ProductController extends Controller
             }
 
             $product->update($validatedData);
+
+            //Categories handle
+            $categories = $request->categories;
+            if ($categories) {
+                $product->categories()->sync($categories);
+            }
+        
 
             toastr()->success("Update product successfully");
             return back();
