@@ -14,7 +14,7 @@
                 @endif
                 <form action="{{route('admin.product-collection.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-3">
+                    <div class="row mt-3 mb-5">
                         <label class="col-sm-3 col-form-label">Collection</label>
                         <div class="col-sm-8">
                             <select class="form-select" name="collection"
@@ -25,6 +25,7 @@
                             </select>
                         </div>
                     </div>
+                    <h4>List of products</h4>
                         <div class="card">
                             <div class="card-content">
                                 <div class="table-responsive table-responsive-lg">

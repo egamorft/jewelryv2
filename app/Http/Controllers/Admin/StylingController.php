@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\StylingImageModel;
 use App\Models\StylingModel;
 use App\Models\StylingProductModel;
@@ -73,7 +74,7 @@ class StylingController extends Controller
             $styling_image = StylingImageModel::where('styling_id',$id)->get();
             $related = StylingProductModel::where('styling_id', $id)->get();
             foreach ($related as $item) {
-                $item->product = ProductsModel::find($item->product_id);
+                $item->product = Product::find($item->product_id);
             }
             return view('admin.styling.edit', compact('titlePage', 'page_menu', 'page_sub', 'styling','styling_image','related'));
         }catch (\Exception $exception){
@@ -138,7 +139,7 @@ class StylingController extends Controller
     {
         try {
             $key_search = $request->get('query');
-            $products = ProductsModel::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
+            $products = Product::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
             $view = view('admin.styling.item-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -149,7 +150,7 @@ class StylingController extends Controller
     public function itemProduct(Request $request)
     {
         try {
-            $products = ProductsModel::whereIn('id', $request->data)->get();
+            $products = Product::whereIn('id', $request->data)->get();
             $view = view('admin.styling.similar-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -161,7 +162,7 @@ class StylingController extends Controller
     {
         try {
             if (isset($request->data)) {
-                $products = ProductsModel::whereIn('id', $request->data)->get();
+                $products = Product::whereIn('id', $request->data)->get();
                 $view = view('admin.styling.similar-product', compact('products'))->render();
                 return response()->json(['status' => true, 'table_data' => $view]);
             } else {

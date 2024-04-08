@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CollectionModel;
 use App\Models\CollectionProductModel;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductCollectionController extends Controller
@@ -15,6 +16,9 @@ class ProductCollectionController extends Controller
             $page_menu = 'collection';
             $page_sub = 'product-collection';
             $listData = CollectionProductModel::orderBy('created_at', 'desc')->paginate(25);
+            foreach($listData as $item){
+                $item->product = Product::find($item->product_id);
+            }
 
             return view('admin.collection_product.index', compact('titlePage', 'page_menu', 'page_sub', 'listData'));
     }
@@ -38,7 +42,7 @@ class ProductCollectionController extends Controller
             $related = $request->get('related');
             $this->add_product_collection($related, $request->collection);
             
-            return redirect()->route('admin.collection_product.index')->with(['success' => 'New data created successfully']);
+            return redirect()->route('admin.product-collection.index')->with(['success' => 'New data created successfully']);
         }catch (\Exception $exception){
             return back()->with(['error' => $exception->getMessage()]);
         }
@@ -58,7 +62,7 @@ class ProductCollectionController extends Controller
     {
         try {
             $key_search = $request->get('query');
-            $products = ProductsModel::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
+            $products = Product::Where('name', 'LIKE', '%' . $key_search . '%')->paginate(10);
             $view = view('admin.collection_product.item-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -69,7 +73,7 @@ class ProductCollectionController extends Controller
     public function itemProduct(Request $request)
     {
         try {
-            $products = ProductsModel::whereIn('id', $request->data)->get();
+            $products = Product::whereIn('id', $request->data)->get();
             $view = view('admin.collection_product.similar-product', compact('products'))->render();
             return response()->json(['table_data' => $view]);
         } catch (\Exception $exception) {
@@ -81,7 +85,7 @@ class ProductCollectionController extends Controller
     {
         try {
             if (isset($request->data)) {
-                $products = ProductsModel::whereIn('id', $request->data)->get();
+                $products = Product::whereIn('id', $request->data)->get();
                 $view = view('admin.collection_product.similar-product', compact('products'))->render();
                 return response()->json(['status' => true, 'table_data' => $view]);
             } else {

@@ -34,12 +34,12 @@
                                             <td>
                                                 <div class="w-100 position-relative"
                                                      style="padding-top: 50%;min-width: 150px">
-                                                    <img src="{{asset($value->src)}}" class="position-absolute w-100 h-100"
+                                                    <img src="{{asset($value->product->thumbnail_img)}}" class="position-absolute w-100 h-100"
                                                          style="top: 0;left: 0;object-fit: cover">
                                                 </div>
                                             </td>
                                             <td>
-                                                {{$value->title}}
+                                                {{$value->product->name}}
                                             </td>
                                             <td>
                                                 <div class="d-flex">
