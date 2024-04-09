@@ -25,7 +25,22 @@
                         <img src="{{asset($item->info->thumbnail_img)}}" class="img-child-sp" loading="lazy">
                         <div class="item-content-child-adv">
                            <p class="title-child-sp">{{$item->info->name}}</p>
-                           <p class="price-sale">{{$item->info->current_stock}} won</p>
+                           @php
+                           $discountEndTime = \Carbon\Carbon::parse($item->info->discount_end);
+                           $currentDateTime = \Carbon\Carbon::now();
+                       @endphp
+                       @if ($item->info->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+                       @php
+                       if ($item->info->discount_type == 'percent') {
+                                            $salePrice = $item->info->price - ($item->info->price * $item->info->discount) / 100;
+                                        } else {
+                                            $salePrice = $item->info->price - $item->info->discount;
+                                        }
+                       @endphp
+                           <p class="price-sale"> {{ number_format($salePrice)}}  VND</p>
+                           @else
+                           <p class="price-sale">{{ number_format($item->info->price)}}  VND</p>
+                           @endif
                            <p class="title-tag">#Limited Quantity #Natural Black Diamond_4mm</p>
                         </div>
                      </div>

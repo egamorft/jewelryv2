@@ -15,7 +15,7 @@
    <div class="box-header-menu-category">
       <div class="item-menu-category">
          @foreach ($data_collection as $item_coll)
-         <a href="" class="title-menu-category @if($item_coll->id == $collection->id) menu-category-active @endif">{{$item_coll->title}}</a>
+         <a href="{{url('detail-collection',$item_coll->id)}}" class="title-menu-category @if($item_coll->id == $collection->id) menu-category-active @endif">{{$item_coll->title}}</a>
          @endforeach
       </div>
       <div class="item-menu-category-icon">
@@ -35,28 +35,57 @@
       @foreach ($collection_product as $product_item)
       <div class="item-product">
          <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product">
-         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product">
+         @if($product_item->interest == 1)
+         <img src="{{asset('assets/images/heart-solid.svg')}}" class="icon-heart-product" data-product-id="{{ $product_item->info->id }}">
+         @else 
+         <img src="{{asset('assets/images/heart.png')}}" class="icon-heart-product" data-product-id="{{ $product_item->info->id }}">
+         @endif
             <img src="{{asset($product_item->info->thumbnail_img)}}" class="w-100">
          <div class="box-info-sp">
             <p class="title-product">{{$product_item->info->name}}</p>
-            <p class="price">5,400,000 won</p>
-            <div class="d-flex justify-content-between flex-wrap">
-               <div class="box-item-price">
-                  <p class="price-sale">4,860,00 won</p>
-                  <p class="percent-sale">10%</p>
-               </div>
-               <div class="box-time-sp">
-                  <img src="{{asset('assets/images/clock.png')}}" class="icon-clock">
-                  <p class="title-time">Time remaining: 6 days
-                     12:24:06</p>
-               </div>
+            @php
+                $discountEndTime = \Carbon\Carbon::parse($product_item->info->discount_end);
+                $currentDateTime = \Carbon\Carbon::now();
+                $remainingTime = $discountEndTime->diff($currentDateTime)
+                ->format('%a days %H:%I:%S');
+            @endphp
+            @if($product_item->info->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+            <p class="price">{{number_format($product_item->info->price)}} VND</p>
+            @php
+                  if ($product_item->info->discount_type == 'percent') {
+                                            $salePrice = $product_item->info->price - ($product_item->info->price * $product_item->info->discount) / 100;
+                                        } else {
+                                            $salePrice = $product_item->info->price - $product_item->info->discount;
+                                        }
+            @endphp
+             <div class="d-flex justify-content-between flex-wrap">
+              <div class="box-item-price">
+                   <p class="price-sale">{{ number_format($salePrice)}} VND</p>
+                   @if ($product_item->info->discount_type == 'percent')
+                                                <p class="percent-sale">{{ $product_item->info->discount }}%</p>
+                                            @else
+                                                <p class="percent-sale">
+                                                    -{{ number_format($product_item->info->discount, 0, '.', ',') }} VND</p>
+                                            @endif
+              </div>
+              <div class="box-time-sp">
+                 <img src="{{asset('assets/images/clock.png')}}" class="icon-clock">
+                 <p class="title-time">Time remaining: {{ $remainingTime }}</p>
+              </div>
+           </div>
+           @else
+           <div class="d-flex justify-content-between flex-wrap">
+              <div class="box-item-price">
+                  <p class="price-sale">{{ number_format($product_item->info->price, 0, '.', ',') }} đ</p>
+              </div>
             </div>
+            @endif
          </div>
        </div>
       @endforeach
    </div>
    <div class="w-100 d-flex justify-content-center mt-5">
-      <a href="" class="btn-more-sp">Xem thêm</a>
+      <a class="btn-more-sp">Xem thêm</a>
    </div>
 </div>
 
@@ -183,4 +212,5 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('assets/js/category.js')}}"></script>
+
 @stop

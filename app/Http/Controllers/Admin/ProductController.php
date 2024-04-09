@@ -17,9 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $page_menu = 'product';
+        $page_sub = null;
         $products = Product::orderBy('published', 'desc')->orderBy('id', 'desc')->get();
 
-        return view('admin.product.index')->with(compact('products'));
+        return view('admin.product.index')->with(compact('products','page_menu','page_sub'));
     }
 
     /**
@@ -27,9 +29,11 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $page_menu = 'product';
+        $page_sub = null;
         $categories = Category::all();
 
-        return view('admin.product.create')->with(compact('categories'));
+        return view('admin.product.create')->with(compact('categories','page_menu','page_sub'));
     }
 
     /**
@@ -116,11 +120,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $page_menu = 'product';
+        $page_sub = null;
         $product = Product::with('categories')->findOrFail($id);
         $categories = Category::all();
         $selectedCategories = $product->categories->pluck('id')->toArray();
 
-        return view('admin.product.edit')->with(compact('product', 'categories', 'selectedCategories'));
+        return view('admin.product.edit')->with(compact('product', 'categories', 'selectedCategories','page_menu','page_sub'));
     }
 
     /**

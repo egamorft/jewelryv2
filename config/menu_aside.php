@@ -65,7 +65,8 @@ return [
                     'name' => 'product-collection',
                     'title' => 'Product collection',
                     'icon' => null,
-                    'route' => 'admin.product-collection.index'
+                    'route' => 'admin.product-collection.index',
+                    'parameters' => ['status' => 'all'],
                 ],
             ],
             'number' => 4

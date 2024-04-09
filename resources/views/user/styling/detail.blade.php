@@ -22,43 +22,42 @@
       {{$styling->content}}
    </div>
    <p class="title-shop-now">Shop now</p>
-   <div class="box-shop-product">
+   <input type="text" name="styling_id" value="{{$styling->id}}" hidden>
+   <div class="box-shop-product" id="product-container">
       @foreach ($styling_product as $product_item)
       <div class="item-product-shop">
          <img src="{{asset($product_item->info->thumbnail_img)}}" class="w-100">
          <div class="box-content-img">
             <p class="title-contnet-img">{{$product_item->info->name}}</p>
-            <p class="title-contnet-img">@if ($product_item->info->current_stock != 0)
-               {{$product_item->info->current_stock}}
-               @else
-               {{$product_item->info->price}}
-            @endif VND</p>
+            @php
+                $discountEndTime = \Carbon\Carbon::parse($product_item->info->discount_end);
+                $currentDateTime = \Carbon\Carbon::now();
+                $remainingTime = $discountEndTime->diff($currentDateTime)
+                ->format('%a days %H:%I:%S');
+            @endphp
+            @if ($product_item->info->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+            @php
+            if ($product_item->info->discount_type == 'percent') {
+                                      $salePrice = $product_item->info->price - ($product_item->info->price * $product_item->info->discount) / 100;
+                                  } else {
+                                      $salePrice = $product_item->info->price - $product_item->info->discount;
+                                  }
+      @endphp
+         <p class="title-contnet-img">{{number_format($salePrice)}} VND</p>
+       @else
+            <p class="title-contnet-img">{{number_format($product_item->info->price)}} VND</p>
+             @endif
          </div>
       </div>
       @endforeach
    </div>
-   <div class="d-flex justify-content-center mt-5">
-      <a href="" class="btn-list-shop">Danh sách</a>
-   </div>
+   @if(count($styling_product) == 21)
+      <div class="d-flex justify-content-center mt-5">
+         <a class="btn-list-shop" id="load-more-btn" data-offset="21">List</a>
+      </div>
+   @endif
    </div>
 
 @section('script_page')
-<script>
-   var swiper_banner = new Swiper(".mySwiperBannerStyling", {
-    slidesPerView: 3,
-    spaceBetween: 5,
-    scrollbar: {
-        el: ".swiper-scrollbar",
-        hide: true,
-    },
-    breakpoints: {
-        768: {
-            slidesPerView: 3,
-        },
-        300: {
-            slidesPerView: 1,
-        },
-    },
-});
-</script>
+<script src="{{asset('assets/js/styling.js')}}"></script>
 @stop

@@ -2,7 +2,7 @@
     <div class="d-flex align-item-center">
         <div class="item-text-header" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuTop"
             aria-controls="offcanvasMenuTop">SHOP</div>
-        <a class="item-text-header">STYLING</a>
+        <a href="{{route('styling')}}" class="item-text-header">STYLING</a>
         <a href="{{ route('live') }}" class="item-text-header">LIVE</a>
         <a class="item-text-header">HANNAM SHOWROOM</a>
     </div>
@@ -14,7 +14,7 @@
             <img src="{{ asset('assets/images/search-sm.png') }}" class="icon-header" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
         </a>
-        <a href="#">
+        <a href="{{ Auth::check() ? route('profile.interest') : route('auth.member.login') }}">
             <img src="{{ asset('assets/images/heart.png') }}" class="icon-header">
         </a>
         <a href="{{ Auth::check() ? route('profile.index') : route('auth.member.login') }}">

@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\CollectionModel;
 use App\Models\CollectionProductModel;
 use App\Models\Product;
+use App\Models\ProductInterestModel;
 use App\Models\StylingImageModel;
 use App\Models\StylingModel;
 use App\Models\StylingProductModel;
@@ -48,6 +49,10 @@ class HomeController extends Controller
             $products = Product::whereHas('categories', function ($query) use ($category) {
                 $query->where('category_id', $category->id);
             })->take(4)->get();
+            foreach($products as $item){
+                $product_interest = ProductInterestModel::where('product_id',$item->id)->first();
+                $item->interest = $product_interest?1:0;
+            }
             $productsByCategory[$category->name] = $products;
         }
 
@@ -59,26 +64,6 @@ class HomeController extends Controller
         return view('user.category.index');
     }
 
-    public function styling()
-    {
-        $styling = StylingModel::where('display',1)->orderBy('created_at','desc')->paginate(20);
-        foreach($styling as $item_styling){
-            $item_styling->src = StylingImageModel::where('styling_id',$item_styling->id)->first()->src;
-        }
-        return view('user.styling.index',compact('styling'));
-    }
-
-    public function detailStyling($id)
-    {   
-        $styling = StylingModel::find($id);
-        $styling_img = StylingImageModel::where('styling_id',$id)->get();
-        $styling_product = StylingProductModel::where('styling_id',$id)->get();
-        foreach($styling_product as $item){
-            $item->info = Product::find($item->product_id);
-        }
-        return view('user.styling.detail',compact('styling','styling_img','styling_product'));
-    }
-
     public function detailCollection($id)
     {   
         $data_collection = CollectionModel::where('display',1)->orderBy('index','asc')->get();
@@ -86,6 +71,8 @@ class HomeController extends Controller
         $collection_product = CollectionProductModel::where('collection_id',$id)->get();
         foreach($collection_product as $item){
             $item->info = Product::find($item->product_id);
+            $product_interest = ProductInterestModel::where('product_id',$item->product_id)->first();
+            $item->interest = $product_interest?1:0;
         }
         return view('user.collection.index',compact('collection','data_collection','collection_product'));
     }

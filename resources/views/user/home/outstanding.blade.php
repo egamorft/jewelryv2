@@ -18,7 +18,11 @@
                     @foreach ($products as $pro)
                         <div class="item-product">
                             <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy">
-                            <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" loading="lazy">
+                            @if($pro->interest == 1)
+                            <img src="{{ asset('assets/images/heart-solid.svg') }}" class="icon-heart-product" data-product-id="{{ $pro->id }}" loading="lazy">
+                            @else
+                            <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" data-product-id="{{ $pro->id }}" loading="lazy">
+                            @endif
                             <img src="{{ $pro->thumbnail_img }}" class="w-100" loading="lazy">
                             <div>
                                 <p class="title-product">{{ $pro->name }}</p>

@@ -84,7 +84,7 @@ Route::middleware('check-admin-auth')->group(function () {
   });
 
   Route::prefix('product-collection')->name('product-collection.')->group(function () {
-     Route::get('', [ProductCollectionController::class, 'index'])->name('index');
+     Route::get('index/{status}', [ProductCollectionController::class, 'index'])->name('index');
      Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
      Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
      Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');

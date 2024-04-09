@@ -14,9 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $page_menu = 'category';
+        $page_sub = null;
         $categories = Category::orderBy('popular', 'desc')->orderBy('id', 'desc')->get();
 
-        return view('admin.category.category-list')->with(compact('categories'));
+        return view('admin.category.category-list')->with(compact('categories','page_menu','page_sub'));
     }
 
     /**
