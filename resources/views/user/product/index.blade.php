@@ -11,41 +11,67 @@
       <div class="box-left-info-sp">
          <div class="swiper swiperDetailProduct">
             <div class="swiper-wrapper">
-               @for ($i = 0; $i < 5; $i++)
+               @foreach(json_decode($product->photos) as $photo)
                   <div class="swiper-slide">
-                     <img src="{{asset('assets/images/img-detail-sp.jpg')}}" class="w-100"/>
+                     <img src="{{asset($photo)}}" class="w-100"/>
                   </div>
-               @endfor
+               @endforeach
             </div>
             <div class="swiper-scrollbar"></div>
          </div>
          <div class="box-info box-mobile-infor">
             <div class="box-title-info-sp">
-               <p class="name-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
+               <p class="name-product">{{ $product->name }}</p>
                <div class="d-flex align-items-center">
                   <img src="{{asset('assets/images/heart.png')}}" class="icon-share">
                   <img src="{{asset('assets/images/share.png')}}" class="icon-share">
                </div>
             </div>
-            <p class="price-info">5,400,000 won</p>
-            <div class="d-flex mb-3">
-               <span class="percent-info">10%</span>
-               <span class="price-sale-info">4,860,000 won</span>
-            </div>
-            <div class="d-flex mb-2">
-               <p class="title-info" >Discount period</p>
-               <p class="content-info">Remaining time: 6 days 05:33:30 (540,000 won discount)</p>
-            </div>
-            <div class="d-flex mb-2">
-               <p class="title-info" >Reserves</p>
-               <p class="content-info">48,600 won (1%)</p>
-            </div>
+            @php
+                  $discountEndTime = \Carbon\Carbon::parse($product->discount_end);
+                  $currentDateTime = \Carbon\Carbon::now();
+                  $remainingTime = $discountEndTime
+                     ->diff($currentDateTime)
+                     ->format('%a days %H:%I:%S');
+             @endphp
+             @if ($product->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+               <p class="price-info">{{ number_format($product->price) }} VND</p>
+               @php
+                  if ($product->discount_type == 'percent') {
+                        $salePrice = $product->price - ($product->price * $product->discount) / 100;
+                  } else {
+                        $salePrice = $product->price - $product->discount;
+                  }
+               @endphp
+                <div class="d-flex mb-3">
+                  @if ($product->discount_type == 'percent')
+                  <span class="percent-info">{{ $product->discount }}%</span>
+                   @else
+                     <span class="percent-info">-{{ number_format($product->discount) }} VND</span>
+                  @endif
+                  <span class="price-sale-info">{{ number_format($salePrice) }} VND</span>
+               </div>
+               <div class="d-flex mb-2">
+                  <p class="title-info" >Discount period</p>
+                  <p class="content-info">Remaining time: {{ $remainingTime }}</p>
+               </div>
+               <div class="d-flex mb-2">
+                  <p class="title-info" >Reserves</p>
+                  @if ($product->discount_type == 'percent')
+                     <p class="content-info">{{$product->price - $salePrice}} VND ({{ $product->discount }}%)</p>
+                  @else
+                     <p class="content-info">{{ number_format($product->discount) }} VND</p>
+                  @endif
+               </div>
+            @else
+            <span class="price-sale-info">{{ number_format($product->price) }} VND</span>
+            @endif
             <div class="d-flex mb-2">
                <p class="title-info" >interest-free installment</p>
                <p class="content-info">Information on interest-free benefits by credit card company</p>
             </div>
 
-            <button class="btn-buy-cart">Shopping basket | purchase</button>
+            <button class="btn-buy-cart" onclick="addToCart({{ $product->id }})">Shopping basket | purchase</button>
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                <div class="accordion-item">
@@ -55,13 +81,7 @@
                    </button>
                  </h2>
                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">gold _ 14K 18K
-                     gold color _ Yellow | Pink | White | Natural
-                     Weight _ 6.8g (based on 14K 17.5cm)
-                     Stone _ Natural black diamond 4mm  
-                     After production is completed, length extension and shortening A/S are available. 
-                     We recommend choosing a size that is 1 to 1.5 cm larger than your wrist circumference.﻿
-                     Model wearing _ 14K yellow gold </div>
+                   <div class="accordion-body">{{ $product->spec_n_details }}</div>
                  </div>
                </div>
                <div class="accordion-item">
@@ -71,7 +91,7 @@
                    </button>
                  </h2>
                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">- This is a custom-made product and takes approximately 10-14 days to produce. - Free shipping via fast and safe post office delivery. - For purchases under 50,000 won, shipping fee of 3,000 won is automatically prepaid and there is no additional charge for Jeju Island and other islands. - When depositing via bank transfer, orders not paid within 7 days will be automatically cancelled. - In the case of mobile phone payments, cancellation is only possible in the month of payment, and a cancellation fee will be charged if cancellation is made in the month following payment.</div>
+                   <div class="accordion-body">{{ $product->delivery_n_notice }}</div>
                  </div>
                </div>
                <div class="accordion-item">
@@ -81,7 +101,7 @@
                    </button>
                  </h2>
                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">- The products you order are individually custom-made one by one according to the option you have selected, so exchanges or returns are not possible due to a simple change of mind after purchase. - Exchange, return, or compensation for damage or loss due to carelessness when wearing the product is not possible. - If the product is defective, it can be exchanged or returned for the same product. Please contact customer service within 1 day of receiving the product.</div>
+                   <div class="accordion-body">{{ $product->exchange }}</div>
                  </div>
                </div>
              </div>
@@ -290,13 +310,30 @@
                <p class="title-big-recommended">Recommended products</p>
                <div class="swiper recommendedProducts">
                   <div class="swiper-wrapper">
-                     @for ($i = 0; $i < 5; $i++)
+                     @foreach ($related_products as $related)
                         <div class="swiper-slide">
-                           <img src="{{asset('assets/images/img-detail-sp.jpg')}}" class="w-100"/>
-                           <p class="title-recommended-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
-                           <p class="price-recommended-product">4,860,00 won</p>
+                           <img src="{{asset($related->thumbnail_img)}}" class="w-100"/>
+                           <p class="title-recommended-product">{{$related->name}}</p>
+                           @php
+                           $discountEndTime = \Carbon\Carbon::parse($related->discount_end);
+                           $currentDateTime = \Carbon\Carbon::now();
+                           $remainingTime = $discountEndTime->diff($currentDateTime)
+                           ->format('%a days %H:%I:%S');
+                       @endphp
+                       @if ($related->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+                       @php
+                       if ($related->discount_type == 'percent') {
+                                                 $salePrice = $related->price - ($related->price * $related->discount) / 100;
+                                             } else {
+                                                 $salePrice = $related->price - $related->discount;
+                                             }
+                 @endphp
+                           <p class="price-recommended-product">{{number_format($salePrice)}} VND</p>
+                           @else
+            <p class="price-recommended-product">{{number_format($related->price)}} VND</p>
+             @endif
                         </div>
-                     @endfor
+                     @endforeach
                   </div>
                   <div class="swiper-scrollbar"></div>
                 </div>
@@ -305,67 +342,87 @@
      
       <div class="box-info box-desktop-infor">
             <div class="box-title-info-sp">
-               <p class="name-product">Donna Andy Classic Black Diamond Tennis Bracelet [4mm]</p>
+               <p class="name-product">{{ $product->name }}</p>
                <div class="d-flex align-items-center">
                   <img src="{{asset('assets/images/heart.png')}}" class="icon-share">
                   <img src="{{asset('assets/images/share.png')}}" class="icon-share">
                </div>
             </div>
-            <p class="price-info">5,400,000 won</p>
-            <div class="d-flex mb-3">
-               <span class="percent-info">10%</span>
-               <span class="price-sale-info">4,860,000 won</span>
-            </div>
-            <div class="d-flex mb-2">
-               <p class="title-info" >Discount period</p>
-               <p class="content-info">Remaining time: 6 days 05:33:30 (540,000 won discount)</p>
-            </div>
-            <div class="d-flex mb-2">
-               <p class="title-info" >Reserves</p>
-               <p class="content-info">48,600 won (1%)</p>
-            </div>
+            @php
+                  $discountEndTime = \Carbon\Carbon::parse($product->discount_end);
+                  $currentDateTime = \Carbon\Carbon::now();
+                  $remainingTime = $discountEndTime
+                     ->diff($currentDateTime)
+                     ->format('%a days %H:%I:%S');
+             @endphp
+             @if ($product->discount > 0 && $discountEndTime->isAfter($currentDateTime))
+               <p class="price-info">{{ number_format($product->price) }} VND</p>
+               @php
+                  if ($product->discount_type == 'percent') {
+                        $salePrice = $product->price - ($product->price * $product->discount) / 100;
+                  } else {
+                        $salePrice = $product->price - $product->discount;
+                  }
+               @endphp
+                <div class="d-flex mb-3">
+                  @if ($product->discount_type == 'percent')
+                  <span class="percent-info">{{ $product->discount }}%</span>
+                   @else
+                     <span class="percent-info">-{{ number_format($product->discount) }} VND</span>
+                  @endif
+                  <span class="price-sale-info">{{ number_format($salePrice) }} VND</span>
+               </div>
+               <div class="d-flex mb-2">
+                  <p class="title-info" >Discount period</p>
+                  <p class="content-info">Remaining time: {{ $remainingTime }}</p>
+               </div>
+               <div class="d-flex mb-2">
+                  <p class="title-info" >Reserves</p>
+                  @if ($product->discount_type == 'percent')
+                     <p class="content-info">{{$product->price - $salePrice}} VND ({{ $product->discount }}%)</p>
+                  @else
+                     <p class="content-info">{{ number_format($product->discount) }} VND</p>
+                  @endif
+               </div>
+            @else
+            <span class="price-sale-info">{{ number_format($product->price) }} VND</span>
+            @endif
             <div class="d-flex mb-2">
                <p class="title-info" >interest-free installment</p>
                <p class="content-info">Information on interest-free benefits by credit card company</p>
             </div>
 
-            <button class="btn-buy-cart">Shopping basket | purchase</button>
+            <button class="btn-buy-cart" onclick="addToCart({{ $product->id }})">Shopping basket | purchase</button>
 
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion accordion-flush" id="accordionFlushExamples">
                <div class="accordion-item">
-                 <h2 class="accordion-header" id="flush-headingOne">
-                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                 <h2 class="accordion-header" id="flush-headingOnes">
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOnes" aria-expanded="false" aria-controls="flush-collapseOnes">
                      Spec & Details
                    </button>
                  </h2>
-                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">gold _ 14K 18K
-                     gold color _ Yellow | Pink | White | Natural
-                     Weight _ 6.8g (based on 14K 17.5cm)
-                     Stone _ Natural black diamond 4mm  
-                     After production is completed, length extension and shortening A/S are available. 
-                     We recommend choosing a size that is 1 to 1.5 cm larger than your wrist circumference.﻿
-                     Model wearing _ 14K yellow gold </div>
+                 <div id="flush-collapseOnes" class="accordion-collapse collapse" aria-labelledby="flush-headingOnes" data-bs-parent="#accordionFlushExamples">
+                   <div class="accordion-body">{{ $product->spec_n_details }}</div>
                  </div>
                </div>
                <div class="accordion-item">
-                 <h2 class="accordion-header" id="flush-headingTwo">
-                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                 <h2 class="accordion-header" id="flush-headingTwos">
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwos" aria-expanded="false" aria-controls="flush-collapseTwos">
                      Delivery & Notice
                    </button>
                  </h2>
-                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">- This is a custom-made product and takes approximately 10-14 days to produce. - Free shipping via fast and safe post office delivery. - For purchases under 50,000 won, shipping fee of 3,000 won is automatically prepaid and there is no additional charge for Jeju Island and other islands. - When depositing via bank transfer, orders not paid within 7 days will be automatically cancelled. - In the case of mobile phone payments, cancellation is only possible in the month of payment, and a cancellation fee will be charged if cancellation is made in the month following payment.</div>
+                 <div id="flush-collapseTwos" class="accordion-collapse collapse" aria-labelledby="flush-headingTwos" data-bs-parent="#accordionFlushExamples">
+                   <div class="accordion-body">{{ $product->delivery_n_notice }}</div>
                  </div>
                </div>
                <div class="accordion-item">
-                 <h2 class="accordion-header" id="flush-headingThree">
-                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                 <h2 class="accordion-header" id="flush-headingThrees">
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThrees" aria-expanded="false" aria-controls="flush-collapseThrees">
                      A/S & Exchange
                    </button>
                  </h2>
-                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body">- The products you order are individually custom-made one by one according to the option you have selected, so exchanges or returns are not possible due to a simple change of mind after purchase. - Exchange, return, or compensation for damage or loss due to carelessness when wearing the product is not possible. - If the product is defective, it can be exchanged or returned for the same product. Please contact customer service within 1 day of receiving the product.</div>
+                 <div id="flush-collapseThrees" class="accordion-collapse collapse" aria-labelledby="flush-headingThrees" data-bs-parent="#accordionFlushExamples">
+                   <div class="accordion-body">{{ $product->exchange }}</div>
                  </div>
                </div>
              </div>

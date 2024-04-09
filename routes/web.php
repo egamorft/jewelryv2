@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\LiveController;
+use App\Http\Controllers\StylingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -26,11 +27,13 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
-Route::get('/styling', [HomeController::class, 'styling'])->name('styling');
-Route::get('/detail-styling/{id}', [HomeController::class, 'detailStyling'])->name('detail-styling');
+Route::get('/styling', [StylingController::class, 'styling'])->name('styling');
+Route::get('/load-more-styling', [StylingController::class, 'loadMoreStyling']);
+Route::get('/detail-styling/{id}', [StylingController::class, 'detailStyling'])->name('detail-styling');
+Route::get('/load-more-products-styling', [StylingController::class, 'loadMoreProducts']);
 Route::get('/detail-collection/{id}', [HomeController::class, 'detailCollection'])->name('detail-collection');
 Route::get('/live', [LiveController::class, 'index'])->name('live');
-Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('detail-product');
+Route::get('/detail-product/{id}', [HomeController::class, 'detailProduct'])->name('detail-product');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');
@@ -68,6 +71,7 @@ Route::middleware('auth')->group(function () {
         //INTEREST
         Route::get('interest', [InterestProductController::class, 'index'])->name('profile.interest');
     });
+    Route::post('product-interest', [InterestProductController::class, 'productInterest'])->name('product.interest');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.member.logout');
 });

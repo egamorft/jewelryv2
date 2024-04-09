@@ -16,13 +16,13 @@
             @foreach ($productsByCategory as $products)
                 <div class="swiper-slide box-swiper-sp">
                     @foreach ($products as $pro)
-                        <div class="item-product">
-                            <a type="button" onclick="addToCart({{ $pro->id }})">
-                                <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy">
-                            </a>
-                            <a href="#">
-                                <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" loading="lazy">
-                            </a>
+                        <a href="{{url('detail-product',$pro->id)}}" class="item-product">
+                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy" onclick="addToCart({{ $pro->id }})">
+                            @if($pro->interest == 1)
+                            <img src="{{ asset('assets/images/heart-solid.svg') }}" class="icon-heart-product" data-product-id="{{ $pro->id }}" loading="lazy">
+                            @else
+                            <img src="{{ asset('assets/images/heart.png') }}" class="icon-heart-product" data-product-id="{{ $pro->id }}" loading="lazy">
+                            @endif
                             <img src="{{ $pro->thumbnail_img }}" class="w-100" loading="lazy">
                             <div>
                                 <p class="title-product">{{ $pro->name }}</p>
@@ -65,7 +65,7 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endforeach

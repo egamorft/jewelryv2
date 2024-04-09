@@ -11,6 +11,17 @@
                         </div>
                     @endif
                     <div class="card">
+                        <div class="card-body d-flex align-items-center flex-wrap"
+                             style="padding-top: 20px">
+                            <a href="{{url('admin/product-collection/index/all')}}" type="button"
+                               class="btn btn-outline-info mb @if($status == 'all') active @endif"> All collection products</a>
+                               @foreach ($collection as $item)
+                                    <a href="{{url('admin/product-collection/index',$item->id)}}"
+                                    class="btn btn-outline-dark mx-3 @if($status == $item->id) active @endif">{{$item->title}}</a>
+                               @endforeach
+                            </div>
+                    </div>
+                    <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">{{$titlePage}}</h5>

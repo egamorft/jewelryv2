@@ -47,7 +47,7 @@
                         <div class="col-3"></div>
                         <div class="col-8 ">
                             <button type="submit" class="btn btn-primary">Create</button>
-                            <a href="{{route('admin.product-collection.index')}}" class="btn btn-danger">Cancel</a>
+                            <a href="{{url('admin/product-collection/index/all')}}" class="btn btn-danger">Cancel</a>
                         </div>
                     <input type="file" name="file" accept="image/x-png,image/gif,image/jpeg" hidden>
                     </div>

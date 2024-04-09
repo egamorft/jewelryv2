@@ -16,10 +16,14 @@
             <p class="content-styling">{{$val_styling->describe}}</p>
       </a>
       @endforeach
-
    </div>
+   @if(count($styling) == 42)
+   <div class="d-flex justify-content-center mt-5">
+      <a class="btn-list-shop" id="load-more-styling" data-offset="42">List</a>
+   </div>
+@endif
 </div>
 
 @section('script_page')
-
+<script src="{{asset('assets/js/styling.js')}}"></script>
 @stop

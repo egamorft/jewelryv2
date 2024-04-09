@@ -10,17 +10,22 @@ use Illuminate\Http\Request;
 
 class ProductCollectionController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,$status)
     {
             $titlePage = 'List Product Collection';
             $page_menu = 'collection';
             $page_sub = 'product-collection';
-            $listData = CollectionProductModel::orderBy('created_at', 'desc')->paginate(25);
+            $listData = CollectionProductModel::query();
+            if ($status !== 'all') {
+                $listData = $listData->where('collection_id', $status);
+            }
+            $listData = $listData->orderBy('created_at', 'desc')->paginate(25);
             foreach($listData as $item){
                 $item->product = Product::find($item->product_id);
             }
+            $collection = CollectionModel::all();
 
-            return view('admin.collection_product.index', compact('titlePage', 'page_menu', 'page_sub', 'listData'));
+            return view('admin.collection_product.index', compact('titlePage', 'page_menu', 'page_sub', 'listData','status','collection'));
     }
 
     public function create ()
@@ -42,7 +47,7 @@ class ProductCollectionController extends Controller
             $related = $request->get('related');
             $this->add_product_collection($related, $request->collection);
             
-            return redirect()->route('admin.product-collection.index')->with(['success' => 'New data created successfully']);
+            return redirect()->route('admin.product-collection.index',$request->collection)->with(['success' => 'New data created successfully']);
         }catch (\Exception $exception){
             return back()->with(['error' => $exception->getMessage()]);
         }
