@@ -16,6 +16,7 @@ class CartController extends Controller
             $cartItemsJson = $request->cookie('cartItems');
             $cartItems = json_decode($cartItemsJson, true) ?? [];
 
+            $cartDetails = [];
             foreach ($cartItems as $product_id => $quantity) {
                 $product = Product::find($product_id);
                 if (!$product) {
@@ -54,6 +55,10 @@ class CartController extends Controller
                 return response()->json(['error' => -1, 'message' => "Not found product"], 400);
             }
 
+            if ($product->current_stock < $quantity) {
+                return response()->json(['error' => -1, 'message' => "Product is out of stock"], 400);
+            }
+
             $cartItems = $request->cookie('cartItems');
             $cartItems = json_decode($cartItems, true);
 
@@ -68,6 +73,42 @@ class CartController extends Controller
             $cartItemsJson = json_encode($cartItems);
 
             return response()->json(['error' => 0, 'message' => "Success add product to cart"])->cookie('cartItems', $cartItemsJson);
+        } catch (\Exception $e) {
+            return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function updateCartQuantity(Request $request)
+    {
+        try {
+            $cartItems = $request->cookie('cartItems');
+            $cartItems = json_decode($cartItems, true);
+
+            $product_id = $request->product_id;
+            $quantity = $request->quantity;
+
+            if (!$product_id || !$quantity || $quantity <= 0) {
+                return response()->json(['error' => -1, 'message' => "Invalid data"], 400);
+            }
+
+            $product = Product::find($product_id);
+
+            if ($product->current_stock < $quantity) {
+                return response()->json(['error' => -1, 'message' => "Product is out of stock"], 400);
+            }
+
+            if (!$cartItems || !isset($cartItems[$product_id])) {
+                return response()->json(['error' => -1, 'message' => "Product not found in the cart"], 400);
+            }
+
+            $cartItems[$product_id] = (int)$quantity;
+
+            $cartItemsJson = json_encode($cartItems);
+
+            return response()->json(['error' => 0, 'message' => "Cart updated successfully"])->cookie(
+                'cartItems',
+                $cartItemsJson
+            );
         } catch (\Exception $e) {
             return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);
         }

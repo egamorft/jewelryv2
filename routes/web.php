@@ -38,6 +38,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCate
 //CARTS
 Route::get('getCart', [CartController::class, 'index'])->name('cart.index');
 Route::post('addToCart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::put('updateCartQuantity', [CartController::class, 'updateCartQuantity'])->name('cart.update');
 Route::delete('removeProductInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {

@@ -52,6 +52,12 @@
 
     {{-- CART --}}
     <script>
+        //Update cart quantity onload
+        getCart(function(cartItems) {
+            $('.point-cart').html(cartItems.length);
+        });
+
+        //Add specific product to cart
         function addToCart(id) {
             var formData = new FormData();
             formData.append('product_id', id);
@@ -80,6 +86,7 @@
             });
         }
 
+        //Get cart details
         function getCart(callback) {
             $.ajax({
                 url: '{{ route('cart.index') }}',
@@ -97,83 +104,87 @@
                 }
             });
         }
+
+        //Reload sidebar cart data
+        function reloadSideBarCart() {
+            var today = new Date(); // Get the current date
+            getCart(function(cartItems) {
+                $('.point-cart').html(cartItems.length);
+                $('#cartUl').empty();
+                var subTotal = 0;
+                $.each(cartItems, function(index, cartItem) {
+                    var discountEnd = new Date(cartItem.discount_end);
+
+                    var listItem = $('<li>').addClass(
+                        'list-group-item d-flex justify-content-between align-items-center'
+                    ).attr("id", "cartItem-" + cartItem.id);
+                    var itemContent = $('<div>');
+                    var itemName = $('<h6>').addClass('fs-5').text(cartItem.name);
+
+                    var quantityWrapper = $('<div>').addClass(
+                        'd-flex align-items-center');
+                    var decreaseBtn = $('<a>').addClass('btn btn-sm me-2 decreaseBtn').text(
+                        '-');
+                    var quantitySpan = $('<span>').addClass('fs-5 quantitySpan').text(cartItem
+                        .quantity);
+                    var increaseBtn = $('<a>').addClass('btn btn-sm ms-2 increaseBtn').text(
+                        '+');
+
+                    if (cartItem.discount > 0 && discountEnd > today) {
+                        if (cartItem.discount_type == 'percent') {
+                            var salePrice = cartItem.price - (cartItem.price * cartItem
+                                .discount / 100);
+                        } else {
+                            var salePrice = cartItem.price - cartItem.discount;
+                        }
+                        subTotal += salePrice * cartItem.quantity;
+                        var formattedSalePrice = (salePrice * cartItem.quantity).toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        var itemPrice = $('<p>').addClass('mb-0 fs-5 itemPrice').text(
+                            formattedSalePrice);
+                    } else {
+                        subTotal += cartItem.price * cartItem.quantity;
+                        var formattedPrice = (cartItem.price * cartItem.quantity).toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        var itemPrice = $('<p>').addClass('mb-0 fs-5 itemPrice').text(
+                            formattedPrice);
+                    }
+
+                    quantityWrapper.append(decreaseBtn, quantitySpan, increaseBtn);
+                    itemContent.append(itemName, quantityWrapper, itemPrice);
+
+                    var imageWrapper = $('<div>').addClass('position-relative');
+                    var removeBtn = $('<button>').addClass(
+                            'btn btn-sm position-absolute top-0 end-0 removeCartBtn')
+                        .html(
+                            '<i class="fas fa-times"></i>');
+                    var itemImage = $('<img>').attr('src', cartItem.thumbnail)
+                        .attr('alt', cartItem.name)
+                        .addClass('img-fluid')
+                        .css('width', '80px');
+
+                    imageWrapper.append(removeBtn, itemImage);
+
+                    listItem.append(itemContent, imageWrapper);
+                    $('#cartUl').append(listItem);
+                });
+
+                var formattedSubTotal = subTotal.toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
+                $('#cartSubTotal').text(formattedSubTotal);
+            });
+        }
     </script>
     <script>
         $(document).ready(function() {
             $('#offcanvasCart').on('shown.bs.offcanvas', function() {
-                var today = new Date(); // Get the current date
-                getCart(function(cartItems) {
-                    $('#cartUl').empty();
-                    var subTotal = 0;
-                    $.each(cartItems, function(index, cartItem) {
-                        var discountEnd = new Date(cartItem.discount_end);
-
-                        var listItem = $('<li>').addClass(
-                            'list-group-item d-flex justify-content-between align-items-center'
-                        ).attr("id", "cartItem-" + cartItem.id);
-                        var itemContent = $('<div>');
-                        var itemName = $('<h6>').addClass('fs-5').text(cartItem.name);
-
-                        var quantityWrapper = $('<div>').addClass(
-                            'd-flex align-items-center');
-                        var decreaseBtn = $('<a>').addClass('btn btn-sm me-2').attr('href',
-                            '#').text(
-                            '-');
-                        var quantitySpan = $('<span>').addClass('fs-5').text(cartItem
-                            .quantity);
-                        var increaseBtn = $('<a>').addClass('btn btn-sm ms-2').attr('href',
-                            '#').text(
-                            '+');
-
-                        if (cartItem.discount > 0 && discountEnd > today) {
-                            if (cartItem.discount_type == 'percent') {
-                                var salePrice = cartItem.price - (cartItem.price * cartItem
-                                    .discount / 100);
-                            } else {
-                                var salePrice = cartItem.price - cartItem.discount;
-                            }
-                            subTotal += salePrice;
-                            var formattedSalePrice = salePrice.toLocaleString('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            });
-                            var itemPrice = $('<p>').addClass('mb-0 fs-5 itemPrice').text(
-                                formattedSalePrice);
-                        } else {
-                            subTotal += cartItem.price;
-                            var formattedPrice = cartItem.price.toLocaleString('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            });
-                            var itemPrice = $('<p>').addClass('mb-0 fs-5 itemPrice').text(
-                                formattedPrice);
-                        }
-
-                        quantityWrapper.append(decreaseBtn, quantitySpan, increaseBtn);
-                        itemContent.append(itemName, quantityWrapper, itemPrice);
-
-                        var imageWrapper = $('<div>').addClass('position-relative');
-                        var removeBtn = $('<button>').addClass(
-                                'btn btn-sm position-absolute top-0 end-0 removeCartBtn')
-                            .html(
-                                '<i class="fas fa-times"></i>');
-                        var itemImage = $('<img>').attr('src', cartItem.thumbnail)
-                            .attr('alt', cartItem.name)
-                            .addClass('img-fluid')
-                            .css('width', '80px');
-
-                        imageWrapper.append(removeBtn, itemImage);
-
-                        listItem.append(itemContent, imageWrapper);
-                        $('#cartUl').append(listItem);
-                    });
-
-                    var formattedSubTotal = subTotal.toLocaleString('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
-                    });
-                    $('#cartSubTotal').text(formattedSubTotal);
-                });
+                reloadSideBarCart();
             });
         });
     </script>
@@ -195,7 +206,7 @@
                     success: function(response) {
                         if (response.error == 0) {
                             toastr.success(response.message);
-                            parentLi.remove();
+                            reloadSideBarCart();
                         }
                     },
                     error: function(xhr, status, error) {
@@ -204,6 +215,54 @@
                 });
 
             });
+
+            //Handle cart quantity update
+            $(document).on('click', '.increaseBtn', increaseQuantity);
+            $(document).on('click', '.decreaseBtn', decreaseQuantity);
+
+            function increaseQuantity() {
+                var quantitySpan = $(this).siblings('.quantitySpan');
+                var cartItemId = $(this).closest('li').attr('id').replace('cartItem-', '');
+                var quantity = parseInt(quantitySpan.text());
+                quantity++;
+
+                updateCartQuantity(cartItemId, quantity);
+            }
+
+            function decreaseQuantity() {
+                var quantitySpan = $(this).siblings('.quantitySpan');
+                var cartItemId = $(this).closest('li').attr('id').replace('cartItem-', '');
+                var quantity = parseInt(quantitySpan.text());
+                if (quantity > 1) {
+                    quantity--;
+
+                    // Call your updateCartQuantity function or perform the desired action here
+                    updateCartQuantity(cartItemId, quantity);
+                }
+            }
+
+            //Update cart quantity
+            function updateCartQuantity(itemId, quantity) {
+                $.ajax({
+                    url: '{{ route('cart.update') }}',
+                    type: 'PUT',
+                    headers: {
+                        'X-CSRF-TOKEN': `{{ csrf_token() }}`
+                    },
+                    data: {
+                        product_id: itemId,
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        if (response.error == 0) {
+                            reloadSideBarCart();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error(xhr.responseJSON.message);
+                    }
+                });
+            }
         });
     </script>
 </body>
