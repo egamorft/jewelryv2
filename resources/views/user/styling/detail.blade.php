@@ -25,7 +25,7 @@
    <input type="text" name="styling_id" value="{{$styling->id}}" hidden>
    <div class="box-shop-product" id="product-container">
       @foreach ($styling_product as $product_item)
-      <div class="item-product-shop">
+      <a href="{{url('detail-product',$product_item->info->id)}}" class="item-product-shop">
          <img src="{{asset($product_item->info->thumbnail_img)}}" class="w-100">
          <div class="box-content-img">
             <p class="title-contnet-img">{{$product_item->info->name}}</p>
@@ -48,7 +48,7 @@
             <p class="title-contnet-img">{{number_format($product_item->info->price)}} VND</p>
              @endif
          </div>
-      </div>
+      </a>
       @endforeach
    </div>
    @if(count($styling_product) == 21)

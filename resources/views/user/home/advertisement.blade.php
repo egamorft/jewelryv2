@@ -21,7 +21,7 @@
                <div class="swiper-slide box-child-adv">
                   @if (count($item_advertisement->product)>0)
                      @foreach ($item_advertisement->product as $item)
-                     <div class="item-child-adv">
+                     <a href="{{url('detail-product',$item->info->id)}}" class="item-child-adv">
                         <img src="{{asset($item->info->thumbnail_img)}}" class="img-child-sp" loading="lazy">
                         <div class="item-content-child-adv">
                            <p class="title-child-sp">{{$item->info->name}}</p>
@@ -43,7 +43,7 @@
                            @endif
                            <p class="title-tag">#Limited Quantity #Natural Black Diamond_4mm</p>
                         </div>
-                     </div>
+                     </a>
                      @endforeach
                   @endif
                </div>

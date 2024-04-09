@@ -4,7 +4,9 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\LiveController;
 use App\Http\Controllers\StylingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
 use App\Http\Controllers\ProfileController;
@@ -31,11 +33,16 @@ Route::get('/detail-styling/{id}', [StylingController::class, 'detailStyling'])-
 Route::get('/load-more-products-styling', [StylingController::class, 'loadMoreProducts']);
 Route::get('/detail-collection/{id}', [HomeController::class, 'detailCollection'])->name('detail-collection');
 Route::get('/live', [LiveController::class, 'index'])->name('live');
-Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('detail-product');
-Route::get('/order', [HomeController::class, 'order'])->name('order');
+Route::get('/detail-product/{id}', [HomeController::class, 'detailProduct'])->name('detail-product');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');
+
+//CARTS
+Route::get('getCart', [CartController::class, 'index'])->name('cart.index');
+Route::post('addToCart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::put('updateCartQuantity', [CartController::class, 'updateCartQuantity'])->name('cart.update');
+Route::delete('removeProductInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::get('login', [AuthController::class, 'index'])->name('auth.member.index');
@@ -43,6 +50,9 @@ Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::post('register', [AuthController::class, 'store'])->name('auth.member.register');
 });
 Route::middleware('auth')->group(function () {
+    Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
     Route::group(['prefix' => 'myshop'], function () {
         Route::get('', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('order', [ProfileController::class, 'order'])->name('profile.order');

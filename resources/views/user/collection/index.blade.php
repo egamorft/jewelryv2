@@ -33,8 +33,8 @@
    </div>
    <div class="box-product-category box-product-category-four">
       @foreach ($collection_product as $product_item)
-      <div class="item-product">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product">
+      <a href="{{url('detail-product',$product_item->info->id)}}" class="item-product">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" onclick="addToCart({{ $product_item->info->id }})">
          @if($product_item->interest == 1)
          <img src="{{asset('assets/images/heart-solid.svg')}}" class="icon-heart-product" data-product-id="{{ $product_item->info->id }}">
          @else 
@@ -81,7 +81,7 @@
             </div>
             @endif
          </div>
-       </div>
+       </a>
       @endforeach
    </div>
    <div class="w-100 d-flex justify-content-center mt-5">

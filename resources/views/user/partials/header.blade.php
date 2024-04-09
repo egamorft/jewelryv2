@@ -97,7 +97,8 @@
         @if (isset($topCategories) && !$topCategories->isEmpty())
             <div class="col-item-menu">
                 @foreach ($topCategories as $cate)
-                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}" class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}"
+                        class="text-item-menu">{{ strtoupper($cate->name) }}</a>
                 @endforeach
                 <a href="{{ route('categories.show', ['slug' => 'all']) }}" class="text-item-menu">VIEW ALL</a>
             </div>
@@ -128,49 +129,12 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="list-group mb-3">
-            <!-- Cart Item 1 -->
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <h6 class="fs-5">Product 1</h6>
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="btn btn-sm me-2">-</a>
-                        <span class="fs-5">2</span>
-                        <a href="#" class="btn btn-sm ms-2">+</a>
-                    </div>
-                    <p class="mb-0 fs-5">$29.99</p>
-                </div>
-                <div class="position-relative">
-                    <button class="btn btn-sm position-absolute top-0 end-0"><i class="fas fa-x"></i></button>
-                    <img src="//www.dona-d.com/web/product/tiny/202404/fa5fd0bb6096028a34fd74be9a162407.jpg"
-                        alt="Product 1" class="img-fluid" style="width: 80px;">
-                </div>
-            </li>
-
-            <!-- Cart Item 2 -->
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <h6 class="fs-5">Product 2</h6>
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="btn btn-sm me-2">-</a>
-                        <span class="fs-5">2</span>
-                        <a href="#" class="btn btn-sm ms-2">+</a>
-                    </div>
-                    <p class="mb-0 fs-5">$29.99</p>
-                </div>
-                <div class="position-relative">
-                    <button class="btn btn-sm position-absolute top-0 end-0"><i class="fas fa-x"></i></button>
-                    <img src="//www.dona-d.com/web/product/tiny/202404/fa5fd0bb6096028a34fd74be9a162407.jpg"
-                        alt="Product 2" class="img-fluid" style="width: 80px;">
-                </div>
-            </li>
-
-            <!-- Add more list items for other products -->
+        <ul class="list-group mb-3" id="cartUl">
         </ul>
         <div class="mt-auto">
             <hr>
-            <p class="mb-0 fs-5">Subtotal: $59.98</p>
-            <button class="btn btn-outline-dark mt-3">Checkout</button>
+            <p class="mb-0 fs-5">Subtotal: <span id="cartSubTotal">$59.98</span></p>
+            <a href="{{ route('checkout') }}" class="btn btn-outline-dark mt-3">Checkout</a>
         </div>
     </div>
 </div>

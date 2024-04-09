@@ -131,7 +131,7 @@ class AuthController extends Controller
                     Auth::login($user);
 
                     toastr()->success('Welcome ' . $user->first_name . ' ' . $user->last_name);
-                    return redirect()->route('home');
+                    return redirect()->intended(route('home'));
                 } else {
                     toastr()->error("Your account not activate yet");
                     return back()->withInput();

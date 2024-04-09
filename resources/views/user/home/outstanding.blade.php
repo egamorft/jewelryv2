@@ -9,15 +9,15 @@
             @endforeach
 
         </div>
-        <a href="" class="link-view-all">View All</a>
+        <a href="#" class="link-view-all">View All</a>
     </div>
     <div thumbsSlider="" class="swiper contentOutstanding">
         <div class="swiper-wrapper">
             @foreach ($productsByCategory as $products)
                 <div class="swiper-slide box-swiper-sp">
                     @foreach ($products as $pro)
-                        <div class="item-product">
-                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy">
+                        <a href="{{url('detail-product',$pro->id)}}" class="item-product">
+                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy" onclick="addToCart({{ $pro->id }})">
                             @if($pro->interest == 1)
                             <img src="{{ asset('assets/images/heart-solid.svg') }}" class="icon-heart-product" data-product-id="{{ $pro->id }}" loading="lazy">
                             @else
@@ -65,7 +65,7 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endforeach
