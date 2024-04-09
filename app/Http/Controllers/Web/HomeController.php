@@ -23,19 +23,19 @@ class HomeController extends Controller
     {
         $banner = BannerModel::where('display', 1)->orderBy('index', 'asc')->limit(9)->get();
         $video = VideoModel::where('display', 1)->orderBy('created_at', 'desc')->get();
-        $styling = StylingModel::where('display',1)->orderBy('created_at','desc')->limit(10)->get();
-        foreach($styling as $item_styling){
-            $item_styling->src = StylingImageModel::where('styling_id',$item_styling->id)->first()->src;
+        $styling = StylingModel::where('display', 1)->orderBy('created_at', 'desc')->limit(10)->get();
+        foreach ($styling as $item_styling) {
+            $item_styling->src = StylingImageModel::where('styling_id', $item_styling->id)->first()->src;
         }
-        $advertisement = AdvertisementModel::orderBy('created_at','desc')->get();
-        foreach($advertisement as $val){
-            $val->product = AdvertisementProductModel::where('advertisement_id',$val->id)->orderBy('created_at','desc')->take(2)->get();
-            foreach($val->product as $item_product){
+        $advertisement = AdvertisementModel::orderBy('created_at', 'desc')->get();
+        foreach ($advertisement as $val) {
+            $val->product = AdvertisementProductModel::where('advertisement_id', $val->id)->orderBy('created_at', 'desc')->take(2)->get();
+            foreach ($val->product as $item_product) {
                 $item_product->info = Product::find($item_product->product_id);
             }
         }
-        $collection = CollectionModel::where('display',1)->orderBy('index','asc')->take(2)->get();
-        $album = AlbumModel::orderBy('created_at','desc')->get();
+        $collection = CollectionModel::where('display', 1)->orderBy('index', 'asc')->take(2)->get();
+        $album = AlbumModel::orderBy('created_at', 'desc')->get();
         //Top 3 category
         $topCategories = Category::orderBy('popular', 'desc')->take(3)->get();
         //Product
@@ -51,7 +51,7 @@ class HomeController extends Controller
             $productsByCategory[$category->name] = $products;
         }
 
-        return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory','styling','advertisement','album','collection'));
+        return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory', 'styling', 'advertisement', 'album', 'collection'));
     }
 
     public function category()
@@ -61,42 +61,37 @@ class HomeController extends Controller
 
     public function styling()
     {
-        $styling = StylingModel::where('display',1)->orderBy('created_at','desc')->paginate(20);
-        foreach($styling as $item_styling){
-            $item_styling->src = StylingImageModel::where('styling_id',$item_styling->id)->first()->src;
+        $styling = StylingModel::where('display', 1)->orderBy('created_at', 'desc')->paginate(20);
+        foreach ($styling as $item_styling) {
+            $item_styling->src = StylingImageModel::where('styling_id', $item_styling->id)->first()->src;
         }
-        return view('user.styling.index',compact('styling'));
+        return view('user.styling.index', compact('styling'));
     }
 
     public function detailStyling($id)
-    {   
+    {
         $styling = StylingModel::find($id);
-        $styling_img = StylingImageModel::where('styling_id',$id)->get();
-        $styling_product = StylingProductModel::where('styling_id',$id)->get();
-        foreach($styling_product as $item){
+        $styling_img = StylingImageModel::where('styling_id', $id)->get();
+        $styling_product = StylingProductModel::where('styling_id', $id)->get();
+        foreach ($styling_product as $item) {
             $item->info = Product::find($item->product_id);
         }
-        return view('user.styling.detail',compact('styling','styling_img','styling_product'));
+        return view('user.styling.detail', compact('styling', 'styling_img', 'styling_product'));
     }
 
     public function detailCollection($id)
-    {   
-        $data_collection = CollectionModel::where('display',1)->orderBy('index','asc')->get();
+    {
+        $data_collection = CollectionModel::where('display', 1)->orderBy('index', 'asc')->get();
         $collection = CollectionModel::find($id);
-        $collection_product = CollectionProductModel::where('collection_id',$id)->get();
-        foreach($collection_product as $item){
+        $collection_product = CollectionProductModel::where('collection_id', $id)->get();
+        foreach ($collection_product as $item) {
             $item->info = Product::find($item->product_id);
         }
-        return view('user.collection.index',compact('collection','data_collection','collection_product'));
+        return view('user.collection.index', compact('collection', 'data_collection', 'collection_product'));
     }
 
     public function detailProduct()
     {
         return view('user.product.index');
-    }
-
-    public function order()
-    {
-        return view('user.order.index');
     }
 }

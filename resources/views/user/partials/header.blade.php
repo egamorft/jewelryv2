@@ -97,7 +97,8 @@
         @if (isset($topCategories) && !$topCategories->isEmpty())
             <div class="col-item-menu">
                 @foreach ($topCategories as $cate)
-                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}" class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}"
+                        class="text-item-menu">{{ strtoupper($cate->name) }}</a>
                 @endforeach
                 <a href="{{ route('categories.show', ['slug' => 'all']) }}" class="text-item-menu">VIEW ALL</a>
             </div>
@@ -133,7 +134,7 @@
         <div class="mt-auto">
             <hr>
             <p class="mb-0 fs-5">Subtotal: <span id="cartSubTotal">$59.98</span></p>
-            <button class="btn btn-outline-dark mt-3">Checkout</button>
+            <a href="{{ route('checkout') }}" class="btn btn-outline-dark mt-3">Checkout</a>
         </div>
     </div>
 </div>
