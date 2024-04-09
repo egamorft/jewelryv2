@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LiveController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
 use App\Http\Controllers\ProfileController;
@@ -30,7 +31,6 @@ Route::get('/detail-styling/{id}', [HomeController::class, 'detailStyling'])->na
 Route::get('/detail-collection/{id}', [HomeController::class, 'detailCollection'])->name('detail-collection');
 Route::get('/live', [LiveController::class, 'index'])->name('live');
 Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('detail-product');
-Route::get('/order', [HomeController::class, 'order'])->name('order');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');
@@ -47,6 +47,9 @@ Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::post('register', [AuthController::class, 'store'])->name('auth.member.register');
 });
 Route::middleware('auth')->group(function () {
+    Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
     Route::group(['prefix' => 'myshop'], function () {
         Route::get('', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('order', [ProfileController::class, 'order'])->name('profile.order');
