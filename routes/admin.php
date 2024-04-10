@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductCollectionController;
 use App\Http\Controllers\Admin\StylingController;
 use App\Http\Controllers\Admin\VideoController;
