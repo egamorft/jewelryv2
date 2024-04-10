@@ -17,17 +17,30 @@ class CartController extends Controller
         try {
             $cartItemsJson = $request->cookie('cartItems');
             $cartItems = json_decode($cartItemsJson, true) ?? [];
-
+           
             $cartDetails = [];
-            foreach ($cartItems as $product_id => $quantity) {
+            foreach ($cartItems as $cartItem) {
+                $product_id = $cartItem['product_id'];
+                $quantity = $cartItem['quantity'];
                 $product = Product::find($product_id);
+                
                 if (!$product) {
                     return response()->json(['error' => -1, 'message' => "Not found product"], 400);
                 }
+                
+                $total_money = $product->price * $quantity;
+                
+                $name_value = '';
+                foreach($cartItem['value_id'] as $val_id){
+                    $product_value = ProductValueModel::find($val_id);
+                    $total_money += $product_value->price;
+                    $name_value .= '/'.$product_value->name;
+                }
+                
                 $cartDetails[] = [
                     'id' => $product->id,
-                    'name' => $product->name,
-                    'price' => $product->price,
+                    'name' => $product->name.$name_value,
+                    'price' => $total_money,
                     'discount' => $product->discount,
                     'discount_type' => $product->discount_type,
                     'discount_end' => $product->discount_end,
@@ -74,14 +87,16 @@ class CartController extends Controller
             $product = Product::find($product_value->product_id);
             $total_money = $product->price;
             $info_value = [];
+            $value_id = [];
             foreach($value as $val){
                 $product_val = ProductValueModel::find($val);
                 $total_money += $product_val->price;
                 $info_value[] = $product_val->name;
+                $value_id[] = $val;
             }
             $product->total_money = $total_money;
             $product->info_value = $info_value;
-            $product->value_id = $value;
+            $product->value_id = $value_id;
            
             return response()->json(['error' => 0,'product'=>$product ,'message' => "Success add product to cart"]);
         } catch (\Exception $e) {
@@ -92,9 +107,9 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         try {
-            // dd($request->all());
             $quantity = $request->quantity ?? 1;
             $product_id = $request->product_id;
+            $product_values = explode(',', $request->product_value);
 
             if (!$product_id) {
                 return response()->json(['error' => -1, 'message' => "Product id is null"], 400);
@@ -113,12 +128,23 @@ class CartController extends Controller
             $cartItems = $request->cookie('cartItems');
             $cartItems = json_decode($cartItems, true);
 
-            if (isset($cartItems[$product_id])) {
-                // Product already exists in the cart, update the quantity
-                $cartItems[$product_id] = (int)$cartItems[$product_id] + $quantity;
-            } else {
-                // Product doesn't exist in the cart, add it with the quantity
-                $cartItems[$product_id] = $quantity;
+            $found = false;
+            if ($cartItems && is_array($cartItems)) {
+                foreach ($cartItems as $key => &$cartItem) {
+                    if ($key == $product_id && $cartItem['value_id'] == $product_values) {
+                        $cartItem['quantity'] += $quantity;
+                        $found = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!$found) {
+                $cartItems[] = [
+                    'product_id' => $product_id,
+                    'quantity' => $quantity,
+                    'value_id' => $product_values
+                ];
             }
 
             $cartItemsJson = json_encode($cartItems);
