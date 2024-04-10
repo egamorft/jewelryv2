@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InterestProductController;
 use App\Http\Controllers\MemberBenefitController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Web\HomeController;
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'myshop'], function () {
         Route::get('', [ProfileController::class, 'index'])->name('profile.index');
-        Route::get('order', [ProfileController::class, 'order'])->name('profile.order');
+        Route::get('order', [OrderController::class, 'order'])->name('profile.order');
         //MEMBER
         Route::get('member', [ProfileController::class, 'member'])->name('profile.member');
         Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
