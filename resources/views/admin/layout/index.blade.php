@@ -75,18 +75,5 @@
 <!-- END: Content-->
 <div class="sidenav-overlay" style=""></div>
 <div class="drag-target"></div>
-<!-- BEGIN: Footer-->
-
-<script type="text/javascript">
-    // $(document).ready(function () {
-    //     $(document).on("click", ".image-preview", function () {
-    //         $('#overlay')
-    //             .css({backgroundImage: `url(${this.src})`})
-    //             .addClass('open')
-    //             .one('click', function() { $(this).removeClass('open'); });
-    //     });
-
-    // });
-</script>
 </body>
 </html>

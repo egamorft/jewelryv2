@@ -25,7 +25,8 @@ class Product extends Model
         'spec_n_details',
         'delivery_n_notice',
         'exchange',
-        'published'
+        'published',
+        'information'
     ];
 
     // Relationship with ProductCategory model
