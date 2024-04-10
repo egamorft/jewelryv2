@@ -40,6 +40,8 @@ Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCate
 
 //CARTS
 Route::get('getCart', [CartController::class, 'index'])->name('cart.index');
+Route::post('getAttributeToCart', [CartController::class, 'getAttributeToCart'])->name('cart.getAttribute');
+Route::post('getProductAttribute', [CartController::class, 'getProductAttribute'])->name('cart.getProductAttribute');
 Route::post('addToCart', [CartController::class, 'addToCart'])->name('cart.store');
 Route::put('updateCartQuantity', [CartController::class, 'updateCartQuantity'])->name('cart.update');
 Route::delete('removeProductInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
