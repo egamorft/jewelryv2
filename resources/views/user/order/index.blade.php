@@ -87,14 +87,17 @@
                     @endforeach
                     <div class="line-subtotal">
                         <p class="title-subtotal">Subtotal</p>
+                        <input type="hidden" name="subtotal" value="{{ $subTotal }}">
                         <p class="title-subtotal">{{ number_format($subTotal, 0, '.', ',') }} đ </p>
                     </div>
                     <div class="line-subtotal">
                         <p class="title-subtotal">(-)Discount</p>
+                        <input type="hidden" name="discount" value="{{ $subDiscount }}">
                         <p class="title-subtotal">{{ number_format($subDiscount, 0, '.', ',') }} đ </p>
                     </div>
                     <div class="line-total">
-                        <p class="title-total">Subtotal</p>
+                        <p class="title-total">Total</p>
+                        <input type="hidden" name="total" value="{{ $total }}">
                         <p class="title-total">{{ number_format($total, 0, '.', ',') }} đ </p>
                     </div>
                     <button type="submit" class="btn-buy">Confirm checkout</button>
