@@ -18,12 +18,12 @@
 </div>
 
 <div class="box-banner-home">
-   @if (count($banner)>=7 && $banner[7])
+   @if (count($banner)>=7 && isset($banner[7]))
       <a @if($banner[7]->link != null) href="{{$banner[7]->link}}" @endif class="item-img-banner-home">
          <img src="{{asset($banner[7]->src)}}" class="w-100 h-100" style="object-fit: cover" loading="lazy">
       </a>
    @endif
-   @if (count($banner)>=8 && $banner[8])
+   @if (count($banner)>=8 && isset($banner[8]))
       <a @if($banner[8]->link != null) href="{{$banner[8]->link}}" @endif class="item-img-banner-home">
          <img src="{{asset($banner[8]->src)}}" class="w-100 h-100" style="object-fit: cover" loading="lazy">
       </a>

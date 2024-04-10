@@ -179,7 +179,6 @@ $(document).on("click", ".btn-add-cart.add-sp-value-cart", function () {
         success: function (response) {
             if (response.error == 0) {
                 toastr.success(response.message);
-                //Update cart icon
                 getCart(function (cartItems) {
                     $(".point-cart").html(cartItems.length);
                 });
