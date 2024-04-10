@@ -115,4 +115,9 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('product.edit');
    Route::put('update-product/{id}', [ProductController::class, 'update'])->name('product.update');
    Route::delete('destroy-product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+   Route::post('attribute-type', [ProductController::class, 'attributeType']);
+   Route::post('attribute-name', [ProductController::class, 'attributeName']);
+   Route::get('product/delete-type/{id}', [ProductController::class, 'deleteType']);
+   Route::get('product/delete-name/{id}', [ProductController::class, 'deleteName']);
 });
+Route::post('ckeditor/upload', [DashboardController::class, 'upload'])->name('ckeditor.image-upload');

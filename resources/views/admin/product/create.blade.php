@@ -110,6 +110,59 @@
                             <label class="form-check-label" for="published">Is published?</label>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label for="exchange" class="form-label">Product Information</label>
+                        <textarea name="information" id="information" required
+                                                  class="ckeditor">{{ old('information') }}</textarea>
+                    </div>
+
+                    <div class="card mb-3 mt-5">
+                        <div class="card-header bg-primary text-white">
+                            Add attribute
+                        </div>
+                        <div class="card-body p-0 bg-white">
+                            <div class="mt-3 border-bottom data-variant pb-3">
+                                <div class="row m-0">
+                                    <div class="col-lg-3 p-1">
+                                        <input type="text" name="variant[0][name]" class="form-control"
+                                               placeholder="Attribute type name" required>
+                                    </div>
+                                    <div class="col-lg-3 p-1">
+                                        <button type="button" class="btn btn-success btn-add-attribute form-control"><i
+                                                class="bi bi-plus-lg"></i> Add attributes
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-3 p-1">
+                                        <button type="button" class="btn btn-primary btn-add-type-attribute form-control"><i
+                                                class="bi bi-plus-lg"></i> Add attribute type name
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="list-size">
+                                    <div class="row m-0">
+                                        <div class="col-lg-2 p-1">
+                                            <input type="text" name="variant[0][data][0][name]"
+                                                   class="form-control name_attribute" placeholder="attribute name"
+                                                   required>
+                                        </div>
+                                        <div class="col-lg-2 p-1">
+                                            <input name="variant[0][data][0][current_stock]" type="text"
+                                                   class="form-control current_stock format-currency" placeholder="current stock">
+                                        </div>
+                                        <div class="col-lg-2 p-1">
+                                            <input name="variant[0][data][0][cost]" type="text"
+                                                   class="form-control cost format-currency" placeholder="Cost">
+                                        </div>
+                                        <div class="col-lg-2 p-1">
+                                            <input name="variant[0][data][0][price]" type="text"
+                                                   class="form-control price format-currency"
+                                                   placeholder="Price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -122,7 +175,14 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
     </script>
+    <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
+    <script src="{{asset('assets/admin/js/create_product.js')}}"></script>
     <script>
+         CKEDITOR.replace('information', {
+            filebrowserUploadUrl: "{{route('admin.ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            height: 500,
+        });
         $(function() {
             var tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
