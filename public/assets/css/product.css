@@ -147,6 +147,10 @@
     font-size: 16px;
     color: #000000;
 }
+.content-info-product-more img {
+    max-width: 100%;
+    margin: 0 auto;
+}
 .title-big-recommended {
     font-size: 16px;
     color: #000000;

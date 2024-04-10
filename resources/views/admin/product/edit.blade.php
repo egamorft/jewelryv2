@@ -179,12 +179,12 @@
                                                            value="{{$value->current_stock}}"
                                                            placeholder="Current stock">
                                                 </div>
-                                                <div class="col-lg-3 p-1">
+                                                {{-- <div class="col-lg-3 p-1">
                                                     <input name="variant[{{$key}}][data][{{$k}}][cost]" type="text"
                                                            class="form-control cost format-currency"
                                                            value="{{$value->cost}}"
                                                            placeholder="Cost">
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-lg-3 p-1">
                                                     <input name="variant[{{$key}}][data][{{$k}}][price]"
                                                            type="text"

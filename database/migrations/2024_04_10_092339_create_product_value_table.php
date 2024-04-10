@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('product_attribute_id');
             $table->string('name');
             $table->integer('current_stock')->default(0);
-            $table->double('cost')->default(0);
             $table->double('price')->default(0);
             $table->timestamps();
         });
