@@ -265,6 +265,16 @@
             }
         });
     </script>
+
+    <script>
+        function toggleChildCategories(parentId) {
+            // Hide all child categories
+            $('[id^="childCategories_"]').hide();
+
+            // Show the selected child category
+            $('#childCategories_' + parentId).show();
+        }
+    </script>
 </body>
 
 </html>

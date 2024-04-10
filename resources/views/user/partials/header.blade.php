@@ -2,7 +2,7 @@
     <div class="d-flex align-item-center">
         <div class="item-text-header" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuTop"
             aria-controls="offcanvasMenuTop">SHOP</div>
-        <a href="{{route('styling')}}" class="item-text-header">STYLING</a>
+        <a href="{{ route('styling') }}" class="item-text-header">STYLING</a>
         <a href="{{ route('live') }}" class="item-text-header">LIVE</a>
         <a class="item-text-header">HANNAM SHOWROOM</a>
     </div>
@@ -70,8 +70,9 @@
                 <svg class="btnSearch" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="21.413"
                     height="17.414" viewBox="0 0 21.413 17.414" index="0">
                     <g id="gr_4018" data-name="gr 4018" transform="translate(-13444.5 114.207)">
-                        <line id="line_2593" data-name="line 2593" x2="20" transform="translate(13444.5 -105.5)"
-                            fill="none" stroke="#000" stroke-width="2"></line>
+                        <line id="line_2593" data-name="line 2593" x2="20"
+                            transform="translate(13444.5 -105.5)" fill="none" stroke="#000" stroke-width="2">
+                        </line>
                         <path id="pth_9795" data-name="pth 9795" d="M13540-64l8,8-8,8"
                             transform="translate(-83.497 -49.496)" fill="none" stroke="#000" stroke-width="2">
                         </path>
@@ -94,22 +95,25 @@
 <div class="offcanvas offcanvas-menu-top" tabindex="-1" id="offcanvasMenuTop"
     aria-labelledby="offcanvasMenuTopLabel">
     <div class="offcanvas-body box-menu-header">
-        @if (isset($topCategories) && !$topCategories->isEmpty())
+        @if (isset($parentCategories) && !$parentCategories->isEmpty())
             <div class="col-item-menu">
-                @foreach ($topCategories as $cate)
-                    <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}"
+                @foreach ($parentCategories as $cate)
+                    <a href="javascript:void(0)" onclick="toggleChildCategories({{ $cate->id }})"
                         class="text-item-menu">{{ strtoupper($cate->name) }}</a>
                 @endforeach
                 <a href="{{ route('categories.show', ['slug' => 'all']) }}" class="text-item-menu">VIEW ALL</a>
             </div>
         @endif
-        @if (isset($secondCategories) && !$secondCategories->isEmpty())
-            <div class="col-item-menu">
-                @foreach ($secondCategories as $cate)
-                    <a href="{{ $cate->slug }}" class="content-item-menu">{{ strtoupper($cate->name) }}</a>
-                @endforeach
-                <a href="#" class="content-item-menu">VIEW ALL</a>
-            </div>
+        @if (isset($childrenCategories) && !empty($childrenCategories))
+            @foreach ($childrenCategories as $parentId => $children)
+                <div id="childCategories_{{ $parentId }}" style="display: none;" class="col-item-menu">
+                        @foreach ($children as $child)
+                            <a href="{{ $cate['slug'] }}"
+                                class="content-item-menu">{{ strtoupper($cate['name']) }}</a>
+                        @endforeach
+                        <a href="#" class="content-item-menu">VIEW ALL</a>
+                </div>
+            @endforeach
         @endif
         <div class="col-item-menu-right">
             <a href="" class="content-item-menu">HERITAGE LINE</a>

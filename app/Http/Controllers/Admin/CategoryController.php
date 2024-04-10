@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $page_menu = 'category';
         $page_sub = null;
-        $categories = Category::orderBy('popular', 'desc')->orderBy('id', 'desc')->get();
+        $categories = Category::orderBy('popular', 'desc')->orderBy('parent_id', 'asc')->get();
 
         return view('admin.category.category-list')->with(compact('categories','page_menu','page_sub'));
     }
@@ -37,7 +37,8 @@ class CategoryController extends Controller
         try {
             $validated = Validator::make($request->all(), [
                 'name' => 'required|string|max:30',
-                'slug' => 'required|unique:categories,slug'
+                'slug' => 'required|unique:categories,slug',
+                'parent_id' => 'required|integer'
             ]);
 
             if ($validated->fails()) {
@@ -46,6 +47,15 @@ class CategoryController extends Controller
             }
 
             $validatedData = $validated->validated();
+
+            $parent_id = $validatedData['parent_id'];
+            
+            $category = Category::find($parent_id);
+
+            if (!$category || $category->parent_id != 0) {
+                toastr()->error("Parent selected is invalid");
+                return back()->withInput();
+            }
 
             Category::create($validatedData);
 
@@ -81,7 +91,8 @@ class CategoryController extends Controller
         try {
             $validated = Validator::make($request->all(), [
                 'name' => 'required|string|max:30',
-                'slug' => 'required|unique:categories,slug,' . $id
+                'slug' => 'required|unique:categories,slug,' . $id,
+                'parent_id' => 'required|integer'
             ]);
 
             if ($validated->fails()) {
@@ -92,7 +103,31 @@ class CategoryController extends Controller
 
             $validatedData = $validated->validated();
 
+            $parent_id = $validatedData['parent_id'];
+
+            if ($parent_id == $id) {
+                toastr()->error("You can not selected parent as itself");
+                return back()->withInput();
+            }
+
+            if ($parent_id != 0) {
+                $category = Category::find($parent_id);
+    
+                if (!$category || $category->parent_id != 0) {
+                    toastr()->error("Parent selected is invalid");
+                    return back()->withInput();
+                }
+            }
+
             $category = Category::find($id);
+
+            if ($category->parent_id == 0 && $parent_id != 0) {
+                $childCategory = Category::where('parent_id', $id)->get();
+                foreach ($childCategory as $cate) {
+                    $cate->parent_id = 0;
+                    $cate->save();
+                }
+            }
 
             $category->update($validatedData);
 

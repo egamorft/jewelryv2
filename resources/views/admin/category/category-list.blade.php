@@ -3,6 +3,9 @@
 
 @section('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('main')
@@ -23,6 +26,7 @@
                         <th scope="col" class="text-center">No.</th>
                         <th scope="col" class="text-center">Name</th>
                         <th scope="col" class="text-center">Slug</th>
+                        <th scope="col" class="text-center">Level</th>
                         <th scope="col" class="text-center">Popular</th>
                         <th scope="col" class="text-center"></th>
                     </tr>
@@ -36,6 +40,13 @@
                             </td>
                             <td class="text-center">
                                 {{ $cate->slug }}
+                            </td>
+                            <td class="text-center">
+                                @if (!$cate->parent_id)
+                                    0
+                                @else
+                                    1
+                                @endif
                             </td>
                             <td class="text-center">
                                 {{ $cate->popular }}
@@ -74,6 +85,19 @@
                                 <input type="text" class="form-control" id="add-category-slug" name="slug"
                                     value="{{ old('slug') }}">
                             </div>
+                            <div class="mb-3">
+                                <label for="categoryParentSelector" class="form-label">Categories parent: </label>
+                                <select class="form-select categoryParentSelector" name="parent_id">
+                                    <option value="0" selected>No parent</option>
+                                    @foreach ($categories as $cate)
+                                        @if (!$cate->parent_id)
+                                            <option value="{{ $cate->id }}">
+                                                {{ $cate->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -111,6 +135,20 @@
                                         id="edit-category-slug-{{ $cate->id }}" name="slug"
                                         value="{{ old('slug', $cate->slug) }}">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="categoryParentSelector" class="form-label">Categories parent: </label>
+                                    <select class="form-select categoryParentSelector" name="parent_id">
+                                        <option value="0">No parent</option>
+                                        @foreach ($categories as $pCate)
+                                            @if (!$pCate->parent_id && $pCate->id != $cate->id)
+                                                <option value="{{ $pCate->id }}"
+                                                    {{ $pCate->id == $cate->parent_id ? 'selected' : '' }}>
+                                                    {{ $pCate->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -126,9 +164,17 @@
 @endsection
 @section('script')
     <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#tableListCategories').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.categoryParentSelector').select2({
+                theme: 'bootstrap-5',
+            });
         });
     </script>
     <script>
