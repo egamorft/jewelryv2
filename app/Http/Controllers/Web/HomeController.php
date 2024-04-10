@@ -81,6 +81,7 @@ class HomeController extends Controller
     public function detailProduct($id)
     {
         $product = Product::find($id);
+        $product->interest = ProductInterestModel::where('product_id',$id)->first()?1:0;
         $category = ProductCategory::where('product_id',$id)->pluck('category_id');
         $arr_id = ProductCategory::whereIn('category_id',$category)->pluck('product_id');
         $related_products = Product::whereIn('id',$arr_id)->where('published',1)->take(8)->get();

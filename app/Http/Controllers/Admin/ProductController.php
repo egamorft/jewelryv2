@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdvertisementProductModel;
 use App\Models\Category;
+use App\Models\CollectionProductModel;
 use App\Models\Product;
 use App\Models\ProductAttributeModel;
 use App\Models\ProductCategory;
+use App\Models\ProductInterestModel;
 use App\Models\ProductValueModel;
+use App\Models\StylingProductModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -245,7 +249,12 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json(['error' => -1, 'message' => "Not found product"], 400);
             }
-
+            ProductAttributeModel::where('product_id',$id)->delete();
+            ProductValueModel::where('product_id',$id)->delete();
+            CollectionProductModel::where('product_id',$id)->delete();
+            AdvertisementProductModel::where('product_id',$id)->delete();
+            ProductInterestModel::where('product_id',$id)->delete();
+            StylingProductModel::where('product_id',$id)->delete();
             $product->delete();
 
             return response()->json(['error' => 0, 'message' => "Success remove product"]);
@@ -275,7 +284,7 @@ class ProductController extends Controller
                         $product_value = ProductValueModel::find($item['value_id']);
                         $product_value->name = $item['name'];
                         $product_value->current_stock = isset($item['current_stock']) ? $item['current_stock'] : 0;
-                        $product_value->price = isset($item['cost']) ? $item['cost'] : 0;
+                        // $product_value->cost = isset($item['cost']) ? $item['cost'] : 0;
                         $product_value->price = isset($item['price']) ? $item['price'] : 0;
                         $product_value->save();
                     } else {
@@ -284,7 +293,7 @@ class ProductController extends Controller
                             'product_attribute_id' => $product_attribute->id,
                             'name' => $item['name'],
                             'current_stock' => isset($item['current_stock']) ? $item['current_stock'] : 0,
-                            'cost' => isset($item['cost']) ? $item['cost'] : 0,
+                            // 'cost' => isset($item['cost']) ? $item['cost'] : 0,
                             'price' => isset($item['price']) ? $item['price'] : 0,
                         ]);
                         $product_value->save();

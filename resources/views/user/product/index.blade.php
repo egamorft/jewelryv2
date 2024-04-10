@@ -23,7 +23,11 @@
             <div class="box-title-info-sp">
                <p class="name-product">{{ $product->name }}</p>
                <div class="d-flex align-items-center">
-                  <img src="{{asset('assets/images/heart.png')}}" class="icon-share">
+                  @if($product->interest == 1)
+                     <img src="{{asset('assets/images/heart-solid.svg')}}" class="icon-share heart-save" data-product-id="{{ $product->id }}">
+                     @else 
+                     <img src="{{asset('assets/images/heart.png')}}" class="icon-share heart-save" data-product-id="{{ $product->id }}">
+                  @endif
                   <img src="{{asset('assets/images/share.png')}}" class="icon-share">
                </div>
             </div>
@@ -114,12 +118,7 @@
                <a href="#recommended-products" class="item-header-more">suggestion</a>
             </div>
             <div class="content-info-product-more">
-               Be sure to check before purchasing!
-               - Tennis bracelets are handcrafted one by one and made only by certified artisans.
-               - Black diamond bracelets are made by directly ordering and importing a set quantity of natural diamonds and going through a rigorous selection process.
-               It is produced in limited quantities and may take a long time to be restocked if sold out, so please keep this in mind when ordering.
-               
-               - The production period for natural black diamonds is expected to take approximately 6 to 8 weeks.
+               {!! $product->information !!}
             </div>
             <div class="box-review" id="review">
                   <div class="line-header-review">
@@ -344,7 +343,11 @@
             <div class="box-title-info-sp">
                <p class="name-product">{{ $product->name }}</p>
                <div class="d-flex align-items-center">
-                  <img src="{{asset('assets/images/heart.png')}}" class="icon-share">
+                  @if($product->interest == 1)
+                     <img src="{{asset('assets/images/heart-solid.svg')}}" class="icon-share heart-save" data-product-id="{{ $product->id }}">
+                     @else 
+                     <img src="{{asset('assets/images/heart.png')}}" class="icon-share heart-save" data-product-id="{{ $product->id }}">
+                  @endif
                   <img src="{{asset('assets/images/share.png')}}" class="icon-share">
                </div>
             </div>
