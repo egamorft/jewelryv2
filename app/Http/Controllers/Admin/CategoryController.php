@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -18,7 +19,7 @@ class CategoryController extends Controller
         $page_sub = null;
         $categories = Category::orderBy('popular', 'desc')->orderBy('parent_id', 'asc')->get();
 
-        return view('admin.category.category-list')->with(compact('categories','page_menu','page_sub'));
+        return view('admin.category.category-list')->with(compact('categories', 'page_menu', 'page_sub'));
     }
 
     /**
@@ -38,7 +39,8 @@ class CategoryController extends Controller
             $validated = Validator::make($request->all(), [
                 'name' => 'required|string|max:30',
                 'slug' => 'required|unique:categories,slug',
-                'parent_id' => 'required|integer'
+                'parent_id' => 'required|integer',
+                'thumbnail' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
             ]);
 
             if ($validated->fails()) {
@@ -48,13 +50,20 @@ class CategoryController extends Controller
 
             $validatedData = $validated->validated();
 
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = Storage::url($request->file('thumbnail')->store('category', 'public'));
+                $validatedData['thumbnail'] = $thumbnailPath;
+            }
+
             $parent_id = $validatedData['parent_id'];
-            
+
             $category = Category::find($parent_id);
 
-            if (!$category || $category->parent_id != 0) {
-                toastr()->error("Parent selected is invalid");
-                return back()->withInput();
+            if ($parent_id != 0) {
+                if (!$category || $category->parent_id != 0) {
+                    toastr()->error("Parent selected is invalid");
+                    return back()->withInput();
+                }
             }
 
             Category::create($validatedData);
@@ -92,7 +101,8 @@ class CategoryController extends Controller
             $validated = Validator::make($request->all(), [
                 'name' => 'required|string|max:30',
                 'slug' => 'required|unique:categories,slug,' . $id,
-                'parent_id' => 'required|integer'
+                'parent_id' => 'required|integer',
+                'thumbnail' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
             ]);
 
             if ($validated->fails()) {
@@ -112,7 +122,7 @@ class CategoryController extends Controller
 
             if ($parent_id != 0) {
                 $category = Category::find($parent_id);
-    
+
                 if (!$category || $category->parent_id != 0) {
                     toastr()->error("Parent selected is invalid");
                     return back()->withInput();
@@ -120,6 +130,16 @@ class CategoryController extends Controller
             }
 
             $category = Category::find($id);
+
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = Storage::url($request->file('thumbnail')->store('category', 'public'));
+                $validatedData['thumbnail'] = $thumbnailPath;
+
+                //Delete existed
+                if (isset($category->thumbnail) && Storage::exists(str_replace('/storage', 'public', $category->thumbnail))) {
+                    Storage::delete(str_replace('/storage', 'public', $category->thumbnail));
+                }
+            }
 
             if ($category->parent_id == 0 && $parent_id != 0) {
                 $childCategory = Category::where('parent_id', $id)->get();

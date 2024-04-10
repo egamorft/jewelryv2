@@ -273,6 +273,12 @@
 
             // Show the selected child category
             $('#childCategories_' + parentId).show();
+
+            // Hide all categories
+            $('.categoryThumbnail').hide();
+
+            // Show the selected category
+            $('#category_thumbnail_' + parentId).show();
         }
     </script>
 </body>
