@@ -15,7 +15,7 @@
             <ul class="flex align-center justify-center">
                 <li class="tab_class selected">
                     <a type="button" class="tabBtn" id="orderDetaiTabBtn">Order details
-                        (<span id="xans_myshop_total_orders">0</span>)</a>
+                        (<span id="xans_myshop_total_orders">{{ count($orders) }}</span>)</a>
                 </li>
                 <li class="tab_class">
                     <a type="button" class="tabBtn" id="historyStatusTabBtn">Cancellation/Return/Exchange
@@ -52,8 +52,8 @@
                                 <div class="flex period-select-box">
                                     <div class="dv-field month-select-wrap me-3">
                                         <div class="dv-control flex align-center justify-start">
-                                            <input style="min-width: 120px" id="start_date" class="fText"
-                                                value="" type="text">
+                                            <input style="min-width: 120px" name="start_date" id="start_date" class="fText"
+                                                type="text" value="{{ request()->query('start_date') ?? date('Y-m-d') }}">
                                             <button type="button" class="ui-datepicker-trigger"><img
                                                     src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/ico_cal.gif"
                                                     alt="..." title="..."></button>
@@ -64,17 +64,13 @@
                                                         stroke-linecap="round" />
                                                 </svg>
                                             </span>
-                                            <input style="min-width: 120px" id="end_date" class="fText" value="2024-04-03"
-                                                type="text">
+                                            <input style="min-width: 120px" name="end_date" id="end_date" class="fText"
+                                                type="text" value="{{ request()->query('end_date') ?? date('Y-m-d') }}">
                                             <button type="button" class="ui-datepicker-trigger"><img
                                                     src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/ico_cal.gif"></button>
                                         </div>
                                     </div>
-                                    <span class="order-search-btn">
-                                        <input alt="check" id="order_search_btn" type="image"
-                                            src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/btn_search.gif"> <a
-                                            href="#" class="btn prior-1 justify-center">Check</a>
-                                    </span>
+                                    <button type="submit" class="btn prior-1 justify-center">Check</button>
                                 </div>
                             </div>
                         </div>
@@ -82,47 +78,98 @@
                 </fieldset>
                 <div class="order-state-box status-side mt-10" id="order_status_div">
                     <div class="stateSelect select width-full">
-                        <select id="order_status" name="order_status" class="fSelect">
-                            <option value="all">Total order processing status</option>
-                            <option value="shipped_before">Before deposit</option>
-                            <option value="shipped_standby">Preparing for delivery</option>
-                            <option value="shipped_begin">Shipping</option>
-                            <option value="shipped_complate">Delivery completed</option>
-                            <option value="order_cancel">Cancellation</option>
-                            <option value="order_exchange">Exchange</option>
-                            <option value="order_return">Return</option>
+                        <select id="order_status" name="status" class="fSelect">
+                            <option value="all" selected>Total order processing status</option>
+                            <option value="{{ \App\Enums\OrderStatus::BEFORE_DEPOSIT }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::BEFORE_DEPOSIT ? 'selected' : '' }}>
+                                Before deposit</option>
+                            <option value="{{ \App\Enums\OrderStatus::PREPARE_DELIVERY }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::PREPARE_DELIVERY ? 'selected' : '' }}>
+                                Preparing for delivery</option>
+                            <option value="{{ \App\Enums\OrderStatus::SHIPPING }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::SHIPPING ? 'selected' : '' }}>
+                                Shipping</option>
+                            <option value="{{ \App\Enums\OrderStatus::COMPLETED }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::COMPLETED ? 'selected' : '' }}>
+                                Delivery completed</option>
+                            <option value="{{ \App\Enums\OrderStatus::CANCEL }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::CANCEL ? 'selected' : '' }}>
+                                Cancellation</option>
+                            <option value="{{ \App\Enums\OrderStatus::EXCHANGE }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::EXCHANGE ? 'selected' : '' }}>
+                                Exchange</option>
+                            <option value="{{ \App\Enums\OrderStatus::RETURN }}"
+                                {{ request()->query('status') == \App\Enums\OrderStatus::RETURN ? 'selected' : '' }}>
+                                Return</option>
                         </select>
                     </div>
                 </div>
             </div>
         </form>
-        <div class="xans-element- xans-myshop xans-myshop-orderhistorylistitem mt-20">
-            <p class="is-no-data ">There is no order history.</p>
-        </div>
-
-        {{-- <div class="xans-element- xans-myshop xans-myshop-orderhistorypaging ec-base-paginate"><!--order history-->
-            <div class="flex justify-center align-center">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                        <g transform="translate(-877.5 -600)">
-                            <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)" fill="none"
-                                stroke="#000" stroke-width="1"></path>
-                            <rect width="48" height="38" transform="translate(877.5 600)" fill="none"></rect>
-                        </g>
-                    </svg></a>
-                <ol class="flex justify-center align-center">
-                    <li class="xans-record-"><a href="#" class="this">1</a></li>
-                </ol>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                        <g transform="translate(-540 -859)">
-                            <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)" fill="none"
-                                stroke="#000" stroke-width="1"></path>
-                            <rect width="48" height="38" transform="translate(540 859)" fill="none"></rect>
-                        </g>
-                    </svg></a>
+        @forelse ($orders as $order)
+            <div class="xans-element- xans-myshop xans-myshop-orderhistorylistitem mt-20">
+                <div class="orderContainer" style="border: 1px solid">
+                    <div class="d-flex justify-content-between mb-3 fs-6 fw-bolder">
+                        <div class="p-2">
+                            Order date: {{ date('d/m/Y H:i', strtotime($order->created_at)) }}
+                        </div>
+                        <div class="p-2">
+                            Order code: {{ $order->tracking_code }}
+                        </div>
+                        <div class="p-2">
+                            <span
+                                class="badge rounded-pill bg-primary">{{ \App\Enums\OrderStatus::getKey($order->status) }}</span>
+                        </div>
+                    </div>
+                    @foreach ($order->orderDetails as $key => $detail)
+                        <div class="container mb-2 {{ $key != 0 ? 'more-content' : '' }}"
+                            style="{{ $key != 0 ? 'display: none;' : '' }}">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>{{ $detail->products->name }}</p>
+                                    <img src="/assets/images/blank.jpg" class="img-thumbnail mt-2" alt=""
+                                        width="160px">
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                    <p>Quantity: {{ $detail->quantity }}</p>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center justify-content-end">
+                                    <p>{{ number_format($detail->price * $detail->quantity, 0, '.', ',') }} đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mx-2">
+                    @endforeach
+                    @if (count($order->orderDetails) > 1)
+                        <div class="d-flex justify-content-center">
+                            <a type="button" class="show-more text-muted">Show more
+                                <span class="fa fa-angle-down"></span></a>
+                        </div>
+                        <hr class="mx-2">
+                    @endif
+                    <div class="container mb-2">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Product amount: {{ count($order->orderDetails) }}</p>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center justify-content-end">
+                                <p>Total: {{ number_format($order->total, 0, '.', ',') }} đ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mx-2">
+                    <div class="container mb-2">
+                        <div class="d-flex justify-content-end">
+                            <a href="#" class="btn prior-1 justify-center">Review order</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div> --}}
+        @empty
+            <div class="xans-element- xans-myshop xans-myshop-orderhistorylistitem mt-20">
+                <p class="is-no-data ">There is no order history.</p>
+            </div>
+        @endforelse
     </div>
 @endsection
 
@@ -171,12 +218,28 @@
 
                 // Update the URL with the start and end dates as query parameters
                 var url = window.location.href.split("?")[0];
-                var queryParameters = "startdate=" + startDate + "&enddate=" + endDate;
+                var queryParameters = "start_date=" + startDate + "&end_date=" + endDate;
                 var orderStatus = $('#order_status').val();
                 if ($("#historyStatusTabBtn").parent("li").hasClass("selected")) {
                     window.location.href = url + "?" + queryParameters;
                 } else {
                     window.location.href = url + "?status=" + orderStatus + "&" + queryParameters;
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.show-more').on('click', function() {
+                var showMoreBtn = $(this);
+                var moreContent = showMoreBtn.closest('.orderContainer').find('.more-content');
+
+                if (moreContent.is(':hidden')) {
+                    moreContent.slideDown('fast');
+                    showMoreBtn.find('span').removeClass('fa-angle-down').addClass('fa-angle-up');
+                } else {
+                    moreContent.slideUp('fast');
+                    showMoreBtn.find('span').removeClass('fa-angle-up').addClass('fa-angle-down');
                 }
             });
         });

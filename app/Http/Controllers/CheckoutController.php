@@ -124,7 +124,7 @@ class CheckoutController extends Controller
                 'subtotal' => $validatedData['subtotal'],
                 'discount' => $validatedData['discount'],
                 'total' => $validatedData['total'],
-                'status' => OrderStatus::PENDING,
+                'status' => OrderStatus::BEFORE_DEPOSIT,
             ]);
 
             $cartItems = $request->cookie('cartItems');
