@@ -68,7 +68,7 @@
             aria-labelledby="addCategoryLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <form method="POST" action="{{ route('admin.category.store') }}">
+                    <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="addCategoryLabel">Add category</h5>
@@ -86,8 +86,9 @@
                                     value="{{ old('slug') }}">
                             </div>
                             <div class="mb-3">
-                                <label for="categoryParentSelector" class="form-label">Categories parent: </label>
-                                <select class="form-select categoryParentSelector" name="parent_id">
+                                <label for="addCategoryParentSelector" class="form-label">Categories parent: </label>
+                                <select class="form-select categoryParentSelector" id="addCategoryParentSelector"
+                                    name="parent_id">
                                     <option value="0" selected>No parent</option>
                                     @foreach ($categories as $cate)
                                         @if (!$cate->parent_id)
@@ -97,6 +98,12 @@
                                         @endif
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="add-category-thumbnail" class="form-label">Thumbnail</label>
+                                <input name="thumbnail" class="form-control" type="file" id="add-category-thumbnail"
+                                    accept="image/*">
+                                <img id="add-thumbnail-preview" class="mt-3" src="" width="200">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -110,11 +117,12 @@
 
         @foreach ($categories as $key => $cate)
             <!-- Edit category modal -->
-            <div class="modal fade" id="editCategory{{ $cate->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="editCategoryLabel" aria-hidden="true">
+            <div class="modal fade" id="editCategory{{ $cate->id }}" data-bs-backdrop="static"
+                data-bs-keyboard="false" tabindex="-1" aria-labelledby="editCategoryLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <form method="POST" action="{{ route('admin.category.update', ['id' => $cate->id]) }}">
+                        <form method="POST" action="{{ route('admin.category.update', ['id' => $cate->id]) }}"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="modal-header">
@@ -148,6 +156,14 @@
                                             @endif
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="thumbnail_{{ $key }}" class="form-label">Product
+                                        thumbnail</label>
+                                    <input name="thumbnail" class="form-control" type="file"
+                                        id="thumbnail_{{ $key }}" accept="image/*">
+                                    <img id="edit-thumbnail-preview-{{ $key }}" class="mt-3"
+                                        src="{{ $cate->thumbnail }}" width="200">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -227,5 +243,20 @@
                 });
             }
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('input[name="thumbnail"]').on('change', function(e) {
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                var previewImage = $(this).siblings('img');
+
+                reader.onload = function(e) {
+                    previewImage.attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        });
     </script>
 @endsection

@@ -105,24 +105,36 @@
             </div>
         @endif
         @if (isset($childrenCategories) && !empty($childrenCategories))
+            @php
+                $index = 0;
+            @endphp
             @foreach ($childrenCategories as $parentId => $children)
-                <div id="childCategories_{{ $parentId }}" style="display: none;" class="col-item-menu">
-                        @foreach ($children as $child)
-                            <a href="{{ $cate['slug'] }}"
-                                class="content-item-menu">{{ strtoupper($cate['name']) }}</a>
-                        @endforeach
-                        <a href="#" class="content-item-menu">VIEW ALL</a>
+                <div id="childCategories_{{ $parentId }}" style="{{ $index == 0 ? '' : 'display: none;' }}"
+                    class="col-item-menu">
+                    @foreach ($children as $child)
+                        <a href="{{ $cate['slug'] }}" class="content-item-menu">{{ strtoupper($cate['name']) }}</a>
+                    @endforeach
+                    <a href="#" class="content-item-menu">VIEW ALL</a>
                 </div>
+                @php
+                    $index++;
+                @endphp
             @endforeach
         @endif
         <div class="col-item-menu-right">
-            <a href="" class="content-item-menu">HERITAGE LINE</a>
-            <a href="" class="content-item-menu">EVERYDAY LINE</a>
-            <a href="" class="content-item-menu">NEW in</a>
+            <a href="#" class="content-item-menu">HERITAGE LINE</a>
+            <a href="#" class="content-item-menu">EVERYDAY LINE</a>
+            <a href="#" class="content-item-menu">NEW in</a>
         </div>
-        <div class="col-item-menu-right">
-            <img src="{{ asset('assets/images/img-header.jpg') }}" class="w-100">
-        </div>
+
+        {{-- Category thumbnail --}}
+        @if (isset($parentCategories) && !$parentCategories->isEmpty())
+            @foreach ($parentCategories as $key => $cate)
+                <div id="category_thumbnail_{{ $cate->id }}" class="col-item-menu-right categoryThumbnail" style="{{ $key == 0 ? '' : 'display: none' }}">
+                    <img src="{{ $cate->thumbnail }}" class="w-100">
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 
