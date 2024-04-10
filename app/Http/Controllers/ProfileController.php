@@ -19,14 +19,6 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display a listing of order.
-     */
-    public function order()
-    {
-        return view('user.authenticated.profile.order');
-    }
-
-    /**
      * Display and change member .
      */
     public function member()
