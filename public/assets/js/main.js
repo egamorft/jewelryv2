@@ -49,7 +49,8 @@ function addAttributeCart(id) {
         processData: false,
         success: function (response) {
             if (response.error == 0) {
-                $("#offcanvasRight").offcanvas("show");
+                $(".box-cart-attribute").html("");
+                $(".footer-box-attr-sp").css("display", "none");
                 var attributes = response.attribute;
                 var boxHtml = "";
                 $.each(attributes, function (index, attribute) {
@@ -87,6 +88,7 @@ function addAttributeCart(id) {
 $(".box-attribute").on("change", ".select-attribute-sp", function () {
     var attributeName = $(this).attr("id");
     var attributeValue = $(this).val();
+
     if (attributeValue !== "") {
         selectedCount++;
     } else {
@@ -112,6 +114,7 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
             success: function (response) {
                 if (response.error == 0) {
                     $(".footer-box-attr-sp").css("display", "block");
+                    selectedCount = 0;
                     var today = new Date();
                     var discountEnd = new Date(response.product.discount_end);
                     var subTotal = 0;
@@ -170,7 +173,6 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
                             }" data-cart-product-value="${
                         response.product.value_id
                     }">Add Cart</button>
-                            <button class="btn-add-buy">Buy Now</button>
                         </div>`;
                     $(".footer-box-attr-sp").html(footerValueCart);
                 }
