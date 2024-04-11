@@ -35,6 +35,7 @@ Route::get('/load-more-products-styling', [StylingController::class, 'loadMorePr
 Route::get('/detail-collection/{id}', [HomeController::class, 'detailCollection'])->name('detail-collection');
 Route::get('/live', [LiveController::class, 'index'])->name('live');
 Route::get('/detail-product/{id}', [HomeController::class, 'detailProduct'])->name('detail-product');
+Route::get('/search', [HomeController::class, 'searchProduct'])->name('search');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');

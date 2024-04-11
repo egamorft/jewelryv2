@@ -50,9 +50,9 @@ class HomeController extends Controller
             $products = Product::where('published', 1)->whereHas('categories', function ($query) use ($category) {
                 $query->where('category_id', $category->id);
             })->take(4)->get();
-            foreach($products as $item){
-                $product_interest = ProductInterestModel::where('product_id',$item->id)->first();
-                $item->interest = $product_interest?1:0;
+            foreach ($products as $item) {
+                $product_interest = ProductInterestModel::where('product_id', $item->id)->first();
+                $item->interest = $product_interest ? 1 : 0;
             }
             $productsByCategory[$category->name] = $products;
         }
@@ -67,8 +67,8 @@ class HomeController extends Controller
         $collection_product = CollectionProductModel::where('collection_id', $id)->get();
         foreach ($collection_product as $item) {
             $item->info = Product::find($item->product_id);
-            $product_interest = ProductInterestModel::where('product_id',$item->product_id)->first();
-            $item->interest = $product_interest?1:0;
+            $product_interest = ProductInterestModel::where('product_id', $item->product_id)->first();
+            $item->interest = $product_interest ? 1 : 0;
         }
         return view('user.collection.index', compact('collection', 'data_collection', 'collection_product'));
     }
@@ -76,10 +76,19 @@ class HomeController extends Controller
     public function detailProduct($id)
     {
         $product = Product::find($id);
-        $product->interest = ProductInterestModel::where('product_id',$id)->first()?1:0;
-        $category = ProductCategory::where('product_id',$id)->pluck('category_id');
-        $arr_id = ProductCategory::whereIn('category_id',$category)->pluck('product_id');
-        $related_products = Product::whereIn('id',$arr_id)->where('published',1)->take(8)->get();
-        return view('user.product.index',compact('product','related_products'));
+        $product->interest = ProductInterestModel::where('product_id', $id)->first() ? 1 : 0;
+        $category = ProductCategory::where('product_id', $id)->pluck('category_id');
+        $arr_id = ProductCategory::whereIn('category_id', $category)->pluck('product_id');
+        $related_products = Product::whereIn('id', $arr_id)->where('published', 1)->take(8)->get();
+        return view('user.product.index', compact('product', 'related_products'));
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $products = Product::paginate(8);
+
+        // $product = $products
+
+        return view('user.product.search')->with(compact('products'));
     }
 }
