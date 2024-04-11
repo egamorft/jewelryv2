@@ -17,35 +17,37 @@ class CartController extends Controller
         try {
             $cartItemsJson = $request->cookie('cartItems');
             $cartItems = json_decode($cartItemsJson, true) ?? [];
-           
+
             $cartDetails = [];
             foreach ($cartItems as $cartItem) {
                 $product_id = $cartItem['product_id'];
                 $quantity = $cartItem['quantity'];
                 $product = Product::find($product_id);
-                
+
                 if (!$product) {
                     return response()->json(['error' => -1, 'message' => "Not found product"], 400);
                 }
-                
-                $total_money = $product->price * $quantity;
-                
+
+                $total_money = 0;
+
                 $name_value = '';
                 foreach($cartItem['value_id'] as $val_id){
                     $product_value = ProductValueModel::find($val_id);
                     $total_money += $product_value->price;
                     $name_value .= '/'.$product_value->name;
                 }
-                
+
                 $cartDetails[] = [
                     'id' => $product->id,
                     'name' => $product->name.$name_value,
-                    'price' => $total_money,
+                    'price' => $product->price,
+                    'total_money' => $total_money,
                     'discount' => $product->discount,
                     'discount_type' => $product->discount_type,
                     'discount_end' => $product->discount_end,
                     'thumbnail' => $product->thumbnail_img,
-                    'quantity' => $quantity
+                    'quantity' => $quantity,
+                    'value_id' => $cartItem['value_id']
                 ];
             }
             return response()->json(['error' => 0, 'data' => $cartDetails]);
@@ -66,7 +68,7 @@ class CartController extends Controller
             if (!$product) {
                 return response()->json(['error' => -1, 'message' => "Not found product"], 400);
             }
-            
+
             $product_attribute = ProductAttributeModel::where('product_id',$product_id)->get();
             foreach($product_attribute as $attribute){
                 $attribute->value = ProductValueModel::where('product_attribute_id',$attribute->id)->get();
@@ -85,7 +87,7 @@ class CartController extends Controller
             $first_value = array_values($value)[0];
             $product_value = ProductValueModel::find($first_value);
             $product = Product::find($product_value->product_id);
-            $total_money = $product->price;
+            $total_money = 0;
             $info_value = [];
             $value_id = [];
             foreach($value as $val){
@@ -97,7 +99,8 @@ class CartController extends Controller
             $product->total_money = $total_money;
             $product->info_value = $info_value;
             $product->value_id = $value_id;
-           
+            $product->quantity = 1;
+            
             return response()->json(['error' => 0,'product'=>$product ,'message' => "Success add product to cart"]);
         } catch (\Exception $e) {
             return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);
@@ -163,6 +166,7 @@ class CartController extends Controller
 
             $product_id = $request->product_id;
             $quantity = $request->quantity;
+            $value_id = explode(',', $request->value_id);
 
             if (!$product_id || !$quantity || $quantity <= 0) {
                 return response()->json(['error' => -1, 'message' => "Invalid data"], 400);
@@ -174,11 +178,11 @@ class CartController extends Controller
                 return response()->json(['error' => -1, 'message' => "Product is out of stock"], 400);
             }
 
-            if (!$cartItems || !isset($cartItems[$product_id])) {
-                return response()->json(['error' => -1, 'message' => "Product not found in the cart"], 400);
+            foreach ($cartItems as $key => $item) {
+                if ($item['product_id'] == $product_id && $item['value_id'] == $value_id) {
+                    $cartItems[$key]['quantity'] = (int)$quantity;
+                }
             }
-
-            $cartItems[$product_id] = (int)$quantity;
 
             $cartItemsJson = json_encode($cartItems);
 
@@ -191,25 +195,23 @@ class CartController extends Controller
         }
     }
 
-    public function remove(Request $request, $id)
+    public function remove(Request $request)
     {
         try {
-            if (!$id) {
-                return response()->json(['error' => -1, 'message' => "Id is null"], 400);
-            }
-
             $cartItems = $request->cookie('cartItems');
             $cartItems = json_decode($cartItems, true);
 
-            if (isset($cartItems[$id])) {
-                // Remove the cart item with the specified product_id
-                unset($cartItems[$id]);
+            $product_id = $request->product_id;
+            $value_id = explode(',', $request->value_id);
 
-                $cartItemsJson = json_encode($cartItems);
+            foreach ($cartItems as $key => $item) {
+                if ($item['product_id'] == $product_id && $item['value_id'] == $value_id) {
+                    unset($cartItems[$key]);
 
-                return response()->json(['error' => 0, 'message' => "Success remove product from cart"])->cookie('cartItems', $cartItemsJson);
-            } else {
-                return response()->json(['error' => -1, 'message' => "Product not found in cart"], 400);
+                    $cartItemsJson = json_encode($cartItems);
+
+                    return response()->json(['error' => 0, 'message' => "Success remove product from cart"])->cookie('cartItems', $cartItemsJson);
+                }
             }
 
             return response()->json(['error' => 0, 'message' => "Success remove address"]);

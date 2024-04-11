@@ -283,7 +283,7 @@ class ProductController extends Controller
                     if (isset($item['value_id'])) {
                         $product_value = ProductValueModel::find($item['value_id']);
                         $product_value->name = $item['name'];
-                        $product_value->current_stock = isset($item['current_stock']) ? $item['current_stock'] : 0;
+                        // $product_value->current_stock = isset($item['current_stock']) ? $item['current_stock'] : 0;
                         // $product_value->cost = isset($item['cost']) ? $item['cost'] : 0;
                         $product_value->price = isset($item['price']) ? $item['price'] : 0;
                         $product_value->save();
@@ -292,7 +292,7 @@ class ProductController extends Controller
                             'product_id' => $product->id,
                             'product_attribute_id' => $product_attribute->id,
                             'name' => $item['name'],
-                            'current_stock' => isset($item['current_stock']) ? $item['current_stock'] : 0,
+                            // 'current_stock' => isset($item['current_stock']) ? $item['current_stock'] : 0,
                             // 'cost' => isset($item['cost']) ? $item['cost'] : 0,
                             'price' => isset($item['price']) ? $item['price'] : 0,
                         ]);

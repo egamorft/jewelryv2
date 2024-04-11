@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('styling', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('describe')->nullable();
-            $table->longText('content');
-            $table->integer('display')->default(1);
-            $table->timestamps();
+        Schema::table('order_details', function (Blueprint $table) {
+            $table->longText('product_name');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('styling');
+        Schema::table('order_details', function (Blueprint $table) {
+            $table->dropColumn('product_name');
+        });
     }
 };
