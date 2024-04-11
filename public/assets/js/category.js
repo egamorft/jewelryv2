@@ -96,19 +96,53 @@ function sixActive() {
 }
 
 $(function () {
+    var url = new URL(window.location.href);
+    var minPrice = url.searchParams.get('price_min');
+    var maxPrice = url.searchParams.get('price_max');
+
+    if (!minPrice) {
+        minPrice = 100000;
+    }
+
+    if (!maxPrice) {
+        maxPrice = 1000000;
+    }
+
     $("#slider-range").slider({
         range: true,
-        min: 130,
-        max: 500,
-        values: [130, 250],
+        min: 100000,
+        max: 10000000,
+        step: 100000,
+        values: [minPrice, maxPrice],
         slide: function (event, ui) {
-            $("#amount-min").val(ui.values[0] + "VND");
-            $("#amount-max").val(ui.values[1] + "VND");
+            var amountMin = formatMoney(ui.values[0]);
+            var amountMax = formatMoney(ui.values[1]);
+
+            $("#amount-min").val(amountMin);
+            $("#amount-max").val(amountMax);
+
+            $("#hidden-min").val(ui.values[0]);
+            $("#hidden-max").val(ui.values[1]);
         },
         create: function (event, ui) {
             var initValues = $(this).slider("option", "values");
-            $("#amount-min").val(initValues[0] + "VND");
-            $("#amount-max").val(initValues[1] + "VND");
+            var amountMin = formatMoney(initValues[0]);
+            var amountMax = formatMoney(initValues[1]);
+
+            $("#amount-min").val(amountMin);
+            $("#amount-max").val(amountMax);
+
+            $("#hidden-min").val(initValues[0]);
+            $("#hidden-max").val(initValues[1]);
         },
     });
+
+    function formatMoney(amount) {
+        return new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(amount);
+    }
 });
