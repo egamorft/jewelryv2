@@ -93,7 +93,7 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
         selectedCount--;
     }
 
-    if (selectedCount === totalSelectBoxes) {
+    if (selectedCount >= totalSelectBoxes) {
         var selectedAttributes = {};
         $(".select-attribute-sp").each(function () {
             attributeName = $(this).attr("id");
@@ -112,8 +112,31 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
             success: function (response) {
                 if (response.error == 0) {
                     $(".footer-box-attr-sp").css("display", "block");
+                    var today = new Date();
+                    var discountEnd = new Date(response.product.discount_end);
+                    var subTotal = 0;
+                    if (response.product.discount > 0 && discountEnd > today) {
+                        if (response.product.discount_type == "percent") {
+                            var salePrice =
+                                response.product.price -
+                                (response.product.price *
+                                    response.product.discount) /
+                                    100;
+                        } else {
+                            var salePrice =
+                                response.product.price -
+                                response.product.discount;
+                        }
+                        subTotal +=
+                            salePrice * response.product.quantity +
+                            response.product.total_money;
+                    } else {
+                        subTotal +=
+                            response.product.price * response.product.quantity +
+                            response.product.total_money;
+                    }
                     var productHtml = '<div class="box-sp-add-cart">';
-                    productHtml += "<span>" + response.product.name + "</span>";
+                    productHtml += `<div class="d-flex justify-content-between"> <div style="width:80%"><span>${response.product.name}</span>`;
 
                     if (response.product.info_value.length > 0) {
                         productHtml += "<span>";
@@ -123,11 +146,13 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
                                 productHtml += ", " + attributeValue;
                             }
                         );
-                        productHtml += "</span>";
+                        productHtml += `</span></div>
+                        <div style="width:20%"><img src="${response.product.thumbnail_img}" class="img-sp-add-cart"></div>
+                        </div>`;
                     }
                     productHtml +=
-                        '<div class="box-line-money-sp"> <div></div> <p class="total-sp-value" >' +
-                        formatNumber(response.product.total_money) +
+                        '<div class="box-line-money-sp"><p class="total-sp-value" >' +
+                        formatNumber(subTotal) +
                         " VND </p></div>";
                     productHtml += "</div>";
                     $(".box-cart-attribute").html(productHtml);
@@ -135,11 +160,8 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
                             <span>Total quantity of product</span>
                             <div class="d-flex align-items-center">
                                 <span class="money-total-cart">${formatNumber(
-                                    response.product.total_money
-                                )}</span>
-                                (<span class="number-sp-cart">${
-                                    response.product.length
-                                } </span>)
+                                    subTotal
+                                )} VND</span>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between">

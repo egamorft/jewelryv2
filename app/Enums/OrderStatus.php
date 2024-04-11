@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Enums;
 
 use BenSampo\Enum\Enum;
+use Illuminate\Validation\Rules\Enum as RulesEnum;
 
-final class OrderStatus extends Enum
+final class OrderStatus extends RulesEnum
 {
     const BEFORE_DEPOSIT = 0;
     const PREPARE_DELIVERY = 1;

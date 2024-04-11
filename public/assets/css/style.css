@@ -330,6 +330,10 @@ a:hover {
     align-items: center;
     margin-top: 5px;
 }
+.img-sp-add-cart {
+    width: 100%;
+    object-fit: cover;
+}
 @media (max-width: 1040px) {
     .img-logo {
         margin-right: 40px;

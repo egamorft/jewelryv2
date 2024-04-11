@@ -45,7 +45,7 @@ Route::post('getAttributeToCart', [CartController::class, 'getAttributeToCart'])
 Route::post('getProductAttribute', [CartController::class, 'getProductAttribute'])->name('cart.getProductAttribute');
 Route::post('addToCart', [CartController::class, 'addToCart'])->name('cart.store');
 Route::put('updateCartQuantity', [CartController::class, 'updateCartQuantity'])->name('cart.update');
-Route::delete('removeProductInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('removeProductInCart', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::group(['prefix' => 'member', 'middleware' => 'guest'], function () {
     Route::get('login', [AuthController::class, 'index'])->name('auth.member.index');

@@ -23,7 +23,7 @@
                     <div class="row mt-3">
                      <div class="col-3">Describe :</div>
                      <div class="col-8">
-                        <textarea type="text" class="form-control  text-sm" name="describe" rows="3" maxlength="255" class="ckeditor" required>{{$styling->describe}}</textarea>
+                        <textarea type="text" class="form-control  text-sm" name="describe" rows="3" maxlength="255" class="ckeditor">{{$styling->describe}}</textarea>
                      </div>
                  </div>
                  <div class="row mt-3">
