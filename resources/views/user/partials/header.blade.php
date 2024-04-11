@@ -112,9 +112,11 @@
                 <div id="childCategories_{{ $parentId }}" style="{{ $index == 0 ? '' : 'display: none;' }}"
                     class="col-item-menu">
                     @foreach ($children as $child)
-                        <a href="{{ $cate['slug'] }}" class="content-item-menu">{{ strtoupper($cate['name']) }}</a>
+                        <a href="{{ route('categories.show', ['slug' => $child['slug']]) }}"
+                            class="content-item-menu">{{ strtoupper($child['name']) }}</a>
                     @endforeach
-                    <a href="#" class="content-item-menu">VIEW ALL</a>
+                    <a href="{{ route('categories.show', ['slug' => $child['parent_slug']]) }}"
+                        class="content-item-menu">VIEW ALL</a>
                 </div>
                 @php
                     $index++;
@@ -130,7 +132,8 @@
         {{-- Category thumbnail --}}
         @if (isset($parentCategories) && !$parentCategories->isEmpty())
             @foreach ($parentCategories as $key => $cate)
-                <div id="category_thumbnail_{{ $cate->id }}" class="col-item-menu-right categoryThumbnail" style="{{ $key == 0 ? '' : 'display: none' }}">
+                <div id="category_thumbnail_{{ $cate->id }}" class="col-item-menu-right categoryThumbnail"
+                    style="{{ $key == 0 ? '' : 'display: none' }}">
                     <img src="{{ $cate->thumbnail }}" class="w-100">
                 </div>
             @endforeach
