@@ -123,51 +123,51 @@
             <div class="box-review" id="review">
                   <div class="line-header-review">
                      <p class="title-review">REVIEW (0)</p>
-                     <a href="" class="see-all">See all product reviews</a>
+                     {{-- <a href="" class="see-all">See all product reviews</a> --}}
                   </div>
                   <div class="box-star">
                         <div class="number-star">
                               <div class="d-flex">
                                  <img src="{{asset('assets/images/star.png')}}" class="icon-star-review">
-                                 <p class="star-number-review">5</p>
+                                 <p class="star-number-review">{{$product->star}}</p>
                               </div>
-                              <a href="" class="btn-write-review">Write a product review</a>
+                              <a class="btn-write-review" data-bs-toggle="modal" data-bs-target="#staticReview">Write a product review</a>
                         </div>
                         <div class="list-star">
                            <div class="item-list-star">
                               <span class="tag-star">Very good</span>
                               <div class="line-percent">
-                                 <div class="percent-content" style="width: 50%;"></div>
+                                 <div class="percent-content" style="width: {{$percent_5}}%;"></div>
                               </div>
-                              <span>516</span>
+                              <span>{{$star_five??0}}</span>
                            </div>
                            <div class="item-list-star">
                               <span class="tag-star">I love it</span>
                               <div class="line-percent">
-                                 <div class="percent-content" style="width: 40%;"></div>
+                                 <div class="percent-content" style="width: {{$percent_4}}%;"></div>
                               </div>
-                              <span>16</span>
+                              <span>{{$star_four??0}}</span>
                            </div>
                            <div class="item-list-star">
                               <span class="tag-star">It's normal</span>
                               <div class="line-percent">
-                                 <div class="percent-content" style="width: 50%;"></div>
+                                 <div class="percent-content" style="width: {{$percent_3}}%;"></div>
                               </div>
-                              <span>5</span>
+                              <span>{{$star_three??0}}</span>
                            </div>
                            <div class="item-list-star">
                               <span class="tag-star">Not too bad</span>
                               <div class="line-percent">
-                                 <div class="percent-content" style="width: 50%;"></div>
+                                 <div class="percent-content" style="width: {{$percent_2}}%;"></div>
                               </div>
-                              <span>51</span>
+                              <span>{{$star_two??0}}</span>
                            </div>
                            <div class="item-list-star">
                               <span class="tag-star">Not good</span>
                               <div class="line-percent">
-                                 <div class="percent-content" style="width: 50%;"></div>
+                                 <div class="percent-content" style="width: {{$percent_1}}%;"></div>
                               </div>
-                              <span>16</span>
+                              <span>{{$star_one??0}}</span>
                            </div>
                         </div>
                   </div>
@@ -185,7 +185,7 @@
                   </div>
                   <div class="box-rate-range">
                      <div class="dropdown">
-                        <button class="btn btn-rate dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-rate dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                           Rating
                         </button>
                         <ul class="dropdown-menu">
@@ -252,7 +252,7 @@
                      </div>
    
                      <div class="dropdown mx-3">
-                        <a class="btn btn-rate dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-rate dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                         Dropdown link
                         </a>
                      
@@ -274,7 +274,7 @@
                      </div>
                   </div>
                   <div class="content-review">
-                        <div class="item-content-review">
+                        {{-- <div class="item-content-review">
                               <div class="item-left-review">
                                     <div class="d-flex align-items-center">
                                        @for ($i = 0; $i < 5; $i++)
@@ -301,7 +301,7 @@
                                     <p style="font-size: 13px;margin-bottom: 5px">Donna Andy Classic Black Diamond </p>
                                     <p style="font-size: 13px;margin-bottom: 5px">Solitaire ring with a timeless design that you can keep for a lifetime, 1 carat, 5-quarter size styling.</p>
                               </div>
-                        </div>
+                        </div> --}}
                   </div>
             </div>
          </div>
@@ -330,7 +330,7 @@
                            <p class="price-recommended-product">{{number_format($salePrice)}} VND</p>
                            @else
             <p class="price-recommended-product">{{number_format($related->price)}} VND</p>
-             @endif
+                     @endif
                         </div>
                      @endforeach
                   </div>
@@ -437,6 +437,62 @@
    </div>
    
 </div>
+<!-- Modal review -->
+<div class="modal fade" id="staticReview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <div class="d-flex ">
+            <img src="{{asset($product->thumbnail_img)}}" style="width: 52px;height: 52px;object-fit: cover">
+            <p class="mx-2">{{$product->name}}</p>
+         </div>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <form action="{{route('save-review')}}" method="post" enctype="multipart/form-data">
+         @csrf
+       <div class="modal-body" style="height: 450px;overflow: auto">
+         <input type="text" value="{{$product->id}}" name="product_id" hidden>
+            <div class="mb-3">
+               <p class="title-review-modal">Full name</p>
+               <input type="text" required class="input-review" name="name">
+            </div>
+            <div class="mb-3">
+               <p class="title-review-modal">Content</p>
+               <textarea class="input-review" required name="content" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+               <p class="title-review-modal">Attach photo</p>
+               <span style="font-size: 12px;color: #cdcdcd;margin-bottom: 10px;display: block">Reviews with photos unrelated to the product may be deleted without notice.</span>
+               <input type="file" name="file[]" id="fileInput" multiple>
+               <div id="imageContainer"></div>
+            </div>
+            <div class="mb-3">
+               <p class="title-review-modal">Satisfaction</p>
+               <select name="star" class="form-select select-review">
+                  <option value="5">Very good</option>
+                  <option value="4">I love it</option>
+                  <option value="3">It's normal</option>
+                  <option value="2">Not too bad</option>
+                  <option value="1">Not good</option>
+               </select>
+            </div>
+            <div class="mb-3">
+               <p class="title-review-modal">Age</p>
+               <select name="type_age" class="form-select select-review">
+                  <option value="1">10 years old</option>
+                  <option value="2">20 years old</option>
+                  <option value="3">30 years old</option>
+                  <option value="4">Over 40 years old</option>
+               </select>
+            </div>
+       </div>
+       <div class="modal-footer">
+         <button type="submit" class="btn btn-review">Write a review</button>
+       </div>
+      </form>
+     </div>
+   </div>
+ </div>
 
 
 @section('script_page')
