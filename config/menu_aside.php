@@ -107,6 +107,14 @@ return [
             'submenu' => [],
             'number' => 6
         ],
+        [
+            'name' => 'order',
+            'title' => 'Order',
+            'icon' => 'bi bi-cart-check',
+            'route' => 'admin.order.index',
+            'submenu' => [],
+            'number' => 7
+        ],
         
     ]
 ];

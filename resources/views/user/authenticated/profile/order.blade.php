@@ -53,7 +53,8 @@
                                     <div class="dv-field month-select-wrap me-3">
                                         <div class="dv-control flex align-center justify-start">
                                             <input style="min-width: 120px" name="start_date" id="start_date" class="fText"
-                                                type="text" value="{{ request()->query('start_date') ?? date('Y-m-d') }}">
+                                                type="text"
+                                                value="{{ request()->query('start_date') ?? date('Y-m-d') }}">
                                             <button type="button" class="ui-datepicker-trigger"><img
                                                     src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/ico_cal.gif"
                                                     alt="..." title="..."></button>
@@ -81,7 +82,7 @@
                         <select id="order_status" name="status" class="fSelect">
                             <option value="all" selected>Total order processing status</option>
                             <option value="{{ \App\Enums\OrderStatus::BEFORE_DEPOSIT }}"
-                                {{ request()->query('status') == \App\Enums\OrderStatus::BEFORE_DEPOSIT ? 'selected' : '' }}>
+                                {{ request()->query('status') != null && request()->query('status') == \App\Enums\OrderStatus::BEFORE_DEPOSIT ? 'selected' : '' }}>
                                 Before deposit</option>
                             <option value="{{ \App\Enums\OrderStatus::PREPARE_DELIVERY }}"
                                 {{ request()->query('status') == \App\Enums\OrderStatus::PREPARE_DELIVERY ? 'selected' : '' }}>
@@ -109,6 +110,34 @@
         @forelse ($orders as $order)
             <div class="xans-element- xans-myshop xans-myshop-orderhistorylistitem mt-20">
                 <div class="orderContainer" style="border: 1px solid">
+                    @php
+                        switch ($order->status) {
+                            case \App\Enums\OrderStatus::BEFORE_DEPOSIT:
+                                $badge = 'secondary';
+                                break;
+                            case \App\Enums\OrderStatus::PREPARE_DELIVERY:
+                                $badge = 'primary';
+                                break;
+                            case \App\Enums\OrderStatus::SHIPPING:
+                                $badge = 'info text-dark';
+                                break;
+                            case \App\Enums\OrderStatus::COMPLETED:
+                                $badge = 'success';
+                                break;
+                            case \App\Enums\OrderStatus::CANCEL:
+                                $badge = 'danger';
+                                break;
+                            case \App\Enums\OrderStatus::EXCHANGE:
+                                $badge = 'warning text-dark';
+                                break;
+                            case \App\Enums\OrderStatus::RETURN:
+                                $badge = 'dark';
+                                break;
+                            default:
+                                $badge = 'secondary';
+                                break;
+                        }
+                    @endphp
                     <div class="d-flex justify-content-between mb-3 fs-6 fw-bolder">
                         <div class="p-2">
                             Order date: {{ date('d/m/Y H:i', strtotime($order->created_at)) }}
@@ -118,7 +147,7 @@
                         </div>
                         <div class="p-2">
                             <span
-                                class="badge rounded-pill bg-primary">{{ \App\Enums\OrderStatus::getKey($order->status) }}</span>
+                                class="badge rounded-pill bg-{{ $badge }}">{{ \App\Enums\OrderStatus::getKey($order->status) }}</span>
                         </div>
                     </div>
                     @foreach ($order->orderDetails as $key => $detail)
@@ -127,7 +156,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <p>{{ $detail->products->name }}</p>
-                                    <img src="/assets/images/blank.jpg" class="img-thumbnail mt-2" alt=""
+                                    <img src="{{ $detail->products->thumbnail_img }}" class="img-thumbnail mt-2" alt=""
                                         width="160px">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center justify-content-center">
