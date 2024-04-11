@@ -173,12 +173,12 @@
                                                            class="form-control name_attribute" placeholder="attribute name"
                                                            required value="{{$value->name}}">
                                                 </div>
-                                                <div class="col-lg-3 p-1">
+                                                {{-- <div class="col-lg-3 p-1">
                                                     <input name="variant[{{$key}}][data][{{$k}}][current_stock]" type="text"
                                                            class="form-control current_stock format-currency"
                                                            value="{{$value->current_stock}}"
                                                            placeholder="Current stock">
-                                                </div>
+                                                </div> --}}
                                                 {{-- <div class="col-lg-3 p-1">
                                                     <input name="variant[{{$key}}][data][{{$k}}][cost]" type="text"
                                                            class="form-control cost format-currency"

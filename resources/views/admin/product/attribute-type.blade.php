@@ -24,10 +24,10 @@
                <input type="text" name="variant[{{$count}}][data][0][name]" class="form-control name_attribute"
                       placeholder="Attribute name" required>
            </div>
-           <div class="col-lg-2 p-1">
+           {{-- <div class="col-lg-2 p-1">
             <input name="variant[{{$count}}][data][0][current_stock]" type="text" class="form-control current_stock format-currency"
                    placeholder="current stock">
-        </div>
+        </div> --}}
            {{-- <div class="col-lg-2 p-1">
                <input name="variant[{{$count}}][data][0][cost]" type="text" class="form-control cost format-currency"
                       placeholder="Cost">

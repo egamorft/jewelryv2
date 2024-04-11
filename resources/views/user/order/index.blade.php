@@ -64,7 +64,7 @@
                             <img src="{{ $cart['thumbnail'] }}" class="img-sp-buy">
                             <div class="w-100">
                                 <p class="title-sp-buy">{{ $cart['name'] }}</p>
-                                <p class="title-sp-buy">[Option: 14K yellow gold/15cm]</p>
+                                <p class="title-sp-buy">[Option: {{$cart['value_name']}}]</p>
                                 <p class="title-sp-buy">Quantity: {{ $cart['quantity'] }}</p>
                                 {{-- <p class="title-sp-buy">Discount amount: -KRW 350,000</p> --}}
                                 <div class="d-flex align-items-center">

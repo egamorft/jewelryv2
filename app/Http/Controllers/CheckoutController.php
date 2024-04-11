@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\OrderDetails;
 use App\Models\Orders;
 use App\Models\Product;
+use App\Models\ProductValueModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,26 +35,37 @@ class CheckoutController extends Controller
         $subTotal = 0;
         $subDiscount = 0;
         $cartDetails = [];
-        foreach ($cartItems as $product_id => $quantity) {
+        foreach ($cartItems as $item) {
+            $product_id = $item['product_id'];
+            $quantity = $item['quantity'];
+            $value_id = $item['value_id'];
+    
             $product = Product::find($product_id);
             if (!$product) {
                 toastr()->error("Product not found");
                 return redirect()->route('home');
             }
-            $subTotal += $product->price * $quantity;
+            $name_value = '';
+            $total_money = 0;
+            foreach($value_id as $key => $val_id){
+                $product_value = ProductValueModel::find($val_id);
+                $total_money += $product_value->price;
+                $name_value .= $key == 0 ? $product_value->name : '/'.$product_value->name;
+            }
             $salePrice = 0;
-            // Is discount available
+           
             if ($product->discount && Carbon::parse($product->discount_end)->isAfter(Carbon::now())) {
                 if ($product->discount_type == 'percent') {
-                    $salePrice = $product->price - ($product->price * $product->discount / 100);
+                    $salePrice = ($product->price - ($product->price * $product->discount / 100))+$total_money;
                     $subDiscount += ($product->price * $product->discount / 100) * $quantity;
                 } else {
-                    $salePrice = $product->price - $product->discount;
+                    $salePrice = ($product->price - $product->discount)+$total_money;
                     $subDiscount += $product->discount * $quantity;
                 }
             } else {
-                $salePrice = $product->price;
+                $salePrice = $product->price + $total_money;
             }
+            $subTotal += $salePrice * $quantity;
             $cartDetails[] = [
                 'id' => $product->id,
                 'name' => $product->name,
@@ -63,7 +75,9 @@ class CheckoutController extends Controller
                 'discount_end' => $product->discount_end,
                 'thumbnail' => $product->thumbnail_img,
                 'quantity' => $quantity,
-                'salePrice' => $salePrice
+                'salePrice' => $salePrice,
+                'value_id' => $value_id,
+                'value_name' => $name_value
             ];
         }
 
@@ -129,35 +143,45 @@ class CheckoutController extends Controller
 
             $cartItems = $request->cookie('cartItems');
             $cartItems = json_decode($cartItems, true);
-
-            foreach ($cartItems as $product_id => $quantity) {
+            
+            foreach ($cartItems as $item) {
+                $product_id = $item['product_id'];
+                $quantity = $item['quantity'];
+                $value_ids = $item['value_id'];
                 $product = Product::find($product_id);
                 if (!$product) {
                     toastr()->error("Product not found");
                     return back();
                 }
+                $name_value = '';
+                $total_money = 0;
+                foreach($value_ids as $val_id){
+                    $product_value = ProductValueModel::find($val_id);
+                    $total_money += $product_value->price;
+                    $name_value .= '/'.$product_value->name;
+                }
                 // Is discount available
                 if ($product->discount && Carbon::parse($product->discount_end)->isAfter(Carbon::now())) {
                     if ($product->discount_type == 'percent') {
-                        $salePrice = $product->price - ($product->price * $product->discount / 100);
+                        $salePrice = ($product->price - ($product->price * $product->discount / 100))+$total_money;
                     } else {
-                        $salePrice = $product->price - $product->discount;
+                        $salePrice = ($product->price - $product->discount)+$total_money;
                     }
                 } else {
-                    $salePrice = $product->price;
+                    $salePrice = ($product->price)+$total_money;
                 }
-
                 OrderDetails::create([
                     'order_id' => $order->id,
                     'product_id' => $product_id,
+                    'product_name' => $product->name.$name_value,
                     'quantity' => $quantity,
                     'price' => $salePrice
                 ]);
             }
-            
-            //DELETE
-
             DB::commit();
+            //DELETE
+            toastr()->success('Order created successfully');
+            return redirect()->route('home')->withCookie(cookie()->forget('cartItems'));
         } catch (\Exception $e) {
             DB::rollBack();
         }
