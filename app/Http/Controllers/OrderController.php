@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -29,7 +30,7 @@ class OrderController extends Controller
             $orders->whereBetween('created_at', [$startDateTime, $endDateTime]);
         }
 
-        $orders = $orders->orderBy('id', 'desc')->get();
+        $orders = $orders->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
         return view('user.authenticated.profile.order')->with(compact('orders'));
     }
