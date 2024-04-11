@@ -63,11 +63,6 @@ class HomeController extends Controller
         return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory', 'styling', 'advertisement', 'album', 'collection'));
     }
 
-    public function category()
-    {
-        return view('user.category.index');
-    }
-
     public function detailCollection($id)
     {
         $data_collection = CollectionModel::where('display', 1)->orderBy('index', 'asc')->get();

@@ -10,6 +10,10 @@ class CategoryController extends Controller
     public function searchProductsByCategory(Request $request, $slug)
     {
         try {
+            $orderBy = $request->query('orderBy');
+            $minPrice = $request->query('price_min');
+            $maxPrice = $request->query('price_max');
+
             if (!$slug) {
                 toastr()->error('Can not find this slug');
                 return back();
@@ -22,8 +26,33 @@ class CategoryController extends Controller
                 return back();
             }
 
-            dd($category);
+            $subCategory = Category::where('parent_id', $category->id)->get();
+            $products = $category->products;
 
+            // Retrieve products from the subcategories
+            foreach ($subCategory as $subcategory) {
+                $products = $products->merge($subcategory->products);
+            }
+
+            if ($orderBy) {
+                switch ($orderBy) {
+                    case 'low_to_high':
+                        $products = $products->sortBy('price');
+                        break;
+                    case 'high_to_low':
+                        $products = $products->sortByDesc('price');
+                        break;
+                }
+            }
+
+            if ($minPrice && $maxPrice) {
+                $products = $products->whereBetween('price', [$minPrice, $maxPrice]);
+            }
+
+            $category->popular = $category->popular + 1;
+            $category->save();
+
+            return view('user.category.index')->with(compact('category', 'subCategory', 'products'));
         } catch (\Exception $e) {
             toastr()->error($e->getMessage());
             return back();

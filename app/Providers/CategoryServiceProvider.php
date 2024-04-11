@@ -37,6 +37,7 @@ class CategoryServiceProvider extends ServiceProvider
                         'id' => $childCategory->id,
                         'slug' => $childCategory->slug,
                         'name' => $childCategory->name,
+                        'parent_slug' => $parentCategory->slug
                     ];
                 }
             
