@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductCollectionController;
 use App\Http\Controllers\Admin\StylingController;
@@ -119,5 +120,11 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::post('attribute-name', [ProductController::class, 'attributeName']);
    Route::get('product/delete-type/{id}', [ProductController::class, 'deleteType']);
    Route::get('product/delete-name/{id}', [ProductController::class, 'deleteName']);
+
+   //ORDER
+   Route::get('order', [OrderController::class, 'index'])->name('order.index');
+   Route::get('edit-order/{id}', [OrderController::class, 'edit'])->name('order.edit');
+   Route::put('update-order/{id}', [OrderController::class, 'update'])->name('order.update');
+   Route::delete('destroy-order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 });
 Route::post('ckeditor/upload', [DashboardController::class, 'upload'])->name('ckeditor.image-upload');
