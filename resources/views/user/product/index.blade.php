@@ -75,7 +75,7 @@
                <p class="content-info">Information on interest-free benefits by credit card company</p>
             </div>
 
-            <button class="btn-buy-cart" onclick="addAttributeCart({{ $product->id }})">Shopping basket | purchase</button>
+            <button class="btn-buy-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onclick="addAttributeCart({{ $product->id }})">Shopping basket | purchase</button>
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                <div class="accordion-item">
@@ -395,7 +395,7 @@
                <p class="content-info">Information on interest-free benefits by credit card company</p>
             </div>
 
-            <button class="btn-buy-cart" onclick="addAttributeCart({{ $product->id }})">Shopping basket | purchase</button>
+            <button class="btn-buy-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onclick="addAttributeCart({{ $product->id }})">Shopping basket | purchase</button>
 
             <div class="accordion accordion-flush" id="accordionFlushExamples">
                <div class="accordion-item">

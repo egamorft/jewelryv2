@@ -140,7 +140,7 @@
                             style="{{ $key != 0 ? 'display: none;' : '' }}">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <p>{{ $detail->products->name }}</p>
+                                    <p>{{ $detail->product_name }}</p>
                                     <img src="{{ $detail->products->thumbnail_img }}" class="img-thumbnail mt-2"
                                         alt="" width="160px">
                                 </div>

@@ -100,7 +100,7 @@ class CartController extends Controller
             $product->info_value = $info_value;
             $product->value_id = $value_id;
             $product->quantity = 1;
-
+            
             return response()->json(['error' => 0,'product'=>$product ,'message' => "Success add product to cart"]);
         } catch (\Exception $e) {
             return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);

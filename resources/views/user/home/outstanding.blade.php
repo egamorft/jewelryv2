@@ -17,7 +17,7 @@
                 <div class="swiper-slide box-swiper-sp">
                     @foreach ($products as $pro)
                         <div class="item-product">
-                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy" onclick="addAttributeCart({{$pro->id}})">
+                            <img src="{{ asset('assets/images/Icon.png') }}" class="icon-cart-product" loading="lazy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onclick="addAttributeCart({{$pro->id}})">
                             @if ($pro->interest == 1)
                                 <img src="{{ asset('assets/images/heart-solid.svg') }}" class="icon-heart-product"
                                     data-product-id="{{ $pro->id }}" loading="lazy">

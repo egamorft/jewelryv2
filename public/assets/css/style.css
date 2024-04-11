@@ -285,12 +285,12 @@ a:hover {
     font-size: 14px;
 }
 .btn-add-cart {
-    width: 49%;
+    width: 100%;
     text-align: center;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     border: 1px solid #909090;
     padding: 10px;
-    color: #000000;
+    color: #ffffff;
     margin-top: 10px;
     font-size: 15px;
 }
@@ -333,6 +333,15 @@ a:hover {
 .img-sp-add-cart {
     width: 100%;
     object-fit: cover;
+}
+@media (max-width: 1200px) {
+    .box-item-price {
+        width: 100%;
+        display: flex;
+    }
+    .box-time-sp {
+        width: 100%;
+    }
 }
 @media (max-width: 1040px) {
     .img-logo {

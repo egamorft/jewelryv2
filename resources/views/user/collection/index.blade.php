@@ -34,7 +34,7 @@
    <div class="box-product-category box-product-category-four">
       @foreach ($collection_product as $product_item)
       <a href="{{url('detail-product',$product_item->info->id)}}" class="item-product">
-         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" onclick="addAttributeCart({{ $product_item->info->id }})">
+         <img src="{{asset('assets/images/Icon.png')}}" class="icon-cart-product" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onclick="addAttributeCart({{ $product_item->info->id }})">
          @if($product_item->interest == 1)
          <img src="{{asset('assets/images/heart-solid.svg')}}" class="icon-heart-product" data-product-id="{{ $product_item->info->id }}">
          @else 
