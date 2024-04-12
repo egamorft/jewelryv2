@@ -275,67 +275,7 @@
                      </div>
                   </div>
                   <div class="content-review">
-                        {{-- <div class="item-content-review">
-                              <div class="item-left-review">
-                                    <div class="d-flex align-items-center">
-                                       @for ($i = 0; $i < 5; $i++)
-                                          <img src="{{asset('assets/images/star.png')}}" class="icon-rate-name">
-                                       @endfor
-                                          <span style="font-size: 14px">Very good</span>
-                                    </div>
-                                    <div class="comment">
-                                       Donna Andy Classic Black Diamond Tennis Bracelet [4mm]
-                                       5,400,000 won Donna Andy Classic Black Diamond Tennis Bracelet [4mm]
-                                       5,400,000 won
-                                    </div>
-                                    <div class="swiper mySwiperComment">
-                                       <div class="swiper-wrapper">
-                                          @for ($i = 0; $i < 7; $i++)
-                                             <div class="swiper-slide">
-                                                <img src="{{asset('assets/images/img-header.jpg')}}" class="w-100">
-                                             </div>
-                                          @endfor
-                                       </div>
-                                     </div>
-                                     <div class="accordion accordion-flush" id="accordionFlushExample">
-                                       <div class="accordion-item">
-                                         <h2 class="accordion-header" id="flush-headingOne">
-                                           <p class="accordion-button collapsed feedback-more" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                             Feedback (0)
-                                           </p>
-                                         </h2>
-                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                           <div class="accordion-body">
-                                             <div class="content-feedback">
-                                                @foreach ($feedback as $item)
-                                                <div class="item-feedback">
-                                                   <p class="name_user_feedback">{{$item->name}}</p>
-                                                   <div class="content-user-feedback">{{$item->content}}</div>
-                                                </div>
-                                                @endforeach
-                                                  
-                                             </div>
-                                             <form action="{{route('save-review-feedback')}}" method="post" enctype="multipart/form-data">
-                                             @csrf
-                                                <input type="text" value="1" name="review_id" hidden>
-                                                <input type="text" class="input-feedback" name="name" maxlength="255" placeholder="Full name">
-                                                <textarea name="content" class="input-feedback" rows="2" placeholder="Content"></textarea>
-                                                <div class="line-send-feedback">
-                                                   <button type="submit" class="btn-send-feedback">Send</button>
-                                                </div>
-                                             </form>
-                                           </div>
-                                         </div>
-                                       </div>
-                                      
-                                       
-                                     </div>
-                                    </div>
-                              <div class="item-right-review">
-                                    <p style="font-size: 13px;margin-bottom: 5px">Donna Andy Classic Black Diamond </p>
-                                    <p style="font-size: 13px;margin-bottom: 5px">Solitaire ring with a timeless design that you can keep for a lifetime, 1 carat, 5-quarter size styling.</p>
-                              </div>
-                        </div> --}}
+                       
                   </div>
                   <div class="d-flex justify-content-center align-items-center line-see-more">
                   

@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             @foreach ($topCategories as $top_cate)
                 <div class="swiper-slide content-menu-outstanding">
-                    <p style="width: fit-content;"># {{ $top_cate->name }}</p>
+                    <p style="width: fit-content;cursor: pointer;"># {{ $top_cate->name }}</p>
                 </div>
             @endforeach
 

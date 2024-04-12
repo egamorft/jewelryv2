@@ -6,7 +6,7 @@
          @foreach ($video as $index => $item_video)
             <div class="swiper-slide box-item-video">
                <div class="item-video">
-                  <video controls id="video{{$index}}" class="w-100" onplay="hideImage({{$index}})">
+                  <video controls id="video{{$index}}" class="w-100" style="max-height: 700px" onplay="hideImage({{$index}})">
                      <source src="{{asset($item_video->src)}}" type="video/mp4">
                   </video>
                   <img src="{{asset('assets/images/Polygon.png')}}" id="image{{$index}}" class="icon-polygon" onclick="playVideo({{$index}})">

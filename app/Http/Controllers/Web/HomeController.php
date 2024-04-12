@@ -66,11 +66,31 @@ class HomeController extends Controller
         return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory', 'styling', 'advertisement', 'album', 'collection'));
     }
 
-    public function detailCollection($id)
+    public function detailCollection(Request $request,$id)
     {
         $data_collection = CollectionModel::where('display', 1)->orderBy('index', 'asc')->get();
         $collection = CollectionModel::find($id);
-        $collection_product = CollectionProductModel::where('collection_id', $id)->get();
+        $sortBy = $request->input('sort_by');
+
+        $collection_product = DB::table('collection_product')
+        ->select('collection_product.*', 'products.price')
+        ->join('products', 'collection_product.product_id', '=', 'products.id')
+        ->where('collection_id', $id);
+        switch ($sortBy) {
+            case 'latest':
+                $collection_product->orderByDesc('collection_product.created_at');
+                break;
+            case 'low_to_high':
+                $collection_product->orderBy('products.price');
+                break;
+            case 'high_to_low':
+                $collection_product->orderByDesc('products.price');
+                break;
+            default:
+                $collection_product->orderByDesc('collection_product.created_at');
+                break;
+        }
+        $collection_product = $collection_product->paginate(32);
         foreach ($collection_product as $item) {
             $item->info = Product::find($item->product_id);
             $product_interest = ProductInterestModel::where('product_id', $item->product_id)->first();
@@ -242,6 +262,10 @@ class HomeController extends Controller
         }
 
         $products = $query->paginate(8);
+        foreach($products as $val){
+            $product_interest = ProductInterestModel::where('product_id', $val->id)->first();
+            $val->interest = $product_interest ? 1 : 0;
+        }
 
         // Append filter
         $products->appends(['q' => $q, 'orderBy' => $orderBy, 'category' => $category, 'minPrice' => $minPrice, 'maxPrice' => $maxPrice]);

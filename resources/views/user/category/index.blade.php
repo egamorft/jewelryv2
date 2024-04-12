@@ -147,7 +147,7 @@
             </g>
         </svg>
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12"
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" style="margin: 0 40px" viewBox="0 0 18 12"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasSort" aria-controls="offcanvasSort">
             <g transform="translate(-11740.5 18354.5)">
                 <line x2="18" transform="translate(11740.5 -18353.5)" fill="none" stroke="#000"
