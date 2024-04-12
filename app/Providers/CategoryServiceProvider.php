@@ -22,7 +22,7 @@ class CategoryServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['user.partials.header', 'user.home.category'], function ($view) {
+        View::composer(['user.partials.header', 'user.partials.footer','user.home.category'], function ($view) {
             $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
             
             $topPopular = Category::orderBy('popular', 'desc')->where('parent_id', 0)->get();
@@ -40,7 +40,8 @@ class CategoryServiceProvider extends ServiceProvider
                         'id' => $childCategory->id,
                         'slug' => $childCategory->slug,
                         'name' => $childCategory->name,
-                        'parent_slug' => $parentCategory->slug
+                        'parent_slug' => $parentCategory->slug,
+                        'parent_id'=> $childCategory->parent_id
                     ];
                 }
             

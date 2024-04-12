@@ -23,7 +23,7 @@
             </div>
             <div class="item-menu-category-icon">
                 <span data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter" aria-controls="offcanvasFilter"
-                    style="cursor: pointer">Filter</span>
+                    style="cursor: pointer;margin-right: 10px">Filter</span>
                 <select class="select-filter-category">
                     <option value="all" selected disabled>Order by</option>
                     <option value="low_to_high" {{ request()->query('orderBy') == 'low_to_high' ? 'selected' : '' }}>From

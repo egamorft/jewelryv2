@@ -167,7 +167,7 @@
         </ul>
         <div class="mt-auto">
             <hr>
-            <p class="mb-0 fs-5">Subtotal: <span id="cartSubTotal">$59.98</span></p>
+            <p class="mb-0 fs-5">Subtotal: <span id="cartSubTotal">0</span></p>
             <a href="{{ route('checkout') }}" class="btn btn-outline-dark mt-3">Checkout</a>
         </div>
     </div>
