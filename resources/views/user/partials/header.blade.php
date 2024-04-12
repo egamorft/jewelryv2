@@ -33,7 +33,7 @@
 </div>
 
 <div class="box-header-mobile">
-    <img src="{{ asset('assets/images/jewelry.png') }}" class="img-logo">
+    <a href="{{route('home')}}"><img src="{{ asset('assets/images/jewelry.png') }}" class="img-logo"></a>
     <div class="d-flex align-item-center">
         <img src="{{ asset('assets/images/search-sm.png') }}" class="icon-header" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
@@ -139,9 +139,9 @@
             @endforeach
         @endif
         <div class="col-item-menu-right">
-            <a href="#" class="content-item-menu">HERITAGE LINE</a>
+            {{-- <a href="#" class="content-item-menu">HERITAGE LINE</a>
             <a href="#" class="content-item-menu">EVERYDAY LINE</a>
-            <a href="#" class="content-item-menu">NEW in</a>
+            <a href="#" class="content-item-menu">NEW in</a> --}}
         </div>
 
         {{-- Category thumbnail --}}
