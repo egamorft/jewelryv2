@@ -13,11 +13,13 @@ use App\Models\CollectionProductModel;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInterestModel;
+use App\Models\Searches;
 use App\Models\StylingImageModel;
 use App\Models\StylingModel;
 use App\Models\StylingProductModel;
 use App\Models\VideoModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -94,6 +96,11 @@ class HomeController extends Controller
         $query = Product::query();
 
         if ($q) {
+            //Store hot search
+            Searches::updateOrCreate(
+                ['query' => $q],
+                ['count' => DB::raw('count + 1')]
+            );
             $query->where('name', 'like', '%' . $q . '%');
         }
 
@@ -131,6 +138,10 @@ class HomeController extends Controller
         // Append filter
         $products->appends(['q' => $q, 'orderBy' => $orderBy, 'category' => $category, 'minPrice' => $minPrice, 'maxPrice' => $maxPrice]);
 
-        return view('user.product.search')->with(compact('products'));
+        $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
+
+        $listCategory = Category::orderBy('popular', 'desc')->get();
+
+        return view('user.product.search')->with(compact('products', 'listCategory', 'topSearches'));
     }
 }

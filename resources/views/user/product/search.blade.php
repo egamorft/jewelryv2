@@ -49,14 +49,10 @@
 
                         <div class="mt-2">
                             <div class="d-flex gap-3">
-                                <p class="quickFilter {{ request()->query('q') == 'Test 1' ? 'fw-bold' : '' }}"
-                                    type="button" data-search-term="Test 1">Test 1</p>
-                                <p class="quickFilter {{ request()->query('q') == 'Test 2' ? 'fw-bold' : '' }}"
-                                    type="button" data-search-term="Test 2">Test 2</p>
-                                <p class="quickFilter {{ request()->query('q') == 'Test 3' ? 'fw-bold' : '' }}"
-                                    type="button" data-search-term="Test 3">Test 3</p>
-                                <p class="quickFilter {{ request()->query('q') == 'Test 4' ? 'fw-bold' : '' }}"
-                                    type="button" data-search-term="Test 4">Test 4</p>
+                                @foreach ($topSearches as $search)
+                                <p class="quickFilter {{ request()->query('q') == $search->query ? 'fw-bold' : '' }}"
+                                    type="button" data-search-term="{{ $search->query }}">{{ $search->query }}</p>
+                                @endforeach
                             </div>
                         </div>
                         <!-- Hidden input field for parameter -->
@@ -95,15 +91,11 @@
                 <span
                     class="quickFilterCategory mx-2 {{ !request()->query('category') || request()->query('category') == 'all' ? 'badge rounded-pill bg-secondary' : '' }}"
                     type="button" data-category="all">All category</span>
-                <span
-                    class="quickFilterCategory mx-2 {{ request()->query('category') == '1' ? 'badge rounded-pill bg-secondary' : '' }}"
-                    type="button" data-category="1">Badge 1</span>
-                <span
-                    class="quickFilterCategory mx-2 {{ request()->query('category') == '2' ? 'badge rounded-pill bg-secondary' : '' }}"
-                    type="button" data-category="2">Badge 2</span>
-                <span
-                    class="quickFilterCategory mx-2 {{ request()->query('category') == '3' ? 'badge rounded-pill bg-secondary' : '' }}"
-                    type="button" data-category="3">Badge 3</span>
+                @foreach ($listCategory as $cate)
+                    <span
+                        class="quickFilterCategory mx-2 {{ request()->query('category') == $cate->id ? 'badge rounded-pill bg-secondary' : '' }}"
+                        type="button" data-category="{{ $cate->id }}">{{ $cate->name }}</span>
+                @endforeach
             </div>
         </div>
         <form>

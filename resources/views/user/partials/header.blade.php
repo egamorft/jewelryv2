@@ -87,7 +87,9 @@
                 <div class="content-header-search">
                     <p class="title-popular">Tìm kiếm phổ biến</p>
                     <div class="box-popular">
-                        <p class="item-popular" type="button" data-search-term="Ngọc trai">1. Ngọc trai</p>
+                        @foreach ($topSearches as $key => $search)
+                            <p class="item-popular" type="button" data-search-term="{{ $search->query }}">{{ $key + 1 }}. {{ $search->query }}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
