@@ -42,7 +42,7 @@
                         </ul>
                     </div>
                     <div class="title-area mobile-only">
-                        <span class="mobile-only go-back"></span>
+                        <span class="mobile-only go-back" onclick="history.go(-1)"></span>
                         <h2>My shop</h2>
                     </div>
                     <div class="flex flex-wrap">

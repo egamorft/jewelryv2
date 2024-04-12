@@ -109,7 +109,6 @@
                     <a href="javascript:void(0)" onclick="toggleChildCategories({{ $cate->id }})"
                         class="text-item-menu">{{ strtoupper($cate->name) }}</a>
                 @endforeach
-                <a href="{{ route('categories.show', ['slug' => 'all']) }}" class="text-item-menu">VIEW ALL</a>
             </div>
         @endif
         @if (isset($childrenCategories) && !empty($childrenCategories))
@@ -124,8 +123,6 @@
                             <a href="{{ route('categories.show', ['slug' => $child['slug']]) }}"
                                 class="content-item-menu">{{ strtoupper($child['name']) }}</a>
                         @endforeach
-                        <a href="{{ route('categories.show', ['slug' => $children[0]['parent_slug']]) }}"
-                            class="content-item-menu">VIEW ALL</a>
                     @endif
                 </div>
                 @php

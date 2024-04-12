@@ -204,33 +204,6 @@
             @endforelse
         </div>
         <div class="d-flex justify-content-center mt-5">
-            {{-- <div class="pagination" style="display: inline-block;">
-                <div class="d-flex text-center justify-content-center align-items-center gap-2"
-                    id="dalue_search_pagination">
-
-                    <a style="top: 3px; position: relative;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                            <g transform="translate(-877.5 -600)">
-                                <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)"
-                                    fill="none" stroke="#000" stroke-width="1"></path>
-                                <rect width="48" height="38" transform="translate(877.5 600)" fill="none">
-                                </rect>
-                            </g>
-                        </svg></a>
-
-                    <a class="fw-bold">1</a>
-
-                    <a style="top: 3px; position: relative;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                            <g transform="translate(-540 -859)">
-                                <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)"
-                                    fill="none" stroke="#000" stroke-width="1"></path>
-                                <rect width="48" height="38" transform="translate(540 859)" fill="none">
-                                </rect>
-                            </g>
-                        </svg></a>
-                </div>
-            </div> --}}
             <div class="pagination" style="display: inline-block;">
                 <div class="d-flex text-center justify-content-center align-items-center gap-2"
                     id="dalue_search_pagination">

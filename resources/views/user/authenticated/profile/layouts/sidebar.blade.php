@@ -1,8 +1,10 @@
 <div id="drmvsn-basic-sidebar">
     <aside id="myshop-sidebar" class="drmvsn-sidebar">
         <div class="xans-element- xans-myshop xans-myshop-asyncbenefit">
-            <div class="ec-base-box typeMember gMessage ">
+            <div class="ec-base-box typeMember gMessage">
                 <div class="information">
+                    <p class="thumbnail displaynone"><img src="//www.dona-d.com/web/upload/mg_img_SV1.png" alt=""
+                            class="myshop_benefit_group_image_tag"></p>
                     <div class="description flex align-center justify-between flex-wrap sidebar-title">
                         <div class="customer-name font-bold">
                             <span>
@@ -37,9 +39,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="level-benefit displaynone"><a href="#">등급별 혜택보기</a></div>
+                    <div class="membership-benefits displaynone">
+                        <div class="order-history-3m">
+                            <div class="text">최근 3개월 동안</div>
+                            <div class="benefit-box">
+                                구매금액 : <span class="value"><span
+                                        class="xans-member-var-sPeriodOrderPrice">0원</span></span> ｜구매건수 :
+                                <span class="value"><span class="xans-member-var-sPeriodOrderCount">0건</span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="invite ec-base-box typeThinBg gMerge displaynone">
+                <strong class="txtEm">Copy the address and invite your friends to the shopping mall.</strong>
+                <div class="dv-field has-addons">
+                    <div class="dv-control"><input type="text" class="input" id="" value="///?reco_id="
+                            readonly=""></div>
+                    <div class="dv-control">
+                        <a href="#none" class="btn prior-1" onclick="">Copy address</a>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>- Friends will be paid immediately upon signing up..</li>
+                    <li>- </li>
+                </ul>
+            </div>
         </div>
+
         <ul class="xans-element- xans-myshop xans-myshop-asyncbankbook cs-txt-box px-20 py-20 ">
             <li>
                 <a href="#" class="flex align-center justify-between">
@@ -58,10 +87,13 @@
             <li class="mt-20">
                 <a href="#" class="flex align-center justify-between">
                     <span class="title">Deposit</span>
-                    <span class="data"><span id="xans_myshop_bankbook_deposit">{{ number_format($totalDeposit, 0, ',', '.') }} đ</span></span>
+                    <span class="data"><span
+                            id="xans_myshop_bankbook_deposit">{{ number_format($totalDeposit, 0, ',', '.') }}
+                            đ</span></span>
                 </a>
             </li>
         </ul>
+
         <div class="cs-list">
             <details class="accordion sidebar-link mt-30">
                 <summary class="accordion-title no-sub-links"><a
@@ -101,10 +133,8 @@
             </details>
         </div>
 
-
-        <div class="xans-element- xans-layout xans-layout-statelogon mt-30 "><a
-                href="{{ route('auth.member.logout') }}" class="btn prior-2 width-full justify-center">Logout</a>
+        <div class="xans-element- xans-layout xans-layout-statelogon mt-30"><a href="{{ route('auth.member.logout') }}"
+                class="btn prior-2 width-full justify-center">Logout</a>
         </div>
-
     </aside>
 </div>
