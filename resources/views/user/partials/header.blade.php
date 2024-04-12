@@ -37,7 +37,9 @@
     <div class="d-flex align-item-center">
         <img src="{{ asset('assets/images/search-sm.png') }}" class="icon-header" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
-        <img src="{{ asset('assets/images/user-03.png') }}" class="icon-header">
+            <a href="{{ Auth::check() ? route('profile.interest') : route('auth.member.login') }}">
+                <img src="{{ asset('assets/images/user-03.png') }}" class="icon-header">
+            </a>
         <div class="position-relative">
             <img src="{{ asset('assets/images/Icon.png') }}" class="icon-header">
             <div class="point-cart">0</div>
