@@ -272,7 +272,7 @@ class HomeController extends Controller
 
         $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
 
-        $listCategory = Category::orderBy('popular', 'desc')->get();
+        $listCategory = Category::orderBy('popular', 'desc')->take(5)->get();
 
         return view('user.product.search')->with(compact('products', 'listCategory', 'topSearches'));
     }
