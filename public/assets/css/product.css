@@ -218,6 +218,7 @@
     color: white;
     padding: 10px 30px;
     font-size: 14px;
+    cursor: pointer;
 }
 .list-star {
     width: 60%;
@@ -373,6 +374,64 @@
 .box-mobile-infor {
     display: none;
 }
+.btn-review {
+    background-color: #ce3841;
+    color: white;
+    width: 100%;
+    border: none;
+    outline: unset;
+}
+.btn-review:hover {
+    background-color: #ce3841;
+    color: white;
+}
+.title-review-modal {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.input-review {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+}
+.select-review {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: unset;
+}
+.select-review:focus {
+    border-color: #ced4da;
+    outline: unset;
+    box-shadow: unset;
+}
+.image-preview {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+}
+
+.image-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 9px;
+}
+.img-slide-review {
+    width: 100%;
+    height: 93px;
+    object-fit: cover;
+}
 @media (max-width: 1040px) {
     .box-info-product {
         flex-wrap: wrap;
@@ -397,10 +456,20 @@
     .box-title-info-sp {
         justify-content: space-between;
     }
+    .img-slide-review {
+        width: 100%;
+        height: 104px;
+        object-fit: cover;
+    }
 }
 @media (max-width: 992px) {
     .box-star {
         width: 100%;
+    }
+    .img-slide-review {
+        width: 100%;
+        height: 95px;
+        object-fit: cover;
     }
 }
 @media (max-width: 640px) {
@@ -464,5 +533,10 @@
     .box-search-review {
         width: 55%;
         font-size: 14px;
+    }
+    .img-slide-review {
+        width: 100%;
+        height: 121px;
+        object-fit: cover;
     }
 }

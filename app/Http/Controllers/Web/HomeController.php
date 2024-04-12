@@ -14,12 +14,13 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInterestModel;
 use App\Models\Searches;
+use App\Models\ReviewImageModel;
+use App\Models\ReviewModel;
 use App\Models\StylingImageModel;
 use App\Models\StylingModel;
 use App\Models\StylingProductModel;
 use App\Models\VideoModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -78,11 +79,93 @@ class HomeController extends Controller
     public function detailProduct($id)
     {
         $product = Product::find($id);
-        $product->interest = ProductInterestModel::where('product_id', $id)->first() ? 1 : 0;
-        $category = ProductCategory::where('product_id', $id)->pluck('category_id');
-        $arr_id = ProductCategory::whereIn('category_id', $category)->pluck('product_id');
-        $related_products = Product::whereIn('id', $arr_id)->where('published', 1)->take(8)->get();
-        return view('user.product.index', compact('product', 'related_products'));
+        $product->interest = ProductInterestModel::where('product_id',$id)->first()?1:0;
+        $category = ProductCategory::where('product_id',$id)->pluck('category_id');
+        $arr_id = ProductCategory::whereIn('category_id',$category)->pluck('product_id');
+        $related_products = Product::whereIn('id',$arr_id)->where('published',1)->take(8)->get();
+        $star = $this->starReview($product);
+        $star_five = ReviewModel::where('product_id', $product->id)->where('star', 5)->count();
+        $star_four = ReviewModel::where('product_id', $product->id)->where('star', 4)->count();
+        $star_three = ReviewModel::where('product_id', $product->id)->where('star', 3)->count();
+        $star_two = ReviewModel::where('product_id', $product->id)->where('star', 2)->count();
+        $star_one = ReviewModel::where('product_id', $product->id)->where('star', 1)->count();
+        $percent_5 = 0;
+        $percent_4 = 0;
+        $percent_3 = 0;
+        $percent_2 = 0;
+        $percent_1 = 0;
+        if ($star_five > 0){
+            $percent_5 = round(($star_five / count($star)) * 100,0);
+        }
+        if ($star_four > 0){
+            $percent_4 = round(($star_four / count($star)) * 100,0);
+        }
+        if ($star_three > 0){
+            $percent_3 = round(($star_three / count($star)) * 100,0);
+        }
+        if ($star_two > 0){
+            $percent_2 = round(($star_two / count($star)) * 100,0);
+        }
+        if ($star_one > 0){
+            $percent_1 = round(($star_one / count($star)) * 100,0);
+        }
+        return view('user.product.index',compact('product','related_products','star_five','star_four',
+    'star_three','star_two','star_one','percent_5','percent_4','percent_3','percent_2','percent_1'));
+    }
+
+    public function starReview($product)
+    {
+        $product->star = 0;
+        $star = ReviewModel::where('product_id', $product->id)->orderBy('created_at','desc')->get();
+        if (!$star->isEmpty()) {
+            $total_score =  ReviewModel::where('product_id', $product->id)->sum('star');
+            $total_votes = count($star);
+            $product->star = round($total_score/$total_votes, 1);
+        }
+        return $star;
+    }
+
+    public function saveReview(Request $request)
+    {
+        $review = new ReviewModel([
+            'product_id'=>$request->product_id,
+            'user_name'=>$request->name,
+            'content'=>$request->content,
+            'star'=>$request->star,
+            'type_age'=>$request->type_age,
+        ]);
+        $review->save();
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            foreach ($file as $value) {
+                $image_name = 'upload/album/' . Str::random(40);
+                $ext = strtolower($value->getClientOriginalExtension());
+                $image_full_name = $image_name . '.' . $ext;
+                $path = 'upload/album';
+                $value->move($path, $image_full_name);
+                $review_image = new ReviewImageModel([
+                    'review_id' =>$review->id,
+                    'src' =>$image_full_name,
+                ]);
+                $review_image->save();
+            }
+        }
+        toastr()->success('Successful assessment');
+        return back();
+    }
+
+    public function getReview(Request $request)
+    {   
+        $review = ReviewModel::query();
+        $review = $review->where('product_id',$request->product_id);
+        if($request->keyword){
+            $review = $review->where('content','like','%'.$request->keyword.'%');
+        }
+        $review = $review->paginate(15);
+        foreach($review as $item){
+            $item->image = ReviewImageModel::where('review_id',$item->id)->get();
+        }
+        return response()->json(['error' => 0, 'data' => $review]);
     }
 
     public function searchProduct(Request $request)
