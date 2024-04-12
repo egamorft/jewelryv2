@@ -58,7 +58,7 @@
                                     </li>
                                 </ul>
                                 <div class="btns mt-20">
-                                    <a type="button" onclick="addAttributeCart({{$item->id}})" class="btn prior-2 is-small ">Put in a shopping cart</a>
+                                    <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" type="button" onclick="addAttributeCart({{$item->id}})" class="btn prior-2 is-small ">Put in a shopping cart</a>
                                 </div>
                             </div>
                         </li>
