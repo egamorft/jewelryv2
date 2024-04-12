@@ -2,7 +2,7 @@
     <div>
         @foreach ($topPopular as $key => $cate)
             <div class="">
-                <a href="{{ $cate->slug }}" target="_self">
+                <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}" target="_self">
                     <span class="nav-list {{ $key % 2 !== 0 ? 'left' : '' }}">{{ $cate->name }}<span
                             class="nav-img"><img class="lazy entered loaded" src="{{ $cate->thumbnail }}"
                                 alt="HERITAGE LINE"></span></span>
