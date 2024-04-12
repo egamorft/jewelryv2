@@ -13,7 +13,7 @@ class InterestProductController extends Controller
     {
         $listData = ProductInterestModel::where('user_id', Auth()->id())->paginate(20);
         $productIds = $listData->pluck('product_id');
-        $listProduct = Product::whereIn('id', $productIds)->where('published', 1)->get();
+        $listProduct = Product::whereIn('id', $productIds)->where('published', 1)->paginate(8);
 
         return view('user.authenticated.profile.interest', compact('listProduct', 'listData'));
     }
