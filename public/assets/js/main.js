@@ -30,7 +30,7 @@ $(document).ready(function () {
         });
     });
 });
-
+var selectedCount = 0;
 //Add attribute product to cart
 function addAttributeCart(id) {
     var formData = new FormData();
@@ -47,6 +47,7 @@ function addAttributeCart(id) {
         processData: false,
         success: function (response) {
             if (response.error == 0) {
+                selectedCount = 0;
                 $(".box-cart-attribute").html("");
                 $(".footer-box-attr-sp").css("display", "none");
                 var attributes = response.attribute;
@@ -81,14 +82,14 @@ function addAttributeCart(id) {
         },
     });
 }
-var selectedCount = 0;
+
 $(".box-attribute").on("change", ".select-attribute-sp", function () {
     var attributeName = $(this).attr("id");
     var attributeValue = $(this).val();
     if (attributeValue !== "") {
         selectedCount++;
     }
-    if (selectedCount >= 2) {
+    if (selectedCount >= $(".select-attribute-sp").length) {
         var selectedAttributes = {};
         $(".select-attribute-sp").each(function () {
             attributeName = $(this).attr("id");
@@ -107,7 +108,6 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
             success: function (response) {
                 if (response.error == 0) {
                     $(".footer-box-attr-sp").css("display", "block");
-                    selectedCount = 1;
                     var today = new Date();
                     var discountEnd = new Date(response.product.discount_end);
                     var subTotal = 0;
@@ -172,6 +172,8 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
             },
             error: function (xhr, status, error) {
                 toastr.error(xhr.responseJSON.message);
+                $(".box-cart-attribute").html("");
+                $(".footer-box-attr-sp").html("");
             },
         });
     }

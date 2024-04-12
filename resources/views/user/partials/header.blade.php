@@ -40,7 +40,7 @@
         <a href="{{ Auth::check() ? route('profile.interest') : route('auth.member.login') }}">
             <img src="{{ asset('assets/images/user-03.png') }}" class="icon-header">
         </a>
-        <div class="position-relative">
+        <div class="position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
             <img src="{{ asset('assets/images/Icon.png') }}" class="icon-header">
             <div class="point-cart">0</div>
         </div>
@@ -157,15 +157,18 @@
 </div>
 
 <!-- cart -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-    <div class="offcanvas-header">
+<div class="offcanvas offcanvas-end" tabindex="-1" data-bs-backdrop="false" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+    <div class="offcanvas-header" style="border-bottom: 1px solid #dddddd">
         <h5 id="offcanvasCartLabel">Cart</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <ul class="list-group mb-3" id="cartUl">
         </ul>
-        <div class="mt-auto">
+        <div class="cart-not-number-sp justify-content-center" style="display: flex">
+            Your shopping cart is empty.
+        </div>
+        <div class="mt-auto cart-number-sp" style="display: none">
             <hr>
             <p class="mb-0 fs-5">Subtotal: <span id="cartSubTotal">0</span></p>
             <a href="{{ route('checkout') }}" class="btn btn-outline-dark mt-3">Checkout</a>
