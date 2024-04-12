@@ -23,7 +23,7 @@
             </div>
             <div class="item-menu-category-icon">
                 <span data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter" aria-controls="offcanvasFilter"
-                    style="cursor: pointer">Filter</span>
+                    style="cursor: pointer;margin-right: 10px">Filter</span>
                 <select class="select-filter-category">
                     <option value="all" selected disabled>Order by</option>
                     <option value="low_to_high" {{ request()->query('orderBy') == 'low_to_high' ? 'selected' : '' }}>From
@@ -202,11 +202,10 @@
             <h5 class="offcanvas-title title-offcanvas" id="offcanvasScrollingLabel">Order by</h5>
         </div>
         <div class="offcanvas-body body-offcanvas">
-            <a href="#" class="item-mobile-filter">Lastest product</a>
-            <a href="#" class="item-mobile-filter">From low to high</a>
-            <a href="#" class="item-mobile-filter">From high to high</a>
-            <a href="#" class="item-mobile-filter">Popular product</a>
-            <a href="#" class="item-mobile-filter">Reviewed</a>
+            <a href="{{ route('categories.show', ['slug' => $category->slug, 'orderBy' => 'low_to_high']) }}" class="item-mobile-filter">From low to high</a>
+            <a href="{{ route('categories.show', ['slug' => $category->slug, 'orderBy' => 'high_to_low']) }}" class="item-mobile-filter">From high to high</a>
+            <a href="{{ route('categories.show', ['slug' => $category->slug, 'orderBy' => 'popular']) }}" class="item-mobile-filter">Popular product</a>
+            <a href="{{ route('categories.show', ['slug' => $category->slug, 'orderBy' => 'reviewed']) }}" class="item-mobile-filter">Reviewed</a>
         </div>
     </div>
 
@@ -232,7 +231,7 @@
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                giá
+                                Price
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -319,8 +318,8 @@
                 </div>
 
                 <div class="box-footer-filter">
-                    <button type="button" class="btn-reset">Cài lại</button>
-                    <button type="submit" class="btn-filter">Tìm kiếm</button>
+                    <button type="button" class="btn-reset">Reset</button>
+                    <button type="submit" class="btn-filter">Filter</button>
                 </div>
 
             </div>

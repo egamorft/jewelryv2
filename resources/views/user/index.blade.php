@@ -36,7 +36,7 @@
 @include('user.partials.footer')
 
 {{-- add attribute cart --}}
-<div class="offcanvas offcanvas-end box-offcanvas-attribute" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end box-offcanvas-attribute" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -130,6 +130,10 @@
         getCart(function (cartItems) {
             $('.point-cart').html(cartItems.length);
             $('#cartUl').empty();
+            if(cartItems.length>0){
+                $('.cart-number-sp').css('display','block');
+                $('.cart-not-number-sp').css('display','none');
+            }
             var subTotal = 0;
             $.each(cartItems, function (index, cartItem) {
                 var discountEnd = new Date(cartItem.discount_end);
