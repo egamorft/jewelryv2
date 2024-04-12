@@ -85,9 +85,51 @@ class HomeController extends Controller
 
     public function searchProduct(Request $request)
     {
-        $products = Product::paginate(8);
+        $q = $request->query('q');
+        $orderBy = $request->query('orderBy');
+        $category = $request->query('category');
+        $minPrice = doubleval($request->query('minPrice'));
+        $maxPrice = doubleval($request->query('maxPrice'));
 
-        // $product = $products
+        $query = Product::query();
+
+        if ($q) {
+            $query->where('name', 'like', '%' . $q . '%');
+        }
+
+        if ($category && $category != 'all') {
+            $query->whereHas('categories', function ($query) use ($category) {
+                $query->where('categories.id', $category);
+            });
+        }
+
+        if ($orderBy) {
+            switch ($orderBy) {
+                case 'latest':
+                    $query->orderBy('id', 'desc');
+                    break;
+                case 'oldest':
+                    $query->orderBy('id', 'asc');
+                    break;
+                case 'lowPrice':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'highPrice':
+                    $query->orderBy('price', 'desc');
+                    break;
+            }
+        } else {
+            $query->orderBy('id', 'desc');
+        }
+
+        if (is_numeric($minPrice) && is_numeric($maxPrice) && $maxPrice > 0) {
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+
+        $products = $query->paginate(8);
+
+        // Append filter
+        $products->appends(['q' => $q, 'orderBy' => $orderBy, 'category' => $category, 'minPrice' => $minPrice, 'maxPrice' => $maxPrice]);
 
         return view('user.product.search')->with(compact('products'));
     }
