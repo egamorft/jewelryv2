@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
+use App\Enums\OrderStatus;
 use App\Models\User;
 use App\Rules\NoSpacesRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -15,7 +18,23 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('user.authenticated.profile.index');
+        $countBeforeDeposit = Orders::where('status', OrderStatus::BEFORE_DEPOSIT)->count();
+        $countPrepareDelivery = Orders::where('status', OrderStatus::PREPARE_DELIVERY)->count();
+        $countShipping = Orders::where('status', OrderStatus::SHIPPING)->count();
+        $countCompleted = Orders::where('status', OrderStatus::COMPLETED)->count();
+        $countCancel = Orders::where('status', OrderStatus::CANCEL)->count();
+        $countExchange = Orders::where('status', OrderStatus::EXCHANGE)->count();
+        $countReturn = Orders::where('status', OrderStatus::RETURN)->count();
+
+        return view('user.authenticated.profile.index')->with(compact(
+            'countBeforeDeposit',
+            'countPrepareDelivery',
+            'countShipping',
+            'countCompleted',
+            'countCancel',
+            'countExchange',
+            'countReturn'
+        ));
     }
 
     /**

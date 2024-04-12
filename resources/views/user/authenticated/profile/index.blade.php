@@ -7,12 +7,6 @@
                 <div class="customer-name font-bold">{{ strtoupper(Auth::user()->name) }}</div>
                 <div class="group-name flex align-center font-bold">
                     [Silver]
-                    <span class="group-notice displaynone line-height-0 ml-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-                            <path data-name="Icon ionic-md-information-circle"
-                                d="M10.375,3.375a7,7,0,1,0,7,7A7,7,0,0,0,10.375,3.375Zm.707,10.5H9.668V9.668h1.413Zm0-5.587H9.668V6.875h1.413Z"
-                                transform="translate(-3.375 -3.375)"></path>
-                        </svg></span>
                 </div>
             </div>
         </div>
@@ -27,30 +21,13 @@
                     </div>
                     <div class="description ">
                         <div class="user-info mb-20">
-                            <span class="font-bold">{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</span> is a
+                            <span
+                                class="font-bold">{{ strtoupper(Auth::user()->first_name . ' ' . Auth::user()->last_name) }}</span>
+                            is a
                             <span class="font-bold">[Silver]</span> member.
                         </div>
 
                         <div class="">
-                            {{-- <p class="displaynone myshop_benefit_display_no_benefit"><strong><span
-                                        class="myshop_benefit_dc_pay"></span> <span class="myshop_benefit_dc_min_price">0
-                                        won or
-                                        more</span></strong>
-                                Upon purchase
-                                <strong><span class="myshop_benefit_dc_price">0 won</span><span
-                                        class="myshop_benefit_dc_type"></span></strong>second <span
-                                    class="myshop_benefit_use_dc">No additional discount</span> You can
-                                receive it. <span class="myshop_benefit_dc_max_percent"></span>
-                            </p>
-                            <p class="displaynone myshop_benefit_display_with_all"><strong><span
-                                        class="myshop_benefit_dc_pay"></span> <span
-                                        class="myshop_benefit_dc_min_price_mileage">0 won
-                                        이상</span></strong> Upon purchase <strong><span
-                                        class="myshop_benefit_dc_price_mileage">0 won</span><span
-                                        class="myshop_benefit_dc_type_mileage"></span></strong>second
-                                <span class="myshop_benefit_use_dc_mileage"></span> You can receive it.
-                                <span class="myshop_benefit_dc_max_mileage_percent"></span>
-                            </p> --}}
                             <div class=" gBlank5" id="sGradeAutoDisplayArea">
                                 <p class=" sAutoGradeDisplay ">
                                     <strong> [<span class="sNextGroupIconArea"></span><span
@@ -62,39 +39,12 @@
                                     Purchase amount : <span class="xans-member-var-sPeriodOrderPrice">0
                                         won</span>)
                                 </p>
-                                <p class="mt-20">This is an estimate based on upgrade criteria and may differ from the total order amount.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="level-benefit displaynone"><a href="#">View benefits by
-                            level</a></div>
-
-                    <div class="membership-benefits displaynone">
-                        <div class="order-history-3m">
-                            <div class="text">recent 3month during</div>
-                            <div class="benefit-box">
-                                Purchase amount : <span class="value"></span> ｜Number of purchases :
-                                <span class="value"></span>
+                                <p class="mt-20">This is an estimate based on upgrade criteria and may differ from the
+                                    total order amount.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="invite ec-base-box typeThinBg gMerge displaynone">
-                <strong class="txtEm">Copy the address and invite your friends to the shopping
-                    mall.</strong>
-                <div class="dv-field has-addons">
-                    <div class="dv-control"><input type="text" class="input" id="" value="///?reco_id="
-                            readonly=""></div>
-                    <div class="dv-control">
-                        <a href="#" class="btn prior-1" onclick="">Copy address</a>
-                    </div>
-                </div>
-
-                <ul>
-                    <li>- Friends will receive Reserves immediately after signing up.</li>
-                    <li>- </li>
-                </ul>
             </div>
         </div>
 
@@ -111,23 +61,24 @@
                     <li class="state-item">
                         <div class="title">Before deposit</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_shppied_before_count">0</span></a></div>
+                                    id="xans_myshop_orderstate_shppied_before_count">{{ $countBeforeDeposit }}</span></a>
+                        </div>
                     </li>
                     <li class="state-item">
                         <div class="title">Preparing for delivery</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_shppied_standby_count">0</span></a>
+                                    id="xans_myshop_orderstate_shppied_standby_count">{{ $countPrepareDelivery }}</span></a>
                         </div>
                     </li>
                     <li class="state-item">
                         <div class="title">Shipping</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_shppied_begin_count">0</span></a></div>
+                                    id="xans_myshop_orderstate_shppied_begin_count">{{ $countShipping }}</span></a></div>
                     </li>
                     <li class="state-item">
                         <div class="title">Delivery completed</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_shppied_complate_count">0</span></a>
+                                    id="xans_myshop_orderstate_shppied_complate_count">{{ $countCompleted }}</span></a>
                         </div>
                     </li>
                 </ul>
@@ -135,17 +86,17 @@
                     <li class="state-item">
                         <div class="title">Cancellation</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_order_cancel_count">0</span></a></div>
+                                    id="xans_myshop_orderstate_order_cancel_count">{{ $countCancel }}</span></a></div>
                     </li>
                     <li class="state-item">
                         <div class="title">Exchange</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_order_exchange_count">0</span></a></div>
+                                    id="xans_myshop_orderstate_order_exchange_count">{{ $countExchange }}</span></a></div>
                     </li>
                     <li class="state-item">
                         <div class="title">Return</div>
                         <div class="data"><a href="#"><span
-                                    id="xans_myshop_orderstate_order_return_count">0</span></a></div>
+                                    id="xans_myshop_orderstate_order_return_count">{{ $countReturn }}</span></a></div>
                     </li>
                 </ul>
             </div>
