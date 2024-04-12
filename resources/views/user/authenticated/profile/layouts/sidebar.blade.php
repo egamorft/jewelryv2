@@ -52,14 +52,13 @@
                 <a href="#" class="flex align-center justify-between">
                     <span class="title">Reserves</span>
                     <span class="data"><!--<span id="xans_myshop_bankbook_total_mileage"></span>--><span
-                            id="xans_myshop_bankbook_avail_mileage">5,000 won</span></span>
+                            id="xans_myshop_bankbook_avail_mileage">0 đ</span></span>
                 </a>
             </li>
             <li class="mt-20">
                 <a href="#" class="flex align-center justify-between">
                     <span class="title">Deposit</span>
-                    <span class="data"><span id="xans_myshop_bankbook_deposit">0
-                            won</span></span>
+                    <span class="data"><span id="xans_myshop_bankbook_deposit">{{ number_format($totalDeposit, 0, ',', '.') }} đ</span></span>
                 </a>
             </li>
         </ul>
