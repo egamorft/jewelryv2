@@ -21,6 +21,7 @@ use App\Models\StylingModel;
 use App\Models\StylingProductModel;
 use App\Models\VideoModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
