@@ -13,6 +13,7 @@ use App\Models\CollectionProductModel;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInterestModel;
+use App\Models\ReviewFeedbackModel;
 use App\Models\ReviewImageModel;
 use App\Models\ReviewModel;
 use App\Models\StylingImageModel;
@@ -109,8 +110,9 @@ class HomeController extends Controller
         if ($star_one > 0){
             $percent_1 = round(($star_one / count($star)) * 100,0);
         }
+        $feedback = ReviewFeedbackModel::all();
         return view('user.product.index',compact('product','related_products','star_five','star_four',
-    'star_three','star_two','star_one','percent_5','percent_4','percent_3','percent_2','percent_1'));
+    'star_three','star_two','star_one','percent_5','percent_4','percent_3','percent_2','percent_1','feedback'));
     }
 
     public function starReview($product)
@@ -154,16 +156,37 @@ class HomeController extends Controller
         return back();
     }
 
+    public function saveReviewFeedback(Request $request)
+    {
+        $review = ReviewModel::find($request->review_id);
+        $feedback = new ReviewFeedbackModel([
+            'review_id'=>$review->id,
+            'name'=>$request->name,
+            'content'=>$request->content,
+        ]);
+        $feedback->save();
+       
+        toastr()->success('Successful feedback');
+        return back();
+    }
+
     public function getReview(Request $request)
-    {   
+    { 
         $review = ReviewModel::query();
         $review = $review->where('product_id',$request->product_id);
         if($request->keyword){
             $review = $review->where('content','like','%'.$request->keyword.'%');
         }
-        $review = $review->paginate(15);
+        if($request->star){
+            $review = $review->where('star',$request->star);
+        }
+        if($request->age){
+            $review = $review->where('type_age',$request->age);
+        }
+        $review = $review->orderBy('created_at','desc')->paginate(10);
         foreach($review as $item){
             $item->image = ReviewImageModel::where('review_id',$item->id)->get();
+            $item->feedback = ReviewFeedbackModel::where('review_id',$item->id)->get();
         }
         return response()->json(['error' => 0, 'data' => $review]);
     }

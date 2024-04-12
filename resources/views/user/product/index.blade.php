@@ -172,15 +172,16 @@
                         </div>
                   </div>
                   <div class="box-search-latest">
-                     <select name="" class="select-filter">
+                     {{-- <select name="" class="select-filter">
                         <option value="">Recommended</option>
                         <option value="">Latest</option>
                         <option value="">Sort by star rating</option>
                         <option value="">Sort reviews by </option>
-                     </select>
+                     </select> --}}
+                     <div></div>
                      <div class="box-search-review">
                         <img src="{{asset('assets/images/Search.png')}}" class="icon-search-review" >
-                        <input type="text" class="title-content-search" placeholder="Review keyword search">
+                        <input type="text" class="title-content-search" name="keySearch" placeholder="Review keyword search">
                      </div>
                   </div>
                   <div class="box-rate-range">
@@ -188,10 +189,10 @@
                         <button class="btn btn-rate dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                           Rating
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-star">
                           <li class="item-li-rate">
                            <span style="font-size: 14px;font-weight: bold">Scope</span>
-                           <div class="d-fle"><img src="{{asset('assets/images/reset.png')}}" style="width: 12px"><span style="font-size: 14px;margin-left: 5px">reset</span></div>
+                           <div class="reset-star"><img src="{{asset('assets/images/reset.png')}}" style="width: 12px"><span style="font-size: 14px;margin-left: 5px">reset</span></div>
                            </li>
                           <li class="item-li-rate-child border-top-0">
                            <div class="box-rate-name">
@@ -200,7 +201,7 @@
                               @endfor
                               <span style="font-size: 14px">Very good</span>
                            </div>
-                           <input type="checkbox">
+                           <input type="radio" name="rate" value="5">
                           </li>
                           <li class="item-li-rate-child">
                            <div class="box-rate-name">
@@ -210,7 +211,7 @@
                               <img src="{{asset('assets/images/Icon-star.png')}}" class="icon-rate-name">
                               <span style="font-size: 14px">I love it</span>
                            </div>
-                           <input type="checkbox">
+                           <input type="radio" name="rate" value="4">
                           </li>
                           <li class="item-li-rate-child">
                            <div class="box-rate-name">
@@ -221,7 +222,7 @@
                               <img src="{{asset('assets/images/Icon-star.png')}}" class="icon-rate-name">
                               <span style="font-size: 14px">It's normal</span>
                            </div>
-                           <input type="checkbox">
+                           <input type="radio" name="rate" value="3">
                           </li>
                           <li class="item-li-rate-child">
                            <div class="box-rate-name">
@@ -233,7 +234,7 @@
                               <img src="{{asset('assets/images/Icon-star.png')}}" class="icon-rate-name">
                               <span style="font-size: 14px">Not too bad</span>
                            </div>
-                           <input type="checkbox">
+                           <input type="radio" name="rate" value="2">
                           </li>
                           <li class="item-li-rate-child">
                            <div class="box-rate-name">
@@ -243,32 +244,32 @@
                               @endfor
                               <span style="font-size: 14px">Not good</span>
                            </div>
-                           <input type="checkbox">
+                           <input type="radio" name="rate" value="1">
                           </li>
                           <li>
-                           <button class="btn-complete">Complete</button>
+                           <button class="btn-complete btn-save-rate">Complete</button>
                           </li>
                         </ul>
                      </div>
    
                      <div class="dropdown mx-3">
-                        <a class="btn btn-rate dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                        Dropdown link
+                        <a class="btn btn-rate dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        Age
                         </a>
                      
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-age">
                            <li class="item-li-rate">
                               <span style="font-size: 14px;font-weight: bold">Age</span>
-                              <div class="d-fle"><img src="{{asset('assets/images/reset.png')}}" style="width: 12px"><span style="font-size: 14px;margin-left: 5px">reset</span></div>
+                              <div class="reset-age"><img src="{{asset('assets/images/reset.png')}}" style="width: 12px"><span style="font-size: 14px;margin-left: 5px">reset</span></div>
                            </li>
                         <li class="d-flex align-items-center flex-wrap">
-                                 <div class="item-age">teenager</div>
-                                 <div class="item-age">20’s</div>
-                                 <div class="item-age">30’s</div>
-                                 <div class="item-age">Over 40s</div>
+                                 <div class="item-age" data-age="1">10’s</div>
+                                 <div class="item-age" data-age="2">20’s</div>
+                                 <div class="item-age" data-age="3">30’s</div>
+                                 <div class="item-age" data-age="4">Over 40s</div>
                         </li>
                         <li>
-                           <button class="btn-complete">Complete</button>
+                           <button class="btn-complete btn-save-age">Complete</button>
                         </li>
                         </ul>
                      </div>
@@ -296,13 +297,49 @@
                                           @endfor
                                        </div>
                                      </div>
-                              </div>
+                                     <div class="accordion accordion-flush" id="accordionFlushExample">
+                                       <div class="accordion-item">
+                                         <h2 class="accordion-header" id="flush-headingOne">
+                                           <p class="accordion-button collapsed feedback-more" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                             Feedback (0)
+                                           </p>
+                                         </h2>
+                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                           <div class="accordion-body">
+                                             <div class="content-feedback">
+                                                @foreach ($feedback as $item)
+                                                <div class="item-feedback">
+                                                   <p class="name_user_feedback">{{$item->name}}</p>
+                                                   <div class="content-user-feedback">{{$item->content}}</div>
+                                                </div>
+                                                @endforeach
+                                                  
+                                             </div>
+                                             <form action="{{route('save-review-feedback')}}" method="post" enctype="multipart/form-data">
+                                             @csrf
+                                                <input type="text" value="1" name="review_id" hidden>
+                                                <input type="text" class="input-feedback" name="name" maxlength="255" placeholder="Full name">
+                                                <textarea name="content" class="input-feedback" rows="2" placeholder="Content"></textarea>
+                                                <div class="line-send-feedback">
+                                                   <button type="submit" class="btn-send-feedback">Send</button>
+                                                </div>
+                                             </form>
+                                           </div>
+                                         </div>
+                                       </div>
+                                      
+                                       
+                                     </div>
+                                    </div>
                               <div class="item-right-review">
                                     <p style="font-size: 13px;margin-bottom: 5px">Donna Andy Classic Black Diamond </p>
                                     <p style="font-size: 13px;margin-bottom: 5px">Solitaire ring with a timeless design that you can keep for a lifetime, 1 carat, 5-quarter size styling.</p>
                               </div>
                         </div> --}}
                   </div>
+                  <div class="d-flex justify-content-center align-items-center line-see-more">
+                  
+               </div>
             </div>
          </div>
             <div id="recommended-products">
