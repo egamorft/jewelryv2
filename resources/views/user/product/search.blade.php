@@ -50,8 +50,8 @@
                         <div class="mt-2">
                             <div class="d-flex gap-3">
                                 @foreach ($topSearches as $search)
-                                <p class="quickFilter {{ request()->query('q') == $search->query ? 'fw-bold' : '' }}"
-                                    type="button" data-search-term="{{ $search->query }}">{{ $search->query }}</p>
+                                    <p class="quickFilter {{ request()->query('q') == $search->query ? 'fw-bold' : '' }}"
+                                        type="button" data-search-term="{{ $search->query }}">{{ $search->query }}</p>
                                 @endforeach
                             </div>
                         </div>
@@ -91,10 +91,16 @@
                 <span
                     class="quickFilterCategory mx-2 {{ !request()->query('category') || request()->query('category') == 'all' ? 'badge rounded-pill bg-secondary' : '' }}"
                     type="button" data-category="all">All category</span>
-                @foreach ($listCategory as $cate)
-                    <span
-                        class="quickFilterCategory mx-2 {{ request()->query('category') == $cate->id ? 'badge rounded-pill bg-secondary' : '' }}"
-                        type="button" data-category="{{ $cate->id }}">{{ $cate->name }}</span>
+                @foreach ($listCategory as $index => $cate)
+                    @if ($index < 2)
+                        <span
+                            class="quickFilterCategory mx-2 {{ request()->query('category') == $cate->id ? 'badge rounded-pill bg-secondary' : '' }}"
+                            type="button" data-category="{{ $cate->id }}">{{ $cate->name }}</span>
+                    @endif
+
+                    @if ($index >= 2)
+                        <span class="quickFilterCategory mx-2 d-none d-md-inline-block">{{ $cate->name }}</span>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -106,10 +112,10 @@
                         class="quickFilterPrice mx-2 {{ !request()->query('maxPrice') || request()->query('maxPrice') == '' ? 'badge rounded-pill bg-secondary' : '' }}"
                         type="button" data-price="all">All price</span>
                     <span
-                        class="quickFilterPrice mx-2 {{ request()->query('maxPrice') == '500000' ? 'badge rounded-pill bg-secondary' : '' }}"
+                        class="quickFilterPrice mx-2  d-none d-md-inline-block {{ request()->query('maxPrice') == '500000' ? 'badge rounded-pill bg-secondary' : '' }}"
                         type="button" data-price="500000">~ 500,000 đ</span>
                     <span
-                        class="quickFilterPrice mx-2 {{ request()->query('maxPrice') == '1000000' ? 'badge rounded-pill bg-secondary' : '' }}"
+                        class="quickFilterPrice mx-2  d-none d-md-inline-block {{ request()->query('maxPrice') == '1000000' ? 'badge rounded-pill bg-secondary' : '' }}"
                         type="button" data-price="1000000">~ 1,000,000 đ</span>
                     <input id="min-price-input" value="{{ request()->query('minPrice') ?? 0 }}" type="number"
                         min="0" class="border rounded-pill text-center ms-3" name="minPrice"
@@ -207,18 +213,16 @@
             <div class="pagination" style="display: inline-block;">
                 <div class="d-flex text-center justify-content-center align-items-center gap-2"
                     id="dalue_search_pagination">
-                    @if ($products->currentPage() > 1)
-                        <a href="{{ $products->previousPageUrl() }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                                <g transform="translate(-877.5 -600)">
-                                    <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)"
-                                        fill="none" stroke="#000" stroke-width="1"></path>
-                                    <rect width="48" height="38" transform="translate(877.5 600)" fill="none">
-                                    </rect>
-                                </g>
-                            </svg>
-                        </a>
-                    @endif
+                    <a href="{{ $products->previousPageUrl() ?? '#' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
+                            <g transform="translate(-877.5 -600)">
+                                <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)"
+                                    fill="none" stroke="#000" stroke-width="1"></path>
+                                <rect width="48" height="38" transform="translate(877.5 600)" fill="none">
+                                </rect>
+                            </g>
+                        </svg>
+                    </a>
 
                     @for ($page = 1; $page <= $products->lastPage(); $page++)
                         <a class="{{ $page == $products->currentPage() ? ' fw-bold' : '' }}"
@@ -227,18 +231,16 @@
                         </a>
                     @endfor
 
-                    @if ($products->hasMorePages())
-                        <a href="{{ $products->nextPageUrl() }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
-                                <g transform="translate(-540 -859)">
-                                    <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)"
-                                        fill="none" stroke="#000" stroke-width="1"></path>
-                                    <rect width="48" height="38" transform="translate(540 859)" fill="none">
-                                    </rect>
-                                </g>
-                            </svg>
-                        </a>
-                    @endif
+                    <a href="{{ $products->nextPageUrl() ?? '#' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
+                            <g transform="translate(-540 -859)">
+                                <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)"
+                                    fill="none" stroke="#000" stroke-width="1"></path>
+                                <rect width="48" height="38" transform="translate(540 859)" fill="none">
+                                </rect>
+                            </g>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>

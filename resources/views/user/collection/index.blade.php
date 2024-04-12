@@ -92,14 +92,15 @@
 </div>
 
 <div class="box-filter-mobile">
-   <svg id="m-layout-standard" style="display: none;margin: 0 20px"  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" onclick="fourActive()" class="selected"><g transform="translate(-304 -187)"><rect width="6" height="6" transform="translate(304 187)"></rect><rect width="6" height="6" transform="translate(312 187)"></rect><rect width="6" height="6" transform="translate(304 195)"></rect><rect width="6" height="6" transform="translate(312 195)"></rect></g></svg>
+    <svg id="m-layout-standard" style="display: none;margin: 0 20px"  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" onclick="fourActive()" class="selected"><g transform="translate(-304 -187)"><rect width="6" height="6" transform="translate(304 187)"></rect><rect width="6" height="6" transform="translate(312 187)"></rect><rect width="6" height="6" transform="translate(304 195)"></rect><rect width="6" height="6" transform="translate(312 195)"></rect></g></svg>
 
-   <svg id="m-layout-wide" onclick="sixActive()" class="selected" style="margin: 0 20px" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><g transform="translate(-325 -187)"><rect width="3.818" height="6" transform="translate(325 187)"></rect><rect width="3.818" height="6" transform="translate(330.091 187)"></rect><rect width="3.818" height="6" transform="translate(335.182 187)"></rect><rect width="3.818" height="6" transform="translate(325 195)"></rect><rect width="3.818" height="6" transform="translate(330.091 195)"></rect><rect width="3.818" height="6" transform="translate(335.182 195)"></rect></g></svg>
+    <svg id="m-layout-wide" onclick="sixActive()" class="selected" style="margin: 0 20px" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><g transform="translate(-325 -187)"><rect width="3.818" height="6" transform="translate(325 187)"></rect><rect width="3.818" height="6" transform="translate(330.091 187)"></rect><rect width="3.818" height="6" transform="translate(335.182 187)"></rect><rect width="3.818" height="6" transform="translate(325 195)"></rect><rect width="3.818" height="6" transform="translate(330.091 195)"></rect><rect width="3.818" height="6" transform="translate(335.182 195)"></rect></g></svg>
 
-   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" style="margin: 0 20px" viewBox="0 0 18 12" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSort" aria-controls="offcanvasSort"><g transform="translate(-11740.5 18354.5)"><line x2="18" transform="translate(11740.5 -18353.5)" fill="none" stroke="#000" stroke-width="2"></line><line x2="12" transform="translate(11743.5 -18348.5)" fill="none" stroke="#000" stroke-width="2"></line><line x2="6" transform="translate(11746.5 -18343.5)" fill="none" stroke="#000" stroke-width="2"></line></g></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" style="margin: 0 20px" viewBox="0 0 18 12" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSort" aria-controls="offcanvasSort"><g transform="translate(-11740.5 18354.5)"><line x2="18" transform="translate(11740.5 -18353.5)" fill="none" stroke="#000" stroke-width="2"></line><line x2="12" transform="translate(11743.5 -18348.5)" fill="none" stroke="#000" stroke-width="2"></line><line x2="6" transform="translate(11746.5 -18343.5)" fill="none" stroke="#000" stroke-width="2"></line></g></svg>
 
    {{-- <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter" aria-controls="offcanvasFilter" width="18" height="15" viewBox="0 0 18 15"><g transform="translate(-11800.5 18356)"><g transform="translate(507 3)"><line x2="4" transform="translate(11293.5 -18355.5)" fill="none" stroke="#000" stroke-width="2"></line><line x2="10" transform="translate(11301.5 -18355.5)" fill="none" stroke="#000" stroke-width="2"></line><g transform="translate(11296 -18359)" fill="none" stroke="#000" stroke-width="2"><circle cx="3.5" cy="3.5" r="3.5" stroke="none"></circle><circle cx="3.5" cy="3.5" r="2.5" fill="none"></circle></g></g><g transform="translate(11800.5 -18348)"><line x1="4" transform="translate(14 3.5)" fill="none" stroke="#000" stroke-width="2"></line><line x1="10" transform="translate(0 3.5)" fill="none" stroke="#000" stroke-width="2"></line><g transform="translate(8.5)" fill="none" stroke="#000" stroke-width="2"><circle cx="3.5" cy="3.5" r="3.5" stroke="none"></circle><circle cx="3.5" cy="3.5" r="2.5" fill="none"></circle></g></g></g></svg> --}}
 </div>
+
 
 {{-- Sort --}}
 <div class="offcanvas offcanvas-end box-offcanvas" data-bs-backdrop="false" tabindex="-1" id="offcanvasSort" aria-labelledby="offcanvasScrollingLabel">
@@ -113,6 +114,7 @@
     <a href="{{ route('detail-collection', ['id' => $item_coll->id, 'sort_by' => 'high_to_low']) }}" class="item-mobile-filter">Price from high to low</a>
    </div>
  </div>
+
 
 {{-- Filter --}}
 <div class="offcanvas offcanvas-end box-offcanvas" data-bs-backdrop="false" tabindex="-1" id="offcanvasFilter" aria-labelledby="offcanvasScrollingLabel">
@@ -210,7 +212,7 @@
 
  @section('script_page')
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('assets/js/category.js')}}"></script>
 <script>
