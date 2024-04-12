@@ -37,9 +37,9 @@
     <div class="d-flex align-item-center">
         <img src="{{ asset('assets/images/search-sm.png') }}" class="icon-header" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasSearchTop" aria-controls="offcanvasSearchTop">
-            <a href="{{ Auth::check() ? route('profile.interest') : route('auth.member.login') }}">
-                <img src="{{ asset('assets/images/user-03.png') }}" class="icon-header">
-            </a>
+        <a href="{{ Auth::check() ? route('profile.interest') : route('auth.member.login') }}">
+            <img src="{{ asset('assets/images/user-03.png') }}" class="icon-header">
+        </a>
         <div class="position-relative">
             <img src="{{ asset('assets/images/Icon.png') }}" class="icon-header">
             <div class="point-cart">0</div>
@@ -90,7 +90,8 @@
                     <p class="title-popular">Tìm kiếm phổ biến</p>
                     <div class="box-popular">
                         @foreach ($topSearches as $key => $search)
-                            <p class="item-popular" type="button" data-search-term="{{ $search->query }}">{{ $key + 1 }}. {{ $search->query }}</p>
+                            <p class="item-popular" type="button" data-search-term="{{ $search->query }}">
+                                {{ $key + 1 }}. {{ $search->query }}</p>
                         @endforeach
                     </div>
                 </div>
@@ -106,8 +107,15 @@
         @if (isset($parentCategories) && !$parentCategories->isEmpty())
             <div class="col-item-menu">
                 @foreach ($parentCategories as $cate)
-                    <a href="javascript:void(0)" onclick="toggleChildCategories({{ $cate->id }})"
-                        class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                    @if ($cate->children->isEmpty())
+                        {{-- No children --}}
+                        <a href="{{ route('categories.show', ['slug' => $cate->slug]) }}"
+                            class="text-item-menu">{{ $cate->name }}</a>
+                    @else
+                        {{-- Have children --}}
+                        <a href="javascript:void(0)" onclick="toggleChildCategories({{ $cate->id }})"
+                            class="text-item-menu">{{ strtoupper($cate->name) }}</a>
+                    @endif
                 @endforeach
             </div>
         @endif

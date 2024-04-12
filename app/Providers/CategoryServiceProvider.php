@@ -25,9 +25,9 @@ class CategoryServiceProvider extends ServiceProvider
         View::composer(['user.partials.header', 'user.home.category'], function ($view) {
             $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
             
-            $topPopular = Category::orderBy('popular', 'desc')->take(7)->get();
+            $topPopular = Category::orderBy('popular', 'desc')->take(8)->get();
 
-            $parentCategories = Category::where('parent_id', 0)->orderBy('popular', 'desc')->take(5)->get();
+            $parentCategories = Category::with('children')->where('parent_id', 0)->orderBy('popular', 'desc')->get();
 
             $result = [];
             foreach ($parentCategories as $parentCategory) {

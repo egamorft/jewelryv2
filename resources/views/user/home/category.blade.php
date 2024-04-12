@@ -9,13 +9,6 @@
                 </a>
             </div>
         @endforeach
-        <div class="">
-            <a href="#" target="_self">
-                <span class="nav-list left">View All<span class="nav-img"><img class="lazy entered loaded"
-                            alt="View All"
-                            src="https://dona-d.com/web/upload/appfiles/0zdpAngaKBFnlCcCqpCU4A/5191e77c091c01b5c7f19848b5adaadd.jpg"></span></span>
-            </a>
-        </div>
     </div>
 </div>
 
