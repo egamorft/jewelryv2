@@ -171,6 +171,7 @@ return [
         
         App\Providers\CategoryServiceProvider::class,
         App\Providers\SidebarProfileProvider::class,
+        App\Providers\FooterServiceProvider::class,
     ])->toArray(),
 
     /*

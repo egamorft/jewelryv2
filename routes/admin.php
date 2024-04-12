@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CollectionController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\admin\FooterBlogController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductCollectionController;
 use App\Http\Controllers\Admin\StylingController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\FooterCategory;
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/dologin', [LoginController::class, 'doLogin'])->name('doLogin');
@@ -28,9 +30,9 @@ Route::middleware('check-admin-auth')->group(function () {
       Route::get('edit/{id}', [BannerController::class, 'edit'])->name('edit');
       Route::post('update/{id}', [BannerController::class, 'update'])->name('update');
       Route::get('delete/{id}', [BannerController::class, 'delete'])->name('delete');
-  });
+   });
 
-  Route::prefix('video')->name('video.')->group(function () {
+   Route::prefix('video')->name('video.')->group(function () {
       Route::get('', [VideoController::class, 'index'])->name('index');
       Route::get('create', [VideoController::class, 'create'])->name('create');
       Route::post('store', [VideoController::class, 'store'])->name('store');
@@ -73,26 +75,26 @@ Route::middleware('check-admin-auth')->group(function () {
       Route::get('edit/{id}', [AlbumController::class, 'edit'])->name('edit');
       Route::post('update/{id}', [AlbumController::class, 'update'])->name('update');
       Route::get('delete/{id}', [AlbumController::class, 'delete'])->name('delete');
-  });
+   });
 
-    Route::prefix('collection')->name('collection.')->group(function () {
-     Route::get('', [CollectionController::class, 'index'])->name('index');
-     Route::get('create', [CollectionController::class, 'create'])->name('create');
-     Route::post('store', [CollectionController::class, 'store'])->name('store');
-     Route::get('edit/{id}', [CollectionController::class, 'edit'])->name('edit');
-     Route::post('update/{id}', [CollectionController::class, 'update'])->name('update');
-     Route::get('delete/{id}', [CollectionController::class, 'delete'])->name('delete');
-  });
+   Route::prefix('collection')->name('collection.')->group(function () {
+      Route::get('', [CollectionController::class, 'index'])->name('index');
+      Route::get('create', [CollectionController::class, 'create'])->name('create');
+      Route::post('store', [CollectionController::class, 'store'])->name('store');
+      Route::get('edit/{id}', [CollectionController::class, 'edit'])->name('edit');
+      Route::post('update/{id}', [CollectionController::class, 'update'])->name('update');
+      Route::get('delete/{id}', [CollectionController::class, 'delete'])->name('delete');
+   });
 
-  Route::prefix('product-collection')->name('product-collection.')->group(function () {
-     Route::get('index/{status}', [ProductCollectionController::class, 'index'])->name('index');
-     Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
-     Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
-     Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');
-     Route::get('item_product/search', [ProductCollectionController::class, 'productSearch']);
-     Route::get('item_product', [ProductCollectionController::class, 'itemProduct']);
-     Route::get('item_product/delete', [ProductCollectionController::class, 'itemDeleteProduct']);
-  });
+   Route::prefix('product-collection')->name('product-collection.')->group(function () {
+      Route::get('index/{status}', [ProductCollectionController::class, 'index'])->name('index');
+      Route::get('create', [ProductCollectionController::class, 'create'])->name('create');
+      Route::post('store', [ProductCollectionController::class, 'store'])->name('store');
+      Route::get('delete/{id}', [ProductCollectionController::class, 'delete'])->name('delete');
+      Route::get('item_product/search', [ProductCollectionController::class, 'productSearch']);
+      Route::get('item_product', [ProductCollectionController::class, 'itemProduct']);
+      Route::get('item_product/delete', [ProductCollectionController::class, 'itemDeleteProduct']);
+   });
    //LIVE
    Route::get('live-content', [LiveController::class, 'content'])->name('live.content');
    Route::post('save-live-content', [LiveController::class, 'saveContent'])->name('live.save.content');
@@ -108,7 +110,7 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::post('store-category', [CategoryController::class, 'store'])->name('category.store');
    Route::put('update-category/{id}', [CategoryController::class, 'update'])->name('category.update');
    Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-   
+
    //PRODUCT
    Route::get('product', [ProductController::class, 'index'])->name('product.index');
    Route::get('create-product', [ProductController::class, 'create'])->name('product.create');
@@ -126,5 +128,18 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::get('edit-order/{id}', [OrderController::class, 'edit'])->name('order.edit');
    Route::put('update-order/{id}', [OrderController::class, 'update'])->name('order.update');
    Route::delete('destroy-order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+   //FOOTER
+   Route::get('footer-category', [FooterCategory::class, 'index'])->name('footer.category.index');
+   Route::post('footer-store-category', [FooterCategory::class, 'store'])->name('footer.category.store');
+   Route::put('footer-update-category/{id}', [FooterCategory::class, 'update'])->name('footer.category.update');
+   Route::delete('footer-destroy-category/{id}', [FooterCategory::class, 'destroy'])->name('footer.category.destroy');
+   //BLOG
+   Route::get('footer-blog', [FooterBlogController::class, 'index'])->name('footer.blog.index');
+   Route::get('create-footer-blog', [FooterBlogController::class, 'create'])->name('footer.blog.create');
+   Route::post('store-footer-blog', [FooterBlogController::class, 'store'])->name('footer.blog.store');
+   Route::get('edit-footer-blog/{id}', [FooterBlogController::class, 'edit'])->name('footer.blog.edit');
+   Route::put('update-footer-blog/{id}', [FooterBlogController::class, 'update'])->name('footer.blog.update');
+   Route::delete('destroy-footer-blog/{id}', [FooterBlogController::class, 'destroy'])->name('footer.blog.destroy');
 });
 Route::post('ckeditor/upload', [DashboardController::class, 'upload'])->name('ckeditor.image-upload');

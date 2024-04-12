@@ -115,6 +115,27 @@ return [
             'submenu' => [],
             'number' => 7
         ],
+        [
+            'name' => 'footer',
+            'title' => 'Footer',
+            'icon' => 'bi bi-alt',
+            'submenu' => [
+                [
+                    'name' => 'footer-category',
+                    'title' => 'Footer category',
+                    'icon' => 'bi bi-view-list',
+                    'route' => 'admin.footer.category.index'
+                ],
+                [
+                    'name' => 'footer-blog',
+                    'title' => 'Footer blog',
+                    'icon' => 'bi bi-app-indicator',
+                    'route' => 'admin.footer.blog.index'
+                ],
+            ],
+            'number' => 8
+        ],
+        
         
     ]
 ];
