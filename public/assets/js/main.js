@@ -31,8 +31,6 @@ $(document).ready(function () {
     });
 });
 
-var totalSelectBoxes = 0;
-var selectedCount = 0;
 //Add attribute product to cart
 function addAttributeCart(id) {
     var formData = new FormData();
@@ -76,7 +74,6 @@ function addAttributeCart(id) {
                     boxHtml += "</select></div>";
                 });
                 $(".box-attribute").html(boxHtml);
-                totalSelectBoxes = $(".select-attribute-sp").length;
             }
         },
         error: function (xhr, status, error) {
@@ -84,18 +81,14 @@ function addAttributeCart(id) {
         },
     });
 }
-
+var selectedCount = 0;
 $(".box-attribute").on("change", ".select-attribute-sp", function () {
     var attributeName = $(this).attr("id");
     var attributeValue = $(this).val();
-
     if (attributeValue !== "") {
         selectedCount++;
-    } else {
-        selectedCount--;
     }
-
-    if (selectedCount >= totalSelectBoxes) {
+    if (selectedCount >= 2) {
         var selectedAttributes = {};
         $(".select-attribute-sp").each(function () {
             attributeName = $(this).attr("id");
@@ -114,7 +107,7 @@ $(".box-attribute").on("change", ".select-attribute-sp", function () {
             success: function (response) {
                 if (response.error == 0) {
                     $(".footer-box-attr-sp").css("display", "block");
-                    selectedCount = 0;
+                    selectedCount = 1;
                     var today = new Date();
                     var discountEnd = new Date(response.product.discount_end);
                     var subTotal = 0;
@@ -202,6 +195,8 @@ $(document).on("click", ".btn-add-cart.add-sp-value-cart", function () {
         processData: false,
         success: function (response) {
             if (response.error == 0) {
+                $(".box-offcanvas-attribute").removeClass("show");
+                $(".offcanvas-backdrop").removeClass("show");
                 toastr.success(response.message);
                 getCart(function (cartItems) {
                     $(".point-cart").html(cartItems.length);

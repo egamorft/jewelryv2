@@ -37,6 +37,7 @@ Route::get('/live', [LiveController::class, 'index'])->name('live');
 Route::get('/detail-product/{id}', [HomeController::class, 'detailProduct'])->name('detail-product');
 Route::get('/search', [HomeController::class, 'searchProduct'])->name('search');
 Route::post('save-review', [HomeController::class, 'saveReview'])->name('save-review');
+Route::post('save-review-feedback', [HomeController::class, 'saveReviewFeedback'])->name('save-review-feedback');
 Route::get('get-review', [HomeController::class, 'getReview'])->name('get-review');
 
 //CATEGORIES

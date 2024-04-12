@@ -11,7 +11,7 @@ class InterestProductController extends Controller
 {
     public function index()
     {
-        $listData = ProductInterestModel::where('user_id', Auth()->id())->paginate(20);
+        $listData = ProductInterestModel::where('user_id', Auth()->id())->paginate(32);
         $productIds = $listData->pluck('product_id');
         $listProduct = Product::whereIn('id', $productIds)->where('published', 1)->paginate(8);
 
