@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInterestModel;
 use App\Models\ReviewFeedbackModel;
+use App\Models\Searches;
 use App\Models\ReviewImageModel;
 use App\Models\ReviewModel;
 use App\Models\StylingImageModel;
@@ -21,6 +22,7 @@ use App\Models\StylingModel;
 use App\Models\StylingProductModel;
 use App\Models\VideoModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
@@ -54,9 +56,9 @@ class HomeController extends Controller
             $products = Product::where('published', 1)->whereHas('categories', function ($query) use ($category) {
                 $query->where('category_id', $category->id);
             })->take(4)->get();
-            foreach($products as $item){
-                $product_interest = ProductInterestModel::where('product_id',$item->id)->first();
-                $item->interest = $product_interest?1:0;
+            foreach ($products as $item) {
+                $product_interest = ProductInterestModel::where('product_id', $item->id)->first();
+                $item->interest = $product_interest ? 1 : 0;
             }
             $productsByCategory[$category->name] = $products;
         }
@@ -71,8 +73,8 @@ class HomeController extends Controller
         $collection_product = CollectionProductModel::where('collection_id', $id)->get();
         foreach ($collection_product as $item) {
             $item->info = Product::find($item->product_id);
-            $product_interest = ProductInterestModel::where('product_id',$item->product_id)->first();
-            $item->interest = $product_interest?1:0;
+            $product_interest = ProductInterestModel::where('product_id', $item->product_id)->first();
+            $item->interest = $product_interest ? 1 : 0;
         }
         return view('user.collection.index', compact('collection', 'data_collection', 'collection_product'));
     }
@@ -189,5 +191,65 @@ class HomeController extends Controller
             $item->feedback = ReviewFeedbackModel::where('review_id',$item->id)->get();
         }
         return response()->json(['error' => 0, 'data' => $review]);
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $q = $request->query('q');
+        $orderBy = $request->query('orderBy');
+        $category = $request->query('category');
+        $minPrice = doubleval($request->query('minPrice'));
+        $maxPrice = doubleval($request->query('maxPrice'));
+
+        $query = Product::query();
+
+        if ($q) {
+            //Store hot search
+            Searches::updateOrCreate(
+                ['query' => $q],
+                ['count' => DB::raw('count + 1')]
+            );
+            $query->where('name', 'like', '%' . $q . '%');
+        }
+
+        if ($category && $category != 'all') {
+            $query->whereHas('categories', function ($query) use ($category) {
+                $query->where('categories.id', $category);
+            });
+        }
+
+        if ($orderBy) {
+            switch ($orderBy) {
+                case 'latest':
+                    $query->orderBy('id', 'desc');
+                    break;
+                case 'oldest':
+                    $query->orderBy('id', 'asc');
+                    break;
+                case 'lowPrice':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'highPrice':
+                    $query->orderBy('price', 'desc');
+                    break;
+            }
+        } else {
+            $query->orderBy('id', 'desc');
+        }
+
+        if (is_numeric($minPrice) && is_numeric($maxPrice) && $maxPrice > 0) {
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+
+        $products = $query->paginate(8);
+
+        // Append filter
+        $products->appends(['q' => $q, 'orderBy' => $orderBy, 'category' => $category, 'minPrice' => $minPrice, 'maxPrice' => $maxPrice]);
+
+        $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
+
+        $listCategory = Category::orderBy('popular', 'desc')->get();
+
+        return view('user.product.search')->with(compact('products', 'listCategory', 'topSearches'));
     }
 }

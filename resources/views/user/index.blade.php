@@ -306,6 +306,25 @@
         $('#category_thumbnail_' + parentId).show();
     }
 </script>
+
+<script>
+    $(document).ready(function() {
+        // Get the form element
+        var form = $('#search-form');
+
+        // Add click event handler to btnSearch SVG
+        $('#btnSearch').click(function() {
+            form.submit(); // Submit the form
+        });
+
+        // Add click event handler to item-popular element
+        $('.item-popular').click(function() {
+            var searchTerm = $(this).data('search-term'); // Get the search term from the data attribute
+            $('#search-input').val(searchTerm); // Set the search term as the input value
+            form.submit(); // Submit the form
+        });
+    });
+</script>
 </body>
 
 </html>

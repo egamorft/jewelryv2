@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Searches;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +23,8 @@ class CategoryServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['user.partials.header', 'user.home.category'], function ($view) {
+            $topSearches = Searches::orderBy('count', 'desc')->take(4)->get();
+            
             $topPopular = Category::orderBy('popular', 'desc')->take(7)->get();
 
             $parentCategories = Category::where('parent_id', 0)->orderBy('popular', 'desc')->take(5)->get();
@@ -45,6 +48,7 @@ class CategoryServiceProvider extends ServiceProvider
                 $result[$parentCategory->id] = $childData;
             }
             
+            $view->with('topSearches', $topSearches);
             $view->with('topPopular', $topPopular);
             $view->with('parentCategories', $parentCategories);
             $view->with('childrenCategories', $result);
