@@ -99,12 +99,13 @@ var swiper_video = new Swiper(".mySwiperVideo", {
 });
 
 var swiper_official = new Swiper(".mySwiperOfficial", {
-    slidesPerView: 5,
     breakpoints: {
         768: {
+            slidesPerView: 5,
             spaceBetween: 10,
         },
         300: {
+            slidesPerView: 4,
             spaceBetween: 5,
         },
     },
