@@ -6,18 +6,18 @@
 
 @section('my-shop-content')
     <div id="drmvsn-basic-container">
-        <div class="title-area myshop-common">
-            <span class="mobile-only go-back"></span>
+        <div class="title-area myshop-common mt-5">
+            <span class="mobile-only go-back" onclick="history.go(-1)"></span>
             <h2>Order details</h2>
         </div>
 
-        <div class="xans-element- xans-myshop xans-myshop-orderhistorytab drmvsn-base-tab ">
+        <div class="xans-element- xans-myshop xans-myshop-orderhistorytab drmvsn-base-tab mt-5">
             <ul class="flex align-center justify-center">
                 <li class="tab_class selected">
                     <a type="button" class="tabBtn" id="orderDetaiTabBtn">Order details
                         (<span id="xans_myshop_total_orders">{{ count($orders) }}</span>)</a>
                 </li>
-                <li class="tab_class">
+                <li class="tab_class_cs">
                     <a type="button" class="tabBtn" id="historyStatusTabBtn">Cancellation/Return/Exchange
                         history (<span id="xans_myshop_total_orders_cs">0</span>)</a>
                 </li>
@@ -156,8 +156,8 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <p>{{ $detail->products->name }}</p>
-                                    <img src="{{ $detail->products->thumbnail_img }}" class="img-thumbnail mt-2" alt=""
-                                        width="160px">
+                                    <img src="{{ $detail->products->thumbnail_img }}" class="img-thumbnail mt-2"
+                                        alt="" width="160px">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center justify-content-center">
                                     <p>Quantity: {{ $detail->quantity }}</p>
@@ -199,6 +199,17 @@
                 <p class="is-no-data ">There is no order history.</p>
             </div>
         @endforelse
+        <form method="GET" id="OrderHistoryForm" name="OrderHistoryForm" class="mt-5">
+            <div class="xans-element- xans-myshop xans-myshop-orderhistoryhead is-help with-border ">
+                <ul>
+                    <li class="disc-li ">Cancellation/exchange/return requests can be made up to 1 day from the order completion date.</li>
+                    <li class="disc-li">By default, data for the last 3 months is searched, and when searching for a period, you can view past order history.</li>
+                    <li class="disc-li">Click on the order number to see details about the order.</li>
+                </ul>
+            </div>
+            <input id="mode" name="mode" value="" type="hidden">
+            <input id="term" name="term" value="" type="hidden">
+        </form>
     </div>
 @endsection
 

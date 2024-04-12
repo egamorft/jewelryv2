@@ -2,12 +2,12 @@
 
 @section('my-shop-content')
     <div id="drmvsn-basic-container">
-        <div class="title-area">
-            <span class="mobile-only go-back"></span>
+        <div class="title-area mt-5">
+            <span class="mobile-only go-back" onclick="history.go(-1)"></span>
             <h2>PRODUCT OF INTEREST</h2>
         </div>
 
-        <div class="xans-element- xans-myshop xans-myshop-wishlist xans-record-">
+        <div class="xans-element- xans-myshop xans-myshop-wishlist xans-record- mt-5">
             <div class="sub-title pb-10 font-bold flex align-center justify-between">
                 <div class="title">List of products of interest</div>
             </div>
@@ -70,15 +70,15 @@
             </div>
         </div>
 
-        
+
         <div class="xans-element- xans-myshop xans-myshop-wishlistpaging ec-base-paginate">
             <!-- product and basic pagination -->
             <div class="flex justify-center align-center">
                 <a href="{{ $listProduct->previousPageUrl() ?? '#' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
                         <g transform="translate(-877.5 -600)">
-                            <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)"
-                                fill="none" stroke="#000" stroke-width="1"></path>
+                            <path d="M-19057.816-16469.5l-5,5,5,5" transform="translate(19961.816 17083)" fill="none"
+                                stroke="#000" stroke-width="1"></path>
                             <rect width="48" height="38" transform="translate(877.5 600)" fill="none">
                             </rect>
                         </g>
@@ -90,18 +90,20 @@
                             href="{{ $listProduct->url($page) }}">
                             {{ $page }}
                         </a> --}}
-                        <li class="xans-record-"><a href="{{ $listProduct->url($page) }}" class="this">{{ $page }}</a></li>
+                        <li class="xans-record-"><a href="{{ $listProduct->url($page) }}"
+                                class="this">{{ $page }}</a></li>
                     @endfor
                 </ol>
                 <a href="{{ $listProduct->nextPageUrl() ?? '#' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38">
                         <g transform="translate(-540 -859)">
-                            <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)"
-                                fill="none" stroke="#000" stroke-width="1"></path>
+                            <path d="M-19062.814-16469.5l5,5-5,5" transform="translate(19624.314 17342)" fill="none"
+                                stroke="#000" stroke-width="1"></path>
                             <rect width="48" height="38" transform="translate(540 859)" fill="none">
                             </rect>
                         </g>
-                    </svg></a>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>

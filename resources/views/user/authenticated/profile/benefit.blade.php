@@ -2,6 +2,10 @@
 
 @section('my-shop-content')
     <div id="drmvsn-basic-container">
+        <div class="title-area mobile-only mt-5">
+            <span class="mobile-only go-back" onclick="history.go(-1)"></span>
+            <h2>Membership Benefits</h2>
+        </div>
         <div class="donad-membership-menu">
             <ul class="flex align-center">
                 <li><a href="#donad-membership-coupon" class="width-full justify-center flex cursor-pointer">Membership

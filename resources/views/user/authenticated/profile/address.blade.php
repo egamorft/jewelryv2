@@ -2,18 +2,18 @@
 
 @section('my-shop-content')
     <div id="drmvsn-basic-container">
-        <div class="title-area flex justify-between">
-            <span class="mobile-only go-back"></span>
-            <h2>DELIVERY ADDRESS MANAGEMENT</h2>
+        <div class="title-area flex justify-between mt-5">
+            <span class="mobile-only go-back" onclick="history.go(-1)"></span>
+            <h3>DELIVERY ADDRESS MANAGEMENT</h3>
             <a href="{{ route('profile.delivery.register.address') }}" class="btn prior-1 desktop-only">Add delivery
                 address</a>
         </div>
 
 
-        <form id="frmAddr" name="" action="" method="post" enctype="multipart/form-data">
+        <form id="frmAddr" name="" action="" method="post" enctype="multipart/form-data" class="mt-5">
             <div class="xans-element- xans-myshop xans-myshop-addrlist">
                 <div class="list-title">
-                    <h4>Delivery address list</h4>
+                    <h5>Delivery address list</h5>
                 </div>
                 <div class=" addr-list mt-20 m-mb-40">
                     @forelse ($addresses as $add)
@@ -90,7 +90,15 @@
                 </div>
             </div>
         </form>
-
+        <ul class="is-help with-border mt-20">
+            <li class="disc-li item1">You can register up to 10 delivery address books, and if you do not register them
+                separately, they will be automatically updated based on the most recent delivery address book.
+            </li>
+            <li class="disc-li item2">If you do not want automatic updates, select Fixed Address Book and the selected
+                address book will be excluded from the update target.</li>
+            <li class="disc-li item3">Only one default shipping address is saved. If you set a different shipping address as
+                the default shipping address, the default shipping address will change.</li>
+        </ul>
     </div>
 @endsection
 
