@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CollectionController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\admin\FooterBlogController;
+use App\Http\Controllers\Admin\FooterBlogController;
 use App\Http\Controllers\Admin\LiveController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
