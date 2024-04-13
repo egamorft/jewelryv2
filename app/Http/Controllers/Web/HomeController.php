@@ -10,6 +10,8 @@ use App\Models\BannerModel;
 use App\Models\Category;
 use App\Models\CollectionModel;
 use App\Models\CollectionProductModel;
+use App\Models\FooterBlog;
+use App\Models\PostsModel;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInterestModel;
@@ -62,8 +64,10 @@ class HomeController extends Controller
             }
             $productsByCategory[$category->name] = $products;
         }
+        $post_brand = PostsModel::where('type',2)->first();
 
-        return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory', 'styling', 'advertisement', 'album', 'collection'));
+        return view('user.home.index', compact('banner', 'video', 'topCategories', 'productsByCategory', 'styling', 'advertisement',
+         'album', 'collection','post_brand'));
     }
 
     public function detailCollection(Request $request,$id)
@@ -275,5 +279,19 @@ class HomeController extends Controller
         $listCategory = Category::orderBy('popular', 'desc')->take(5)->get();
 
         return view('user.product.search')->with(compact('products', 'listCategory', 'topSearches'));
+    }
+
+    public function detailBlog($id)
+    {   
+        $blog = FooterBlog::where('category_id',$id)->first();
+        
+        return view('user.blog.index',compact('blog'));
+    }
+
+    public function detailPost($id)
+    {   
+        $post = PostsModel::find($id);
+        
+        return view('user.blog.post',compact('post'));
     }
 }

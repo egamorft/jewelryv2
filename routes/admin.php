@@ -141,5 +141,11 @@ Route::middleware('check-admin-auth')->group(function () {
    Route::get('edit-footer-blog/{id}', [FooterBlogController::class, 'edit'])->name('footer.blog.edit');
    Route::put('update-footer-blog/{id}', [FooterBlogController::class, 'update'])->name('footer.blog.update');
    Route::delete('destroy-footer-blog/{id}', [FooterBlogController::class, 'destroy'])->name('footer.blog.destroy');
+   //Post showroom
+   Route::get('post-showroom', [FooterBlogController::class, 'postShowroom'])->name('post.showroom');
+   Route::post('save-showroom', [FooterBlogController::class, 'saveShowroom'])->name('save.showroom');
+   //Post brand
+   Route::get('post-brand', [FooterBlogController::class, 'postBrand'])->name('post.brand');
+   Route::post('save-brand', [FooterBlogController::class, 'saveBrand'])->name('save.brand');
 });
 Route::post('ckeditor/upload', [DashboardController::class, 'upload'])->name('ckeditor.image-upload');

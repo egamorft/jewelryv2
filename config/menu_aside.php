@@ -135,7 +135,22 @@ return [
             ],
             'number' => 8
         ],
-        
+        [
+            'name' => 'post-showroom',
+            'title' => 'ShowRooom',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.post.showroom',
+            'submenu' => [],
+            'number' => 9
+        ],
+        [
+            'name' => 'post-brand',
+            'title' => 'Brand',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.post.brand',
+            'submenu' => [],
+            'number' => 9
+        ],
         
     ]
 ];

@@ -39,6 +39,8 @@ Route::get('/search', [HomeController::class, 'searchProduct'])->name('search');
 Route::post('save-review', [HomeController::class, 'saveReview'])->name('save-review');
 Route::post('save-review-feedback', [HomeController::class, 'saveReviewFeedback'])->name('save-review-feedback');
 Route::get('get-review', [HomeController::class, 'getReview'])->name('get-review');
+Route::get('detail-blog/{id}', [HomeController::class, 'detailBlog'])->name('detail-blog');
+Route::get('detail-post/{id}', [HomeController::class, 'detailPost'])->name('detail-post');
 
 //CATEGORIES
 Route::get('/category/{slug}', [CategoryController::class, 'searchProductsByCategory'])->name('categories.show');
