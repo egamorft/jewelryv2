@@ -88,7 +88,35 @@ class FooterCategory extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|string|max:30',
+            'slug' => 'required|unique:categories,slug',
+            'parent_id' => 'required|integer'
+        ]);
+
+        if ($validated->fails()) {
+            toastr()->error($validated->errors()->first());
+            return back()->withInput();
+        }
+
+        $validatedData = $validated->validated();
+
+        $parent_id = $validatedData['parent_id'];
+
+        $category = ModelsFooterCategory::find($parent_id);
+
+        if ($parent_id != 0) {
+            if (!$category || $category->parent_id != 0) {
+                toastr()->error("Parent selected is invalid");
+                return back()->withInput();
+            }
+        }
+
+        $cate = ModelsFooterCategory::find($id);
+        $cate->update($validatedData);
+
+        toastr()->success("Update category successfully");
+        return back();
     }
 
     /**
