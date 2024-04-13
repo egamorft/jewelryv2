@@ -45,8 +45,8 @@
 
 @section('content')
     <div class="box-blog">
-       <p class="title-blog">{{$post->title}}</p>
-       <div class="contnet-blog mb-3">{{$post->describe}}</div>
-       <div class="contnet-blog">{!! $post->content !!}</div>
+       <p class="title-blog">{{@$post->title}}</p>
+       <div class="contnet-blog mb-3">{{@$post->describe}}</div>
+       <div class="contnet-blog">{!! @$post->content !!}</div>
     </div>
 
