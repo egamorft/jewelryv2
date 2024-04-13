@@ -1,3 +1,6 @@
+@php
+    $showroom = App\Models\PostsModel::where('type',1)->first()
+@endphp
 <div class="box-header">
     <div class="d-flex align-item-center">
         <div class="item-text-header" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuTop"
@@ -5,7 +8,9 @@
         </div>
         <a href="{{ route('styling') }}" class="item-text-header">STYLING</a>
         <a href="{{ route('live') }}" class="item-text-header">LIVE</a>
-        <a class="item-text-header">HANNAM SHOWROOM</a>
+        @if($showroom)
+            <a href="{{url('detail-post',$showroom->id)}}" class="item-text-header">HANNAM SHOWROOM</a>
+        @endif
     </div>
     <a href="{{ route('home') }}">
         <img src="{{ asset('assets/images/jewelry.png') }}" class="img-logo">

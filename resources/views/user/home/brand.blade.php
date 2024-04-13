@@ -1,5 +1,7 @@
+@if(isset($post_brand))
 <div class="box-brand">
-<p class="title-brand">You're Born to Shine.</p>
-<p class="content-brand w-50">DONA & D. is a designer jewelry brand that interprets classicism in a modern way, taking inspiration from various motifs and objects in everyday life, from trendy lines to fine jewelry.</p>
-<a href="" class="link-brand">ABOUT BRAND</a>
+<p class="title-brand">{{$post_brand->title}}</p>
+<p class="content-brand w-50">{{$post_brand->describe}}</p>
+<a href="{{url('detail-post',$post_brand->id)}}" class="link-brand">ABOUT BRAND</a>
 </div>
+@endif

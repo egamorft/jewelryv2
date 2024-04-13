@@ -33,7 +33,7 @@
                     @if (!empty($children))
                         @if ($parentId == $cate->id)
                             @foreach ($children as $child)
-                                <a class="content-footer">{{ $child['name'] }}</a>
+                                <a href="{{route('detail-blog',$child['id'])}}" class="content-footer">{{ $child['name'] }}</a>
                             @endforeach
                         @endif
                     @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\FooterBlog;
 use App\Models\FooterCategory;
+use App\Models\PostsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -134,5 +135,65 @@ class FooterBlogController extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => -1, 'message' => $e->getMessage()], 400);
         }
+    }
+
+    public function postShowroom()
+    {
+        $page_menu = 'post-showroom';
+        $post = PostsModel::where('type',1)->first();
+
+        return view('admin.post.index')->with(compact('post', 'page_menu'));
+    }
+
+    public function saveShowroom(Request $request)
+    {
+        if($request->post_id){
+            $post = PostsModel::find($request->post_id);
+            $post->title = $request->title;
+            $post->describe = $request->describe;
+            $post->content = $request->content;
+            $post->save();
+        }else{
+            $post = new PostsModel([
+                'title'=>$request->title,
+                'describe'=>$request->describe,
+                'content'=>$request->content,
+                'type'=>1,
+            ]);
+            $post->save();
+        }
+
+        toastr()->success("Update post successfully");
+        return back();
+    }
+
+    public function postBrand()
+    {
+        $page_menu = 'post-brand';
+        $post = PostsModel::where('type',2)->first();
+
+        return view('admin.post.brand')->with(compact('post', 'page_menu'));
+    }
+
+    public function saveBrand(Request $request)
+    {
+        if($request->post_id){
+            $post = PostsModel::find($request->post_id);
+            $post->title = $request->title;
+            $post->describe = $request->describe;
+            $post->content = $request->content;
+            $post->save();
+        }else{
+            $post = new PostsModel([
+                'title'=>$request->title,
+                'describe'=>$request->describe,
+                'content'=>$request->content,
+                'type'=>2,
+            ]);
+            $post->save();
+        }
+
+        toastr()->success("Update post successfully");
+        return back();
     }
 }

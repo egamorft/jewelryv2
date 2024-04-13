@@ -419,6 +419,9 @@ li {
     .box-time-sp {
         width: 100%;
     }
+    .box-footer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 @media (max-width: 1040px) {
     .img-logo {
