@@ -411,6 +411,9 @@ li {
     border-color: #efefef;
     box-shadow: unset;
 }
+div {
+    max-width: 100%;
+}
 @media (max-width: 1200px) {
     .box-item-price {
         width: 100%;
