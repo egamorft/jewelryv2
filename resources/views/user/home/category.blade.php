@@ -16,7 +16,9 @@
     <div class="box-collection">
         @foreach ($collection as $item_collection)
             <div class="item-collection">
-                <img src="{{ asset($item_collection->src) }}" class="img-collection" loading="lazy">
+                <div class="image-wrapper">
+                    <img src="{{ asset($item_collection->src) }}" class="img-collection" loading="lazy">
+                </div>
                 <div>
                     <p class="title-collection">{{ $item_collection->title }}</p>
                     <div class="content-collection">{{ $item_collection->describe }}</div>
