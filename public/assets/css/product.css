@@ -494,6 +494,10 @@
 .item-feedback {
     margin-bottom: 20px;
 }
+.content-info-product-more div,
+div {
+    max-width: 100%;
+}
 @media (max-width: 1040px) {
     .box-info-product {
         flex-wrap: wrap;
