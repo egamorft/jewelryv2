@@ -48,4 +48,5 @@
        <p class="title-blog">{{@$blog->title}}</p>
        <div class="contnet-blog">{!! @$blog->description !!}</div>
     </div>
+    @endsection
 

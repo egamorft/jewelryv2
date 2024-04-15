@@ -49,4 +49,5 @@
        <div class="contnet-blog mb-3">{{@$post->describe}}</div>
        <div class="contnet-blog">{!! @$post->content !!}</div>
     </div>
+   @endsection
 

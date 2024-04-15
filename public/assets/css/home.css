@@ -126,6 +126,14 @@
 .item-collection {
     width: 45%;
 }
+.item-collection .image-wrapper:hover {
+    background-color: #b2b2b2;
+}
+
+.item-collection .image-wrapper:hover img {
+    opacity: 0.5;
+    cursor: pointer;
+}
 .img-collection {
     width: 100%;
     object-fit: cover;
