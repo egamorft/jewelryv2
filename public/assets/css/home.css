@@ -386,9 +386,9 @@
     .video-prev {
         left: 50px;
     }
-    .box-footer {
+    /* .box-footer {
         grid-template-columns: 1fr 1fr 1fr;
-    }
+    } */
     .main-nav-with-img-banner {
         padding: 100px 0;
     }
